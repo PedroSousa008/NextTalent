@@ -1,6 +1,12 @@
 'use client';
 
+import { useState } from 'react';
+
 export default function LoginPlayer() {
+  const [weightUnit, setWeightUnit] = useState<'kg' | 'lbs'>('kg');
+  const [heightUnit, setHeightUnit] = useState<'m' | 'ft'>('m');
+  const [gender, setGender] = useState('');
+
   return (
     <div className="flex flex-col min-h-screen bg-white items-center pt-8">
       {/* Logo and branding */}
@@ -26,7 +32,12 @@ export default function LoginPlayer() {
           <label className="block text-gray-500 mb-1">Weight</label>
           <div className="relative">
             <input className="w-full px-4 py-2 pr-14 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center text-gray-400 pointer-events-none">▼<span className="ml-1">kg</span></span>
+            <span
+              className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center text-gray-400 cursor-pointer select-none"
+              onClick={() => setWeightUnit(weightUnit === 'kg' ? 'lbs' : 'kg')}
+            >
+              ▼<span className="ml-1 text-black">{weightUnit}</span>
+            </span>
           </div>
         </div>
         <div>
@@ -37,7 +48,12 @@ export default function LoginPlayer() {
           <label className="block text-gray-500 mb-1">Hight</label>
           <div className="relative">
             <input className="w-full px-4 py-2 pr-14 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center text-gray-400 pointer-events-none">▼<span className="ml-1">m</span></span>
+            <span
+              className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center text-gray-400 cursor-pointer select-none"
+              onClick={() => setHeightUnit(heightUnit === 'm' ? 'ft' : 'm')}
+            >
+              ▼<span className="ml-1 text-black">{heightUnit}</span>
+            </span>
           </div>
         </div>
         <div>
@@ -57,14 +73,22 @@ export default function LoginPlayer() {
         <div>
           <label className="block text-gray-500 mb-1">Gender</label>
           <div className="relative">
-            <input value="I am…" readOnly className="w-full px-4 py-2 pr-8 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
+            <select
+              value={gender}
+              onChange={e => setGender(e.target.value)}
+              className="w-full px-4 py-2 pr-8 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 appearance-none"
+            >
+              <option value="" disabled>I am…</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▼</span>
           </div>
         </div>
         <div>
           <label className="block text-gray-500 mb-1">Nationality</label>
           <div className="relative flex items-center">
-            <span className="absolute left-4 top-1/2 -translate-y-[60%] text-2xl" style={{top: '-2px'}}>🇵🇹</span>
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl">🇵🇹</span>
             <input value="Portuguese" readOnly className="w-full pl-12 pr-8 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▼</span>
           </div>
@@ -72,9 +96,9 @@ export default function LoginPlayer() {
         <div>
           <label className="block text-gray-500 mb-1">Phone Number</label>
           <div className="relative">
-            <span className="absolute left-4 top-1/2 -translate-y-[60%] flex items-center text-2xl">
-              <span style={{marginRight: '0.4rem', position: 'relative', top: '-2px'}}>🇵🇹</span>
-              <span className="text-base font-normal text-black">+351</span>
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center text-2xl">
+              <span className="text-2xl">🇵🇹</span>
+              <span className="ml-2 text-base font-normal text-black">+351</span>
             </span>
             <input className="w-full pl-24 pr-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 text-center" />
           </div>
