@@ -2,18 +2,14 @@ import Image from 'next/image';
 
 export default function LoginPage() {
   return (
-    <div className="flex min-h-screen bg-white">
-      {/* Left side: Logo and branding */}
-      <div className="flex flex-col items-center justify-center w-1/2 bg-gray-50 p-8">
-        <Image src="/logo.png" alt="Next Talent Logo" width={320} height={320} className="mb-6" />
-        <div className="text-center">
-          <h1 className="text-5xl font-bold text-gray-800 mb-2">Next Talent</h1>
-          <div className="text-lg text-gray-600 mb-4">Ambition, Learn, Success, Journey, Opportunity</div>
-        </div>
+    <div className="flex flex-col min-h-screen bg-white items-center justify-start pt-8">
+      {/* Logo at the top */}
+      <div className="flex flex-col items-center mb-8">
+        <Image src="/logo.png" alt="Next Talent Logo" width={320} height={320} className="mb-4" />
       </div>
-      {/* Right side: Login form */}
-      <div className="flex flex-col justify-center w-1/2 px-16">
-        <form className="w-full max-w-md mx-auto">
+      {/* Login form and content below logo */}
+      <div className="w-full max-w-md flex flex-col items-center">
+        <form className="w-full">
           <label className="block text-gray-700 text-lg mb-2" htmlFor="email">Email/Phone Number</label>
           <input id="email" type="text" className="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" />
 
@@ -28,24 +24,23 @@ export default function LoginPage() {
           <div className="text-right mb-6">
             <a href="#" className="text-blue-600 hover:underline">Forgot Password?</a>
           </div>
-
-          <div className="text-center mb-4">
-            <span className="text-blue-700 text-xl font-semibold">Create a new account</span>
-          </div>
-          <div className="flex justify-between text-lg font-bold text-gray-800 mb-8">
-            <a href="#" className="hover:underline">As a Coach</a>
-            <a href="#" className="hover:underline">As a Player</a>
-            <a href="#" className="hover:underline">As an Agent</a>
-          </div>
         </form>
-        <footer className="flex justify-between text-sm text-gray-500 mt-8">
-          <a href="#" className="hover:underline">Support</a>
-          <a href="#" className="hover:underline">Terms</a>
-          <a href="#" className="hover:underline">About Us</a>
-          <a href="#" className="hover:underline">Privacy</a>
-          <a href="#" className="hover:underline">Language</a>
-        </footer>
+        <div className="text-center mb-4">
+          <span className="text-blue-700 text-xl font-semibold">Create a new account</span>
+        </div>
+        <div className="flex justify-between w-full text-lg font-bold text-gray-800 mb-8">
+          <a href="#" className="hover:underline">As a Coach</a>
+          <a href="#" className="hover:underline">As a Player</a>
+          <a href="#" className="hover:underline">As an Agent</a>
+        </div>
       </div>
+      <footer className="flex justify-between w-full max-w-md text-sm text-gray-500 mt-auto mb-4">
+        <a href="#" className="hover:underline">Support</a>
+        <a href="#" className="hover:underline">Terms</a>
+        <a href="#" className="hover:underline">About Us</a>
+        <a href="#" className="hover:underline">Privacy</a>
+        <a href="#" className="hover:underline">Language</a>
+      </footer>
     </div>
   );
 } 
