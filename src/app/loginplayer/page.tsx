@@ -1,19 +1,51 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const POSITIONS = [
   'GK', 'CB', 'LB', 'LWB', 'RB', 'RWB', 'CDM', 'CM', 'CAM', 'LM', 'LW', 'RM', 'RW', 'CF', 'ST'
 ];
 
+function convertWeight(value: string, from: 'kg' | 'lbs', to: 'kg' | 'lbs') {
+  const num = parseFloat(value);
+  if (isNaN(num)) return '';
+  return from === 'kg' && to === 'lbs'
+    ? (num * 2.20462).toFixed(1)
+    : from === 'lbs' && to === 'kg'
+    ? (num / 2.20462).toFixed(1)
+    : value;
+}
+function convertHeight(value: string, from: 'cm' | 'ft', to: 'cm' | 'ft') {
+  const num = parseFloat(value);
+  if (isNaN(num)) return '';
+  return from === 'cm' && to === 'ft'
+    ? (num / 30.48).toFixed(2)
+    : from === 'ft' && to === 'cm'
+    ? (num * 30.48).toFixed(0)
+    : value;
+}
+
 export default function LoginPlayer() {
+  const router = useRouter();
   const [weightUnit, setWeightUnit] = useState<'kg' | 'lbs'>('kg');
+  const [weight, setWeight] = useState('');
   const [heightUnit, setHeightUnit] = useState<'cm' | 'ft'>('cm');
+  const [height, setHeight] = useState('');
   const [gender, setGender] = useState('');
   const [showGenderDropdown, setShowGenderDropdown] = useState(false);
   const [dob, setDob] = useState({ day: '', month: '', year: '' });
   const [positions, setPositions] = useState<string[]>([]);
   const [showPositionDropdown, setShowPositionDropdown] = useState(false);
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+  });
+  const [showPasswordStep, setShowPasswordStep] = useState(false);
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   function handleGenderSelect(value: string) {
     setGender(value);
@@ -28,11 +60,72 @@ export default function LoginPlayer() {
     }
   }
 
+  function handleWeightUnitSwitch() {
+    const newUnit = weightUnit === 'kg' ? 'lbs' : 'kg';
+    setWeight(convertWeight(weight, weightUnit, newUnit));
+    setWeightUnit(newUnit);
+  }
+  function handleHeightUnitSwitch() {
+    const newUnit = heightUnit === 'cm' ? 'ft' : 'cm';
+    setHeight(convertHeight(height, heightUnit, newUnit));
+    setHeightUnit(newUnit);
+  }
+
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    setShowPasswordStep(true);
+  }
+
+  if (showPasswordStep) {
+    return (
+      <div className="flex flex-col min-h-screen bg-white items-center pt-8">
+        <img
+          src="/logo.png"
+          alt="Next Talent Logo"
+          width={320}
+          height={320}
+          className="mb-4 cursor-pointer"
+          style={{ objectFit: 'contain' }}
+          onClick={() => router.push('/')}
+        />
+        <div className="w-full max-w-md flex flex-col items-center mt-8">
+          <h2 className="text-3xl font-bold mb-2">Hello {form.firstName}!</h2>
+          <div className="text-gray-700 mb-6">{form.email} / {form.phone}</div>
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full mb-4 px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            className="w-full mb-4 px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0"
+            value={confirmPassword}
+            onChange={e => setConfirmPassword(e.target.value)}
+          />
+          <button className="w-full bg-gray-200 text-black py-3 rounded-none text-xl font-bold shadow-sm border-0 flex items-center justify-center">
+            Create Your Account
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col min-h-screen bg-white items-center pt-8">
       {/* Logo and branding */}
       <div className="flex flex-col items-center mb-8">
-        <img src="/logo.png" alt="Next Talent Logo" width={320} height={320} className="mb-4" style={{objectFit: 'contain'}} />
+        <img
+          src="/logo.png"
+          alt="Next Talent Logo"
+          width={320}
+          height={320}
+          className="mb-4 cursor-pointer"
+          style={{ objectFit: 'contain' }}
+          onClick={() => router.push('/')}
+        />
       </div>
       {/* Title and tabs */}
       <div className="w-full max-w-3xl flex flex-col items-center mb-8">
@@ -44,18 +137,26 @@ export default function LoginPlayer() {
         </div>
       </div>
       {/* Form */}
-      <form className="w-full max-w-3xl grid grid-cols-2 gap-x-8 gap-y-4 mb-8">
+      <form className="w-full max-w-3xl grid grid-cols-2 gap-x-8 gap-y-4 mb-8" onSubmit={handleSubmit}>
         <div>
           <label className="block text-gray-500 mb-1">First Name</label>
-          <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
+          <input
+            className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2"
+            value={form.firstName}
+            onChange={e => setForm({ ...form, firstName: e.target.value })}
+          />
         </div>
         <div>
           <label className="block text-gray-500 mb-1">Weight</label>
           <div className="relative">
-            <input className="w-full px-4 py-2 pr-14 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
+            <input
+              className="w-full px-4 py-2 pr-14 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2"
+              value={weight}
+              onChange={e => setWeight(e.target.value.replace(/[^\d.]/g, ''))}
+            />
             <span
               className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center text-gray-400 cursor-pointer select-none"
-              onClick={() => setWeightUnit(weightUnit === 'kg' ? 'lbs' : 'kg')}
+              onClick={handleWeightUnitSwitch}
             >
               ▼<span className="ml-1 text-black">{weightUnit}</span>
             </span>
@@ -63,15 +164,23 @@ export default function LoginPlayer() {
         </div>
         <div>
           <label className="block text-gray-500 mb-1">Last Name</label>
-          <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
+          <input
+            className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2"
+            value={form.lastName}
+            onChange={e => setForm({ ...form, lastName: e.target.value })}
+          />
         </div>
         <div>
           <label className="block text-gray-500 mb-1">Height</label>
           <div className="relative">
-            <input className="w-full px-4 py-2 pr-14 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
+            <input
+              className="w-full px-4 py-2 pr-14 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2"
+              value={height}
+              onChange={e => setHeight(e.target.value.replace(/[^\d.]/g, ''))}
+            />
             <span
               className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center text-gray-400 cursor-pointer select-none"
-              onClick={() => setHeightUnit(heightUnit === 'cm' ? 'ft' : 'cm')}
+              onClick={handleHeightUnitSwitch}
             >
               ▼<span className="ml-1 text-black">{heightUnit}</span>
             </span>
@@ -139,7 +248,7 @@ export default function LoginPlayer() {
           <label className="block text-gray-500 mb-1">Position</label>
           <div className="relative">
             <div
-              className="w-full px-4 py-2 pr-8 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none mb-2 flex items-center flex-wrap gap-2 cursor-pointer min-h-[44px]"
+              className="w-full px-4 py-2 pr-8 bg-gray-100 text-black border-0 border-b border-gray-300 rounded-none mb-2 flex items-center flex-wrap gap-2 cursor-pointer min-h-[44px]"
               onClick={() => setShowPositionDropdown(!showPositionDropdown)}
               tabIndex={0}
               onBlur={() => setShowPositionDropdown(false)}
@@ -157,7 +266,7 @@ export default function LoginPlayer() {
                 {POSITIONS.map(pos => (
                   <div
                     key={pos}
-                    className={`px-4 py-2 cursor-pointer hover:bg-blue-100 flex items-center ${positions.includes(pos) ? 'font-bold text-blue-700' : ''}`}
+                    className={`px-4 py-2 cursor-pointer hover:bg-blue-100 flex items-center text-black ${positions.includes(pos) ? 'font-bold text-blue-700' : ''}`}
                     onMouseDown={e => { e.preventDefault(); handlePositionToggle(pos); }}
                   >
                     <input
@@ -176,12 +285,12 @@ export default function LoginPlayer() {
           </div>
         </div>
         <div>
-          <label className="block text-gray-500 mb-1">Nationality</label>
-          <div className="relative flex items-center">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl">🇵🇹</span>
-            <input value="Portuguese" readOnly className="w-full pl-12 pr-8 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▼</span>
-          </div>
+          <label className="block text-gray-500 mb-1">Email</label>
+          <input
+            className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2"
+            value={form.email}
+            onChange={e => setForm({ ...form, email: e.target.value })}
+          />
         </div>
         <div>
           <label className="block text-gray-500 mb-1">Phone Number</label>
@@ -190,39 +299,12 @@ export default function LoginPlayer() {
               <span className="text-2xl">🇵🇹</span>
               <span className="ml-2 text-base font-normal text-black">+351</span>
             </span>
-            <input className="w-full pl-24 pr-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 text-center" />
+            <input
+              className="w-full pl-24 pr-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 text-center"
+              value={form.phone}
+              onChange={e => setForm({ ...form, phone: e.target.value.replace(/[^\d]/g, '') })}
+            />
           </div>
-        </div>
-        <div>
-          <label className="block text-gray-500 mb-1">NIF</label>
-          <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
-        </div>
-        <div>
-          <label className="block text-gray-500 mb-1">Email</label>
-          <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
-        </div>
-        <div>
-          <label className="block text-gray-500 mb-1">CC nº</label>
-          <div className="flex items-center">
-            <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
-            <span className="mx-2 text-gray-400">-</span>
-          </div>
-        </div>
-        <div>
-          <label className="block text-gray-500 mb-1">Club</label>
-          <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
-        </div>
-        <div>
-          <label className="block text-gray-500 mb-1">User SNS nº</label>
-          <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
-        </div>
-        <div>
-          <label className="block text-gray-500 mb-1">Club Code</label>
-          <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
-        </div>
-        <div>
-          <label className="block text-gray-500 mb-1">Player Certificate Number</label>
-          <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
         </div>
         {/* Full width row for Create Your Account button */}
         <div className="col-span-2 flex justify-center mt-8">
