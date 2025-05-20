@@ -64,7 +64,7 @@ export default function LoginPlayer() {
         <div>
           <label className="block text-gray-500 mb-1">Nationality</label>
           <div className="relative flex items-center">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl">🇵🇹</span>
+            <span className="absolute left-4 top-1/2 -translate-y-[60%] text-2xl" style={{top: '-2px'}}>🇵🇹</span>
             <input value="Portuguese" readOnly className="w-full pl-12 pr-8 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▼</span>
           </div>
@@ -72,8 +72,11 @@ export default function LoginPlayer() {
         <div>
           <label className="block text-gray-500 mb-1">Phone Number</label>
           <div className="relative">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center text-2xl">🇵🇹 <span className="ml-2 text-base font-normal">+351</span></span>
-            <input className="w-full pl-24 pr-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 text-center" placeholder="Phone Number" />
+            <span className="absolute left-4 top-1/2 -translate-y-[60%] flex items-center text-2xl">
+              <span style={{marginRight: '0.4rem', position: 'relative', top: '-2px'}}>🇵🇹</span>
+              <span className="text-base font-normal text-black">+351</span>
+            </span>
+            <input className="w-full pl-24 pr-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 text-center" />
           </div>
         </div>
         <div>
