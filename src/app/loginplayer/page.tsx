@@ -16,14 +16,28 @@ function convertWeight(value: string, from: 'kg' | 'lbs', to: 'kg' | 'lbs') {
     ? (num / 2.20462).toFixed(1)
     : value;
 }
-function convertHeight(value: string, from: 'cm' | 'ft', to: 'cm' | 'ft') {
-  const num = parseFloat(value);
-  if (isNaN(num)) return '';
-  return from === 'cm' && to === 'ft'
-    ? (num / 30.48).toFixed(2)
-    : from === 'ft' && to === 'cm'
-    ? (num * 30.48).toFixed(0)
-    : value;
+
+// Height conversion helpers
+function cmToFeetInches(cm: number) {
+  const totalInches = cm / 2.54;
+  const feet = Math.floor(totalInches / 12);
+  const inches = Math.round(totalInches % 12);
+  return `${feet}ft${inches > 0 ? inches : ''}`;
+}
+
+function feetInchesToCm(feetInches: string) {
+  const match = feetInches.match(/(\d+)ft(\d{1,2})?/);
+  if (!match) return '';
+  const feet = parseInt(match[1], 10);
+  const inches = match[2] ? parseInt(match[2], 10) : 0;
+  return Math.round((feet * 12 + inches) * 2.54).toString();
+}
+
+function formatCmInput(val: string) {
+  // Insert comma after first digit if 3 digits
+  if (/^\d{3}$/.test(val)) return val[0] + ',' + val.slice(1);
+  if (/^\d,\d{2}$/.test(val)) return val;
+  return val.replace(/[^\d,]/g, '');
 }
 
 export default function LoginPlayer() {
@@ -42,6 +56,12 @@ export default function LoginPlayer() {
     lastName: '',
     email: '',
     phone: '',
+    club: '',
+    nif: '',
+    clubCode: '',
+    cc: '',
+    sns: '',
+    certificate: '',
   });
   const [showPasswordStep, setShowPasswordStep] = useState(false);
   const [password, setPassword] = useState('');
@@ -65,10 +85,15 @@ export default function LoginPlayer() {
     setWeight(convertWeight(weight, weightUnit, newUnit));
     setWeightUnit(newUnit);
   }
+
   function handleHeightUnitSwitch() {
-    const newUnit = heightUnit === 'cm' ? 'ft' : 'cm';
-    setHeight(convertHeight(height, heightUnit, newUnit));
-    setHeightUnit(newUnit);
+    if (heightUnit === 'cm' && height) {
+      setHeight(cmToFeetInches(Number(height.replace(',', ''))));
+      setHeightUnit('ft');
+    } else if (heightUnit === 'ft' && height) {
+      setHeight(feetInchesToCm(height));
+      setHeightUnit('cm');
+    }
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -175,8 +200,19 @@ export default function LoginPlayer() {
           <div className="relative">
             <input
               className="w-full px-4 py-2 pr-14 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2"
-              value={height}
-              onChange={e => setHeight(e.target.value.replace(/[^\d.]/g, ''))}
+              value={heightUnit === 'cm' ? formatCmInput(height) : height}
+              onChange={e => {
+                let val = e.target.value.replace(/[^\d,]/g, '');
+                if (heightUnit === 'cm') {
+                  if (/^\d{3}$/.test(val)) val = val[0] + ',' + val.slice(1);
+                  setHeight(val.replace(',', ''));
+                } else {
+                  setHeight(val);
+                }
+              }}
+              onBlur={() => {
+                if (heightUnit === 'cm' && height.length === 3) setHeight(height[0] + height.slice(1));
+              }}
             />
             <span
               className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center text-gray-400 cursor-pointer select-none"
@@ -304,6 +340,65 @@ export default function LoginPlayer() {
               value={form.phone}
               onChange={e => setForm({ ...form, phone: e.target.value.replace(/[^\d]/g, '') })}
             />
+          </div>
+        </div>
+        <div>
+          <label className="block text-gray-500 mb-1">Club</label>
+          <input
+            className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2"
+            value={form.club || ''}
+            onChange={e => setForm({ ...form, club: e.target.value })}
+          />
+        </div>
+        <div>
+          <label className="block text-gray-500 mb-1">NIF</label>
+          <input
+            className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2"
+            value={form.nif || ''}
+            onChange={e => setForm({ ...form, nif: e.target.value.replace(/[^\d]/g, '') })}
+          />
+        </div>
+        <div>
+          <label className="block text-gray-500 mb-1">Club Code</label>
+          <input
+            className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2"
+            value={form.clubCode || ''}
+            onChange={e => setForm({ ...form, clubCode: e.target.value })}
+          />
+        </div>
+        <div>
+          <label className="block text-gray-500 mb-1">CC nº</label>
+          <div className="flex items-center">
+            <input
+              className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2"
+              value={form.cc || ''}
+              onChange={e => setForm({ ...form, cc: e.target.value.replace(/[^\d]/g, '') })}
+            />
+            <span className="mx-2 text-gray-400">-</span>
+          </div>
+        </div>
+        <div>
+          <label className="block text-gray-500 mb-1">User SNS nº</label>
+          <input
+            className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2"
+            value={form.sns || ''}
+            onChange={e => setForm({ ...form, sns: e.target.value.replace(/[^\d]/g, '') })}
+          />
+        </div>
+        <div>
+          <label className="block text-gray-500 mb-1">Player Certificate Number</label>
+          <input
+            className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2"
+            value={form.certificate || ''}
+            onChange={e => setForm({ ...form, certificate: e.target.value })}
+          />
+        </div>
+        <div>
+          <label className="block text-gray-500 mb-1">Nationality</label>
+          <div className="relative flex items-center">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl">🇵🇹</span>
+            <input value="Portuguese" readOnly className="w-full pl-12 pr-8 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▼</span>
           </div>
         </div>
         {/* Full width row for Create Your Account button */}
