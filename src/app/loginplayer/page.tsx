@@ -2,11 +2,31 @@
 
 import { useState } from 'react';
 
+const POSITIONS = [
+  'GK', 'CB', 'LB', 'LWB', 'RB', 'RWB', 'CDM', 'CM', 'CAM', 'LM', 'LW', 'RM', 'RW', 'CF', 'ST'
+];
+
 export default function LoginPlayer() {
   const [weightUnit, setWeightUnit] = useState<'kg' | 'lbs'>('kg');
   const [heightUnit, setHeightUnit] = useState<'cm' | 'ft'>('cm');
   const [gender, setGender] = useState('');
+  const [showGenderDropdown, setShowGenderDropdown] = useState(false);
   const [dob, setDob] = useState({ day: '', month: '', year: '' });
+  const [positions, setPositions] = useState<string[]>([]);
+  const [showPositionDropdown, setShowPositionDropdown] = useState(false);
+
+  function handleGenderSelect(value: string) {
+    setGender(value);
+    setShowGenderDropdown(false);
+  }
+
+  function handlePositionToggle(pos: string) {
+    if (positions.includes(pos)) {
+      setPositions(positions.filter(p => p !== pos));
+    } else if (positions.length < 3) {
+      setPositions([...positions, pos]);
+    }
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-white items-center pt-8">
@@ -59,7 +79,7 @@ export default function LoginPlayer() {
         </div>
         <div>
           <label className="block text-gray-500 mb-1">Date of Birthday</label>
-          <div className="flex items-center bg-gray-100 border-0 border-b border-gray-300 rounded-none px-2 py-2 mb-2">
+          <div className="flex items-center bg-gray-100 border-0 border-b border-gray-300 rounded-none px-2 py-2 mb-2 relative">
             <input
               type="text"
               maxLength={2}
@@ -86,32 +106,70 @@ export default function LoginPlayer() {
               className="w-16 px-2 bg-gray-100 text-gray-700 border-none focus:outline-none focus:ring-0 text-center"
               placeholder="YYYY"
             />
-            <span className="ml-2 text-gray-400">📅</span>
-          </div>
-        </div>
-        <div>
-          <label className="block text-gray-500 mb-1">Position</label>
-          <div className="relative">
-            <input value="CM/CAM" readOnly className="w-full px-4 py-2 pr-8 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▼</span>
+            <span className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400">📅</span>
           </div>
         </div>
         <div>
           <label className="block text-gray-500 mb-1">Gender</label>
           <div className="relative">
-            {!gender ? (
+            {(!gender || showGenderDropdown) ? (
               <select
                 value={gender}
-                onChange={e => setGender(e.target.value)}
+                onChange={e => handleGenderSelect(e.target.value)}
+                onBlur={() => setShowGenderDropdown(false)}
                 className="w-full px-4 py-2 pr-8 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 appearance-none"
+                autoFocus={showGenderDropdown}
               >
                 <option value="" disabled>I am…</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
             ) : (
-              <div className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none mb-2 flex items-center justify-center text-center font-medium">
+              <div
+                className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none mb-2 flex items-center text-left font-medium cursor-pointer"
+                onClick={() => setShowGenderDropdown(true)}
+              >
                 I am {gender}
+              </div>
+            )}
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▼</span>
+          </div>
+        </div>
+        <div>
+          <label className="block text-gray-500 mb-1">Position</label>
+          <div className="relative">
+            <div
+              className="w-full px-4 py-2 pr-8 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none mb-2 flex items-center flex-wrap gap-2 cursor-pointer min-h-[44px]"
+              onClick={() => setShowPositionDropdown(!showPositionDropdown)}
+              tabIndex={0}
+              onBlur={() => setShowPositionDropdown(false)}
+            >
+              {positions.length === 0 ? (
+                <span className="text-gray-400">Select up to 3 positions</span>
+              ) : (
+                positions.map(pos => (
+                  <span key={pos} className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">{pos}</span>
+                ))
+              )}
+            </div>
+            {showPositionDropdown && (
+              <div className="absolute left-0 z-10 w-full bg-white border border-gray-200 rounded shadow-lg max-h-48 overflow-y-auto mt-1">
+                {POSITIONS.map(pos => (
+                  <div
+                    key={pos}
+                    className={`px-4 py-2 cursor-pointer hover:bg-blue-100 flex items-center ${positions.includes(pos) ? 'font-bold text-blue-700' : ''}`}
+                    onMouseDown={e => { e.preventDefault(); handlePositionToggle(pos); }}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={positions.includes(pos)}
+                      readOnly
+                      className="mr-2"
+                      tabIndex={-1}
+                    />
+                    {pos}
+                  </div>
+                ))}
               </div>
             )}
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▼</span>
