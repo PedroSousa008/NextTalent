@@ -71,10 +71,9 @@ export default function LoginPlayer() {
         </div>
         <div>
           <label className="block text-gray-500 mb-1">Phone Number</label>
-          <div className="relative flex items-center">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl">🇵🇹</span>
-            <input value="+351" readOnly className="w-24 pl-12 pr-2 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 mr-2" />
-            <input className="flex-1 px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
+          <div className="relative">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center text-2xl">🇵🇹 <span className="ml-2 text-base font-normal">+351</span></span>
+            <input className="w-full pl-24 pr-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 text-center" placeholder="Phone Number" />
           </div>
         </div>
         <div>
