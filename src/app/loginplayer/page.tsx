@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 export default function LoginPlayer() {
   return (
     <div className="flex flex-col min-h-screen bg-white items-center pt-8">
