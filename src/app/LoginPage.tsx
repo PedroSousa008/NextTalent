@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -46,7 +47,7 @@ export default function LoginPage() {
         </div>
         <div className="flex justify-between w-full text-xl font-bold text-gray-900 mb-12">
           <a href="#" className="hover:underline">As a Coach</a>
-          <a href="#" className="hover:underline">As a Player</a>
+          <Link href="/LoginPlayer" className="hover:underline">As a Player</Link>
           <a href="#" className="hover:underline">As an Agent</a>
         </div>
       </div>
