@@ -4,8 +4,9 @@ import { useState } from 'react';
 
 export default function LoginPlayer() {
   const [weightUnit, setWeightUnit] = useState<'kg' | 'lbs'>('kg');
-  const [heightUnit, setHeightUnit] = useState<'m' | 'ft'>('m');
+  const [heightUnit, setHeightUnit] = useState<'cm' | 'ft'>('cm');
   const [gender, setGender] = useState('');
+  const [dob, setDob] = useState({ day: '', month: '', year: '' });
 
   return (
     <div className="flex flex-col min-h-screen bg-white items-center pt-8">
@@ -45,12 +46,12 @@ export default function LoginPlayer() {
           <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
         </div>
         <div>
-          <label className="block text-gray-500 mb-1">Hight</label>
+          <label className="block text-gray-500 mb-1">Height</label>
           <div className="relative">
             <input className="w-full px-4 py-2 pr-14 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
             <span
               className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center text-gray-400 cursor-pointer select-none"
-              onClick={() => setHeightUnit(heightUnit === 'm' ? 'ft' : 'm')}
+              onClick={() => setHeightUnit(heightUnit === 'cm' ? 'ft' : 'cm')}
             >
               ▼<span className="ml-1 text-black">{heightUnit}</span>
             </span>
@@ -58,9 +59,34 @@ export default function LoginPlayer() {
         </div>
         <div>
           <label className="block text-gray-500 mb-1">Date of Birthday</label>
-          <div className="relative">
-            <input className="w-full px-4 py-2 pr-10 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">📅</span>
+          <div className="flex items-center gap-2">
+            <input
+              type="text"
+              maxLength={2}
+              value={dob.day}
+              onChange={e => setDob({ ...dob, day: e.target.value.replace(/\D/g, '').slice(0, 2) })}
+              className="w-12 px-2 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 text-center"
+              placeholder="DD"
+            />
+            <span className="text-gray-400 text-xl">/</span>
+            <input
+              type="text"
+              maxLength={2}
+              value={dob.month}
+              onChange={e => setDob({ ...dob, month: e.target.value.replace(/\D/g, '').slice(0, 2) })}
+              className="w-12 px-2 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 text-center"
+              placeholder="MM"
+            />
+            <span className="text-gray-400 text-xl">/</span>
+            <input
+              type="text"
+              maxLength={4}
+              value={dob.year}
+              onChange={e => setDob({ ...dob, year: e.target.value.replace(/\D/g, '').slice(0, 4) })}
+              className="w-16 px-2 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 text-center"
+              placeholder="YYYY"
+            />
+            <span className="ml-2 text-gray-400">📅</span>
           </div>
         </div>
         <div>
@@ -83,6 +109,9 @@ export default function LoginPlayer() {
               <option value="female">Female</option>
             </select>
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▼</span>
+            {gender && (
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700 font-medium">I am {gender}</span>
+            )}
           </div>
         </div>
         <div>
