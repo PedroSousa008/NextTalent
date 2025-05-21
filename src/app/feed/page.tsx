@@ -69,7 +69,6 @@ function CommentsModal({ open, onClose, comments, onAddComment }: {
   );
 }
 
-// Replace the random fake player generator with a real player list
 const REAL_PLAYERS = [
   { name: 'Lionel Messi', age: 36, positions: ['RW', 'CF'], avatar: '/placeholder-avatar.png' },
   { name: 'Cristiano Ronaldo', age: 39, positions: ['LW', 'ST'], avatar: '/placeholder-avatar.png' },
@@ -118,38 +117,6 @@ function getRealPlayer(idx: number) {
   };
 }
 
-const [realListPlayers, setRealListPlayers] = useState(() => {
-  const arr = [];
-  for (let i = 0; i < 40; ++i) arr.push(getRealPlayer(i));
-  return arr;
-});
-const [loadingMore, setLoadingMore] = useState(false);
-
-const loadMorePlayers = useCallback(() => {
-  setLoadingMore(true);
-  setTimeout(() => {
-    setRealListPlayers(prev => {
-      const next = [...prev];
-      for (let i = 0; i < 20; ++i) next.push(getRealPlayer(prev.length + i));
-      return next;
-    });
-    setLoadingMore(false);
-  }, 500);
-}, []);
-
-useEffect(() => {
-  function onScroll() {
-    if (
-      window.innerHeight + window.scrollY >= document.body.offsetHeight - 300 &&
-      !loadingMore
-    ) {
-      loadMorePlayers();
-    }
-  }
-  window.addEventListener('scroll', onScroll);
-  return () => window.removeEventListener('scroll', onScroll);
-}, [loadingMore, loadMorePlayers]);
-
 export default function FeedPage() {
   const [activeTab, setActiveTab] = useState<'following' | 'discover'>('following');
   const [liked1, setLiked1] = useState(false);
@@ -163,6 +130,39 @@ export default function FeedPage() {
   const router = useRouter();
   const { filters, removeFilter } = useFilterContext();
   const iconTop = 62; // px, adjust as needed for perfect alignment
+
+  // Infinite real player list state and logic
+  const [realListPlayers, setRealListPlayers] = useState(() => {
+    const arr = [];
+    for (let i = 0; i < 40; ++i) arr.push(getRealPlayer(i));
+    return arr;
+  });
+  const [loadingMore, setLoadingMore] = useState(false);
+
+  const loadMorePlayers = useCallback(() => {
+    setLoadingMore(true);
+    setTimeout(() => {
+      setRealListPlayers(prev => {
+        const next = [...prev];
+        for (let i = 0; i < 20; ++i) next.push(getRealPlayer(prev.length + i));
+        return next;
+      });
+      setLoadingMore(false);
+    }, 500);
+  }, []);
+
+  useEffect(() => {
+    function onScroll() {
+      if (
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 300 &&
+        !loadingMore
+      ) {
+        loadMorePlayers();
+      }
+    }
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [loadingMore, loadMorePlayers]);
 
   // Merge real and infinite real-list players
   const allPlayers = [
