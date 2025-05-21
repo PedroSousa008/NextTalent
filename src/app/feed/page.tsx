@@ -40,7 +40,7 @@ function CommentsModal({ open, onClose, comments, onAddComment }: {
               <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 18, padding: 12, background: '#f5f5f5', borderRadius: 10 }}>
                 <img src={c.avatar} alt={c.user} style={{ width: 36, height: 36, borderRadius: '50%', objectFit: 'cover', marginTop: 2 }} />
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <span style={{ fontWeight: 600, fontSize: 15 }}>{c.user}</span>
+                  <span style={{ fontWeight: 700, fontSize: 15, color: 'black' }}>{c.user}</span>
                   <span style={{ color: '#222', fontSize: 17, marginTop: 2 }}>{c.text}</span>
                 </div>
               </div>
