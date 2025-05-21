@@ -102,22 +102,22 @@ export default function FeedPage() {
     <div style={{ background: 'white', minHeight: '100vh', fontFamily: 'inherit', position: 'relative' }}>
       {/* Absolute top left and right icons, aligned with Following/Discover tabs */}
       <div style={{ position: 'absolute', top: iconTop, left: 16, zIndex: 10, display: 'flex', alignItems: 'center' }}>
-        <div style={{ display: 'flex', gap: 6, alignItems: 'center', marginRight: 8 }}>
+        <div onClick={() => router.push('/configurations')} style={{ cursor: 'pointer', marginRight: 4 }}>
+          <Image src="/configurations.png" alt="Configurations" width={32} height={32} />
+        </div>
+        <div style={{ display: 'flex', gap: 3, alignItems: 'center' }}>
           {filters.positions.map(pos => (
-            <div key={pos} style={{ display: 'flex', alignItems: 'center', background: '#eee', borderRadius: 8, padding: '2px 8px', fontSize: 14, color: '#444', marginRight: 4 }}>
+            <div key={pos} style={{ display: 'flex', alignItems: 'center', background: '#eee', borderRadius: 6, padding: '0 4px', fontSize: 11, color: '#444', marginRight: 2, height: 18 }}>
               {pos}
-              <span style={{ marginLeft: 4, cursor: 'pointer', fontWeight: 700 }} onClick={e => { e.stopPropagation(); removeFilter('positions', pos); }}>✕</span>
+              <span style={{ marginLeft: 2, cursor: 'pointer', fontWeight: 700, fontSize: 12 }} onClick={e => { e.stopPropagation(); removeFilter('positions', pos); }}>✕</span>
             </div>
           ))}
           {filters.age && (
-            <div style={{ display: 'flex', alignItems: 'center', background: '#eee', borderRadius: 8, padding: '2px 8px', fontSize: 14, color: '#444', marginRight: 4 }}>
+            <div style={{ display: 'flex', alignItems: 'center', background: '#eee', borderRadius: 6, padding: '0 4px', fontSize: 11, color: '#444', marginRight: 2, height: 18 }}>
               {filters.age}
-              <span style={{ marginLeft: 4, cursor: 'pointer', fontWeight: 700 }} onClick={e => { e.stopPropagation(); removeFilter('age'); }}>✕</span>
+              <span style={{ marginLeft: 2, cursor: 'pointer', fontWeight: 700, fontSize: 12 }} onClick={e => { e.stopPropagation(); removeFilter('age'); }}>✕</span>
             </div>
           )}
-        </div>
-        <div onClick={() => router.push('/configurations')} style={{ cursor: 'pointer' }}>
-          <Image src="/configurations.png" alt="Configurations" width={32} height={32} />
         </div>
       </div>
       <Image src="/dm.png" alt="DM" width={32} height={32} style={{ position: 'absolute', top: iconTop, right: 16, zIndex: 10, cursor: 'pointer' }} />
