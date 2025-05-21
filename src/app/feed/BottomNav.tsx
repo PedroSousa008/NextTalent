@@ -1,9 +1,8 @@
 "use client";
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export default function BottomNav({ active }: { active: 'feed' | 'search' }) {
   const router = useRouter();
-  const pathname = usePathname();
 
   return (
     <div style={{ position: 'fixed', left: 0, right: 0, bottom: 0, background: '#f5f6fa', borderTop: '1px solid #eee', display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: 64, zIndex: 100 }}>
