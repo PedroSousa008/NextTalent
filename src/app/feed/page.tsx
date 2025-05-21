@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useState, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 
 function Heart({ liked, onClick }: { liked: boolean; onClick: () => void }) {
   return (
@@ -77,6 +78,7 @@ export default function FeedPage() {
   const [comments2, setComments2] = useState<{ user: string; avatar: string; text: string }[]>([]);
   const [showComments1, setShowComments1] = useState(false);
   const [showComments2, setShowComments2] = useState(false);
+  const router = useRouter();
 
   // The vertical offset for the icons should match the vertical center of the Following/Discover tabs
   const iconTop = 62; // px, adjust as needed for perfect alignment
@@ -155,7 +157,7 @@ export default function FeedPage() {
         <div style={{ padding: '0 16px', marginTop: 8 }}>
           <span style={{ fontSize: 14, color: '#222' }}>{likes1} people liked</span>
           <div style={{ fontWeight: 600, fontSize: 16, color: 'black' }}>Pedro Sousa: <span role="img" aria-label="rocket">🚀</span></div>
-          <span style={{ fontSize: 14, color: '#222', cursor: 'pointer' }} onClick={() => setShowComments1(true)}>
+          <span style={{ fontSize: 14, color: '#222', cursor: 'pointer' }} onClick={() => router.push('/comments/1')}>
             See all {comments1.length} comment{comments1.length !== 1 ? 's' : ''}
           </span>
         </div>
@@ -187,7 +189,7 @@ export default function FeedPage() {
         <div style={{ padding: '0 16px', marginTop: 8 }}>
           <span style={{ fontSize: 14, color: '#222' }}>{likes2} people liked</span>
           <div style={{ fontWeight: 600, fontSize: 16, color: 'black' }}>Alphonso Davies</div>
-          <span style={{ fontSize: 14, color: '#222', cursor: 'pointer' }} onClick={() => setShowComments2(true)}>
+          <span style={{ fontSize: 14, color: '#222', cursor: 'pointer' }} onClick={() => router.push('/comments/2')}>
             See all {comments2.length} comment{comments2.length !== 1 ? 's' : ''}
           </span>
         </div>
