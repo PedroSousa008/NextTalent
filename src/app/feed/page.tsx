@@ -25,11 +25,14 @@ export default function FeedPage() {
   const [liked1, setLiked1] = useState(false);
   const [liked2, setLiked2] = useState(false);
 
+  // The vertical offset for the icons should match the vertical center of the Following/Discover tabs
+  const iconTop = 62; // px, adjust as needed for perfect alignment
+
   return (
     <div style={{ background: 'white', minHeight: '100vh', fontFamily: 'inherit', position: 'relative' }}>
-      {/* Absolute top left and right icons */}
-      <Image src="/configurations.png" alt="Configurations" width={32} height={32} style={{ position: 'absolute', top: 28, left: 16, zIndex: 10, cursor: 'pointer' }} />
-      <Image src="/dm.png" alt="DM" width={32} height={32} style={{ position: 'absolute', top: 28, right: 16, zIndex: 10, cursor: 'pointer' }} />
+      {/* Absolute top left and right icons, aligned with Following/Discover tabs */}
+      <Image src="/configurations.png" alt="Configurations" width={32} height={32} style={{ position: 'absolute', top: iconTop, left: 16, zIndex: 10, cursor: 'pointer' }} />
+      <Image src="/dm.png" alt="DM" width={32} height={32} style={{ position: 'absolute', top: iconTop, right: 16, zIndex: 10, cursor: 'pointer' }} />
       {/* Tabs (Following | Discover) */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '18px 0 0 0' }}>
         <div style={{ display: 'flex', gap: 24, fontSize: 20 }}>
@@ -64,11 +67,6 @@ export default function FeedPage() {
             Discover
           </button>
         </div>
-      </div>
-      {/* Tabs and filter/send icons (removed top bar) */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 16px 0 16px' }}>
-        <Image src="/filter.svg" alt="filter" width={28} height={28} />
-        <div style={{ width: 28 }} /> {/* Placeholder for spacing */}
       </div>
       {/* Feed Card 1 */}
       <div style={{ margin: '32px 0 0 0', padding: '0 0 32px 0', borderBottom: '1px solid #eee' }}>
