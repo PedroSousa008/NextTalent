@@ -23,13 +23,15 @@ export default function SearchPage() {
           <span style={{ position: 'absolute', left: 12, top: 10, color: '#bbb', fontSize: 22 }}>🔍</span>
           <input
             type="text"
-            placeholder="Pesquisa"
-            style={{ width: '100%', padding: '8px 12px 8px 38px', borderRadius: 8, border: 'none', background: '#e5e5e5', fontSize: 20, color: '#888', fontWeight: 400 }}
+            placeholder="Search"
+            style={{ width: '100%', padding: '8px 12px 8px 44px', borderRadius: 8, border: 'none', background: '#e5e5e5', fontSize: 20, color: '#888', fontWeight: 400 }}
             disabled
           />
         </div>
         <span style={{ fontSize: 26, color: '#f5b800', cursor: 'pointer' }}>★</span>
-        <Image src="/configurations.png" alt="Configurations" width={26} height={26} style={{ cursor: 'pointer' }} />
+        <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 26, height: 26, background: '#e5e5e5', borderRadius: 6 }}>
+          <Image src="/configurations.png" alt="Configurations" width={22} height={22} style={{ cursor: 'pointer', display: 'block' }} />
+        </span>
       </div>
       {/* Tabs */}
       <div style={{ width: '100%', maxWidth: 500, display: 'flex', alignItems: 'center', marginTop: 18, marginBottom: 0, padding: '0 16px' }}>
