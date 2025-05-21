@@ -26,9 +26,16 @@ export default function FeedPage() {
   const [liked2, setLiked2] = useState(false);
 
   return (
-    <div style={{ background: 'white', minHeight: '100vh', fontFamily: 'inherit' }}>
+    <div style={{ background: 'white', minHeight: '100vh', fontFamily: 'inherit', position: 'relative' }}>
+      {/* Top left and right icons */}
+      <div style={{ position: 'absolute', top: 24, left: 16, zIndex: 10 }}>
+        <Image src="/configurations.png" alt="Configurations" width={32} height={32} style={{ cursor: 'pointer' }} />
+      </div>
+      <div style={{ position: 'absolute', top: 24, right: 16, zIndex: 10 }}>
+        <Image src="/dm.png" alt="DM" width={32} height={32} style={{ cursor: 'pointer' }} />
+      </div>
       {/* Tabs (Following | Discover) */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '18px 0 0 0' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '32px 0 0 0' }}>
         <div style={{ display: 'flex', gap: 24, fontSize: 20 }}>
           <button
             style={{
@@ -71,12 +78,8 @@ export default function FeedPage() {
       <div style={{ margin: '32px 0 0 0', padding: '0 0 32px 0', borderBottom: '1px solid #eee' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px' }}>
           <span style={{ fontSize: 16, color: 'black' }}>Position: CM/CAM</span>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-              <Image src="/configurations.png" alt="Configurations" width={32} height={32} style={{ cursor: 'pointer', marginRight: 16 }} />
-              <Image src="/pedro.jpg" alt="Pedro Sousa" width={56} height={56} style={{ borderRadius: '50%' }} />
-              <Image src="/dm.png" alt="DM" width={32} height={32} style={{ cursor: 'pointer', marginLeft: 16 }} />
-            </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Image src="/pedro.jpg" alt="Pedro Sousa" width={56} height={56} style={{ borderRadius: '50%' }} />
             <span style={{ fontWeight: 500, fontSize: 18, marginTop: 4, color: 'black' }}>Pedro Sousa</span>
           </div>
           <span style={{ fontSize: 16, color: 'black' }}>Age: 21 year old</span>
@@ -99,12 +102,8 @@ export default function FeedPage() {
       <div style={{ margin: '32px 0 0 0', padding: '0 0 32px 0', borderBottom: '1px solid #eee' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px' }}>
           <span style={{ fontSize: 16, color: 'black' }}>Position: LB</span>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-              <Image src="/configurations.png" alt="Configurations" width={32} height={32} style={{ cursor: 'pointer', marginRight: 16 }} />
-              <Image src="/alphonso.jpg" alt="Alphonso Davies" width={56} height={56} style={{ borderRadius: '50%' }} />
-              <Image src="/dm.png" alt="DM" width={32} height={32} style={{ cursor: 'pointer', marginLeft: 16 }} />
-            </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Image src="/alphonso.jpg" alt="Alphonso Davies" width={56} height={56} style={{ borderRadius: '50%' }} />
             <span style={{ fontWeight: 500, fontSize: 18, marginTop: 4, color: 'black' }}>Alphonso Davies</span>
           </div>
           <span style={{ fontSize: 16, color: 'black' }}>Age: 23 year old</span>
