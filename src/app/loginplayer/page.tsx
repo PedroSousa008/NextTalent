@@ -73,6 +73,8 @@ export default function LoginPlayer() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [nationality, setNationality] = useState(COUNTRIES.find(c => c.name === 'Portugal')!);
   const [showNationalityDropdown, setShowNationalityDropdown] = useState(false);
+  const [phoneCountry, setPhoneCountry] = useState(COUNTRIES.find(c => c.name === 'Portugal')!);
+  const [showPhoneCountryDropdown, setShowPhoneCountryDropdown] = useState(false);
 
   function handleGenderSelect(value: string) {
     setGender(value);
@@ -256,9 +258,25 @@ export default function LoginPlayer() {
         </div>
         <div>
           <label className="block text-gray-500 mb-1">Phone Number</label>
-          <div className="relative">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center text-2xl"><span className="text-2xl">🇵🇹</span><span className="ml-2 text-base font-normal text-black">+351</span></span>
-            <input className="w-full pl-24 pr-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 text-center" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value.replace(/[^\d]/g, '') })} />
+          <div className="relative flex items-center">
+            <button type="button" className="pl-4 pr-2 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 flex items-center" onClick={() => setShowPhoneCountryDropdown(v => !v)}>
+              <span className="flex items-center">
+                <span className="text-2xl mr-2">{phoneCountry?.flag || '🏳️'}</span>
+                <span className="text-black ml-0.5" style={{marginLeft: 0}}>{phoneCountry?.name || 'Select Country'}</span>
+              </span>
+              <span className="text-gray-400 ml-2">▼</span>
+            </button>
+            {showPhoneCountryDropdown && (
+              <div className="absolute left-0 z-10 w-64 bg-white border border-gray-200 rounded shadow-lg max-h-48 overflow-y-auto mt-1">
+                {COUNTRIES.map(country => (
+                  <div key={country.name} className="px-4 py-2 cursor-pointer hover:bg-blue-100 flex items-center" onMouseDown={() => { setPhoneCountry(country); setShowPhoneCountryDropdown(false); }}>
+                    <span className="text-2xl mr-2">{country.flag}</span>
+                    <span className="text-black ml-0.5" style={{marginLeft: 0}}>{country.name}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+            <input className="w-full pl-4 pr-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 text-center ml-2" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value.replace(/[^\d]/g, '') })} />
           </div>
         </div>
         {/* Row 5 */}
