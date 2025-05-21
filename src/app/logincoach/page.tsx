@@ -8,32 +8,32 @@ const COUNTRIES = [
 ];
 
 const COACHING_ROLES = [
-  'Head Coach/Manager',
   'Assistant Coach',
-  'Goalkeeper Coach',
   'Fitness Coach/Strength & Conditioning Coach',
-  'Tactical Coach',
-  'Technical Coach',
-  'Youth Coach/Academy Coach',
-  "Women's Team Coach",
+  'Goalkeeper Coach',
+  'Head Coach/Manager',
   'Individual Development Coach',
   'Mental Coach',
-  'Team Analyst',
   'Recovery Coach',
-  'Video Analyst',
+  'Tactical Coach',
+  'Team Analyst',
   'Team Coordinator',
+  'Technical Coach',
+  'Video Analyst',
+  "Women's Team Coach",
+  'Youth Coach/Academy Coach',
 ];
 
 const LICENSE_LEVELS = [
-  'Full Pro License',
-  'Pro License in Progress',
   'Elite Youth',
+  'Full Pro License',
+  'Grassroots certified',
   'National A License',
   'National B License',
   'National C License',
   'National D License/Intro Youth',
-  'Grassroots certified',
   'No license yet',
+  'Pro License in Progress',
 ];
 
 export default function LoginCoach() {
