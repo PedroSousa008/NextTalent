@@ -25,7 +25,7 @@ export default function ConfigurationsPage() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: 48, position: 'relative', overflowY: 'auto', paddingBottom: 100 }}>
+    <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: 48, position: 'relative' }}>
       {/* X button to exit */}
       <button onClick={() => router.push('/feed')} style={{ position: 'absolute', top: 24, right: 24, background: 'none', border: 'none', fontSize: 32, color: '#888', cursor: 'pointer', zIndex: 10 }}>✕</button>
       <div style={{ width: 340, background: '#f5f5f5', borderRadius: 12, padding: 24, marginBottom: 32, boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
@@ -84,40 +84,29 @@ export default function ConfigurationsPage() {
           {selectedAge ? `Selected: ${selectedAge}` : 'No age group selected'}
         </div>
       </div>
-      {/* Apply button box */}
-      {(selectedPositions.length > 0 || selectedAge) && (
-        <div style={{
+      {/* Apply button fixed at the bottom */}
+      <button
+        onClick={() => router.push('/feed')}
+        style={{
           position: 'fixed',
-          bottom: 0,
           left: 0,
           right: 0,
-          background: 'white',
-          padding: '16px 24px',
+          bottom: 0,
+          width: '100%',
+          background: '#222',
+          color: 'white',
+          fontWeight: 700,
+          fontSize: 20,
+          padding: '18px 0',
+          border: 'none',
+          borderRadius: 0,
           boxShadow: '0 -2px 12px rgba(0,0,0,0.06)',
-          display: 'flex',
-          justifyContent: 'center',
-          zIndex: 100
-        }}>
-          <button
-            onClick={() => router.push('/feed')}
-            style={{
-              background: '#222',
-              color: 'white',
-              border: 'none',
-              borderRadius: 8,
-              padding: '12px 32px',
-              fontSize: 16,
-              fontWeight: 600,
-              cursor: 'pointer',
-              width: '100%',
-              maxWidth: 340,
-              transition: 'all 0.15s',
-            }}
-          >
-            Apply
-          </button>
-        </div>
-      )}
+          cursor: 'pointer',
+          zIndex: 20,
+        }}
+      >
+        Apply
+      </button>
     </div>
   );
 } 
