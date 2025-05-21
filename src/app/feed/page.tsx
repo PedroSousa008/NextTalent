@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { useState, useRef } from 'react';
 
-function Heart({ liked, onClick, size = 20 }: { liked: boolean; onClick: () => void; size?: number }) {
+function Heart({ liked, onClick }: { liked: boolean; onClick: () => void }) {
   return (
     <svg
       onClick={onClick}
@@ -13,47 +13,31 @@ function Heart({ liked, onClick, size = 20 }: { liked: boolean; onClick: () => v
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      style={{ width: size, height: size, cursor: 'pointer', marginRight: 4, verticalAlign: 'middle' }}
+      style={{ width: 24, height: 24, cursor: 'pointer', marginRight: 4, verticalAlign: 'middle' }}
     >
       <path d="M12 21C12 21 4 13.5 4 8.5C4 5.5 6.5 3 9.5 3C11.04 3 12.5 4 13 5.09C13.5 4 14.96 3 16.5 3C19.5 3 22 5.5 22 8.5C22 13.5 12 21 12 21Z" />
     </svg>
   );
 }
 
-function timeAgo(date: Date): string {
-  const now = new Date();
-  const diff = Math.floor((now.getTime() - date.getTime()) / 1000);
-  if (diff < 60) return `${diff}s`;
-  if (diff < 3600) return `${Math.floor(diff / 60)}m`;
-  if (diff < 86400) return `${Math.floor(diff / 3600)}h`;
-  if (diff < 604800) return `${Math.floor(diff / 86400)}d`;
-  if (diff < 31536000) return `${Math.floor(diff / 604800)}w`;
-  return `${Math.floor(diff / 31536000)}y`;
-}
-
-function CommentsModal({ open, onClose, comments, onAddComment, onReply, onLike, user }: {
+function CommentsModal({ open, onClose, comments, onAddComment }: {
   open: boolean;
   onClose: () => void;
-  comments: CommentType[];
+  comments: string[];
   onAddComment: (comment: string) => void;
-  onReply: (parentId: string, reply: string) => void;
-  onLike: (id: string) => void;
-  user: { name: string; image: string };
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [replyTo, setReplyTo] = useState<string | null>(null);
-  const [replyValue, setReplyValue] = useState('');
   if (!open) return null;
   return (
     <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.3)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ background: 'white', borderRadius: 16, width: 420, maxHeight: 600, padding: 32, boxShadow: '0 2px 16px rgba(0,0,0,0.15)', display: 'flex', flexDirection: 'column' }}>
-        <button onClick={onClose} style={{ alignSelf: 'flex-end', background: 'none', border: 'none', fontSize: 26, cursor: 'pointer', marginBottom: 8, color: 'black' }}>✕</button>
+      <div style={{ background: 'white', borderRadius: 18, width: 420, maxWidth: '95vw', maxHeight: 600, padding: 32, boxShadow: '0 2px 24px rgba(0,0,0,0.18)', display: 'flex', flexDirection: 'column' }}>
+        <button onClick={onClose} style={{ alignSelf: 'flex-end', background: 'none', border: 'none', fontSize: 26, cursor: 'pointer', marginBottom: 12, color: '#888' }}>✕</button>
         <div style={{ flex: 1, overflowY: 'auto', marginBottom: 20 }}>
           {comments.length === 0 ? (
-            <div style={{ color: '#888', textAlign: 'center', fontSize: 18 }}>No comments yet.</div>
+            <div style={{ color: '#888', textAlign: 'center', fontSize: 18, marginTop: 40 }}>No comments yet.</div>
           ) : (
-            comments.map((c) => (
-              <CommentItem key={c.id} comment={c} user={user} onReply={onReply} onLike={onLike} setReplyTo={setReplyTo} replyTo={replyTo} replyValue={replyValue} setReplyValue={setReplyValue} />
+            comments.map((c, i) => (
+              <div key={i} style={{ marginBottom: 18, padding: 12, background: '#f5f5f5', borderRadius: 10, fontSize: 17, color: 'black', wordBreak: 'break-word' }}>{c}</div>
             ))
           )}
         </div>
@@ -64,86 +48,10 @@ function CommentsModal({ open, onClose, comments, onAddComment, onReply, onLike,
             onAddComment(val);
             if (inputRef.current) inputRef.current.value = '';
           }
-        }} style={{ display: 'flex', gap: 10, marginTop: 8 }}>
-          <img src={user.image} alt="profile" style={{ width: 36, height: 36, borderRadius: '50%' }} />
-          <input ref={inputRef} type="text" placeholder="Add a comment..." style={{ flex: 1, padding: 12, borderRadius: 8, border: '1px solid #ccc', fontSize: 16, color: 'black' }} />
-          <button type="submit" style={{ padding: '10px 16px', borderRadius: 8, background: '#222', color: 'white', border: 'none', fontWeight: 600, fontSize: 16, cursor: 'pointer' }}>Post</button>
+        }} style={{ display: 'flex', gap: 10 }}>
+          <input ref={inputRef} type="text" placeholder="Add a comment..." style={{ flex: 1, padding: 12, borderRadius: 8, border: '1px solid #ccc', fontSize: 17, color: 'black', background: '#fafafa' }} />
+          <button type="submit" style={{ padding: '12px 18px', borderRadius: 8, background: '#222', color: 'white', border: 'none', fontWeight: 600, fontSize: 16, cursor: 'pointer' }}>Post</button>
         </form>
-      </div>
-    </div>
-  );
-}
-
-// Comment type
-interface CommentType {
-  id: string;
-  user: { name: string; image: string };
-  text: string;
-  createdAt: Date;
-  likes: number;
-  liked: boolean;
-  replies: CommentType[];
-}
-
-function CommentItem({ comment, user, onReply, onLike, setReplyTo, replyTo, replyValue, setReplyValue }: {
-  comment: CommentType;
-  user: { name: string; image: string };
-  onReply: (parentId: string, reply: string) => void;
-  onLike: (id: string) => void;
-  setReplyTo: (id: string | null) => void;
-  replyTo: string | null;
-  replyValue: string;
-  setReplyValue: (v: string) => void;
-}) {
-  return (
-    <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: 16 }}>
-      <img src={comment.user.image} alt="profile" style={{ width: 32, height: 32, borderRadius: '50%', marginRight: 10 }} />
-      <div style={{ flex: 1 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ fontWeight: 600, color: 'black', fontSize: 15 }}>{comment.user.name}</span>
-          <span style={{ color: '#888', fontSize: 13 }}>{timeAgo(comment.createdAt)}</span>
-        </div>
-        <div style={{ color: 'black', fontSize: 15, margin: '2px 0 4px 0' }}>{comment.text}</div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <Heart liked={comment.liked} onClick={() => onLike(comment.id)} size={18} />
-          <span style={{ fontSize: 13, color: '#888' }}>{comment.likes}</span>
-          <button style={{ background: 'none', border: 'none', color: '#888', fontSize: 13, cursor: 'pointer', padding: 0 }} onClick={() => setReplyTo(comment.id)}>Reply</button>
-        </div>
-        {/* Replies */}
-        <div style={{ marginLeft: 24, marginTop: 6 }}>
-          {comment.replies.map((reply) => (
-            <div key={reply.id} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: 8 }}>
-              <img src={reply.user.image} alt="profile" style={{ width: 28, height: 28, borderRadius: '50%', marginRight: 8 }} />
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <span style={{ fontWeight: 600, color: 'black', fontSize: 14 }}>{reply.user.name}</span>
-                  <span style={{ color: '#888', fontSize: 12 }}>{timeAgo(reply.createdAt)}</span>
-                </div>
-                <div style={{ color: 'black', fontSize: 14 }}>{reply.text}</div>
-              </div>
-            </div>
-          ))}
-          {replyTo === comment.id && (
-            <form style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 4 }} onSubmit={e => {
-              e.preventDefault();
-              if (replyValue.trim()) {
-                onReply(comment.id, replyValue);
-                setReplyValue('');
-                setReplyTo(null);
-              }
-            }}>
-              <img src={user.image} alt="profile" style={{ width: 24, height: 24, borderRadius: '50%' }} />
-              <input
-                type="text"
-                value={replyValue}
-                onChange={e => setReplyValue(e.target.value)}
-                placeholder="Reply..."
-                style={{ flex: 1, padding: 6, borderRadius: 6, border: '1px solid #ccc', fontSize: 13, color: 'black' }}
-              />
-              <button type="submit" style={{ padding: '6px 10px', borderRadius: 6, background: '#222', color: 'white', border: 'none', fontWeight: 600, fontSize: 13, cursor: 'pointer' }}>Post</button>
-            </form>
-          )}
-        </div>
       </div>
     </div>
   );
@@ -155,11 +63,10 @@ export default function FeedPage() {
   const [liked2, setLiked2] = useState(false);
   const [likes1, setLikes1] = useState(1245);
   const [likes2, setLikes2] = useState(1245);
-  const [comments1, setComments1] = useState<CommentType[]>([]);
-  const [comments2, setComments2] = useState<CommentType[]>([]);
+  const [comments1, setComments1] = useState<string[]>([]);
+  const [comments2, setComments2] = useState<string[]>([]);
   const [showComments1, setShowComments1] = useState(false);
   const [showComments2, setShowComments2] = useState(false);
-  const user = { name: 'Pedro Sousa', image: '/pedro.jpg' };
 
   // The vertical offset for the icons should match the vertical center of the Following/Discover tabs
   const iconTop = 62; // px, adjust as needed for perfect alignment
@@ -175,66 +82,6 @@ export default function FeedPage() {
       setLikes2(count => liked ? count - 1 : count + 1);
       return !liked;
     });
-  }
-  function addComment1(text: string) {
-    setComments1(list => [
-      ...list,
-      { id: Math.random().toString(36).slice(2), user, text, createdAt: new Date(), likes: 0, liked: false, replies: [] },
-    ]);
-  }
-  function addComment2(text: string) {
-    setComments2(list => [
-      ...list,
-      { id: Math.random().toString(36).slice(2), user, text, createdAt: new Date(), likes: 0, liked: false, replies: [] },
-    ]);
-  }
-  function replyToComment1(parentId: string, reply: string) {
-    setComments1(list =>
-      list.map(c =>
-        c.id === parentId
-          ? {
-              ...c,
-              replies: [
-                ...c.replies,
-                { id: Math.random().toString(36).slice(2), user, text: reply, createdAt: new Date(), likes: 0, liked: false, replies: [] },
-              ],
-            }
-          : c
-      )
-    );
-  }
-  function replyToComment2(parentId: string, reply: string) {
-    setComments2(list =>
-      list.map(c =>
-        c.id === parentId
-          ? {
-              ...c,
-              replies: [
-                ...c.replies,
-                { id: Math.random().toString(36).slice(2), user, text: reply, createdAt: new Date(), likes: 0, liked: false, replies: [] },
-              ],
-            }
-          : c
-      )
-    );
-  }
-  function likeComment1(id: string) {
-    setComments1(list =>
-      list.map(c =>
-        c.id === id
-          ? { ...c, liked: !c.liked, likes: c.liked ? c.likes - 1 : c.likes + 1 }
-          : { ...c, replies: c.replies.map(r => (r.id === id ? { ...r, liked: !r.liked, likes: r.liked ? r.likes - 1 : r.likes + 1 } : r)) }
-      )
-    );
-  }
-  function likeComment2(id: string) {
-    setComments2(list =>
-      list.map(c =>
-        c.id === id
-          ? { ...c, liked: !c.liked, likes: c.liked ? c.likes - 1 : c.likes + 1 }
-          : { ...c, replies: c.replies.map(r => (r.id === id ? { ...r, liked: !r.liked, likes: r.liked ? r.likes - 1 : r.likes + 1 } : r)) }
-      )
-    );
   }
 
   return (
@@ -306,10 +153,7 @@ export default function FeedPage() {
           open={showComments1}
           onClose={() => setShowComments1(false)}
           comments={comments1}
-          onAddComment={addComment1}
-          onReply={replyToComment1}
-          onLike={likeComment1}
-          user={user}
+          onAddComment={c => setComments1(list => [...list, c])}
         />
       </div>
       {/* Feed Card 2 */}
@@ -341,10 +185,7 @@ export default function FeedPage() {
           open={showComments2}
           onClose={() => setShowComments2(false)}
           comments={comments2}
-          onAddComment={addComment2}
-          onReply={replyToComment2}
-          onLike={likeComment2}
-          user={user}
+          onAddComment={c => setComments2(list => [...list, c])}
         />
       </div>
       {/* Bottom Navigation Bar */}
