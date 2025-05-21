@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import { useFilterContext } from './FilterContext';
 
 function Heart({ liked, onClick }: { liked: boolean; onClick: () => void }) {
   return (
@@ -79,6 +80,7 @@ export default function FeedPage() {
   const [showComments1, setShowComments1] = useState(false);
   const [showComments2, setShowComments2] = useState(false);
   const router = useRouter();
+  const { filters, removeFilter } = useFilterContext();
 
   // The vertical offset for the icons should match the vertical center of the Following/Discover tabs
   const iconTop = 62; // px, adjust as needed for perfect alignment
@@ -99,8 +101,24 @@ export default function FeedPage() {
   return (
     <div style={{ background: 'white', minHeight: '100vh', fontFamily: 'inherit', position: 'relative' }}>
       {/* Absolute top left and right icons, aligned with Following/Discover tabs */}
-      <div style={{ position: 'absolute', top: iconTop, left: 16, zIndex: 10, cursor: 'pointer' }} onClick={() => router.push('/configurations')}>
-        <Image src="/configurations.png" alt="Configurations" width={32} height={32} />
+      <div style={{ position: 'absolute', top: iconTop, left: 16, zIndex: 10, display: 'flex', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: 6, alignItems: 'center', marginRight: 8 }}>
+          {filters.positions.map(pos => (
+            <div key={pos} style={{ display: 'flex', alignItems: 'center', background: '#eee', borderRadius: 8, padding: '2px 8px', fontSize: 14, color: '#444', marginRight: 4 }}>
+              {pos}
+              <span style={{ marginLeft: 4, cursor: 'pointer', fontWeight: 700 }} onClick={e => { e.stopPropagation(); removeFilter('positions', pos); }}>✕</span>
+            </div>
+          ))}
+          {filters.age && (
+            <div style={{ display: 'flex', alignItems: 'center', background: '#eee', borderRadius: 8, padding: '2px 8px', fontSize: 14, color: '#444', marginRight: 4 }}>
+              {filters.age}
+              <span style={{ marginLeft: 4, cursor: 'pointer', fontWeight: 700 }} onClick={e => { e.stopPropagation(); removeFilter('age'); }}>✕</span>
+            </div>
+          )}
+        </div>
+        <div onClick={() => router.push('/configurations')} style={{ cursor: 'pointer' }}>
+          <Image src="/configurations.png" alt="Configurations" width={32} height={32} />
+        </div>
       </div>
       <Image src="/dm.png" alt="DM" width={32} height={32} style={{ position: 'absolute', top: iconTop, right: 16, zIndex: 10, cursor: 'pointer' }} />
       {/* Tabs (Following | Discover) */}

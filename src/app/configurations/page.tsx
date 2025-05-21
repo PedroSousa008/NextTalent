@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useFilterContext } from '../feed/FilterContext';
 
 const POSITIONS = [
   'GK', 'CB', 'LB', 'LWB', 'RB', 'RWB', 'CDM', 'CM', 'CAM', 'LM', 'LW', 'RM', 'RW', 'CF', 'ST'
@@ -10,8 +11,9 @@ const AGE_GROUPS = [
 ];
 
 export default function ConfigurationsPage() {
-  const [selectedPositions, setSelectedPositions] = useState<string[]>([]);
-  const [selectedAge, setSelectedAge] = useState<string | null>(null);
+  const { filters, setFilters } = useFilterContext();
+  const [selectedPositions, setSelectedPositions] = useState<string[]>(filters.positions);
+  const [selectedAge, setSelectedAge] = useState<string | null>(filters.age);
   const router = useRouter();
 
   function togglePosition(pos: string) {
@@ -22,6 +24,11 @@ export default function ConfigurationsPage() {
         ? [...prev, pos]
         : prev
     );
+  }
+
+  function handleApply() {
+    setFilters({ positions: selectedPositions, age: selectedAge });
+    router.push('/feed');
   }
 
   return (
@@ -86,7 +93,7 @@ export default function ConfigurationsPage() {
       </div>
       {/* Apply button fixed at the bottom */}
       <button
-        onClick={() => router.push('/feed')}
+        onClick={handleApply}
         style={{
           position: 'fixed',
           left: 0,
