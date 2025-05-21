@@ -245,7 +245,7 @@ export default function LoginPlayer() {
                 {COUNTRIES.map(country => (
                   <div key={country.name} className="px-4 py-2 cursor-pointer hover:bg-blue-100 flex items-center" onMouseDown={() => { setNationality(country); setShowNationalityDropdown(false); }}>
                     <span className="text-2xl mr-2">{country.flag}</span>
-                    <span>{country.name}</span>
+                    <span className="text-black ml-0.5" style={{marginLeft: 0}}>{country.name}</span>
                   </div>
                 ))}
               </div>
