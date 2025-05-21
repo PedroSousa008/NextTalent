@@ -130,7 +130,7 @@ export default function LoginCoach() {
       <div className="w-full max-w-3xl flex flex-col items-center mb-8">
         <h1 className="text-4xl font-serif font-semibold mb-2 text-black">Create a New Account</h1>
         <div className="flex justify-center gap-12 text-xl mb-6">
-          <span className="text-gray-400 cursor-pointer">Agent</span>
+          <a href="/loginagent" className="text-gray-400 cursor-pointer hover:underline">Agent</a>
           <a href="/loginplayer" className="text-gray-400 cursor-pointer hover:underline">Player</a>
           <span className="font-bold text-black border-b-2 border-black pb-1">Coach</span>
         </div>
