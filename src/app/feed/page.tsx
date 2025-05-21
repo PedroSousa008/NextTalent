@@ -2,8 +2,28 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
+function Heart({ liked, onClick }: { liked: boolean; onClick: () => void }) {
+  return (
+    <svg
+      onClick={onClick}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill={liked ? 'red' : 'none'}
+      stroke="black"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={{ width: 28, height: 28, cursor: 'pointer', marginRight: 4 }}
+    >
+      <path d="M12 21C12 21 4 13.5 4 8.5C4 5.5 6.5 3 9.5 3C11.04 3 12.5 4 13 5.09C13.5 4 14.96 3 16.5 3C19.5 3 22 5.5 22 8.5C22 13.5 12 21 12 21Z" />
+    </svg>
+  );
+}
+
 export default function FeedPage() {
   const [activeTab, setActiveTab] = useState<'following' | 'discover'>('following');
+  const [liked1, setLiked1] = useState(false);
+  const [liked2, setLiked2] = useState(false);
 
   return (
     <div style={{ background: 'white', minHeight: '100vh', fontFamily: 'inherit' }}>
@@ -50,48 +70,48 @@ export default function FeedPage() {
       {/* Feed Card 1 */}
       <div style={{ margin: '32px 0 0 0', padding: '0 0 32px 0', borderBottom: '1px solid #eee' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px' }}>
-          <span style={{ fontSize: 16 }}>Position: CM/CAM</span>
+          <span style={{ fontSize: 16, color: 'black' }}>Position: CM/CAM</span>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Image src="/pedro.jpg" alt="Pedro Sousa" width={56} height={56} style={{ borderRadius: '50%' }} />
-            <span style={{ fontWeight: 500, fontSize: 18, marginTop: 4 }}>Pedro Sousa</span>
+            <span style={{ fontWeight: 500, fontSize: 18, marginTop: 4, color: 'black' }}>Pedro Sousa</span>
           </div>
-          <span style={{ fontSize: 16 }}>Age: 21 year old</span>
+          <span style={{ fontSize: 16, color: 'black' }}>Age: 21 year old</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', margin: '16px 0' }}>
           <video src="/pedro-clip.mp4" controls style={{ width: '90%', borderRadius: 12, background: '#eee' }} poster="/pedro-thumb.jpg" />
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '0 16px' }}>
-          <span>♡</span>
+          <Heart liked={liked1} onClick={() => setLiked1(l => !l)} />
           <span>💬</span>
           <span>✈️</span>
         </div>
         <div style={{ padding: '0 16px', marginTop: 8 }}>
           <span style={{ fontSize: 14, color: '#222' }}>1245 people liked</span>
-          <div style={{ fontWeight: 600, fontSize: 16 }}>Pedro Sousa: <span role="img" aria-label="rocket">🚀</span></div>
+          <div style={{ fontWeight: 600, fontSize: 16, color: 'black' }}>Pedro Sousa: <span role="img" aria-label="rocket">🚀</span></div>
           <span style={{ fontSize: 14, color: '#222' }}>See all 75 comments</span>
         </div>
       </div>
       {/* Feed Card 2 */}
       <div style={{ margin: '32px 0 0 0', padding: '0 0 32px 0', borderBottom: '1px solid #eee' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px' }}>
-          <span style={{ fontSize: 16 }}>Position: LB</span>
+          <span style={{ fontSize: 16, color: 'black' }}>Position: LB</span>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Image src="/alphonso.jpg" alt="Alphonso Davies" width={56} height={56} style={{ borderRadius: '50%' }} />
-            <span style={{ fontWeight: 500, fontSize: 18, marginTop: 4 }}>Alphonso Davies</span>
+            <span style={{ fontWeight: 500, fontSize: 18, marginTop: 4, color: 'black' }}>Alphonso Davies</span>
           </div>
-          <span style={{ fontSize: 16 }}>Age: 23 year old</span>
+          <span style={{ fontSize: 16, color: 'black' }}>Age: 23 year old</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', margin: '16px 0' }}>
           <video src="/alphonso-clip.mp4" controls style={{ width: '90%', borderRadius: 12, background: '#eee' }} poster="/alphonso-thumb.jpg" />
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '0 16px' }}>
-          <span>♡</span>
+          <Heart liked={liked2} onClick={() => setLiked2(l => !l)} />
           <span>💬</span>
           <span>✈️</span>
         </div>
         <div style={{ padding: '0 16px', marginTop: 8 }}>
           <span style={{ fontSize: 14, color: '#222' }}>1245 people liked</span>
-          <div style={{ fontWeight: 600, fontSize: 16 }}>Alphonso Davies</div>
+          <div style={{ fontWeight: 600, fontSize: 16, color: 'black' }}>Alphonso Davies</div>
           <span style={{ fontSize: 14, color: '#222' }}>See all 75 comments</span>
         </div>
       </div>
@@ -101,21 +121,21 @@ export default function FeedPage() {
           <span role="img" aria-label="feed" style={{ fontSize: 28, opacity: 1 }}>⚽️</span>
           <span style={{ fontSize: 14, opacity: 1 }}>Feed</span>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb', opacity: 0.3 }}>
-          <span role="img" aria-label="search" style={{ fontSize: 28, opacity: 0.3 }}>🔍</span>
-          <span style={{ fontSize: 14, opacity: 0.3 }}>Search</span>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb', opacity: 0.6 }}>
+          <span role="img" aria-label="search" style={{ fontSize: 28, opacity: 0.6 }}>🔍</span>
+          <span style={{ fontSize: 14, opacity: 0.6 }}>Search</span>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb', opacity: 0.3 }}>
-          <span role="img" aria-label="upload" style={{ fontSize: 28, opacity: 0.3 }}>📷</span>
-          <span style={{ fontSize: 14, opacity: 0.3 }}>Upload</span>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb', opacity: 0.6 }}>
+          <span role="img" aria-label="upload" style={{ fontSize: 28, opacity: 0.6 }}>📷</span>
+          <span style={{ fontSize: 14, opacity: 0.6 }}>Upload</span>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb', opacity: 0.3 }}>
-          <span role="img" aria-label="notifications" style={{ fontSize: 28, opacity: 0.3 }}>🔔</span>
-          <span style={{ fontSize: 14, opacity: 0.3 }}>Notifications</span>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb', opacity: 0.6 }}>
+          <span role="img" aria-label="notifications" style={{ fontSize: 28, opacity: 0.6 }}>🔔</span>
+          <span style={{ fontSize: 14, opacity: 0.6 }}>Notifications</span>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb', opacity: 0.3 }}>
-          <span role="img" aria-label="profile" style={{ fontSize: 28, opacity: 0.3 }}>👤</span>
-          <span style={{ fontSize: 14, opacity: 0.3 }}>Profile</span>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb', opacity: 0.6 }}>
+          <span role="img" aria-label="profile" style={{ fontSize: 28, opacity: 0.6 }}>👤</span>
+          <span style={{ fontSize: 14, opacity: 0.6 }}>Profile</span>
         </div>
       </div>
     </div>
