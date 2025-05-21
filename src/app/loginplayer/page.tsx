@@ -194,7 +194,7 @@ export default function LoginPlayer() {
               {showConfirmPassword ? 'Hide' : 'Show'}
             </button>
           </div>
-          <button className="w-full bg-gray-200 text-black py-3 rounded-none text-xl font-bold shadow-sm border-0 flex items-center justify-center" onClick={() => router.push('/success')}>
+          <button className="w-full bg-gray-200 text-black py-3 rounded-none text-xl font-bold shadow-sm border-0 flex items-center justify-center" onClick={() => router.push('/feed')}>
             Create Your Account
           </button>
         </div>
