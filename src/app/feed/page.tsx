@@ -186,6 +186,11 @@ export default function FeedPage() {
     return () => window.removeEventListener('scroll', onScroll);
   }, [loadingMore, loadMorePlayers]);
 
+  // Helper to update a player in realListPlayers by id
+  function updateRealPlayer(id: string, updater: (p: Player) => Player) {
+    setRealListPlayers(prev => prev.map(p => p.id === id ? updater(p) : p));
+  }
+
   // Merge real and infinite real-list players
   const allPlayers: Player[] = [
     {
@@ -226,7 +231,13 @@ export default function FeedPage() {
       displayName: 'Alphonso Davies',
       id: 'real-alphonso',
     },
-    ...realListPlayers,
+    ...realListPlayers.map(p => ({
+      ...p,
+      setLiked: (fn: (liked: boolean) => boolean) => updateRealPlayer(p.id, prev => ({ ...prev, liked: fn(prev.liked) })),
+      setLikes: (fn: (likes: number) => number) => updateRealPlayer(p.id, prev => ({ ...prev, likes: fn(prev.likes) })),
+      setComments: (fn: (comments: { user: string; avatar: string; text: string }[]) => { user: string; avatar: string; text: string }[]) => updateRealPlayer(p.id, prev => ({ ...prev, comments: fn(prev.comments) })),
+      setShowComments: (show: boolean) => updateRealPlayer(p.id, prev => ({ ...prev, showComments: show })),
+    })),
   ];
 
   // Filtering logic (same as before, but use allPlayers)
