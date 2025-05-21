@@ -37,11 +37,11 @@ function CommentsModal({ open, onClose, comments, onAddComment }: {
             <div style={{ color: '#888', textAlign: 'center', fontSize: 18, marginTop: 40 }}>No comments yet.</div>
           ) : (
             comments.map((c, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 18, padding: 12, background: '#f5f5f5', borderRadius: 10, fontSize: 17, color: 'black', wordBreak: 'break-word' }}>
+              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 18, padding: 12, background: '#f5f5f5', borderRadius: 10 }}>
                 <img src={c.avatar} alt={c.user} style={{ width: 36, height: 36, borderRadius: '50%', objectFit: 'cover', marginTop: 2 }} />
-                <div>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
                   <span style={{ fontWeight: 600, fontSize: 15 }}>{c.user}</span>
-                  <span style={{ marginLeft: 8, color: '#222', fontSize: 17 }}>{c.text}</span>
+                  <span style={{ color: '#222', fontSize: 17, marginTop: 2 }}>{c.text}</span>
                 </div>
               </div>
             ))
@@ -52,8 +52,8 @@ function CommentsModal({ open, onClose, comments, onAddComment }: {
           const val = inputRef.current?.value.trim();
           if (val) {
             onAddComment({
-              user: 'you',
-              avatar: '/pedro.jpg', // default avatar
+              user: 'Pedro Sousa',
+              avatar: '/pedro.jpg',
               text: val
             });
             if (inputRef.current) inputRef.current.value = '';
