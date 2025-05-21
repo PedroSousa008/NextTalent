@@ -235,10 +235,12 @@ export default function LoginPlayer() {
         <div>
           <label className="block text-gray-500 mb-1">Nationality</label>
           <div className="relative flex items-center">
-            <button type="button" className="w-full pl-12 pr-8 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 flex items-center" onClick={() => setShowNationalityDropdown(v => !v)}>
-              <span className="text-2xl mr-2">{nationality?.flag || '🏳️'}</span>
-              <span>{nationality?.name || 'Select Country'}</span>
-              <span className="ml-auto text-gray-400">▼</span>
+            <button type="button" className="w-full pl-4 pr-8 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 flex items-center justify-between" onClick={() => setShowNationalityDropdown(v => !v)}>
+              <span className="flex items-center">
+                <span className="text-2xl mr-2">{nationality?.flag || '🏳️'}</span>
+                <span className="text-black ml-0.5" style={{marginLeft: 0}}>{nationality?.name || 'Select Country'}</span>
+              </span>
+              <span className="text-gray-400">▼</span>
             </button>
             {showNationalityDropdown && (
               <div className="absolute left-0 z-10 w-full bg-white border border-gray-200 rounded shadow-lg max-h-48 overflow-y-auto mt-1">
