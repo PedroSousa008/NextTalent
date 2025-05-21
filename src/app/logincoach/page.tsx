@@ -15,7 +15,13 @@ const COACHING_ROLES = [
   'Tactical Coach',
   'Technical Coach',
   'Youth Coach/Academy Coach',
-  "Women's Team Coach"
+  "Women's Team Coach",
+  'Individual Development Coach',
+  'Mental Coach',
+  'Team Analyst',
+  'Recovery Coach',
+  'Video Analyst',
+  'Team Coordinator',
 ];
 
 const LICENSE_LEVELS = [
@@ -27,7 +33,7 @@ const LICENSE_LEVELS = [
   'National C License',
   'National D License/Intro Youth',
   'Grassroots certified',
-  'No license yet'
+  'No license yet',
 ];
 
 export default function LoginCoach() {
@@ -62,6 +68,8 @@ export default function LoginCoach() {
   const years = Array.from({ length: currentYear - 1950 + 1 }, (_, i) => (1950 + i).toString());
   const [coachingRoles, setCoachingRoles] = useState<string[]>([]);
   const [showCoachingRoleDropdown, setShowCoachingRoleDropdown] = useState(false);
+  const [licenseLevels, setLicenseLevels] = useState<string[]>([]);
+  const [showLicenseLevelDropdown, setShowLicenseLevelDropdown] = useState(false);
 
   function handleGenderSelect(value: string) {
     setGender(value);
@@ -76,6 +84,14 @@ export default function LoginCoach() {
     }
   }
 
+  function handleLicenseLevelToggle(level: string) {
+    if (licenseLevels.includes(level)) {
+      setLicenseLevels(licenseLevels.filter(l => l !== level));
+    } else {
+      setLicenseLevels([...licenseLevels, level]);
+    }
+  }
+
   function isFormComplete() {
     return (
       form.firstName &&
@@ -86,7 +102,7 @@ export default function LoginCoach() {
       form.phone &&
       form.email &&
       coachingRoles.length > 0 &&
-      form.licenseLevel &&
+      licenseLevels.length > 0 &&
       form.experienceYears &&
       form.ageGroup &&
       form.nif &&
@@ -158,12 +174,23 @@ export default function LoginCoach() {
         <div>
           <label className="block text-gray-500 mb-1">Coach License Level</label>
           <div className="relative">
-            <select value={form.licenseLevel} onChange={e => setForm({ ...form, licenseLevel: e.target.value })} className="w-full px-4 py-2 pr-8 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 appearance-none">
-              <option value="" disabled>Select License Level</option>
-              {LICENSE_LEVELS.map(level => (
-                <option key={level} value={level}>{level}</option>
-              ))}
-            </select>
+            <div className="w-full px-4 py-2 pr-8 bg-gray-100 text-black border-0 border-b border-gray-300 rounded-none mb-2 flex items-center flex-wrap gap-2 cursor-pointer min-h-[44px]" onClick={() => setShowLicenseLevelDropdown(!showLicenseLevelDropdown)} tabIndex={0} onBlur={() => setShowLicenseLevelDropdown(false)}>
+              {licenseLevels.length === 0 ? null : (
+                licenseLevels.map(level => (
+                  <span key={level} className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">{level}</span>
+                ))
+              )}
+            </div>
+            {showLicenseLevelDropdown && (
+              <div className="absolute left-0 z-10 w-full bg-white border border-gray-200 rounded shadow-lg max-h-48 overflow-y-auto mt-1">
+                {LICENSE_LEVELS.map(level => (
+                  <div key={level} className={`px-4 py-2 cursor-pointer hover:bg-blue-100 flex items-center text-black ${licenseLevels.includes(level) ? 'font-bold text-blue-700' : ''}`} onMouseDown={e => { e.preventDefault(); handleLicenseLevelToggle(level); }}>
+                    <input type="checkbox" checked={licenseLevels.includes(level)} readOnly className="mr-2" tabIndex={-1} />
+                    {level}
+                  </div>
+                ))}
+              </div>
+            )}
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▼</span>
           </div>
         </div>
