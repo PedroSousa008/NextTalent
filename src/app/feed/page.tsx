@@ -99,7 +99,9 @@ export default function FeedPage() {
   return (
     <div style={{ background: 'white', minHeight: '100vh', fontFamily: 'inherit', position: 'relative' }}>
       {/* Absolute top left and right icons, aligned with Following/Discover tabs */}
-      <Image src="/configurations.png" alt="Configurations" width={32} height={32} style={{ position: 'absolute', top: iconTop, left: 16, zIndex: 10, cursor: 'pointer' }} />
+      <div style={{ position: 'absolute', top: iconTop, left: 16, zIndex: 10, cursor: 'pointer' }} onClick={() => router.push('/configurations')}>
+        <Image src="/configurations.png" alt="Configurations" width={32} height={32} />
+      </div>
       <Image src="/dm.png" alt="DM" width={32} height={32} style={{ position: 'absolute', top: iconTop, right: 16, zIndex: 10, cursor: 'pointer' }} />
       {/* Tabs (Following | Discover) */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '18px 0 0 0' }}>
