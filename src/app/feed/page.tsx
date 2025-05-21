@@ -341,21 +341,18 @@ export default function FeedPage() {
                 See all {player.comments?.length || 0} comment{(player.comments?.length || 0) !== 1 ? 's' : ''}
               </span>
             </div>
-            {/* Only render CommentsModal for real players */}
-            {player.id === 'real-pedro' || player.id === 'real-alphonso' ? (
-              <CommentsModal
-                open={player.showComments}
-                onClose={() => player.setShowComments(false)}
-                comments={player.comments}
-                onAddComment={c => player.setComments(list => [...list, c])}
-              />
-            ) : null}
+            <CommentsModal
+              open={player.showComments}
+              onClose={() => player.setShowComments(false)}
+              comments={player.comments}
+              onAddComment={c => player.setComments(list => [...list, c])}
+            />
           </div>
         ))
       )}
       {/* Bottom Navigation Bar */}
       <div style={{ position: 'fixed', left: 0, right: 0, bottom: 0, background: 'white', borderTop: '1px solid #eee', display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: 64 }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: 'black', opacity: 1 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: 'black', opacity: 1 }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <span role="img" aria-label="feed" style={{ fontSize: 28, opacity: 1 }}>⚽️</span>
           <span style={{ fontSize: 14, opacity: 1 }}>Feed</span>
         </div>
