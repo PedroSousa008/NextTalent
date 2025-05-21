@@ -97,25 +97,25 @@ export default function FeedPage() {
       </div>
       {/* Bottom Navigation Bar */}
       <div style={{ position: 'fixed', left: 0, right: 0, bottom: 0, background: 'white', borderTop: '1px solid #eee', display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: 64 }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: 'black' }}>
-          <span role="img" aria-label="feed" style={{ fontSize: 28 }}>⚽️</span>
-          <span style={{ fontSize: 14 }}>Feed</span>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: 'black', opacity: 1 }}>
+          <span role="img" aria-label="feed" style={{ fontSize: 28, opacity: 1 }}>⚽️</span>
+          <span style={{ fontSize: 14, opacity: 1 }}>Feed</span>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb' }}>
-          <span role="img" aria-label="search" style={{ fontSize: 28 }}>🔍</span>
-          <span style={{ fontSize: 14 }}>Search</span>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb', opacity: 0.3 }}>
+          <span role="img" aria-label="search" style={{ fontSize: 28, opacity: 0.3 }}>🔍</span>
+          <span style={{ fontSize: 14, opacity: 0.3 }}>Search</span>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb' }}>
-          <span role="img" aria-label="upload" style={{ fontSize: 28 }}>📷</span>
-          <span style={{ fontSize: 14 }}>Upload</span>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb', opacity: 0.3 }}>
+          <span role="img" aria-label="upload" style={{ fontSize: 28, opacity: 0.3 }}>📷</span>
+          <span style={{ fontSize: 14, opacity: 0.3 }}>Upload</span>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb' }}>
-          <span role="img" aria-label="notifications" style={{ fontSize: 28 }}>🔔</span>
-          <span style={{ fontSize: 14 }}>Notifications</span>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb', opacity: 0.3 }}>
+          <span role="img" aria-label="notifications" style={{ fontSize: 28, opacity: 0.3 }}>🔔</span>
+          <span style={{ fontSize: 14, opacity: 0.3 }}>Notifications</span>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb' }}>
-          <span role="img" aria-label="profile" style={{ fontSize: 28 }}>👤</span>
-          <span style={{ fontSize: 14 }}>Profile</span>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb', opacity: 0.3 }}>
+          <span role="img" aria-label="profile" style={{ fontSize: 28, opacity: 0.3 }}>👤</span>
+          <span style={{ fontSize: 14, opacity: 0.3 }}>Profile</span>
         </div>
       </div>
     </div>
