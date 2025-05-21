@@ -1,25 +1,50 @@
 import Image from 'next/image';
+import { useState } from 'react';
 
 export default function FeedPage() {
+  const [activeTab, setActiveTab] = useState<'following' | 'discover'>('following');
+
   return (
     <div style={{ background: 'white', minHeight: '100vh', fontFamily: 'inherit' }}>
-      {/* Top Bar */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px 0 16px' }}>
-        <span style={{ fontWeight: 400, fontSize: 18 }}>9:15</span>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <Image src="/wifi.svg" alt="wifi" width={24} height={24} style={{ opacity: 0.8 }} />
-          <Image src="/cell.svg" alt="cell" width={24} height={24} style={{ opacity: 0.8 }} />
-          <Image src="/battery.svg" alt="battery" width={24} height={24} style={{ opacity: 0.8 }} />
+      {/* Tabs (Following | Discover) */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px 0 0 0' }}>
+        <div style={{ display: 'flex', gap: 24, fontSize: 20 }}>
+          <button
+            style={{
+              background: 'none',
+              border: 'none',
+              color: activeTab === 'following' ? 'black' : '#888',
+              fontWeight: activeTab === 'following' ? 600 : 400,
+              borderBottom: activeTab === 'following' ? '2px solid black' : '2px solid transparent',
+              padding: '0 8px 4px 8px',
+              cursor: 'pointer',
+              outline: 'none',
+            }}
+            onClick={() => setActiveTab('following')}
+          >
+            Following
+          </button>
+          <button
+            style={{
+              background: 'none',
+              border: 'none',
+              color: activeTab === 'discover' ? 'black' : '#888',
+              fontWeight: activeTab === 'discover' ? 600 : 400,
+              borderBottom: activeTab === 'discover' ? '2px solid black' : '2px solid transparent',
+              padding: '0 8px 4px 8px',
+              cursor: 'pointer',
+              outline: 'none',
+            }}
+            onClick={() => setActiveTab('discover')}
+          >
+            Discover
+          </button>
         </div>
       </div>
-      {/* Tabs and filter/send icons */}
+      {/* Tabs and filter/send icons (removed top bar) */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 16px 0 16px' }}>
         <Image src="/filter.svg" alt="filter" width={28} height={28} />
-        <div style={{ display: 'flex', gap: 12, fontSize: 20 }}>
-          <span style={{ fontWeight: 600, borderBottom: '2px solid black' }}>Following</span>
-          <span style={{ color: '#888', fontWeight: 400 }}>Discover</span>
-        </div>
-        <Image src="/send.svg" alt="send" width={28} height={28} />
+        <div style={{ width: 28 }} /> {/* Placeholder for spacing */}
       </div>
       {/* Feed Card 1 */}
       <div style={{ margin: '32px 0 0 0', padding: '0 0 32px 0', borderBottom: '1px solid #eee' }}>
