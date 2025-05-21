@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useFilterContext } from './FilterContext';
 
@@ -69,6 +69,50 @@ function CommentsModal({ open, onClose, comments, onAddComment }: {
   );
 }
 
+// Helper functions for fake data
+const POSITIONS = ['GK', 'CB', 'LB', 'LWB', 'RB', 'RWB', 'CDM', 'CM', 'CAM', 'LM', 'LW', 'RM', 'RW', 'CF', 'ST'];
+const FIRST_NAMES = ['Alex', 'Jordan', 'Taylor', 'Morgan', 'Casey', 'Riley', 'Jamie', 'Drew', 'Sam', 'Chris', 'Pat', 'Robin', 'Sky', 'Jesse', 'Avery', 'Cameron', 'Dylan', 'Harley', 'Reese', 'Quinn'];
+const LAST_NAMES = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Martinez', 'Lopez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin', 'Lee', 'Perez', 'Thompson'];
+function getRandomName() {
+  return `${FIRST_NAMES[Math.floor(Math.random() * FIRST_NAMES.length)]} ${LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)]}`;
+}
+function getRandomPositions() {
+  const count = 1 + Math.floor(Math.random() * 3);
+  const shuffled = POSITIONS.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+}
+function getRandomAge() {
+  return 16 + Math.floor(Math.random() * 24); // 16-39
+}
+function getRandomAvatar() {
+  return '/placeholder-avatar.png'; // You can add a placeholder image in public/
+}
+
+function generateFakePlayer(idx: number) {
+  const positions = getRandomPositions();
+  const age = getRandomAge();
+  return {
+    name: getRandomName(),
+    positions,
+    age: age < 21 ? 'U18-U21' : age < 24 ? 'U22-U24' : age < 30 ? 'Senior' : 'Veteran',
+    rawAge: age,
+    video: '', // Placeholder
+    avatar: getRandomAvatar(),
+    positionLabel: positions.join('/'),
+    ageLabel: `${age} year old`,
+    likes: 100 + Math.floor(Math.random() * 1000),
+    liked: false,
+    setLiked: () => {},
+    setLikes: () => {},
+    comments: [],
+    setComments: () => {},
+    showComments: false,
+    setShowComments: () => {},
+    displayName: getRandomName(),
+    id: `fake-${idx}`,
+  };
+}
+
 export default function FeedPage() {
   const [activeTab, setActiveTab] = useState<'following' | 'discover'>('following');
   const [liked1, setLiked1] = useState(false);
@@ -125,13 +169,85 @@ export default function FeedPage() {
     },
   ];
 
-  // Filtering logic
-  const filteredPlayers = players.filter(player => {
-    // If no filters, show all
+  const [fakePlayers, setFakePlayers] = useState(() => {
+    const arr = [];
+    for (let i = 0; i < 20; ++i) arr.push(generateFakePlayer(i));
+    return arr;
+  });
+  const [loadingMore, setLoadingMore] = useState(false);
+
+  const loadMorePlayers = useCallback(() => {
+    setLoadingMore(true);
+    setTimeout(() => {
+      setFakePlayers(prev => {
+        const next = [...prev];
+        for (let i = 0; i < 20; ++i) next.push(generateFakePlayer(prev.length + i));
+        return next;
+      });
+      setLoadingMore(false);
+    }, 500);
+  }, []);
+
+  useEffect(() => {
+    function onScroll() {
+      if (
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 300 &&
+        !loadingMore
+      ) {
+        loadMorePlayers();
+      }
+    }
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [loadingMore, loadMorePlayers]);
+
+  // Merge real and fake players
+  const allPlayers = [
+    {
+      name: 'Pedro Sousa',
+      positions: ['CM', 'CAM', 'CF', 'CDM', 'Senior'],
+      age: 'Senior',
+      video: '/pedro-clip.mp4',
+      avatar: '/pedro.jpg',
+      positionLabel: 'CM/CAM',
+      ageLabel: '21 year old',
+      likes: likes1,
+      liked: liked1,
+      setLiked: setLiked1,
+      setLikes: setLikes1,
+      comments: comments1,
+      setComments: setComments1,
+      showComments: showComments1,
+      setShowComments: setShowComments1,
+      displayName: 'Pedro Sousa',
+      id: 'real-pedro',
+    },
+    {
+      name: 'Alphonso Davies',
+      positions: ['LB', 'Senior'],
+      age: 'Senior',
+      video: '/alphonso-clip.mp4',
+      avatar: '/alphonso.jpg',
+      positionLabel: 'LB',
+      ageLabel: '23 year old',
+      likes: likes2,
+      liked: liked2,
+      setLiked: setLiked2,
+      setLikes: setLikes2,
+      comments: comments2,
+      setComments: setComments2,
+      showComments: showComments2,
+      setShowComments: setShowComments2,
+      displayName: 'Alphonso Davies',
+      id: 'real-alphonso',
+    },
+    ...fakePlayers,
+  ];
+
+  // Filtering logic (same as before, but use allPlayers)
+  const filteredPlayers = allPlayers.filter(player => {
     if (filters.positions.length === 0 && !filters.age) return true;
-    // Must match at least one selected position (OR logic)
     const matchesPositions = filters.positions.length === 0 || filters.positions.some(pos => player.positions.includes(pos));
-    // Must match age if selected
     const matchesAge = !filters.age || player.age === filters.age;
     return matchesPositions && matchesAge;
   });
@@ -198,8 +314,8 @@ export default function FeedPage() {
       {filteredPlayers.length === 0 ? (
         <div style={{ textAlign: 'center', color: '#888', marginTop: 60, fontSize: 16 }}>No players match your filters.</div>
       ) : (
-        filteredPlayers.map((player, idx) => (
-          <div key={player.name} style={{ margin: '32px 0 0 0', padding: '0 0 32px 0', borderBottom: '1px solid #eee' }}>
+        filteredPlayers.map((player, idx: number) => (
+          <div key={(player as any).id || player.name} style={{ margin: '32px 0 0 0', padding: '0 0 32px 0', borderBottom: '1px solid #eee' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px' }}>
               <span style={{ fontSize: 16, color: 'black' }}>Position: {player.positionLabel}</span>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
@@ -209,10 +325,16 @@ export default function FeedPage() {
               <span style={{ fontSize: 16, color: 'black' }}>Age: {player.ageLabel}</span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px 0 0 0' }}>
-              <video src={player.video} controls loop autoPlay muted style={{ width: '99%', maxWidth: 700, borderRadius: 12, background: '#eee', marginBottom: 0 }} />
+              {player.video ? (
+                <video src={player.video} controls loop autoPlay muted style={{ width: '99%', maxWidth: 700, borderRadius: 12, background: '#eee', marginBottom: 0 }} />
+              ) : (
+                <div style={{ width: '99%', maxWidth: 700, height: 400, borderRadius: 12, background: '#eee', marginBottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontSize: 28, fontWeight: 600 }}>
+                  Video coming soon
+                </div>
+              )}
               <div style={{ display: 'flex', alignItems: 'center', width: '99%', maxWidth: 700, margin: '0 auto', marginTop: 8, justifyContent: 'flex-start', gap: 18 }}>
                 <Heart liked={player.liked} onClick={() => player.setLiked(liked => { player.setLikes(count => liked ? count - 1 : count + 1); return !liked; })} />
-                <span style={{ fontSize: 24, verticalAlign: 'middle', cursor: 'pointer' }} onClick={() => player.setShowComments(true)}>💬</span>
+                <span style={{ fontSize: 24, verticalAlign: 'middle', cursor: 'pointer' }} onClick={() => player.setShowComments && player.setShowComments(true)}>💬</span>
                 <span style={{ fontSize: 24, verticalAlign: 'middle' }}>🔗</span>
               </div>
             </div>
@@ -220,15 +342,18 @@ export default function FeedPage() {
               <span style={{ fontSize: 14, color: '#222' }}>{player.likes} people liked</span>
               <div style={{ fontWeight: 600, fontSize: 16, color: 'black' }}>{player.displayName}{player.name === 'Pedro Sousa' ? ': ' : ''}<span role="img" aria-label="rocket">{player.name === 'Pedro Sousa' ? '🚀' : ''}</span></div>
               <span style={{ fontSize: 14, color: '#222', cursor: 'pointer' }} onClick={() => router.push(`/comments/${idx + 1}`)}>
-                See all {player.comments.length} comment{player.comments.length !== 1 ? 's' : ''}
+                See all {player.comments?.length || 0} comment{(player.comments?.length || 0) !== 1 ? 's' : ''}
               </span>
             </div>
-            <CommentsModal
-              open={player.showComments}
-              onClose={() => player.setShowComments(false)}
-              comments={player.comments}
-              onAddComment={c => player.setComments(list => [...list, c])}
-            />
+            {/* Only render CommentsModal for real players */}
+            {(player as any).id === 'real-pedro' || (player as any).id === 'real-alphonso' ? (
+              <CommentsModal
+                open={player.showComments}
+                onClose={() => player.setShowComments(false)}
+                comments={player.comments}
+                onAddComment={c => player.setComments(list => [...list, c])}
+              />
+            ) : null}
           </div>
         ))
       )}
