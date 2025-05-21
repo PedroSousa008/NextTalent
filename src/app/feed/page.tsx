@@ -69,37 +69,42 @@ function CommentsModal({ open, onClose, comments, onAddComment }: {
   );
 }
 
-// Helper functions for fake data
-const POSITIONS = ['GK', 'CB', 'LB', 'LWB', 'RB', 'RWB', 'CDM', 'CM', 'CAM', 'LM', 'LW', 'RM', 'RW', 'CF', 'ST'];
-const FIRST_NAMES = ['Alex', 'Jordan', 'Taylor', 'Morgan', 'Casey', 'Riley', 'Jamie', 'Drew', 'Sam', 'Chris', 'Pat', 'Robin', 'Sky', 'Jesse', 'Avery', 'Cameron', 'Dylan', 'Harley', 'Reese', 'Quinn'];
-const LAST_NAMES = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Martinez', 'Lopez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin', 'Lee', 'Perez', 'Thompson'];
-function getRandomName() {
-  return `${FIRST_NAMES[Math.floor(Math.random() * FIRST_NAMES.length)]} ${LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)]}`;
-}
-function getRandomPositions() {
-  const count = 1 + Math.floor(Math.random() * 3);
-  const shuffled = POSITIONS.sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, count);
-}
-function getRandomAge() {
-  return 16 + Math.floor(Math.random() * 24); // 16-39
-}
-function getRandomAvatar() {
-  return '/placeholder-avatar.png'; // You can add a placeholder image in public/
-}
+// Replace the random fake player generator with a real player list
+const REAL_PLAYERS = [
+  { name: 'Lionel Messi', age: 36, positions: ['RW', 'CF'], avatar: '/placeholder-avatar.png' },
+  { name: 'Cristiano Ronaldo', age: 39, positions: ['LW', 'ST'], avatar: '/placeholder-avatar.png' },
+  { name: 'Kylian Mbappé', age: 25, positions: ['LW', 'ST'], avatar: '/placeholder-avatar.png' },
+  { name: 'Erling Haaland', age: 23, positions: ['ST'], avatar: '/placeholder-avatar.png' },
+  { name: 'Kevin De Bruyne', age: 32, positions: ['CM', 'CAM'], avatar: '/placeholder-avatar.png' },
+  { name: 'Neymar Jr.', age: 32, positions: ['LW', 'CAM'], avatar: '/placeholder-avatar.png' },
+  { name: 'Virgil van Dijk', age: 32, positions: ['CB'], avatar: '/placeholder-avatar.png' },
+  { name: 'Luka Modrić', age: 38, positions: ['CM'], avatar: '/placeholder-avatar.png' },
+  { name: 'Jude Bellingham', age: 20, positions: ['CM', 'CAM'], avatar: '/placeholder-avatar.png' },
+  { name: 'Pedri', age: 21, positions: ['CM', 'CAM'], avatar: '/placeholder-avatar.png' },
+  { name: 'Vinícius Júnior', age: 23, positions: ['LW'], avatar: '/placeholder-avatar.png' },
+  { name: 'Bukayo Saka', age: 22, positions: ['RW'], avatar: '/placeholder-avatar.png' },
+  { name: 'Rodri', age: 27, positions: ['CDM', 'CM'], avatar: '/placeholder-avatar.png' },
+  { name: 'Joshua Kimmich', age: 29, positions: ['CDM', 'RB'], avatar: '/placeholder-avatar.png' },
+  { name: 'Alphonso Davies', age: 23, positions: ['LB'], avatar: '/alphonso.jpg' },
+  { name: 'Jamal Musiala', age: 21, positions: ['CAM', 'CM'], avatar: '/placeholder-avatar.png' },
+  { name: 'Phil Foden', age: 23, positions: ['LW', 'CAM'], avatar: '/placeholder-avatar.png' },
+  { name: 'Trent Alexander-Arnold', age: 25, positions: ['RB', 'CM'], avatar: '/placeholder-avatar.png' },
+  { name: 'João Cancelo', age: 29, positions: ['RB', 'LB'], avatar: '/placeholder-avatar.png' },
+  { name: 'Gavi', age: 19, positions: ['CM'], avatar: '/placeholder-avatar.png' },
+  // Add more as needed
+];
 
-function generateFakePlayer(idx: number) {
-  const positions = getRandomPositions();
-  const age = getRandomAge();
+function getRealPlayer(idx: number) {
+  const p = REAL_PLAYERS[idx % REAL_PLAYERS.length];
   return {
-    name: getRandomName(),
-    positions,
-    age: age < 21 ? 'U18-U21' : age < 24 ? 'U22-U24' : age < 30 ? 'Senior' : 'Veteran',
-    rawAge: age,
+    name: p.name,
+    positions: p.positions,
+    age: p.age < 21 ? 'U18-U21' : p.age < 24 ? 'U22-U24' : p.age < 30 ? 'Senior' : 'Veteran',
+    rawAge: p.age,
     video: '', // Placeholder
-    avatar: getRandomAvatar(),
-    positionLabel: positions.join('/'),
-    ageLabel: `${age} year old`,
+    avatar: p.avatar,
+    positionLabel: p.positions.join('/'),
+    ageLabel: `${p.age} year old`,
     likes: 100 + Math.floor(Math.random() * 1000),
     liked: false,
     setLiked: () => {},
@@ -108,10 +113,42 @@ function generateFakePlayer(idx: number) {
     setComments: () => {},
     showComments: false,
     setShowComments: () => {},
-    displayName: getRandomName(),
-    id: `fake-${idx}`,
+    displayName: p.name,
+    id: `real-list-${idx}`,
   };
 }
+
+const [realListPlayers, setRealListPlayers] = useState(() => {
+  const arr = [];
+  for (let i = 0; i < 40; ++i) arr.push(getRealPlayer(i));
+  return arr;
+});
+const [loadingMore, setLoadingMore] = useState(false);
+
+const loadMorePlayers = useCallback(() => {
+  setLoadingMore(true);
+  setTimeout(() => {
+    setRealListPlayers(prev => {
+      const next = [...prev];
+      for (let i = 0; i < 20; ++i) next.push(getRealPlayer(prev.length + i));
+      return next;
+    });
+    setLoadingMore(false);
+  }, 500);
+}, []);
+
+useEffect(() => {
+  function onScroll() {
+    if (
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 300 &&
+      !loadingMore
+    ) {
+      loadMorePlayers();
+    }
+  }
+  window.addEventListener('scroll', onScroll);
+  return () => window.removeEventListener('scroll', onScroll);
+}, [loadingMore, loadMorePlayers]);
 
 export default function FeedPage() {
   const [activeTab, setActiveTab] = useState<'following' | 'discover'>('following');
@@ -125,83 +162,9 @@ export default function FeedPage() {
   const [showComments2, setShowComments2] = useState(false);
   const router = useRouter();
   const { filters, removeFilter } = useFilterContext();
-
-  // The vertical offset for the icons should match the vertical center of the Following/Discover tabs
   const iconTop = 62; // px, adjust as needed for perfect alignment
 
-  // Player data for filtering
-  const players = [
-    {
-      name: 'Pedro Sousa',
-      positions: ['CM', 'CAM', 'CF', 'CDM', 'Senior'],
-      age: 'Senior',
-      video: '/pedro-clip.mp4',
-      avatar: '/pedro.jpg',
-      positionLabel: 'CM/CAM',
-      ageLabel: '21 year old',
-      likes: likes1,
-      liked: liked1,
-      setLiked: setLiked1,
-      setLikes: setLikes1,
-      comments: comments1,
-      setComments: setComments1,
-      showComments: showComments1,
-      setShowComments: setShowComments1,
-      displayName: 'Pedro Sousa',
-    },
-    {
-      name: 'Alphonso Davies',
-      positions: ['LB', 'Senior'],
-      age: 'Senior',
-      video: '/alphonso-clip.mp4',
-      avatar: '/alphonso.jpg',
-      positionLabel: 'LB',
-      ageLabel: '23 year old',
-      likes: likes2,
-      liked: liked2,
-      setLiked: setLiked2,
-      setLikes: setLikes2,
-      comments: comments2,
-      setComments: setComments2,
-      showComments: showComments2,
-      setShowComments: setShowComments2,
-      displayName: 'Alphonso Davies',
-    },
-  ];
-
-  const [fakePlayers, setFakePlayers] = useState(() => {
-    const arr = [];
-    for (let i = 0; i < 20; ++i) arr.push(generateFakePlayer(i));
-    return arr;
-  });
-  const [loadingMore, setLoadingMore] = useState(false);
-
-  const loadMorePlayers = useCallback(() => {
-    setLoadingMore(true);
-    setTimeout(() => {
-      setFakePlayers(prev => {
-        const next = [...prev];
-        for (let i = 0; i < 20; ++i) next.push(generateFakePlayer(prev.length + i));
-        return next;
-      });
-      setLoadingMore(false);
-    }, 500);
-  }, []);
-
-  useEffect(() => {
-    function onScroll() {
-      if (
-        window.innerHeight + window.scrollY >= document.body.offsetHeight - 300 &&
-        !loadingMore
-      ) {
-        loadMorePlayers();
-      }
-    }
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [loadingMore, loadMorePlayers]);
-
-  // Merge real and fake players
+  // Merge real and infinite real-list players
   const allPlayers = [
     {
       name: 'Pedro Sousa',
@@ -241,7 +204,7 @@ export default function FeedPage() {
       displayName: 'Alphonso Davies',
       id: 'real-alphonso',
     },
-    ...fakePlayers,
+    ...realListPlayers,
   ];
 
   // Filtering logic (same as before, but use allPlayers)
