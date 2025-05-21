@@ -25,7 +25,7 @@ export default function ConfigurationsPage() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: 48, position: 'relative' }}>
+    <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: 48, position: 'relative', overflowY: 'auto', paddingBottom: 100 }}>
       {/* X button to exit */}
       <button onClick={() => router.push('/feed')} style={{ position: 'absolute', top: 24, right: 24, background: 'none', border: 'none', fontSize: 32, color: '#888', cursor: 'pointer', zIndex: 10 }}>✕</button>
       <div style={{ width: 340, background: '#f5f5f5', borderRadius: 12, padding: 24, marginBottom: 32, boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
