@@ -48,7 +48,7 @@ export default function LoginPage() {
         <div className="flex justify-between w-full text-xl font-bold text-gray-900 mb-12">
           <Link href="/logincoach" className="hover:underline">As a Coach</Link>
           <Link href="/loginplayer" className="hover:underline">As a Player</Link>
-          <a href="#" className="hover:underline">As an Agent</a>
+          <Link href="/loginagent" className="hover:underline">As an Agent</Link>
         </div>
       </div>
       <footer className="flex justify-between w-full max-w-lg text-sm text-blue-700 mt-auto mb-4 px-2">
