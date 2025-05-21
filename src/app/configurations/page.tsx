@@ -84,6 +84,40 @@ export default function ConfigurationsPage() {
           {selectedAge ? `Selected: ${selectedAge}` : 'No age group selected'}
         </div>
       </div>
+      {/* Apply button box */}
+      {(selectedPositions.length > 0 || selectedAge) && (
+        <div style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          background: 'white',
+          padding: '16px 24px',
+          boxShadow: '0 -2px 12px rgba(0,0,0,0.06)',
+          display: 'flex',
+          justifyContent: 'center',
+          zIndex: 100
+        }}>
+          <button
+            onClick={() => router.push('/feed')}
+            style={{
+              background: '#222',
+              color: 'white',
+              border: 'none',
+              borderRadius: 8,
+              padding: '12px 32px',
+              fontSize: 16,
+              fontWeight: 600,
+              cursor: 'pointer',
+              width: '100%',
+              maxWidth: 340,
+              transition: 'all 0.15s',
+            }}
+          >
+            Apply
+          </button>
+        </div>
+      )}
     </div>
   );
 } 
