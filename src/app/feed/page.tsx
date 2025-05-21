@@ -329,7 +329,12 @@ export default function FeedPage() {
                 </div>
               )}
               <div style={{ display: 'flex', alignItems: 'center', width: '99%', maxWidth: 700, margin: '0 auto', marginTop: 8, justifyContent: 'flex-start', gap: 18 }}>
-                <Heart liked={player.liked} onClick={() => player.setLiked(liked => { player.setLikes(count => liked ? count - 1 : count + 1); return !liked; })} />
+                <Heart liked={player.liked} onClick={() => {
+                  player.setLiked(liked => {
+                    player.setLikes(count => liked ? count - 1 : count + 1);
+                    return !liked;
+                  });
+                }} />
                 <span style={{ fontSize: 24, verticalAlign: 'middle', cursor: 'pointer' }} onClick={() => player.setShowComments && player.setShowComments(true)}>💬</span>
                 <span style={{ fontSize: 24, verticalAlign: 'middle' }}>🔗</span>
               </div>
