@@ -77,6 +77,16 @@ export default function LoginPlayer() {
   const [showPhoneCountryDropdown, setShowPhoneCountryDropdown] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
+
+  // For calendar popup
+  const currentYear = new Date().getFullYear();
+  const days = Array.from({ length: 31 }, (_, i) => (i + 1).toString().padStart(2, '0'));
+  const months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+  const years = Array.from({ length: currentYear - 1950 + 1 }, (_, i) => (1950 + i).toString());
 
   function handleGenderSelect(value: string) {
     setGender(value);
@@ -155,6 +165,7 @@ export default function LoginPlayer() {
               className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0"
               value={password}
               onChange={e => setPassword(e.target.value)}
+              autoComplete="new-password"
             />
             <button
               type="button"
@@ -172,6 +183,7 @@ export default function LoginPlayer() {
               className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0"
               value={confirmPassword}
               onChange={e => setConfirmPassword(e.target.value)}
+              autoComplete="new-password"
             />
             <button
               type="button"
@@ -248,7 +260,26 @@ export default function LoginPlayer() {
             <input type="text" maxLength={2} value={dob.month} onChange={e => setDob({ ...dob, month: e.target.value.replace(/\D/g, '').slice(0, 2) })} className="w-12 px-2 bg-gray-100 text-gray-700 border-none focus:outline-none focus:ring-0 text-center" placeholder="MM" />
             <span className="text-gray-400 text-xl">/</span>
             <input type="text" maxLength={4} value={dob.year} onChange={e => setDob({ ...dob, year: e.target.value.replace(/\D/g, '').slice(0, 4) })} className="w-16 px-2 bg-gray-100 text-gray-700 border-none focus:outline-none focus:ring-0 text-center" placeholder="YYYY" />
-            <span className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400">📅</span>
+            <button type="button" className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400" onClick={() => setShowCalendar(v => !v)}>📅</button>
+            {showCalendar && (
+              <div className="absolute z-20 top-12 left-0 bg-white border border-gray-300 rounded shadow-lg flex gap-2 p-2">
+                <div className="flex flex-col max-h-48 overflow-y-auto">
+                  {days.map(day => (
+                    <button key={day} type="button" className="px-2 py-1 hover:bg-blue-100 text-left" onClick={() => { setDob(d => ({ ...d, day })); setShowCalendar(false); }}>{day}</button>
+                  ))}
+                </div>
+                <div className="flex flex-col max-h-48 overflow-y-auto">
+                  {months.map((month, idx) => (
+                    <button key={month} type="button" className="px-2 py-1 hover:bg-blue-100 text-left" onClick={() => { setDob(d => ({ ...d, month: (idx + 1).toString().padStart(2, '0') })); setShowCalendar(false); }}>{month}</button>
+                  ))}
+                </div>
+                <div className="flex flex-col max-h-48 overflow-y-auto">
+                  {years.map(year => (
+                    <button key={year} type="button" className="px-2 py-1 hover:bg-blue-100 text-left" onClick={() => { setDob(d => ({ ...d, year })); setShowCalendar(false); }}>{year}</button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
         <div>
