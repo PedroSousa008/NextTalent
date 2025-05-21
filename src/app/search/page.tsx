@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import BottomNav from '../feed/BottomNav';
 
 const LEAGUES = [
   { name: 'Premier League', logo: '/leagues/premier-league.png' },
@@ -52,28 +53,7 @@ export default function SearchPage() {
         ))}
       </div>
       {/* Bottom Navigation Bar */}
-      <div style={{ position: 'fixed', left: 0, right: 0, bottom: 0, background: '#f5f6fa', borderTop: '1px solid #eee', display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: 64, zIndex: 100 }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb', opacity: 0.6 }}>
-          <span role="img" aria-label="feed" style={{ fontSize: 28, opacity: 0.6 }}>⚽️</span>
-          <span style={{ fontSize: 14, opacity: 0.6 }}>Feed</span>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: 'black', opacity: 1 }}>
-          <span role="img" aria-label="search" style={{ fontSize: 28, opacity: 1 }}>🔍</span>
-          <span style={{ fontSize: 14, opacity: 1 }}>Search</span>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb', opacity: 0.6 }}>
-          <span role="img" aria-label="upload" style={{ fontSize: 28, opacity: 0.6 }}>📷</span>
-          <span style={{ fontSize: 14, opacity: 0.6 }}>Upload</span>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb', opacity: 0.6 }}>
-          <span role="img" aria-label="notifications" style={{ fontSize: 28, opacity: 0.6 }}>🔔</span>
-          <span style={{ fontSize: 14, opacity: 0.6 }}>Notifications</span>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb', opacity: 0.6 }}>
-          <span role="img" aria-label="profile" style={{ fontSize: 28, opacity: 0.6 }}>👤</span>
-          <span style={{ fontSize: 14, opacity: 0.6 }}>Profile</span>
-        </div>
-      </div>
+      <BottomNav active='search' />
     </div>
   );
 } 
