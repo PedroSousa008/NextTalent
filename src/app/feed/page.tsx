@@ -81,7 +81,7 @@ export default function FeedPage() {
           <span style={{ fontSize: 16, color: 'black' }}>Age: 21 year old</span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px 0 0 0' }}>
-          <video src="/pedro-clip.mp4" controls style={{ width: '99%', maxWidth: 700, borderRadius: 12, background: '#eee', marginBottom: 0 }} poster="/pedro-thumb.jpg" />
+          <video src="/pedro-clip.mp4" controls loop autoPlay muted style={{ width: '99%', maxWidth: 700, borderRadius: 12, background: '#eee', marginBottom: 0 }} />
           <div style={{ display: 'flex', alignItems: 'center', width: '99%', maxWidth: 700, margin: '0 auto', marginTop: 8, justifyContent: 'flex-start', gap: 18 }}>
             <Heart liked={liked1} onClick={() => setLiked1(l => !l)} />
             <span style={{ fontSize: 24, verticalAlign: 'middle' }}>💬</span>
@@ -105,7 +105,7 @@ export default function FeedPage() {
           <span style={{ fontSize: 16, color: 'black' }}>Age: 23 year old</span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px 0 0 0' }}>
-          <video src="/alphonso-clip.mp4" controls style={{ width: '99%', maxWidth: 700, borderRadius: 12, background: '#eee', marginBottom: 0 }} poster="/alphonso-thumb.jpg" />
+          <video src="/alphonso-clip.mp4" controls loop autoPlay muted style={{ width: '99%', maxWidth: 700, borderRadius: 12, background: '#eee', marginBottom: 0 }} />
           <div style={{ display: 'flex', alignItems: 'center', width: '99%', maxWidth: 700, margin: '0 auto', marginTop: 8, justifyContent: 'flex-start', gap: 18 }}>
             <Heart liked={liked2} onClick={() => setLiked2(l => !l)} />
             <span style={{ fontSize: 24, verticalAlign: 'middle' }}>💬</span>
