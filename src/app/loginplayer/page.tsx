@@ -215,9 +215,6 @@ export default function LoginPlayer() {
           style={{ objectFit: 'contain' }}
           onClick={() => router.push('/')}
         />
-      </div>
-      {/* Title and tabs */}
-      <div className="w-full max-w-3xl flex flex-col items-center mb-8">
         <h1 className="text-4xl font-serif font-semibold mb-2 text-black">Create a New Account</h1>
         <div className="flex justify-center gap-12 text-xl mb-6">
           <a href="/loginagent" className="text-gray-400 cursor-pointer hover:underline">Agent</a>
