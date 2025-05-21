@@ -262,20 +262,20 @@ export default function LoginPlayer() {
             <input type="text" maxLength={4} value={dob.year} onChange={e => setDob({ ...dob, year: e.target.value.replace(/\D/g, '').slice(0, 4) })} className="w-16 px-2 bg-gray-100 text-gray-700 border-none focus:outline-none focus:ring-0 text-center" placeholder="YYYY" />
             <button type="button" className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400" onClick={() => setShowCalendar(v => !v)}>📅</button>
             {showCalendar && (
-              <div className="absolute z-20 top-12 left-0 bg-white border border-gray-300 rounded shadow-lg flex gap-2 p-2">
+              <div className="absolute z-20 top-12 left-0 bg-black border border-gray-300 rounded shadow-lg flex gap-2 p-2">
                 <div className="flex flex-col max-h-48 overflow-y-auto">
                   {days.map(day => (
-                    <button key={day} type="button" className="px-2 py-1 hover:bg-blue-100 text-left" onClick={() => { setDob(d => ({ ...d, day })); setShowCalendar(false); }}>{day}</button>
+                    <button key={day} type="button" className="px-2 py-1 hover:bg-blue-100 text-left text-white" onClick={() => { setDob(d => ({ ...d, day })); setShowCalendar(false); }}>{day}</button>
                   ))}
                 </div>
                 <div className="flex flex-col max-h-48 overflow-y-auto">
                   {months.map((month, idx) => (
-                    <button key={month} type="button" className="px-2 py-1 hover:bg-blue-100 text-left" onClick={() => { setDob(d => ({ ...d, month: (idx + 1).toString().padStart(2, '0') })); setShowCalendar(false); }}>{month}</button>
+                    <button key={month} type="button" className="px-2 py-1 hover:bg-blue-100 text-left text-white" onClick={() => { setDob(d => ({ ...d, month: (idx + 1).toString().padStart(2, '0') })); setShowCalendar(false); }}>{month}</button>
                   ))}
                 </div>
                 <div className="flex flex-col max-h-48 overflow-y-auto">
                   {years.map(year => (
-                    <button key={year} type="button" className="px-2 py-1 hover:bg-blue-100 text-left" onClick={() => { setDob(d => ({ ...d, year })); setShowCalendar(false); }}>{year}</button>
+                    <button key={year} type="button" className="px-2 py-1 hover:bg-blue-100 text-left text-white" onClick={() => { setDob(d => ({ ...d, year })); setShowCalendar(false); }}>{year}</button>
                   ))}
                 </div>
               </div>
