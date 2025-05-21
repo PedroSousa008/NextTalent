@@ -52,7 +52,7 @@ function CommentsModal({ open, onClose, comments, onAddComment, onReply, onLike,
           {comments.length === 0 ? (
             <div style={{ color: '#888', textAlign: 'center', fontSize: 18 }}>No comments yet.</div>
           ) : (
-            comments.map((c, i) => (
+            comments.map((c) => (
               <CommentItem key={c.id} comment={c} user={user} onReply={onReply} onLike={onLike} setReplyTo={setReplyTo} replyTo={replyTo} replyValue={replyValue} setReplyValue={setReplyValue} />
             ))
           )}
@@ -111,7 +111,7 @@ function CommentItem({ comment, user, onReply, onLike, setReplyTo, replyTo, repl
         </div>
         {/* Replies */}
         <div style={{ marginLeft: 24, marginTop: 6 }}>
-          {comment.replies.map((reply, idx) => (
+          {comment.replies.map((reply) => (
             <div key={reply.id} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: 8 }}>
               <img src={reply.user.image} alt="profile" style={{ width: 28, height: 28, borderRadius: '50%', marginRight: 8 }} />
               <div>
