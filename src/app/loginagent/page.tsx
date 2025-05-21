@@ -97,12 +97,11 @@ export default function LoginAgent() {
         </div>
       </div>
       <form className="w-full max-w-3xl grid grid-cols-2 gap-x-8 gap-y-4 mb-8" onSubmit={handleSubmit}>
-        {/* Left Side */}
+        {/* Row 1 */}
         <div>
           <label className="block text-gray-500 mb-1">First Name</label>
           <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" value={form.firstName} onChange={e => setForm({ ...form, firstName: e.target.value })} />
         </div>
-        {/* Right Side: Specialization */}
         <div>
           <label className="block text-gray-500 mb-1">Specialization</label>
           <div className="relative">
@@ -128,22 +127,16 @@ export default function LoginAgent() {
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▼</span>
           </div>
         </div>
-        {/* Right Side: Years of Experience */}
-        <div>
-          <label className="block text-gray-500 mb-1">Years of Experience</label>
-          <input type="number" min="0" className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" value={form.experienceYears} onChange={e => setForm({ ...form, experienceYears: e.target.value.replace(/[^\d]/g, '') })} />
-        </div>
-        {/* Left Side */}
+        {/* Row 2 */}
         <div>
           <label className="block text-gray-500 mb-1">Last Name</label>
           <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" value={form.lastName} onChange={e => setForm({ ...form, lastName: e.target.value })} />
         </div>
-        {/* Right Side */}
         <div>
           <label className="block text-gray-500 mb-1">Agency Name</label>
           <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" value={form.agencyName} onChange={e => setForm({ ...form, agencyName: e.target.value })} />
         </div>
-        {/* Left Side */}
+        {/* Row 3 */}
         <div>
           <label className="block text-gray-500 mb-1">Date of Birthday</label>
           <div className="flex items-center bg-gray-100 border-0 border-b border-gray-300 rounded-none px-2 py-2 mb-2 relative">
@@ -174,17 +167,20 @@ export default function LoginAgent() {
             )}
           </div>
         </div>
-        {/* Right Side */}
         <div>
           <label className="block text-gray-500 mb-1">Agent License Number</label>
           <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" value={form.agencyLicense} onChange={e => setForm({ ...form, agencyLicense: e.target.value })} />
         </div>
-        {/* Left Side */}
+        {/* Row 4 */}
         <div>
           <label className="block text-gray-500 mb-1">Gender</label>
           <div className="relative">{(!gender || showGenderDropdown) ? (<select value={gender} onChange={e => handleGenderSelect(e.target.value)} onBlur={() => setShowGenderDropdown(false)} className="w-full px-4 py-2 pr-8 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 appearance-none" autoFocus={showGenderDropdown}><option value="" disabled>I am…</option><option value="Male">Male</option><option value="Female">Female</option></select>) : (<div className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none mb-2 flex items-center text-left font-medium cursor-pointer" onClick={() => setShowGenderDropdown(true)}>I am {gender}</div>)}<span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▼</span></div>
         </div>
-        {/* Right Side */}
+        <div>
+          <label className="block text-gray-500 mb-1">Years of Experience</label>
+          <input type="number" min="0" className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" value={form.experienceYears} onChange={e => setForm({ ...form, experienceYears: e.target.value.replace(/[^\d]/g, '') })} />
+        </div>
+        {/* Row 5 */}
         <div>
           <label className="block text-gray-500 mb-1">Nationality</label>
           <div className="relative flex items-center">
@@ -207,12 +203,11 @@ export default function LoginAgent() {
             )}
           </div>
         </div>
-        {/* Right Side */}
         <div>
           <label className="block text-gray-500 mb-1">NIF</label>
           <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" value={form.nif} onChange={e => setForm({ ...form, nif: e.target.value.replace(/[^\d]/g, '') })} />
         </div>
-        {/* Left Side */}
+        {/* Row 6 */}
         <div>
           <label className="block text-gray-500 mb-1">Phone Number</label>
           <div className="relative flex items-center">
@@ -236,26 +231,22 @@ export default function LoginAgent() {
             <input className="w-full pl-4 pr-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 text-center ml-2" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value.replace(/[^\d]/g, '') })} />
           </div>
         </div>
-        {/* Right Side */}
         <div>
           <label className="block text-gray-500 mb-1">CC nº</label>
           <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" value={form.cc} onChange={e => setForm({ ...form, cc: e.target.value.replace(/[^\d]/g, '') })} />
         </div>
-        {/* Left Side */}
+        {/* Row 7 */}
         <div>
           <label className="block text-gray-500 mb-1">Email</label>
           <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
         </div>
-        {/* Right Side */}
         <div>
           <label className="block text-gray-500 mb-1">User SNS nº</label>
           <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" value={form.sns} onChange={e => setForm({ ...form, sns: e.target.value.replace(/[^\d]/g, '') })} />
         </div>
         {/* Full width row for Create Your Account button */}
         <div className="col-span-2 flex justify-center mt-8">
-          <button type="submit" className="w-1/2 bg-gray-200 text-black py-3 rounded-none text-xl font-bold shadow-sm border-0 flex items-center justify-center" disabled={!isFormComplete()}>
-            Create Your Account
-          </button>
+          <button type="submit" className="w-1/2 bg-gray-200 text-black py-3 rounded-none text-xl font-bold shadow-sm border-0 flex items-center justify-center" disabled={!isFormComplete()}>Create Your Account</button>
         </div>
       </form>
     </div>
