@@ -29,7 +29,7 @@ export default function SearchPage() {
           />
         </div>
         <span style={{ fontSize: 26, color: '#f5b800', cursor: 'pointer' }}>★</span>
-        <span style={{ fontSize: 26, color: '#888', cursor: 'pointer' }}>⚙️</span>
+        <Image src="/configurations.png" alt="Configurations" width={26} height={26} style={{ cursor: 'pointer' }} />
       </div>
       {/* Tabs */}
       <div style={{ width: '100%', maxWidth: 500, display: 'flex', alignItems: 'center', marginTop: 18, marginBottom: 0, padding: '0 16px' }}>
