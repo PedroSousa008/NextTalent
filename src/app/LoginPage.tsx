@@ -46,7 +46,7 @@ export default function LoginPage() {
           <span className="text-blue-700 text-2xl font-semibold">Create a new account</span>
         </div>
         <div className="flex justify-between w-full text-xl font-bold text-gray-900 mb-12">
-          <a href="#" className="hover:underline">As a Coach</a>
+          <Link href="/logincoach" className="hover:underline">As a Coach</Link>
           <Link href="/loginplayer" className="hover:underline">As a Player</Link>
           <a href="#" className="hover:underline">As an Agent</a>
         </div>
