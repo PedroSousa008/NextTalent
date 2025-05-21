@@ -85,37 +85,75 @@ export default function FeedPage() {
   // The vertical offset for the icons should match the vertical center of the Following/Discover tabs
   const iconTop = 62; // px, adjust as needed for perfect alignment
 
-  function toggleLike1() {
-    setLiked1(liked => {
-      setLikes1(count => liked ? count - 1 : count + 1);
-      return !liked;
-    });
-  }
-  function toggleLike2() {
-    setLiked2(liked => {
-      setLikes2(count => liked ? count - 1 : count + 1);
-      return !liked;
-    });
-  }
+  // Player data for filtering
+  const players = [
+    {
+      name: 'Pedro Sousa',
+      positions: ['CM', 'CAM', 'CF', 'CDM', 'Senior'],
+      age: 'Senior',
+      video: '/pedro-clip.mp4',
+      avatar: '/pedro.jpg',
+      positionLabel: 'CM/CAM',
+      ageLabel: '21 year old',
+      likes: likes1,
+      liked: liked1,
+      setLiked: setLiked1,
+      setLikes: setLikes1,
+      comments: comments1,
+      setComments: setComments1,
+      showComments: showComments1,
+      setShowComments: setShowComments1,
+      displayName: 'Pedro Sousa',
+    },
+    {
+      name: 'Alphonso Davies',
+      positions: ['LB', 'Senior'],
+      age: 'Senior',
+      video: '/alphonso-clip.mp4',
+      avatar: '/alphonso.jpg',
+      positionLabel: 'LB',
+      ageLabel: '23 year old',
+      likes: likes2,
+      liked: liked2,
+      setLiked: setLiked2,
+      setLikes: setLikes2,
+      comments: comments2,
+      setComments: setComments2,
+      showComments: showComments2,
+      setShowComments: setShowComments2,
+      displayName: 'Alphonso Davies',
+    },
+  ];
+
+  // Filtering logic
+  const filteredPlayers = players.filter(player => {
+    // If no filters, show all
+    if (filters.positions.length === 0 && !filters.age) return true;
+    // Must match all selected positions
+    const matchesPositions = filters.positions.every(pos => player.positions.includes(pos));
+    // Must match age if selected
+    const matchesAge = !filters.age || player.age === filters.age;
+    return matchesPositions && matchesAge;
+  });
 
   return (
     <div style={{ background: 'white', minHeight: '100vh', fontFamily: 'inherit', position: 'relative' }}>
       {/* Absolute top left and right icons, aligned with Following/Discover tabs */}
-      <div style={{ position: 'absolute', top: iconTop, left: 16, zIndex: 10, display: 'flex', alignItems: 'center' }}>
-        <div onClick={() => router.push('/configurations')} style={{ cursor: 'pointer', marginRight: 4 }}>
+      <div style={{ position: 'absolute', top: iconTop, left: 16, zIndex: 10, display: 'flex', alignItems: 'flex-end', height: 32 }}>
+        <div onClick={() => router.push('/configurations')} style={{ cursor: 'pointer', marginRight: 2 }}>
           <Image src="/configurations.png" alt="Configurations" width={32} height={32} />
         </div>
-        <div style={{ display: 'flex', gap: 3, alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: 2, alignItems: 'flex-end', marginBottom: 0 }}>
           {filters.positions.map(pos => (
-            <div key={pos} style={{ display: 'flex', alignItems: 'center', background: '#eee', borderRadius: 6, padding: '0 4px', fontSize: 11, color: '#444', marginRight: 2, height: 18 }}>
+            <div key={pos} style={{ display: 'flex', alignItems: 'center', background: '#eee', borderRadius: 4, padding: '0 3px', fontSize: 9, color: '#444', marginRight: 1, height: 13 }}>
               {pos}
-              <span style={{ marginLeft: 2, cursor: 'pointer', fontWeight: 700, fontSize: 12 }} onClick={e => { e.stopPropagation(); removeFilter('positions', pos); }}>✕</span>
+              <span style={{ marginLeft: 1, cursor: 'pointer', fontWeight: 700, fontSize: 10 }} onClick={e => { e.stopPropagation(); removeFilter('positions', pos); }}>✕</span>
             </div>
           ))}
           {filters.age && (
-            <div style={{ display: 'flex', alignItems: 'center', background: '#eee', borderRadius: 6, padding: '0 4px', fontSize: 11, color: '#444', marginRight: 2, height: 18 }}>
+            <div style={{ display: 'flex', alignItems: 'center', background: '#eee', borderRadius: 4, padding: '0 3px', fontSize: 9, color: '#444', marginRight: 1, height: 13 }}>
               {filters.age}
-              <span style={{ marginLeft: 2, cursor: 'pointer', fontWeight: 700, fontSize: 12 }} onClick={e => { e.stopPropagation(); removeFilter('age'); }}>✕</span>
+              <span style={{ marginLeft: 1, cursor: 'pointer', fontWeight: 700, fontSize: 10 }} onClick={e => { e.stopPropagation(); removeFilter('age'); }}>✕</span>
             </div>
           )}
         </div>
@@ -156,70 +194,44 @@ export default function FeedPage() {
           </button>
         </div>
       </div>
-      {/* Feed Card 1 */}
-      <div style={{ margin: '32px 0 0 0', padding: '0 0 32px 0', borderBottom: '1px solid #eee' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px' }}>
-          <span style={{ fontSize: 16, color: 'black' }}>Position: CM/CAM</span>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
-            <Image src="/pedro.jpg" alt="Pedro Sousa" width={56} height={56} style={{ borderRadius: '50%' }} />
-            <span style={{ fontWeight: 500, fontSize: 18, marginTop: 4, color: 'black' }}>Pedro Sousa</span>
+      {/* Feed Cards - filtered */}
+      {filteredPlayers.length === 0 ? (
+        <div style={{ textAlign: 'center', color: '#888', marginTop: 60, fontSize: 16 }}>No players match your filters.</div>
+      ) : (
+        filteredPlayers.map((player, idx) => (
+          <div key={player.name} style={{ margin: '32px 0 0 0', padding: '0 0 32px 0', borderBottom: '1px solid #eee' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px' }}>
+              <span style={{ fontSize: 16, color: 'black' }}>Position: {player.positionLabel}</span>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+                <Image src={player.avatar} alt={player.displayName} width={56} height={56} style={{ borderRadius: '50%' }} />
+                <span style={{ fontWeight: 500, fontSize: 18, marginTop: 4, color: 'black' }}>{player.displayName}</span>
+              </div>
+              <span style={{ fontSize: 16, color: 'black' }}>Age: {player.ageLabel}</span>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px 0 0 0' }}>
+              <video src={player.video} controls loop autoPlay muted style={{ width: '99%', maxWidth: 700, borderRadius: 12, background: '#eee', marginBottom: 0 }} />
+              <div style={{ display: 'flex', alignItems: 'center', width: '99%', maxWidth: 700, margin: '0 auto', marginTop: 8, justifyContent: 'flex-start', gap: 18 }}>
+                <Heart liked={player.liked} onClick={() => player.setLiked(liked => { player.setLikes(count => liked ? count - 1 : count + 1); return !liked; })} />
+                <span style={{ fontSize: 24, verticalAlign: 'middle', cursor: 'pointer' }} onClick={() => player.setShowComments(true)}>💬</span>
+                <span style={{ fontSize: 24, verticalAlign: 'middle' }}>🔗</span>
+              </div>
+            </div>
+            <div style={{ padding: '0 16px', marginTop: 8 }}>
+              <span style={{ fontSize: 14, color: '#222' }}>{player.likes} people liked</span>
+              <div style={{ fontWeight: 600, fontSize: 16, color: 'black' }}>{player.displayName}{player.name === 'Pedro Sousa' ? ': ' : ''}<span role="img" aria-label="rocket">{player.name === 'Pedro Sousa' ? '🚀' : ''}</span></div>
+              <span style={{ fontSize: 14, color: '#222', cursor: 'pointer' }} onClick={() => router.push(`/comments/${idx + 1}`)}>
+                See all {player.comments.length} comment{player.comments.length !== 1 ? 's' : ''}
+              </span>
+            </div>
+            <CommentsModal
+              open={player.showComments}
+              onClose={() => player.setShowComments(false)}
+              comments={player.comments}
+              onAddComment={c => player.setComments(list => [...list, c])}
+            />
           </div>
-          <span style={{ fontSize: 16, color: 'black' }}>Age: 21 year old</span>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px 0 0 0' }}>
-          <video src="/pedro-clip.mp4" controls loop autoPlay muted style={{ width: '99%', maxWidth: 700, borderRadius: 12, background: '#eee', marginBottom: 0 }} />
-          <div style={{ display: 'flex', alignItems: 'center', width: '99%', maxWidth: 700, margin: '0 auto', marginTop: 8, justifyContent: 'flex-start', gap: 18 }}>
-            <Heart liked={liked1} onClick={toggleLike1} />
-            <span style={{ fontSize: 24, verticalAlign: 'middle', cursor: 'pointer' }} onClick={() => setShowComments1(true)}>💬</span>
-            <span style={{ fontSize: 24, verticalAlign: 'middle' }}>🔗</span>
-          </div>
-        </div>
-        <div style={{ padding: '0 16px', marginTop: 8 }}>
-          <span style={{ fontSize: 14, color: '#222' }}>{likes1} people liked</span>
-          <div style={{ fontWeight: 600, fontSize: 16, color: 'black' }}>Pedro Sousa: <span role="img" aria-label="rocket">🚀</span></div>
-          <span style={{ fontSize: 14, color: '#222', cursor: 'pointer' }} onClick={() => router.push('/comments/1')}>
-            See all {comments1.length} comment{comments1.length !== 1 ? 's' : ''}
-          </span>
-        </div>
-        <CommentsModal
-          open={showComments1}
-          onClose={() => setShowComments1(false)}
-          comments={comments1}
-          onAddComment={c => setComments1(list => [...list, c])}
-        />
-      </div>
-      {/* Feed Card 2 */}
-      <div style={{ margin: '32px 0 0 0', padding: '0 0 32px 0', borderBottom: '1px solid #eee' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px' }}>
-          <span style={{ fontSize: 16, color: 'black' }}>Position: LB</span>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
-            <Image src="/alphonso.jpg" alt="Alphonso Davies" width={56} height={56} style={{ borderRadius: '50%' }} />
-            <span style={{ fontWeight: 500, fontSize: 18, marginTop: 4, color: 'black' }}>Alphonso Davies</span>
-          </div>
-          <span style={{ fontSize: 16, color: 'black' }}>Age: 23 year old</span>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px 0 0 0' }}>
-          <video src="/alphonso-clip.mp4" controls loop autoPlay muted style={{ width: '99%', maxWidth: 700, borderRadius: 12, background: '#eee', marginBottom: 0 }} />
-          <div style={{ display: 'flex', alignItems: 'center', width: '99%', maxWidth: 700, margin: '0 auto', marginTop: 8, justifyContent: 'flex-start', gap: 18 }}>
-            <Heart liked={liked2} onClick={toggleLike2} />
-            <span style={{ fontSize: 24, verticalAlign: 'middle', cursor: 'pointer' }} onClick={() => setShowComments2(true)}>💬</span>
-            <span style={{ fontSize: 24, verticalAlign: 'middle' }}>🔗</span>
-          </div>
-        </div>
-        <div style={{ padding: '0 16px', marginTop: 8 }}>
-          <span style={{ fontSize: 14, color: '#222' }}>{likes2} people liked</span>
-          <div style={{ fontWeight: 600, fontSize: 16, color: 'black' }}>Alphonso Davies</div>
-          <span style={{ fontSize: 14, color: '#222', cursor: 'pointer' }} onClick={() => router.push('/comments/2')}>
-            See all {comments2.length} comment{comments2.length !== 1 ? 's' : ''}
-          </span>
-        </div>
-        <CommentsModal
-          open={showComments2}
-          onClose={() => setShowComments2(false)}
-          comments={comments2}
-          onAddComment={c => setComments2(list => [...list, c])}
-        />
-      </div>
+        ))
+      )}
       {/* Bottom Navigation Bar */}
       <div style={{ position: 'fixed', left: 0, right: 0, bottom: 0, background: 'white', borderTop: '1px solid #eee', display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: 64 }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: 'black', opacity: 1 }}>
