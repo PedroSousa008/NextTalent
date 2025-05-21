@@ -70,10 +70,6 @@ export default function LoginCoach() {
   const [showCoachingRoleDropdown, setShowCoachingRoleDropdown] = useState(false);
   const [licenseLevels, setLicenseLevels] = useState<string[]>([]);
   const [showLicenseLevelDropdown, setShowLicenseLevelDropdown] = useState(false);
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   function handleGenderSelect(value: string) {
     setGender(value);
