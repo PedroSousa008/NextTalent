@@ -1,9 +1,11 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
 
   return (
     <div className="flex flex-col min-h-screen bg-white items-center justify-start pt-8">
@@ -13,7 +15,7 @@ export default function LoginPage() {
       </div>
       {/* Login form and content below logo */}
       <div className="w-full max-w-lg flex flex-col items-center">
-        <form className="w-full">
+        <form className="w-full" onSubmit={e => { e.preventDefault(); router.push('/success'); }}>
           <label className="block text-gray-500 text-base mb-1" htmlFor="email">Email/Phone Number</label>
           <input id="email" type="text" placeholder="" className="w-full mb-6 px-4 py-2 bg-gray-100 text-gray-700 rounded-none border-0 border-b border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-400 shadow-sm" />
 

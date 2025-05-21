@@ -84,7 +84,7 @@ export default function LoginAgent() {
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    setShowPasswordStep(true);
+    router.push('/success');
   }
 
   if (showPasswordStep) {
