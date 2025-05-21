@@ -8,14 +8,18 @@ const COUNTRIES = [
 ];
 
 const SPECIALIZATIONS = [
-  'Football',
-  'Basketball',
-  'Futsal',
-  'Handball',
-  'Volleyball',
-  'Tennis',
-  'Athletics',
-  'Other',
+  'Youth Players',
+  'Senior/Professional Players',
+  "Women's Football",
+  'Goalkeepers',
+  'Transfer Negotiation',
+  'Contract Management',
+  'Sponsorship & Endorsements',
+  'International Transfers',
+  'Player Representation',
+  'Coach Representation',
+  'Club Representation',
+  'Trail & Showcase Management',
 ];
 
 export default function LoginAgent() {
@@ -106,13 +110,9 @@ export default function LoginAgent() {
           <label className="block text-gray-500 mb-1">Specialization</label>
           <div className="relative">
             <div className="w-full px-4 py-2 pr-8 bg-gray-100 text-black border-0 border-b border-gray-300 rounded-none mb-2 flex items-center flex-wrap gap-2 cursor-pointer min-h-[44px]" onClick={() => setShowSpecializationDropdown(!showSpecializationDropdown)} tabIndex={0} onBlur={() => setShowSpecializationDropdown(false)}>
-              {specializations.length === 0 ? (
-                <span className="text-gray-400">Select one or more specializations</span>
-              ) : (
-                specializations.map(spec => (
-                  <span key={spec} className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">{spec}</span>
-                ))
-              )}
+              {specializations.map(spec => (
+                <span key={spec} className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">{spec}</span>
+              ))}
             </div>
             {showSpecializationDropdown && (
               <div className="absolute left-0 z-10 w-full bg-white border border-gray-200 rounded shadow-lg max-h-48 overflow-y-auto mt-1">
