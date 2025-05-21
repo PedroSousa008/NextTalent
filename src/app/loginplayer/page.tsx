@@ -47,204 +47,62 @@ function formatCmInput(val: string) {
 
 export default function LoginPlayer() {
   const router = useRouter();
-  const [weightUnit, setWeightUnit] = useState<'kg' | 'lbs'>('kg');
-  const [weight, setWeight] = useState('');
-  const [heightUnit, setHeightUnit] = useState<'cm' | 'ft'>('cm');
-  const [height, setHeight] = useState('');
-  const [gender, setGender] = useState('');
-  const [showGenderDropdown, setShowGenderDropdown] = useState(false);
-  const [dob, setDob] = useState({ day: '', month: '', year: '' });
-  const [positions, setPositions] = useState<string[]>([]);
-  const [showPositionDropdown, setShowPositionDropdown] = useState(false);
-  const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    club: '',
-    nif: '',
-    clubCode: '',
-    cc: '',
-    sns: '',
-    certificate: '',
-  });
-  const [showPasswordStep, setShowPasswordStep] = useState(false);
+  const [form, setForm] = useState({ email: '' });
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [nationality, setNationality] = useState(COUNTRIES.find(c => c.name === 'Portugal')!);
-  const [showNationalityDropdown, setShowNationalityDropdown] = useState(false);
-  const [phoneCountry, setPhoneCountry] = useState(COUNTRIES.find(c => c.name === 'Portugal')!);
-  const [showPhoneCountryDropdown, setShowPhoneCountryDropdown] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [showCalendar, setShowCalendar] = useState(false);
   const [loginError, setLoginError] = useState('');
 
-  // For calendar popup
-  const currentYear = new Date().getFullYear();
-  const days = Array.from({ length: 31 }, (_, i) => (i + 1).toString().padStart(2, '0'));
-  const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
-  const years = Array.from({ length: currentYear - 1950 + 1 }, (_, i) => (1950 + i).toString());
-
-  function handleGenderSelect(value: string) {
-    setGender(value);
-    setShowGenderDropdown(false);
-  }
-
-  function handlePositionToggle(pos: string) {
-    if (positions.includes(pos)) {
-      setPositions(positions.filter(p => p !== pos));
-    } else if (positions.length < 3) {
-      setPositions([...positions, pos]);
-    }
-  }
-
-  function handleWeightUnitSwitch() {
-    const newUnit = weightUnit === 'kg' ? 'lbs' : 'kg';
-    setWeight(convertWeight(weight, weightUnit, newUnit));
-    setWeightUnit(newUnit);
-  }
-
-  function handleHeightUnitSwitch() {
-    if (heightUnit === 'cm' && height) {
-      setHeight(cmToFeetInches(Number(height.replace(',', ''))));
-      setHeightUnit('ft');
-    } else if (heightUnit === 'ft' && height) {
-      setHeight(feetInchesToCm(height));
-      setHeightUnit('cm');
-    }
-  }
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setShowPasswordStep(true);
-  }
-
-  // Helper to check if all required fields are filled
-  function isFormComplete() {
-    return (
-      form.firstName &&
-      form.lastName &&
-      dob.day && dob.month && dob.year &&
-      gender &&
-      positions.length > 0 &&
-      form.club &&
-      form.clubCode &&
-      form.certificate &&
-      weight &&
-      height &&
-      form.phone &&
-      form.email &&
-      form.nif &&
-      form.cc &&
-      form.sns
-    );
-  }
-
-  if (!showPasswordStep) {
-    return (
-      <div className="flex flex-col min-h-screen bg-white items-center pt-8">
-        <img
-          src="/logo.png"
-          alt="Next Talent Logo"
-          width={320}
-          height={320}
-          className="mb-4 cursor-pointer"
-          style={{ objectFit: 'contain' }}
-          onClick={() => router.push('/')}
+  return (
+    <div className="flex flex-col min-h-screen bg-white items-center pt-8">
+      <img
+        src="/logo.png"
+        alt="Next Talent Logo"
+        width={320}
+        height={320}
+        className="mb-4 cursor-pointer"
+        style={{ objectFit: 'contain' }}
+        onClick={() => router.push('/')} />
+      <div className="w-full max-w-md flex flex-col items-center mt-8">
+        <h2 className="text-3xl font-bold mb-2">Log In</h2>
+        <input
+          type="email"
+          placeholder="Email"
+          className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-4"
+          value={form.email}
+          onChange={e => setForm({ ...form, email: e.target.value })}
         />
-        <div className="w-full max-w-md flex flex-col items-center mt-8">
-          <h2 className="text-3xl font-bold mb-2">Hello {form.firstName}!</h2>
-          <div className="text-gray-700 mb-6">{form.email} / {form.phone}</div>
-          <div className="relative w-full mb-4">
-            <input
-              type={showPassword ? 'text' : 'password'}
-              placeholder="Password"
-              className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              autoComplete="new-password"
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(v => !v)}
-              className="absolute right-2 top-1/2 -translate-y-1/2 px-2 py-1 text-gray-500 font-medium bg-transparent"
-              tabIndex={-1}
-            >
-              {showPassword ? 'Hide' : 'Show'}
-            </button>
-          </div>
-          <div className="relative w-full mb-4">
-            <input
-              type={showConfirmPassword ? 'text' : 'password'}
-              placeholder="Confirm Password"
-              className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0"
-              value={confirmPassword}
-              onChange={e => setConfirmPassword(e.target.value)}
-              autoComplete="new-password"
-            />
-            <button
-              type="button"
-              onClick={() => setShowConfirmPassword(v => !v)}
-              className="absolute right-2 top-1/2 -translate-y-1/2 px-2 py-1 text-gray-500 font-medium bg-transparent"
-              tabIndex={-1}
-            >
-              {showConfirmPassword ? 'Hide' : 'Show'}
-            </button>
-          </div>
-          <button className="w-full bg-gray-200 text-black py-3 rounded-none text-xl font-bold shadow-sm border-0 flex items-center justify-center" onClick={() => router.push('/success')}>
-            Create Your Account
-          </button>
-        </div>
-      </div>
-    );
-  } else {
-    // Login step
-    return (
-      <div className="flex flex-col min-h-screen bg-white items-center pt-8">
-        <img
-          src="/logo.png"
-          alt="Next Talent Logo"
-          width={320}
-          height={320}
-          className="mb-4 cursor-pointer"
-          style={{ objectFit: 'contain' }}
-          onClick={() => router.push('/')} />
-        <div className="w-full max-w-md flex flex-col items-center mt-8">
-          <h2 className="text-3xl font-bold mb-2">Log In</h2>
-          <input
-            type="email"
-            placeholder="Email"
-            className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-4"
-            value={form.email}
-            onChange={e => setForm({ ...form, email: e.target.value })}
-          />
+        <div className="relative w-full mb-4">
           <input
             type={showPassword ? 'text' : 'password'}
             placeholder="Password"
-            className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-4"
+            className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 pr-20"
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
           <button
-            className="w-full bg-gray-200 text-black py-3 rounded-none text-xl font-bold shadow-sm border-0 flex items-center justify-center mb-2"
-            onClick={() => {
-              if (form.email === 'sousa.2003pedro@gmail.com' && password === 'Sousa10Pedro') {
-                setLoginError('');
-                router.push('/success');
-              } else {
-                setLoginError('Incorrect email or password.');
-              }
-            }}
+            type="button"
+            onClick={() => setShowPassword(v => !v)}
+            className="absolute right-2 top-1/2 -translate-y-1/2 px-2 py-1 text-gray-500 font-medium bg-transparent"
+            tabIndex={-1}
           >
-            Log In
+            {showPassword ? 'Hide' : 'Show'}
           </button>
-          {loginError && <div className="text-red-500 text-sm mt-2">{loginError}</div>}
         </div>
+        <button
+          className="w-full bg-gray-200 text-black py-3 rounded-none text-xl font-bold shadow-sm border-0 flex items-center justify-center mb-2"
+          onClick={() => {
+            if (form.email === 'sousa.2003pedro@gmail.com' && password === 'Sousa10Pedro') {
+              setLoginError('');
+              router.push('/success');
+            } else {
+              setLoginError('Incorrect email or password.');
+            }
+          }}
+        >
+          Log In
+        </button>
+        {loginError && <div className="text-red-500 text-sm mt-2">{loginError}</div>}
       </div>
-    );
-  }
+    </div>
+  );
 } 
