@@ -54,7 +54,6 @@ export default function LoginAgent() {
   const years = Array.from({ length: currentYear - 1950 + 1 }, (_, i) => (1950 + i).toString());
   const [specializations, setSpecializations] = useState<string[]>([]);
   const [showSpecializationDropdown, setShowSpecializationDropdown] = useState(false);
-  const [showPasswordStep, setShowPasswordStep] = useState(false);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
