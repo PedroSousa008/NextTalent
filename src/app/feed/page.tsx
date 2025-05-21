@@ -93,7 +93,29 @@ const REAL_PLAYERS = [
   // Add more as needed
 ];
 
-function getRealPlayer(idx: number) {
+// Define Player type
+export type Player = {
+  name: string;
+  positions: string[];
+  age: string;
+  rawAge?: number;
+  video: string;
+  avatar: string;
+  positionLabel: string;
+  ageLabel: string;
+  likes: number;
+  liked: boolean;
+  setLiked: (fn: (liked: boolean) => boolean) => void;
+  setLikes: (fn: (likes: number) => number) => void;
+  comments: { user: string; avatar: string; text: string }[];
+  setComments: (fn: (comments: { user: string; avatar: string; text: string }[]) => { user: string; avatar: string; text: string }[]) => void;
+  showComments: boolean;
+  setShowComments: (show: boolean) => void;
+  displayName: string;
+  id: string;
+};
+
+function getRealPlayer(idx: number): Player {
   const p = REAL_PLAYERS[idx % REAL_PLAYERS.length];
   return {
     name: p.name,
@@ -132,8 +154,8 @@ export default function FeedPage() {
   const iconTop = 62; // px, adjust as needed for perfect alignment
 
   // Infinite real player list state and logic
-  const [realListPlayers, setRealListPlayers] = useState(() => {
-    const arr = [];
+  const [realListPlayers, setRealListPlayers] = useState<Player[]>(() => {
+    const arr: Player[] = [];
     for (let i = 0; i < 40; ++i) arr.push(getRealPlayer(i));
     return arr;
   });
@@ -165,7 +187,7 @@ export default function FeedPage() {
   }, [loadingMore, loadMorePlayers]);
 
   // Merge real and infinite real-list players
-  const allPlayers = [
+  const allPlayers: Player[] = [
     {
       name: 'Pedro Sousa',
       positions: ['CM', 'CAM', 'CF', 'CDM', 'Senior'],
@@ -277,8 +299,8 @@ export default function FeedPage() {
       {filteredPlayers.length === 0 ? (
         <div style={{ textAlign: 'center', color: '#888', marginTop: 60, fontSize: 16 }}>No players match your filters.</div>
       ) : (
-        filteredPlayers.map((player, idx: number) => (
-          <div key={(player as any).id || player.name} style={{ margin: '32px 0 0 0', padding: '0 0 32px 0', borderBottom: '1px solid #eee' }}>
+        filteredPlayers.map((player: Player, idx: number) => (
+          <div key={player.id || player.name} style={{ margin: '32px 0 0 0', padding: '0 0 32px 0', borderBottom: '1px solid #eee' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px' }}>
               <span style={{ fontSize: 16, color: 'black' }}>Position: {player.positionLabel}</span>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
@@ -309,7 +331,7 @@ export default function FeedPage() {
               </span>
             </div>
             {/* Only render CommentsModal for real players */}
-            {(player as any).id === 'real-pedro' || (player as any).id === 'real-alphonso' ? (
+            {player.id === 'real-pedro' || player.id === 'real-alphonso' ? (
               <CommentsModal
                 open={player.showComments}
                 onClose={() => player.setShowComments(false)}
