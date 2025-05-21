@@ -18,6 +18,18 @@ const COACHING_ROLES = [
   "Women's Team Coach"
 ];
 
+const LICENSE_LEVELS = [
+  'Full Pro License',
+  'Pro License in Progress',
+  'Elite Youth',
+  'National A License',
+  'National B License',
+  'National C License',
+  'National D License/Intro Youth',
+  'Grassroots certified',
+  'No license yet'
+];
+
 export default function LoginCoach() {
   const router = useRouter();
   const [form, setForm] = useState({
@@ -118,9 +130,7 @@ export default function LoginCoach() {
           <label className="block text-gray-500 mb-1">Coaching Role</label>
           <div className="relative">
             <div className="w-full px-4 py-2 pr-8 bg-gray-100 text-black border-0 border-b border-gray-300 rounded-none mb-2 flex items-center flex-wrap gap-2 cursor-pointer min-h-[44px]" onClick={() => setShowCoachingRoleDropdown(!showCoachingRoleDropdown)} tabIndex={0} onBlur={() => setShowCoachingRoleDropdown(false)}>
-              {coachingRoles.length === 0 ? (
-                <span className="text-gray-400">Select one or more roles</span>
-              ) : (
+              {coachingRoles.length === 0 ? null : (
                 coachingRoles.map(role => (
                   <span key={role} className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">{role}</span>
                 ))
@@ -147,7 +157,15 @@ export default function LoginCoach() {
         {/* Right Side */}
         <div>
           <label className="block text-gray-500 mb-1">Coach License Level</label>
-          <input className="w-full px-4 py-2 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2" value={form.licenseLevel} onChange={e => setForm({ ...form, licenseLevel: e.target.value })} />
+          <div className="relative">
+            <select value={form.licenseLevel} onChange={e => setForm({ ...form, licenseLevel: e.target.value })} className="w-full px-4 py-2 pr-8 bg-gray-100 text-gray-700 border-0 border-b border-gray-300 rounded-none focus:outline-none focus:ring-0 mb-2 appearance-none">
+              <option value="" disabled>Select License Level</option>
+              {LICENSE_LEVELS.map(level => (
+                <option key={level} value={level}>{level}</option>
+              ))}
+            </select>
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">▼</span>
+          </div>
         </div>
         {/* Left Side */}
         <div>
