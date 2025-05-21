@@ -129,8 +129,8 @@ export default function FeedPage() {
   const filteredPlayers = players.filter(player => {
     // If no filters, show all
     if (filters.positions.length === 0 && !filters.age) return true;
-    // Must match all selected positions
-    const matchesPositions = filters.positions.every(pos => player.positions.includes(pos));
+    // Must match at least one selected position (OR logic)
+    const matchesPositions = filters.positions.length === 0 || filters.positions.some(pos => player.positions.includes(pos));
     // Must match age if selected
     const matchesAge = !filters.age || player.age === filters.age;
     return matchesPositions && matchesAge;
