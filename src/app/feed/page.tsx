@@ -24,9 +24,24 @@ export default function FeedPage() {
   const [activeTab, setActiveTab] = useState<'following' | 'discover'>('following');
   const [liked1, setLiked1] = useState(false);
   const [liked2, setLiked2] = useState(false);
+  const [likes1, setLikes1] = useState(1245);
+  const [likes2, setLikes2] = useState(1245);
 
   // The vertical offset for the icons should match the vertical center of the Following/Discover tabs
   const iconTop = 62; // px, adjust as needed for perfect alignment
+
+  function toggleLike1() {
+    setLiked1(liked => {
+      setLikes1(count => liked ? count - 1 : count + 1);
+      return !liked;
+    });
+  }
+  function toggleLike2() {
+    setLiked2(liked => {
+      setLikes2(count => liked ? count - 1 : count + 1);
+      return !liked;
+    });
+  }
 
   return (
     <div style={{ background: 'white', minHeight: '100vh', fontFamily: 'inherit', position: 'relative' }}>
@@ -81,13 +96,13 @@ export default function FeedPage() {
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px 0 0 0' }}>
           <video src="/pedro-clip.mp4" controls loop autoPlay muted style={{ width: '99%', maxWidth: 700, borderRadius: 12, background: '#eee', marginBottom: 0 }} />
           <div style={{ display: 'flex', alignItems: 'center', width: '99%', maxWidth: 700, margin: '0 auto', marginTop: 8, justifyContent: 'flex-start', gap: 18 }}>
-            <Heart liked={liked1} onClick={() => setLiked1(l => !l)} />
+            <Heart liked={liked1} onClick={toggleLike1} />
             <span style={{ fontSize: 24, verticalAlign: 'middle' }}>💬</span>
             <span style={{ fontSize: 24, verticalAlign: 'middle' }}>🔗</span>
           </div>
         </div>
         <div style={{ padding: '0 16px', marginTop: 8 }}>
-          <span style={{ fontSize: 14, color: '#222' }}>1245 people liked</span>
+          <span style={{ fontSize: 14, color: '#222' }}>{likes1} people liked</span>
           <div style={{ fontWeight: 600, fontSize: 16, color: 'black' }}>Pedro Sousa: <span role="img" aria-label="rocket">🚀</span></div>
           <span style={{ fontSize: 14, color: '#222' }}>See all 75 comments</span>
         </div>
@@ -105,13 +120,13 @@ export default function FeedPage() {
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px 0 0 0' }}>
           <video src="/alphonso-clip.mp4" controls loop autoPlay muted style={{ width: '99%', maxWidth: 700, borderRadius: 12, background: '#eee', marginBottom: 0 }} />
           <div style={{ display: 'flex', alignItems: 'center', width: '99%', maxWidth: 700, margin: '0 auto', marginTop: 8, justifyContent: 'flex-start', gap: 18 }}>
-            <Heart liked={liked2} onClick={() => setLiked2(l => !l)} />
+            <Heart liked={liked2} onClick={toggleLike2} />
             <span style={{ fontSize: 24, verticalAlign: 'middle' }}>💬</span>
             <span style={{ fontSize: 24, verticalAlign: 'middle' }}>🔗</span>
           </div>
         </div>
         <div style={{ padding: '0 16px', marginTop: 8 }}>
-          <span style={{ fontSize: 14, color: '#222' }}>1245 people liked</span>
+          <span style={{ fontSize: 14, color: '#222' }}>{likes2} people liked</span>
           <div style={{ fontWeight: 600, fontSize: 16, color: 'black' }}>Alphonso Davies</div>
           <span style={{ fontSize: 14, color: '#222' }}>See all 75 comments</span>
         </div>
