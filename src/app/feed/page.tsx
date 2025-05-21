@@ -23,8 +23,8 @@ function Heart({ liked, onClick }: { liked: boolean; onClick: () => void }) {
 function CommentsModal({ open, onClose, comments, onAddComment }: {
   open: boolean;
   onClose: () => void;
-  comments: string[];
-  onAddComment: (comment: string) => void;
+  comments: { user: string; avatar: string; text: string }[];
+  onAddComment: (comment: { user: string; avatar: string; text: string }) => void;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
   if (!open) return null;
@@ -37,7 +37,13 @@ function CommentsModal({ open, onClose, comments, onAddComment }: {
             <div style={{ color: '#888', textAlign: 'center', fontSize: 18, marginTop: 40 }}>No comments yet.</div>
           ) : (
             comments.map((c, i) => (
-              <div key={i} style={{ marginBottom: 18, padding: 12, background: '#f5f5f5', borderRadius: 10, fontSize: 17, color: 'black', wordBreak: 'break-word' }}>{c}</div>
+              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 18, padding: 12, background: '#f5f5f5', borderRadius: 10, fontSize: 17, color: 'black', wordBreak: 'break-word' }}>
+                <img src={c.avatar} alt={c.user} style={{ width: 36, height: 36, borderRadius: '50%', objectFit: 'cover', marginTop: 2 }} />
+                <div>
+                  <span style={{ fontWeight: 600, fontSize: 15 }}>{c.user}</span>
+                  <span style={{ marginLeft: 8, color: '#222', fontSize: 17 }}>{c.text}</span>
+                </div>
+              </div>
             ))
           )}
         </div>
@@ -45,7 +51,11 @@ function CommentsModal({ open, onClose, comments, onAddComment }: {
           e.preventDefault();
           const val = inputRef.current?.value.trim();
           if (val) {
-            onAddComment(val);
+            onAddComment({
+              user: 'you',
+              avatar: '/pedro.jpg', // default avatar
+              text: val
+            });
             if (inputRef.current) inputRef.current.value = '';
           }
         }} style={{ display: 'flex', gap: 10 }}>
@@ -63,8 +73,8 @@ export default function FeedPage() {
   const [liked2, setLiked2] = useState(false);
   const [likes1, setLikes1] = useState(1245);
   const [likes2, setLikes2] = useState(1245);
-  const [comments1, setComments1] = useState<string[]>([]);
-  const [comments2, setComments2] = useState<string[]>([]);
+  const [comments1, setComments1] = useState<{ user: string; avatar: string; text: string }[]>([]);
+  const [comments2, setComments2] = useState<{ user: string; avatar: string; text: string }[]>([]);
   const [showComments1, setShowComments1] = useState(false);
   const [showComments2, setShowComments2] = useState(false);
 
