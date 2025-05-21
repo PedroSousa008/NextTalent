@@ -13,7 +13,7 @@ function Heart({ liked, onClick }: { liked: boolean; onClick: () => void }) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      style={{ width: 32, height: 32, cursor: 'pointer', marginRight: 4, verticalAlign: 'middle' }}
+      style={{ width: 24, height: 24, cursor: 'pointer', marginRight: 4, verticalAlign: 'middle' }}
     >
       <path d="M12 21C12 21 4 13.5 4 8.5C4 5.5 6.5 3 9.5 3C11.04 3 12.5 4 13 5.09C13.5 4 14.96 3 16.5 3C19.5 3 22 5.5 22 8.5C22 13.5 12 21 12 21Z" />
     </svg>
@@ -27,11 +27,6 @@ export default function FeedPage() {
 
   return (
     <div style={{ background: 'white', minHeight: '100vh', fontFamily: 'inherit' }}>
-      {/* Top Bar: Configurations (left) and DM (right) */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 16px 0 16px' }}>
-        <Image src="/configurations.png" alt="Configurations" width={32} height={32} style={{ cursor: 'pointer' }} />
-        <Image src="/dm.png" alt="DM" width={32} height={32} style={{ cursor: 'pointer' }} />
-      </div>
       {/* Tabs (Following | Discover) */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '18px 0 0 0' }}>
         <div style={{ display: 'flex', gap: 24, fontSize: 20 }}>
@@ -76,18 +71,22 @@ export default function FeedPage() {
       <div style={{ margin: '32px 0 0 0', padding: '0 0 32px 0', borderBottom: '1px solid #eee' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px' }}>
           <span style={{ fontSize: 16, color: 'black' }}>Position: CM/CAM</span>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Image src="/pedro.jpg" alt="Pedro Sousa" width={56} height={56} style={{ borderRadius: '50%' }} />
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+              <Image src="/configurations.png" alt="Configurations" width={32} height={32} style={{ cursor: 'pointer', marginRight: 16 }} />
+              <Image src="/pedro.jpg" alt="Pedro Sousa" width={56} height={56} style={{ borderRadius: '50%' }} />
+              <Image src="/dm.png" alt="DM" width={32} height={32} style={{ cursor: 'pointer', marginLeft: 16 }} />
+            </div>
             <span style={{ fontWeight: 500, fontSize: 18, marginTop: 4, color: 'black' }}>Pedro Sousa</span>
           </div>
           <span style={{ fontSize: 16, color: 'black' }}>Age: 21 year old</span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px 0 0 0' }}>
-          <video src="/pedro-clip.mp4" controls style={{ width: '96%', maxWidth: 420, borderRadius: 12, background: '#eee', marginBottom: 0 }} poster="/pedro-thumb.jpg" />
-          <div style={{ display: 'flex', alignItems: 'center', width: '96%', maxWidth: 420, margin: '0 auto', marginTop: 8, justifyContent: 'flex-start', gap: 24 }}>
+          <video src="/pedro-clip.mp4" controls style={{ width: '99%', maxWidth: 700, borderRadius: 12, background: '#eee', marginBottom: 0 }} poster="/pedro-thumb.jpg" />
+          <div style={{ display: 'flex', alignItems: 'center', width: '99%', maxWidth: 700, margin: '0 auto', marginTop: 8, justifyContent: 'flex-start', gap: 18 }}>
             <Heart liked={liked1} onClick={() => setLiked1(l => !l)} />
-            <span style={{ fontSize: 32, verticalAlign: 'middle' }}>💬</span>
-            <span style={{ fontSize: 32, verticalAlign: 'middle' }}>🔗</span>
+            <span style={{ fontSize: 24, verticalAlign: 'middle' }}>💬</span>
+            <span style={{ fontSize: 24, verticalAlign: 'middle' }}>🔗</span>
           </div>
         </div>
         <div style={{ padding: '0 16px', marginTop: 8 }}>
@@ -100,18 +99,22 @@ export default function FeedPage() {
       <div style={{ margin: '32px 0 0 0', padding: '0 0 32px 0', borderBottom: '1px solid #eee' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px' }}>
           <span style={{ fontSize: 16, color: 'black' }}>Position: LB</span>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Image src="/alphonso.jpg" alt="Alphonso Davies" width={56} height={56} style={{ borderRadius: '50%' }} />
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+              <Image src="/configurations.png" alt="Configurations" width={32} height={32} style={{ cursor: 'pointer', marginRight: 16 }} />
+              <Image src="/alphonso.jpg" alt="Alphonso Davies" width={56} height={56} style={{ borderRadius: '50%' }} />
+              <Image src="/dm.png" alt="DM" width={32} height={32} style={{ cursor: 'pointer', marginLeft: 16 }} />
+            </div>
             <span style={{ fontWeight: 500, fontSize: 18, marginTop: 4, color: 'black' }}>Alphonso Davies</span>
           </div>
           <span style={{ fontSize: 16, color: 'black' }}>Age: 23 year old</span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px 0 0 0' }}>
-          <video src="/alphonso-clip.mp4" controls style={{ width: '96%', maxWidth: 420, borderRadius: 12, background: '#eee', marginBottom: 0 }} poster="/alphonso-thumb.jpg" />
-          <div style={{ display: 'flex', alignItems: 'center', width: '96%', maxWidth: 420, margin: '0 auto', marginTop: 8, justifyContent: 'flex-start', gap: 24 }}>
+          <video src="/alphonso-clip.mp4" controls style={{ width: '99%', maxWidth: 700, borderRadius: 12, background: '#eee', marginBottom: 0 }} poster="/alphonso-thumb.jpg" />
+          <div style={{ display: 'flex', alignItems: 'center', width: '99%', maxWidth: 700, margin: '0 auto', marginTop: 8, justifyContent: 'flex-start', gap: 18 }}>
             <Heart liked={liked2} onClick={() => setLiked2(l => !l)} />
-            <span style={{ fontSize: 32, verticalAlign: 'middle' }}>💬</span>
-            <span style={{ fontSize: 32, verticalAlign: 'middle' }}>🔗</span>
+            <span style={{ fontSize: 24, verticalAlign: 'middle' }}>💬</span>
+            <span style={{ fontSize: 24, verticalAlign: 'middle' }}>🔗</span>
           </div>
         </div>
         <div style={{ padding: '0 16px', marginTop: 8 }}>
