@@ -2,16 +2,16 @@ import Image from 'next/image';
 import BottomNav from '../feed/BottomNav';
 
 const LEAGUES = [
-  { name: 'Premier League', logo: '/leagues/premier-league.png' },
-  { name: 'LaLiga', logo: '/leagues/laliga.png' },
-  { name: 'SERIE A', logo: '/leagues/seriea.png' },
-  { name: 'BUNDESLIGA', logo: '/leagues/bundesliga.png' },
-  { name: 'LIGUE 1', logo: '/leagues/ligue1.png' },
-  { name: 'LIGA PORTUGAL', logo: '/leagues/liga-portugal.png' },
-  { name: 'eredivisie', logo: '/leagues/eredivisie.png' },
-  { name: 'MLS', logo: '/leagues/mls.png' },
-  { name: 'Sky Bet Championship', logo: '/leagues/skybet.png' },
-  { name: 'Brasileirão', logo: '/leagues/brasileirao.png' },
+  { name: 'Premier League', logo: '/premier-league.png' },
+  { name: 'LaLiga', logo: '/laliga.png' },
+  { name: 'SERIE A', logo: '/seriea.png' },
+  { name: 'BUNDESLIGA', logo: '/bundesliga.png' },
+  { name: 'LIGUE 1', logo: '/ligue1.png' },
+  { name: 'LIGA PORTUGAL', logo: '/liga-portugal.png' },
+  { name: 'eredivisie', logo: '/eredivisie.png' },
+  { name: 'MLS', logo: '/mls.png' },
+  { name: 'Sky Bet Championship', logo: '/skybet.png' },
+  { name: 'Brasileirão', logo: '/brasileirao.png' },
 ];
 
 export default function SearchPage() {
