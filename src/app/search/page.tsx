@@ -30,7 +30,7 @@ export default function SearchPage() {
         </div>
         <span style={{ fontSize: 26, color: '#f5b800', cursor: 'pointer' }}>★</span>
         <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 26, height: 26, background: '#e5e5e5', borderRadius: 6 }}>
-          <Image src="/configurations.png" alt="Configurations" width={22} height={22} style={{ cursor: 'pointer', display: 'block' }} />
+          <Image src="/configurations1.png" alt="Configurations" width={22} height={22} style={{ cursor: 'pointer', display: 'block' }} />
         </span>
       </div>
       {/* Tabs */}
