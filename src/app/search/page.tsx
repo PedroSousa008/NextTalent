@@ -52,9 +52,8 @@ export default function SearchPage() {
       {/* Leagues grid */}
       <div style={{ width: '100%', maxWidth: 500, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, background: 'white', borderRadius: 8, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
         {LEAGUES.map(lg => (
-          <div key={lg.name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', border: '1px solid #eee', padding: '24px 0', background: 'white', minHeight: 120 }}>
-            <Image src={lg.logo} alt={lg.name} width={100} height={100} style={{ objectFit: 'contain', marginBottom: 8 }} />
-            <span style={{ fontWeight: 600, fontSize: 20, color: '#222', marginTop: 8 }}>{lg.name}</span>
+          <div key={lg.name} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #eee', background: 'white', minHeight: 120, height: 140 }}>
+            <Image src={lg.logo} alt={lg.name} width={100} height={100} style={{ objectFit: 'contain' }} />
           </div>
         ))}
       </div>
