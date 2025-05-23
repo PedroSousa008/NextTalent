@@ -50,7 +50,7 @@ function TeamPageContent() {
       </div>
       {/* League Table */}
       <div style={{ width: '100%', maxWidth: 500, marginTop: 18 }}>
-        <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>GROUP A</div>
+        <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>League</div>
         <table style={{ width: '100%', borderCollapse: 'collapse', background: '#f5f5f5' }}>
           <thead>
             <tr style={{ color: '#888', fontWeight: 500, fontSize: 15, background: '#e5e5e5' }}>
@@ -65,12 +65,13 @@ function TeamPageContent() {
             </tr>
           </thead>
           <tbody style={{ textAlign: 'center', fontSize: 15, color: '#222' }}>
-            <tr><td>1.</td><td>Southampton FC</td><td>3</td><td>3</td><td>0</td><td>0</td><td>+11</td><td>9</td></tr>
-            <tr><td>2.</td><td>Reading FC</td><td>3</td><td>1</td><td>1</td><td>1</td><td>-6</td><td>4</td></tr>
-            <tr><td>3.</td><td>Brighton & Hove Albion FC</td><td>3</td><td>1</td><td>0</td><td>2</td><td>-2</td><td>3</td></tr>
-            <tr><td>4.</td><td>Benfica</td><td>3</td><td>0</td><td>1</td><td>2</td><td>-3</td><td>1</td></tr>
+            <tr><td>1.</td><td>Sporting</td><td>34</td><td>25</td><td>7</td><td>2</td><td>+61</td><td>82</td></tr>
+            <tr><td>2.</td><td>Benfica</td><td>34</td><td>25</td><td>5</td><td>4</td><td>+56</td><td>80</td></tr>
+            <tr><td>3.</td><td>Porto</td><td>34</td><td>22</td><td>5</td><td>7</td><td>+35</td><td>71</td></tr>
+            <tr><td>4.</td><td>Braga</td><td>34</td><td>19</td><td>9</td><td>6</td><td>+25</td><td>66</td></tr>
           </tbody>
         </table>
+        <div style={{ textAlign: 'center', color: '#888', fontSize: 16, marginTop: 8 }}>Open full Table.</div>
       </div>
       {/* Games List */}
       <div style={{ width: '100%', maxWidth: 500, marginTop: 18 }}>
