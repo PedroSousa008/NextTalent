@@ -2,18 +2,38 @@
 import Image from 'next/image';
 import BottomNav from '../feed/BottomNav';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 function TeamPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const age = searchParams.get('age') || 'U23';
+  const [isFavourite, setIsFavourite] = useState(false);
+
+  useEffect(() => {
+    // On mount, check localStorage for favourite state
+    setIsFavourite(localStorage.getItem('benfica_fav') === 'true');
+  }, []);
+
+  function toggleFavourite() {
+    const newFav = !isFavourite;
+    setIsFavourite(newFav);
+    localStorage.setItem('benfica_fav', newFav ? 'true' : 'false');
+  }
+
   return (
     <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80 }}>
       {/* Top bar with back and star */}
-      <div style={{ width: '100%', maxWidth: 500, display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '24px auto 0 auto', position: 'relative' }}>
-        <button onClick={() => router.back()} style={{ background: 'none', border: 'none', fontSize: 36, cursor: 'pointer', color: 'black', padding: 0, marginLeft: 4 }}>←</button>
-        <span style={{ fontSize: 32, color: '#f5b800', cursor: 'pointer', marginRight: 4 }}>★</span>
+      <div style={{ width: '100%', maxWidth: 500, margin: '24px auto 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, position: 'relative' }}>
+        <button onClick={() => router.push('/LigaPortugal')} style={{ position: 'absolute', left: 0, background: 'none', border: 'none', fontSize: 26, cursor: 'pointer', color: '#888', padding: 0, marginLeft: 4 }}>←</button>
+        <Image src="/benfica.png" alt="Benfica" width={40} height={40} style={{ objectFit: 'contain' }} />
+        <span style={{ fontWeight: 700, fontSize: 22, color: '#222' }}>Benfica</span>
+        <span
+          onClick={toggleFavourite}
+          style={{ position: 'absolute', right: 0, fontSize: 32, color: isFavourite ? '#f5b800' : '#bbb', cursor: 'pointer', marginRight: 4 }}
+        >
+          {isFavourite ? '★' : '☆'}
+        </span>
       </div>
       {/* Team logo */}
       <div style={{ marginTop: 8, marginBottom: 8 }}>
