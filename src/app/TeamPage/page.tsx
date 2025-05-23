@@ -43,6 +43,16 @@ function TeamPageContent() {
     { pos: 18, name: 'Boavista', logo: '/boavista.png', mp: 34, w: 6, d: 6, l: 22, g: '-35', pts: 24 },
   ];
 
+  const lastGames = [
+    { comp: 'Liga Portugal', compFlag: '/liga-portugal.png', date: '17.05.', home: { name: 'Braga', logo: '/braga.png' }, away: { name: 'Benfica', logo: '/benfica.png' }, score: '1 1', result: 'D' },
+    { comp: 'Liga Portugal', compFlag: '/liga-portugal.png', date: '10.05.', home: { name: 'Benfica', logo: '/benfica.png' }, away: { name: 'Sporting CP', logo: '/sporting.png' }, score: '1 1', result: 'D' },
+    { comp: 'Liga Portugal', compFlag: '/liga-portugal.png', date: '03.05.', home: { name: 'Estoril', logo: '/estoril.png' }, away: { name: 'Benfica', logo: '/benfica.png' }, score: '1 2', result: 'W' },
+    { comp: 'Liga Portugal', compFlag: '/liga-portugal.png', date: '27.04.', home: { name: 'Benfica', logo: '/benfica.png' }, away: { name: 'AFS', logo: '/avs.png' }, score: '6 0', result: 'W' },
+    { comp: 'Taça de Portugal', compFlag: '/liga-portugal.png', date: '23.04.', home: { name: 'Benfica', logo: '/benfica.png' }, away: { name: 'Tirsense', logo: '/boavista.png' }, score: '4 0', result: 'W' },
+    { comp: 'Liga Portugal', compFlag: '/liga-portugal.png', date: '19.04.', home: { name: 'Vitoria Guimaraes', logo: '/vitoria.png' }, away: { name: 'Benfica', logo: '/benfica.png' }, score: '0 3', result: 'W' },
+    { comp: 'Liga Portugal', compFlag: '/liga-portugal.png', date: '13.04.', home: { name: 'Benfica', logo: '/benfica.png' }, away: { name: 'Arouca', logo: '/arouca.png' }, score: '2 2', result: 'D' },
+  ];
+
   return (
     <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80 }}>
       {/* Top bar with back and star */}
@@ -138,16 +148,35 @@ function TeamPageContent() {
       )}
       {/* Games List */}
       <div style={{ width: '100%', maxWidth: 500, marginTop: 18 }}>
-        <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>{`Benfica ${age} Games`}</div>
-        <table style={{ width: '100%', borderCollapse: 'collapse', background: '#f5f5f5' }}>
-          <tbody style={{ textAlign: 'center', fontSize: 15, color: '#222' }}>
-            <tr><td>28/09/2021</td><td>Benfica</td><td style={{ background: '#f88', color: 'white', borderRadius: 4, padding: 4 }}>2 - 4</td><td>Brighton & Hove Albion FC</td></tr>
-            <tr><td>27/10/2021</td><td>Reading FC</td><td style={{ background: '#fc6', color: 'white', borderRadius: 4, padding: 4 }}>3 - 3</td><td>Benfica</td></tr>
-            <tr><td>24/11/2021</td><td>Benfica</td><td style={{ background: '#f88', color: 'white', borderRadius: 4, padding: 4 }}>4 - 5</td><td>Southampton FC</td></tr>
-            <tr><td>25/01/2022</td><td>Southampton FC</td><td>-</td><td>Benfica</td></tr>
-            <tr><td>29/02/2022</td><td>Benfica</td><td>-</td><td>Reading FC</td></tr>
-          </tbody>
-        </table>
+        <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>Last Games</div>
+        <div style={{ background: '#181818', maxHeight: 340, overflowY: 'auto', borderRadius: 0, padding: 0 }}>
+          {lastGames.map((game, idx) => (
+            <div key={idx} style={{ display: 'flex', flexDirection: 'column', borderBottom: '1px solid #222', padding: 0 }}>
+              {/* Competition header */}
+              {(idx === 0 || lastGames[idx-1].comp !== game.comp) && (
+                <div style={{ display: 'flex', alignItems: 'center', background: '#101820', color: '#fff', fontWeight: 600, fontSize: 15, padding: '8px 0 0 8px', gap: 8 }}>
+                  <Image src={game.compFlag} alt={game.comp} width={18} height={18} style={{ marginRight: 4 }} />
+                  <span>{game.comp}</span>
+                  <span style={{ fontSize: 11, color: '#bbb', marginLeft: 8 }}>{game.comp === 'Liga Portugal' ? 'PORTUGAL' : 'PORTUGAL'}</span>
+                </div>
+              )}
+              {/* Game row */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '6px 8px', background: '#181818', color: '#fff', fontSize: 16 }}>
+                <span style={{ minWidth: 54, color: '#bbb', fontSize: 14 }}>{game.date}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, flex: 1, justifyContent: 'flex-end' }}>
+                  <Image src={game.home.logo} alt={game.home.name} width={22} height={22} style={{ objectFit: 'contain' }} />
+                  <span style={{ fontWeight: 600, color: game.home.name === 'Benfica' ? '#fff' : '#bbb' }}>{game.home.name}</span>
+                  <span style={{ fontWeight: 700, fontSize: 15, margin: '0 2px', color: '#fff' }}>{game.score.split(' ')[0]}</span>
+                  <span style={{ fontWeight: 700, fontSize: 15, margin: '0 2px', color: '#fff' }}>-</span>
+                  <span style={{ fontWeight: 700, fontSize: 15, margin: '0 2px', color: '#fff' }}>{game.score.split(' ')[1]}</span>
+                  <span style={{ fontWeight: 600, color: game.away.name === 'Benfica' ? '#fff' : '#bbb' }}>{game.away.name}</span>
+                  <Image src={game.away.logo} alt={game.away.name} width={22} height={22} style={{ objectFit: 'contain' }} />
+                </div>
+                <span style={{ minWidth: 28, marginLeft: 8, fontWeight: 700, color: game.result === 'W' ? '#2ecc40' : game.result === 'D' ? '#f5b800' : '#e74c3c', background: '#222', borderRadius: 6, padding: '2px 8px', fontSize: 15, display: 'inline-block', textAlign: 'center' }}>{game.result}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
       {/* Bottom Navigation Bar */}
       <BottomNav active='search' />

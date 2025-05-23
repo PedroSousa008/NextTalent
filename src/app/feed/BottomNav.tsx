@@ -23,11 +23,7 @@ export default function BottomNav({ active }: { active: 'feed' | 'search' }) {
       {/* Search */}
       <div
         style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: active === 'search' ? 'black' : '#bbb', opacity: active === 'search' ? 1 : 0.6, cursor: 'pointer' }}
-        onClick={() => {
-          if (active !== 'search') {
-            router.push('/search');
-          }
-        }}
+        onClick={() => { router.push('/search'); }}
       >
         <span role="img" aria-label="search" style={{ fontSize: 28, opacity: active === 'search' ? 1 : 0.6 }}>🔍</span>
         <span style={{ fontSize: 14, opacity: active === 'search' ? 1 : 0.6 }}>Search</span>
