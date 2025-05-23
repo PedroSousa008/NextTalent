@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import BottomNav from '../feed/BottomNav';
 import { useState } from 'react';
