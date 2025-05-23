@@ -23,8 +23,8 @@ export default function SearchPage() {
           <span style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: '#bbb', fontSize: 22, lineHeight: 1 }}>🔍</span>
           <input
             type="text"
-            placeholder="Pesquisa"
-            style={{ width: '100%', padding: '8px 12px 8px 38px', borderRadius: 8, border: 'none', background: '#e5e5e5', fontSize: 20, color: '#888', fontWeight: 400, height: 44 }}
+            placeholder="Search"
+            style={{ width: '100%', padding: '8px 12px 8px 48px', borderRadius: 8, border: 'none', background: '#e5e5e5', fontSize: 20, color: '#888', fontWeight: 400, height: 44 }}
             disabled
           />
         </div>
