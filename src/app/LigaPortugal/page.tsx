@@ -90,8 +90,8 @@ export default function LigaPortugalPage() {
       <div style={{ width: '100%', maxWidth: 500, flex: 1, overflowY: 'auto', marginTop: 8 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
           {filteredTeams.map(team => (
-            <div key={team.name} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #eee', background: 'white', minHeight: 120, height: 140, position: 'relative', cursor: 'pointer' }}
-              onClick={() => router.push(`/team/${encodeURIComponent(team.name)}`)}
+            <div key={team.name} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #eee', background: 'white', minHeight: 120, height: 140, position: 'relative', cursor: team.name === 'Benfica' ? 'pointer' : 'default' }}
+              onClick={() => { if (team.name === 'Benfica') router.push('/TeamPage'); }}
             >
               <Image src={team.logo} alt={team.name} width={90} height={90} style={{ objectFit: 'contain', maxWidth: '70%', maxHeight: '70%' }} />
               {team.name === 'Benfica' && (
