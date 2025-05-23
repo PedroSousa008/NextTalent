@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import BottomNav from '../feed/BottomNav';
+import { useState } from 'react';
 
 const LEAGUES = [
   { name: 'Premier League', logo: '/premier-league.png' },
@@ -15,6 +16,11 @@ const LEAGUES = [
 ];
 
 export default function SearchPage() {
+  const [search, setSearch] = useState('');
+  const filtered = search.trim() === '' ? LEAGUES : LEAGUES.map(lg => {
+    if (lg.name.toLowerCase().includes(search.trim().toLowerCase())) return lg;
+    return { ...lg, logo: null };
+  });
   return (
     <div style={{ minHeight: '100vh', background: '#f5f6fa', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80 }}>
       {/* Search bar and icons */}
@@ -24,8 +30,9 @@ export default function SearchPage() {
           <input
             type="text"
             placeholder="Search"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
             style={{ width: '100%', padding: '8px 12px 8px 48px', borderRadius: 8, border: 'none', background: '#e5e5e5', fontSize: 20, color: '#888', fontWeight: 400, height: 44 }}
-            disabled
           />
         </div>
         <span style={{ fontSize: 26, color: '#f5b800', cursor: 'pointer' }}>★</span>
@@ -49,9 +56,9 @@ export default function SearchPage() {
       </div>
       {/* Leagues grid */}
       <div style={{ width: '100%', maxWidth: 500, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, background: 'white', borderRadius: 8, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
-        {LEAGUES.map(lg => (
+        {filtered.map(lg => (
           <div key={lg.name} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #eee', background: 'white', minHeight: 120, height: 140 }}>
-            <Image src={lg.logo} alt={lg.name} width={100} height={100} style={{ objectFit: 'contain', maxWidth: '70%', maxHeight: '70%' }} />
+            {lg.logo && <Image src={lg.logo} alt={lg.name} width={100} height={100} style={{ objectFit: 'contain', maxWidth: '70%', maxHeight: '70%' }} />}
           </div>
         ))}
       </div>
