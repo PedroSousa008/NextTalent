@@ -2,8 +2,9 @@
 import Image from 'next/image';
 import BottomNav from '../feed/BottomNav';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
-export default function TeamPage() {
+function TeamPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const age = searchParams.get('age') || 'U23';
@@ -69,5 +70,13 @@ export default function TeamPage() {
       {/* Bottom Navigation Bar */}
       <BottomNav active='search' />
     </div>
+  );
+}
+
+export default function TeamPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <TeamPageContent />
+    </Suspense>
   );
 } 
