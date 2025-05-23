@@ -27,6 +27,18 @@ const AGES = ['U-13', 'U-14', 'U-15', 'U-16', 'U-17', 'U-18', 'U-21', 'U-23'];
 export default function LigaPortugalPage() {
   return (
     <div style={{ minHeight: '100vh', background: '#f5f6fa', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80 }}>
+      {/* Tabs */}
+      <div style={{ width: '100%', maxWidth: 500, display: 'flex', alignItems: 'center', marginTop: 18, marginBottom: 0, padding: '0 16px' }}>
+        <div style={{ flex: 1, textAlign: 'left', fontSize: 20, fontWeight: 600 }}>
+          <span style={{ color: 'black', borderBottom: '2px solid black', paddingBottom: 4, cursor: 'pointer' }}>Pro Teams</span>
+        </div>
+        <div style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: 600 }}>
+          <span style={{ color: '#bbb', fontWeight: 500, cursor: 'not-allowed' }}>College Teams</span>
+        </div>
+        <div style={{ flex: 1, textAlign: 'right', fontSize: 20, fontWeight: 600 }}>
+          <span style={{ color: '#bbb', fontWeight: 500, cursor: 'not-allowed' }}>Agents</span>
+        </div>
+      </div>
       {/* Search bar and icons */}
       <div style={{ width: '100%', maxWidth: 500, margin: '24px auto 0 auto', display: 'flex', alignItems: 'center', gap: 12, padding: '0 16px' }}>
         <div style={{ flex: 1, position: 'relative', height: 44, display: 'flex', alignItems: 'center' }}>
