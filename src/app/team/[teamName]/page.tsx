@@ -50,7 +50,12 @@ interface GameRow {
   color: string;
 }
 
-export default function TeamPage({ params }: { params: { teamName: string } }) {
+interface TeamPageProps {
+  params: { teamName: string }
+}
+
+export default function TeamPage(props: TeamPageProps) {
+  const { params } = props;
   const router = useRouter();
   const teamName = decodeURIComponent(params.teamName);
   const team = MOCK_TEAMS[teamName] || MOCK_TEAMS["Chelsea FC"];
