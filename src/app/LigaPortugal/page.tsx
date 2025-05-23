@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import BottomNav from '../feed/BottomNav';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const TEAMS = [
   { name: 'Arouca', logo: '/arouca.png' },
@@ -33,10 +33,13 @@ export default function LigaPortugalPage() {
   const [showStarred, setShowStarred] = useState(false);
   const [benficaFav, setBenficaFav] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     setBenficaFav(localStorage.getItem('benfica_fav') === 'true');
-  }, []);
+    const urlAge = searchParams.get('age');
+    if (urlAge) setSelectedAge(urlAge);
+  }, [searchParams]);
 
   let filteredTeams = search.trim() === ''
     ? TEAMS

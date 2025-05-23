@@ -57,7 +57,7 @@ function TeamPageContent() {
     <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80 }}>
       {/* Top bar with back and star */}
       <div style={{ width: '100%', maxWidth: 500, margin: '24px auto 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, position: 'relative' }}>
-        <button onClick={() => router.push('/LigaPortugal')} style={{ position: 'absolute', left: 0, background: 'none', border: 'none', fontSize: 26, cursor: 'pointer', color: '#888', padding: 0, marginLeft: 4 }}>←</button>
+        <button onClick={() => router.push(`/LigaPortugal?age=${age}`)} style={{ position: 'absolute', left: 0, background: 'none', border: 'none', fontSize: 26, cursor: 'pointer', color: '#888', padding: 0, marginLeft: 4 }}>←</button>
         <span
           onClick={toggleFavourite}
           style={{ position: 'absolute', right: 0, fontSize: 32, color: isFavourite ? '#f5b800' : '#bbb', cursor: 'pointer', marginRight: 4 }}
