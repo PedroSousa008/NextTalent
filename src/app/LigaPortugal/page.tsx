@@ -38,6 +38,12 @@ export default function LigaPortugalPage() {
     setBenficaFav(localStorage.getItem('benfica_fav') === 'true');
   }, []);
 
+  function toggleBenficaFav() {
+    const newFav = !benficaFav;
+    setBenficaFav(newFav);
+    localStorage.setItem('benfica_fav', newFav ? 'true' : 'false');
+  }
+
   let filteredTeams = search.trim() === ''
     ? TEAMS
     : TEAMS.filter(team => team.name.toLowerCase().includes(search.trim().toLowerCase()));
@@ -59,10 +65,10 @@ export default function LigaPortugalPage() {
           />
         </div>
         <span
-          style={{ fontSize: 26, color: showStarred ? '#f5b800' : '#bbb', cursor: 'pointer', transition: 'color 0.15s' }}
-          onClick={() => setShowStarred(s => !s)}
+          style={{ fontSize: 26, color: benficaFav ? '#f5b800' : '#bbb', cursor: 'pointer', transition: 'color 0.15s' }}
+          onClick={toggleBenficaFav}
         >
-          {showStarred ? '★' : '☆'}
+          {benficaFav ? '★' : '☆'}
         </span>
         <Image src="/configurations1.png" alt="Configurations" width={28} height={28} style={{ cursor: 'pointer' }} />
       </div>
