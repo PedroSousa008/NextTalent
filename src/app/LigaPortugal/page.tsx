@@ -58,7 +58,9 @@ export default function LigaPortugalPage() {
           {TEAMS.map(team => (
             <div key={team.name} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #eee', background: 'white', minHeight: 120, height: 140, position: 'relative' }}>
               <Image src={team.logo} alt={team.name} width={90} height={90} style={{ objectFit: 'contain', maxWidth: '70%', maxHeight: '70%' }} />
-              {team.name === 'Benfica' && <span style={{ position: 'absolute', top: 10, right: 14, color: '#f5b800', fontSize: 28, fontWeight: 700 }}>★</span>}
+              {team.name === 'Benfica' && (
+                <span style={{ position: 'absolute', top: 4, right: 8, color: '#f5b800', fontSize: 20, fontWeight: 700 }}>★</span>
+              )}
             </div>
           ))}
         </div>
