@@ -32,10 +32,12 @@ export default function LigaPortugalPage() {
   const [selectedAge, setSelectedAge] = useState('U-23');
   const [showStarred, setShowStarred] = useState(false);
   const [benficaFav, setBenficaFav] = useState(false);
+  const [favReady, setFavReady] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    setBenficaFav(localStorage.getItem('benfica_fav') === 'true');
+    setBenficaFav(typeof window !== 'undefined' && localStorage.getItem('benfica_fav') === 'true');
+    setFavReady(true);
   }, []);
 
   function toggleBenficaFav() {
@@ -65,8 +67,8 @@ export default function LigaPortugalPage() {
           />
         </div>
         <span
-          style={{ fontSize: 26, color: benficaFav ? '#f5b800' : '#bbb', cursor: 'pointer', transition: 'color 0.15s' }}
-          onClick={toggleBenficaFav}
+          style={{ fontSize: 26, color: benficaFav ? '#f5b800' : '#bbb', cursor: favReady ? 'pointer' : 'not-allowed', transition: 'color 0.15s' }}
+          onClick={favReady ? toggleBenficaFav : undefined}
         >
           {benficaFav ? '★' : '☆'}
         </span>
