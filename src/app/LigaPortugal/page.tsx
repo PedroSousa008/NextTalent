@@ -27,6 +27,20 @@ const AGES = ['U-13', 'U-14', 'U-15', 'U-16', 'U-17', 'U-18', 'U-21', 'U-23'];
 export default function LigaPortugalPage() {
   return (
     <div style={{ minHeight: '100vh', background: '#f5f6fa', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80 }}>
+      {/* Search bar and icons */}
+      <div style={{ width: '100%', maxWidth: 500, margin: '24px auto 0 auto', display: 'flex', alignItems: 'center', gap: 12, padding: '0 16px' }}>
+        <div style={{ flex: 1, position: 'relative', height: 44, display: 'flex', alignItems: 'center' }}>
+          <span style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: '#bbb', fontSize: 22, lineHeight: 1 }}>🔍</span>
+          <input
+            type="text"
+            placeholder="Search"
+            style={{ width: '100%', padding: '8px 12px 8px 48px', borderRadius: 8, border: 'none', background: '#e5e5e5', fontSize: 20, color: '#888', fontWeight: 400, height: 44 }}
+            disabled
+          />
+        </div>
+        <span style={{ fontSize: 26, color: '#f5b800', cursor: 'pointer' }}>★</span>
+        <Image src="/configurations1.png" alt="Configurations" width={28} height={28} style={{ cursor: 'pointer' }} />
+      </div>
       {/* League logo and name */}
       <div style={{ width: '100%', maxWidth: 500, margin: '24px auto 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
         <Image src="/liga-portugal.png" alt="Liga Portugal" width={40} height={40} style={{ objectFit: 'contain' }} />
@@ -44,7 +58,7 @@ export default function LigaPortugalPage() {
           {TEAMS.map(team => (
             <div key={team.name} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #eee', background: 'white', minHeight: 120, height: 140, position: 'relative' }}>
               <Image src={team.logo} alt={team.name} width={90} height={90} style={{ objectFit: 'contain', maxWidth: '70%', maxHeight: '70%' }} />
-              <span style={{ position: 'absolute', top: 10, right: 14, color: '#f5b800', fontSize: 28, fontWeight: 700 }}>★</span>
+              {team.name === 'Benfica' && <span style={{ position: 'absolute', top: 10, right: 14, color: '#f5b800', fontSize: 28, fontWeight: 700 }}>★</span>}
             </div>
           ))}
         </div>
