@@ -45,7 +45,7 @@ export default function LigaPortugalPage() {
     localStorage.setItem('benfica_fav', newFav ? 'true' : 'false');
   }
 
-  let filteredTeams = search.trim() === ''
+  const filteredTeams = search.trim() === ''
     ? TEAMS
     : TEAMS.filter(team => team.name.toLowerCase().includes(search.trim().toLowerCase()));
   return (
