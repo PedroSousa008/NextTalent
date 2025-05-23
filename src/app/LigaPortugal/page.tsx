@@ -30,7 +30,6 @@ const AGES = ['U-13', 'U-14', 'U-15', 'U-16', 'U-17', 'U-18', 'U-21', 'U-23', 'S
 export default function LigaPortugalPage() {
   const [search, setSearch] = useState('');
   const [selectedAge, setSelectedAge] = useState('U-23');
-  const [showStarred, setShowStarred] = useState(false);
   const [benficaFav, setBenficaFav] = useState(false);
   const [favReady, setFavReady] = useState(false);
   const router = useRouter();
@@ -49,9 +48,6 @@ export default function LigaPortugalPage() {
   let filteredTeams = search.trim() === ''
     ? TEAMS
     : TEAMS.filter(team => team.name.toLowerCase().includes(search.trim().toLowerCase()));
-  if (showStarred) {
-    filteredTeams = filteredTeams.filter(team => team.name === 'Benfica');
-  }
   return (
     <div style={{ minHeight: '100vh', background: '#f5f6fa', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80 }}>
       {/* Search bar and icons */}
