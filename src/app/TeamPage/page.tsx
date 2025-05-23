@@ -76,7 +76,7 @@ function TeamPageContent() {
       </div>
       {/* Games List */}
       <div style={{ width: '100%', maxWidth: 500, marginTop: 18 }}>
-        <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>Benfica U17 Games</div>
+        <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>{`Benfica ${age} Games`}</div>
         <table style={{ width: '100%', borderCollapse: 'collapse', background: '#f5f5f5' }}>
           <tbody style={{ textAlign: 'center', fontSize: 15, color: '#222' }}>
             <tr><td>28/09/2021</td><td>Benfica</td><td style={{ background: '#f88', color: 'white', borderRadius: 4, padding: 4 }}>2 - 4</td><td>Brighton & Hove Albion FC</td></tr>
