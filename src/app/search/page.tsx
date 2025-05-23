@@ -19,19 +19,17 @@ export default function SearchPage() {
     <div style={{ minHeight: '100vh', background: '#f5f6fa', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80 }}>
       {/* Search bar and icons */}
       <div style={{ width: '100%', maxWidth: 500, margin: '24px auto 0 auto', display: 'flex', alignItems: 'center', gap: 12, padding: '0 16px' }}>
-        <div style={{ flex: 1, position: 'relative' }}>
-          <span style={{ position: 'absolute', left: 12, top: 10, color: '#bbb', fontSize: 22 }}>🔍</span>
+        <div style={{ flex: 1, position: 'relative', height: 44, display: 'flex', alignItems: 'center' }}>
+          <span style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: '#bbb', fontSize: 22, lineHeight: 1 }}>🔍</span>
           <input
             type="text"
-            placeholder="Search"
-            style={{ width: '100%', padding: '8px 12px 8px 44px', borderRadius: 8, border: 'none', background: '#e5e5e5', fontSize: 20, color: '#888', fontWeight: 400 }}
+            placeholder="Pesquisa"
+            style={{ width: '100%', padding: '8px 12px 8px 38px', borderRadius: 8, border: 'none', background: '#e5e5e5', fontSize: 20, color: '#888', fontWeight: 400, height: 44 }}
             disabled
           />
         </div>
         <span style={{ fontSize: 26, color: '#f5b800', cursor: 'pointer' }}>★</span>
-        <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 26, height: 26, background: '#e5e5e5', borderRadius: 6 }}>
-          <Image src="/configurations1.png" alt="Configurations" width={22} height={22} style={{ cursor: 'pointer', display: 'block' }} />
-        </span>
+        <Image src="/configurations1.png" alt="Configurations" width={28} height={28} style={{ cursor: 'pointer' }} />
       </div>
       {/* Tabs */}
       <div style={{ width: '100%', maxWidth: 500, display: 'flex', alignItems: 'center', marginTop: 18, marginBottom: 0, padding: '0 16px' }}>
