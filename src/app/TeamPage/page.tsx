@@ -1,10 +1,12 @@
 "use client";
 import Image from 'next/image';
 import BottomNav from '../feed/BottomNav';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function TeamPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const age = searchParams.get('age') || 'U23';
   return (
     <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80 }}>
       {/* Top bar with back and star */}
@@ -19,7 +21,7 @@ export default function TeamPage() {
       {/* Team name and age group */}
       <div style={{ textAlign: 'center', marginBottom: 8 }}>
         <div style={{ fontWeight: 700, fontSize: 28, color: '#222' }}>Benfica</div>
-        <div style={{ fontWeight: 400, fontSize: 24, color: '#222' }}>U23</div>
+        <div style={{ fontWeight: 400, fontSize: 24, color: '#222' }}>{age}</div>
       </div>
       {/* Tabs */}
       <div style={{ width: '100%', maxWidth: 500, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '18px 0 0 0', borderBottom: '1.5px solid #eee' }}>
