@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import BottomNav from '../feed/BottomNav';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const LEAGUES = [
   { name: 'Premier League', logo: '/premier-league.png' },
@@ -18,6 +19,7 @@ const LEAGUES = [
 
 export default function SearchPage() {
   const [search, setSearch] = useState('');
+  const router = useRouter();
   const filtered = search.trim() === '' ? LEAGUES : LEAGUES.map(lg => {
     if (lg.name.toLowerCase().includes(search.trim().toLowerCase())) return lg;
     return { ...lg, logo: null };
@@ -58,7 +60,24 @@ export default function SearchPage() {
       {/* Leagues grid */}
       <div style={{ width: '100%', maxWidth: 500, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, background: 'white', borderRadius: 8, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
         {filtered.map(lg => (
-          <div key={lg.name} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #eee', background: 'white', minHeight: 120, height: 140 }}>
+          <div key={lg.name} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #eee', background: 'white', minHeight: 120, height: 140, cursor: lg.logo ? 'pointer' : 'default' }}
+            onClick={() => {
+              if (!lg.logo) return;
+              // Map logo to route
+              let route = '';
+              if (lg.logo.includes('liga-portugal')) route = '/LigaPortugal';
+              else if (lg.logo.includes('laliga')) route = '/LaLiga';
+              else if (lg.logo.includes('premier-league')) route = '/PremierLeague';
+              else if (lg.logo.includes('seriea')) route = '/SerieA';
+              else if (lg.logo.includes('bundesliga')) route = '/Bundesliga';
+              else if (lg.logo.includes('ligue1')) route = '/Ligue1';
+              else if (lg.logo.includes('eredivisie')) route = '/Eredivisie';
+              else if (lg.logo.includes('mls')) route = '/MLS';
+              else if (lg.logo.includes('skybet')) route = '/SkyBet';
+              else if (lg.logo.includes('brasileirao')) route = '/Brasileirao';
+              if (route) router.push(route);
+            }}
+          >
             {lg.logo && <Image src={lg.logo} alt={lg.name} width={100} height={100} style={{ objectFit: 'contain', maxWidth: '70%', maxHeight: '70%' }} />}
           </div>
         ))}
