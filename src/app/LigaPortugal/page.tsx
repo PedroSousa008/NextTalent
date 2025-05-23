@@ -30,24 +30,20 @@ const AGES = ['U-13', 'U-14', 'U-15', 'U-16', 'U-17', 'U-18', 'U-21', 'U-23', 'S
 export default function LigaPortugalPage() {
   const [search, setSearch] = useState('');
   const [selectedAge, setSelectedAge] = useState('U-23');
+  const [showStarred, setShowStarred] = useState(false);
   const [benficaFav, setBenficaFav] = useState(false);
-  const [favReady, setFavReady] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    setBenficaFav(typeof window !== 'undefined' && localStorage.getItem('benfica_fav') === 'true');
-    setFavReady(true);
+    setBenficaFav(localStorage.getItem('benfica_fav') === 'true');
   }, []);
 
-  function toggleBenficaFav() {
-    const newFav = !benficaFav;
-    setBenficaFav(newFav);
-    localStorage.setItem('benfica_fav', newFav ? 'true' : 'false');
-  }
-
-  const filteredTeams = search.trim() === ''
+  let filteredTeams = search.trim() === ''
     ? TEAMS
     : TEAMS.filter(team => team.name.toLowerCase().includes(search.trim().toLowerCase()));
+  if (showStarred) {
+    filteredTeams = filteredTeams.filter(team => team.name === 'Benfica');
+  }
   return (
     <div style={{ minHeight: '100vh', background: '#f5f6fa', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80 }}>
       {/* Search bar and icons */}
@@ -63,10 +59,10 @@ export default function LigaPortugalPage() {
           />
         </div>
         <span
-          style={{ fontSize: 26, color: benficaFav ? '#f5b800' : '#bbb', cursor: favReady ? 'pointer' : 'not-allowed', transition: 'color 0.15s' }}
-          onClick={favReady ? toggleBenficaFav : undefined}
+          style={{ fontSize: 26, color: showStarred ? '#f5b800' : '#bbb', cursor: 'pointer', transition: 'color 0.15s' }}
+          onClick={() => setShowStarred(s => !s)}
         >
-          {benficaFav ? '★' : '☆'}
+          {showStarred ? '★' : '☆'}
         </span>
         <Image src="/configurations1.png" alt="Configurations" width={28} height={28} style={{ cursor: 'pointer' }} />
       </div>
