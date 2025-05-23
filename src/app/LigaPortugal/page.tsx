@@ -25,15 +25,19 @@ const TEAMS = [
   { name: 'Vitória de Guimarães', logo: '/vitoria.png' },
 ];
 
-const AGES = ['U-13', 'U-14', 'U-15', 'U-16', 'U-17', 'U-18', 'U-21', 'U-23'];
+const AGES = ['U-13', 'U-14', 'U-15', 'U-16', 'U-17', 'U-18', 'U-21', 'U-23', 'Senior'];
 
 export default function LigaPortugalPage() {
   const [search, setSearch] = useState('');
   const [selectedAge, setSelectedAge] = useState('U-23');
+  const [showStarred, setShowStarred] = useState(false);
   const router = useRouter();
-  const filteredTeams = search.trim() === ''
+  let filteredTeams = search.trim() === ''
     ? TEAMS
     : TEAMS.filter(team => team.name.toLowerCase().includes(search.trim().toLowerCase()));
+  if (showStarred) {
+    filteredTeams = filteredTeams.filter(team => team.name === 'Benfica');
+  }
   return (
     <div style={{ minHeight: '100vh', background: '#f5f6fa', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80 }}>
       {/* Search bar and icons */}
@@ -48,7 +52,12 @@ export default function LigaPortugalPage() {
             style={{ width: '100%', padding: '8px 12px 8px 48px', borderRadius: 8, border: 'none', background: '#e5e5e5', fontSize: 20, color: '#888', fontWeight: 400, height: 44 }}
           />
         </div>
-        <span style={{ fontSize: 26, color: '#f5b800', cursor: 'pointer' }}>★</span>
+        <span
+          style={{ fontSize: 26, color: showStarred ? '#f5b800' : '#bbb', cursor: 'pointer', transition: 'color 0.15s' }}
+          onClick={() => setShowStarred(s => !s)}
+        >
+          {showStarred ? '★' : '☆'}
+        </span>
         <Image src="/configurations1.png" alt="Configurations" width={28} height={28} style={{ cursor: 'pointer' }} />
       </div>
       {/* League logo and name with back button */}
