@@ -26,8 +26,6 @@ function TeamPageContent() {
       {/* Top bar with back and star */}
       <div style={{ width: '100%', maxWidth: 500, margin: '24px auto 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, position: 'relative' }}>
         <button onClick={() => router.push('/LigaPortugal')} style={{ position: 'absolute', left: 0, background: 'none', border: 'none', fontSize: 26, cursor: 'pointer', color: '#888', padding: 0, marginLeft: 4 }}>←</button>
-        <Image src="/benfica.png" alt="Benfica" width={40} height={40} style={{ objectFit: 'contain' }} />
-        <span style={{ fontWeight: 700, fontSize: 22, color: '#222' }}>Benfica</span>
         <span
           onClick={toggleFavourite}
           style={{ position: 'absolute', right: 0, fontSize: 32, color: isFavourite ? '#f5b800' : '#bbb', cursor: 'pointer', marginRight: 4 }}

@@ -100,10 +100,8 @@ export default function LigaPortugalPage() {
               onClick={() => { if (team.name === 'Benfica') router.push(`/TeamPage?age=${selectedAge}`); }}
             >
               <Image src={team.logo} alt={team.name} width={90} height={90} style={{ objectFit: 'contain', maxWidth: '70%', maxHeight: '70%' }} />
-              {team.name === 'Benfica' && (
-                <span style={{ position: 'absolute', top: 4, right: 8, color: '#f5b800', fontSize: 20, fontWeight: 700 }}>
-                  {benficaFav ? '★' : '☆'}
-                </span>
+              {team.name === 'Benfica' && benficaFav && (
+                <span style={{ position: 'absolute', top: 4, right: 8, color: '#f5b800', fontSize: 20, fontWeight: 700 }}>★</span>
               )}
             </div>
           ))}
