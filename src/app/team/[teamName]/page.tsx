@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import BottomNav from "../../feed/BottomNav";
 
 const MOCK_TEAMS: { [key: string]: {
@@ -8,8 +8,8 @@ const MOCK_TEAMS: { [key: string]: {
   name: string;
   age: string;
   starred: boolean;
-  table: { team: string; mp: number; w: number; d: number; l: number; g: string; pts: number; }[];
-  games: { date: string; home: string; score: string; away: string; color: string; }[];
+  table: TableRow[];
+  games: GameRow[];
 } } = {
   "Chelsea FC": {
     logo: "/chelsea.png",
@@ -31,6 +31,24 @@ const MOCK_TEAMS: { [key: string]: {
     ],
   },
 };
+
+// Table and game row types
+interface TableRow {
+  team: string;
+  mp: number;
+  w: number;
+  d: number;
+  l: number;
+  g: string;
+  pts: number;
+}
+interface GameRow {
+  date: string;
+  home: string;
+  score: string;
+  away: string;
+  color: string;
+}
 
 export default function TeamPage({ params }: { params: { teamName: string } }) {
   const router = useRouter();
@@ -68,7 +86,7 @@ export default function TeamPage({ params }: { params: { teamName: string } }) {
         <div style={{ padding: "6px 0", textAlign: "center" }}>G</div>
         <div style={{ padding: "6px 0", textAlign: "center" }}>PTS</div>
       </div>
-      {team.table.map((row: any, idx: number) => (
+      {team.table.map((row: TableRow, idx: number) => (
         <div key={row.team} style={{ width: "100%", maxWidth: 500, background: idx % 2 === 0 ? "#fff" : "#f5f5f5", color: "#222", fontWeight: 500, fontSize: 15, display: "grid", gridTemplateColumns: "32px 1.5fr 32px 32px 32px 32px 40px 40px", alignItems: "center" }}>
           <div style={{ padding: "6px 0 6px 0", textAlign: "center" }}>{idx + 1}.</div>
           <div style={{ padding: "6px 0" }}>{row.team}</div>
@@ -82,7 +100,7 @@ export default function TeamPage({ params }: { params: { teamName: string } }) {
       ))}
       {/* Games */}
       <div style={{ width: "100%", maxWidth: 500, background: "#222", color: "white", fontWeight: 600, fontSize: 22, padding: "8px 16px 4px 16px", marginTop: 16 }}>Chelsea FC U17 Games</div>
-      {team.games.map((game: any, idx: number) => (
+      {team.games.map((game: GameRow, idx: number) => (
         <div key={idx} style={{ width: "100%", maxWidth: 500, display: "grid", gridTemplateColumns: "1.2fr 1.2fr 1fr 1.2fr 1.2fr", alignItems: "center", background: idx % 2 === 0 ? "#fff" : "#f5f5f5", fontSize: 15, color: "#222" }}>
           <div style={{ padding: "6px 0 6px 16px" }}>{game.date}</div>
           <div style={{ padding: "6px 0" }}>{game.home}</div>
