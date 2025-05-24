@@ -54,6 +54,19 @@ function TeamPageContent() {
     { comp: 'Liga Portugal', compFlag: '/liga-portugal.png', date: '13.04.', home: { name: 'Benfica', logo: '/benfica.png' }, away: { name: 'Arouca', logo: '/arouca.png' }, score: '2 2', result: 'D' },
   ];
 
+  const staff = [
+    { name: 'Andy Myers', job: 'Manager', age: 48, appointed: '14 July 2019', lastClub: 'Chelsea' },
+    { name: 'Jon Harley', job: 'Assistant Manager', age: 42, appointed: '14 July 2019', lastClub: 'Chelsea' },
+    { name: 'Jack Mesure', job: 'Assistant Manager', age: 45, appointed: '31 July 2021', lastClub: 'Bristol Rovers' },
+    { name: 'Claude Makélélé', job: 'Technical Mentor', age: 49, appointed: '15 August 2019', lastClub: 'Eupen' },
+    { name: 'Neil Bath', job: 'Head of Youth Dept', age: 48, appointed: '07 July 2011', lastClub: 'Chelsea' },
+    { name: 'Elliot Axtell', job: 'Conditioning Coach', age: 42, appointed: '14 July 2019', lastClub: 'Watford' },
+    { name: 'Mark Beeney', job: 'Head of Goalkeeping Dept', age: 40, appointed: '14 July 2021', lastClub: 'Chelsea' },
+    { name: 'Alex Scott', job: 'Performance Analyst', age: 37, appointed: '15 August 2019', lastClub: 'Worthing FC' },
+    { name: 'Anders Jensen', job: 'Scout', age: 24, appointed: '01 October 2018', lastClub: 'Sarpsborg 08' },
+    { name: 'Carl Magnay', job: 'Scout', age: 33, appointed: '01 September 2019', lastClub: 'Chelsea' },
+  ];
+
   return (
     <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80 }}>
       {/* Top bar with back and star */}
@@ -97,42 +110,15 @@ function TeamPageContent() {
         </div>
       </div>
       {/* League Table */}
-      <div style={{ width: '100%', maxWidth: 500, marginTop: 18 }}>
-        <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>League</div>
-        <table style={{ width: '100%', borderCollapse: 'collapse', background: '#f5f5f5' }}>
-          <thead>
-            <tr style={{ color: '#888', fontWeight: 500, fontSize: 15, background: '#e5e5e5' }}>
-              <th style={{ padding: 6 }}>#</th>
-              <th style={{ padding: 6 }}>Team</th>
-              <th style={{ padding: 6 }}>MP</th>
-              <th style={{ padding: 6 }}>W</th>
-              <th style={{ padding: 6 }}>D</th>
-              <th style={{ padding: 6 }}>L</th>
-              <th style={{ padding: 6 }}>G</th>
-              <th style={{ padding: 6 }}>PTS</th>
-            </tr>
-          </thead>
-          <tbody style={{ textAlign: 'center', fontSize: 15, color: '#222' }}>
-            <tr><td>1.</td><td>Sporting</td><td>34</td><td>25</td><td>7</td><td>2</td><td>+61</td><td>82</td></tr>
-            <tr><td>2.</td><td>Benfica</td><td>34</td><td>25</td><td>5</td><td>4</td><td>+56</td><td>80</td></tr>
-            <tr><td>3.</td><td>Porto</td><td>34</td><td>22</td><td>5</td><td>7</td><td>+35</td><td>71</td></tr>
-            <tr><td>4.</td><td>Braga</td><td>34</td><td>19</td><td>9</td><td>6</td><td>+25</td><td>66</td></tr>
-          </tbody>
-        </table>
-        <div style={{ textAlign: 'center', color: '#888', fontSize: 16, marginTop: 8 }}>
-          <button onClick={() => setShowFullTable(true)} style={{ background: 'none', border: 'none', color: '#888', fontSize: 16, cursor: 'pointer', textDecoration: 'underline' }}>Open Full Table</button>
-        </div>
-      </div>
-      {/* Full Table Modal */}
-      {showFullTable && (
-        <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.85)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <div style={{ background: '#181818', borderRadius: 12, padding: 24, maxWidth: 600, width: '95vw', maxHeight: '90vh', overflowY: 'auto', boxShadow: '0 4px 32px rgba(0,0,0,0.4)', position: 'relative' }}>
-            <button onClick={() => setShowFullTable(false)} style={{ position: 'absolute', top: 12, right: 16, background: 'none', border: 'none', color: '#fff', fontSize: 28, cursor: 'pointer', zIndex: 10 }}>✕</button>
-            <table style={{ width: '100%', borderCollapse: 'collapse', background: 'transparent' }}>
+      {selectedTab === 'league' && (
+        <>
+          <div style={{ width: '100%', maxWidth: 500, marginTop: 18 }}>
+            <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>League</div>
+            <table style={{ width: '100%', borderCollapse: 'collapse', background: '#f5f5f5' }}>
               <thead>
-                <tr style={{ color: '#bbb', fontWeight: 600, fontSize: 16, background: 'transparent' }}>
-                  <th style={{ padding: 6, textAlign: 'left' }}>#</th>
-                  <th style={{ padding: 6, textAlign: 'left' }}>Team</th>
+                <tr style={{ color: '#888', fontWeight: 500, fontSize: 15, background: '#e5e5e5' }}>
+                  <th style={{ padding: 6 }}>#</th>
+                  <th style={{ padding: 6 }}>Team</th>
                   <th style={{ padding: 6 }}>MP</th>
                   <th style={{ padding: 6 }}>W</th>
                   <th style={{ padding: 6 }}>D</th>
@@ -141,59 +127,123 @@ function TeamPageContent() {
                   <th style={{ padding: 6 }}>PTS</th>
                 </tr>
               </thead>
+              <tbody style={{ textAlign: 'center', fontSize: 15, color: '#222' }}>
+                <tr><td>1.</td><td>Sporting</td><td>34</td><td>25</td><td>7</td><td>2</td><td>+61</td><td>82</td></tr>
+                <tr><td>2.</td><td>Benfica</td><td>34</td><td>25</td><td>5</td><td>4</td><td>+56</td><td>80</td></tr>
+                <tr><td>3.</td><td>Porto</td><td>34</td><td>22</td><td>5</td><td>7</td><td>+35</td><td>71</td></tr>
+                <tr><td>4.</td><td>Braga</td><td>34</td><td>19</td><td>9</td><td>6</td><td>+25</td><td>66</td></tr>
+              </tbody>
+            </table>
+            <div style={{ textAlign: 'center', color: '#888', fontSize: 16, marginTop: 8 }}>
+              <button onClick={() => setShowFullTable(true)} style={{ background: 'none', border: 'none', color: '#888', fontSize: 16, cursor: 'pointer', textDecoration: 'underline' }}>Open Full Table</button>
+            </div>
+          </div>
+          {/* Full Table Modal */}
+          {showFullTable && (
+            <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.85)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ background: '#181818', borderRadius: 12, padding: 24, maxWidth: 600, width: '95vw', maxHeight: '90vh', overflowY: 'auto', boxShadow: '0 4px 32px rgba(0,0,0,0.4)', position: 'relative' }}>
+                <button onClick={() => setShowFullTable(false)} style={{ position: 'absolute', top: 12, right: 16, background: 'none', border: 'none', color: '#fff', fontSize: 28, cursor: 'pointer', zIndex: 10 }}>✕</button>
+                <table style={{ width: '100%', borderCollapse: 'collapse', background: 'transparent' }}>
+                  <thead>
+                    <tr style={{ color: '#bbb', fontWeight: 600, fontSize: 16, background: 'transparent' }}>
+                      <th style={{ padding: 6, textAlign: 'left' }}>#</th>
+                      <th style={{ padding: 6, textAlign: 'left' }}>Team</th>
+                      <th style={{ padding: 6 }}>MP</th>
+                      <th style={{ padding: 6 }}>W</th>
+                      <th style={{ padding: 6 }}>D</th>
+                      <th style={{ padding: 6 }}>L</th>
+                      <th style={{ padding: 6 }}>G</th>
+                      <th style={{ padding: 6 }}>PTS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {leagueTable.map(row => (
+                      <tr key={row.pos} style={{ color: row.name === 'Benfica' ? '#fff' : '#eee', fontWeight: row.name === 'Benfica' ? 700 : 400, background: row.name === 'Benfica' ? '#444' : 'transparent' }}>
+                        <td style={{ padding: 6 }}>{row.pos}.</td>
+                        <td style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 6 }}>
+                          <Image src={row.logo} alt={row.name} width={24} height={24} style={{ objectFit: 'contain', filter: row.name === 'Benfica' ? 'none' : 'grayscale(1)' }} />
+                          {row.name}
+                        </td>
+                        <td>{row.mp}</td>
+                        <td>{row.w}</td>
+                        <td>{row.d}</td>
+                        <td>{row.l}</td>
+                        <td>{row.g}</td>
+                        <td style={{ fontWeight: 700 }}>{row.pts}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+          {/* Games List */}
+          <div style={{ width: '100%', maxWidth: 500, marginTop: 18 }}>
+            <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>Last Games</div>
+            <div style={{ background: '#181818', maxHeight: 340, overflowY: 'auto', borderRadius: 0, padding: 0 }}>
+              {lastGames.map((game, idx) => (
+                <div key={idx} style={{ display: 'flex', flexDirection: 'column', borderBottom: '1px solid #222', padding: 0 }}>
+                  {/* Competition header */}
+                  {(idx === 0 || lastGames[idx-1].comp !== game.comp) && (
+                    <div style={{ display: 'flex', alignItems: 'center', background: '#101820', color: '#fff', fontWeight: 600, fontSize: 15, padding: '8px 0 0 8px', gap: 8 }}>
+                      <Image src={game.compFlag} alt={game.comp} width={18} height={18} style={{ marginRight: 4 }} />
+                      <span>{game.comp}</span>
+                      <span style={{ fontSize: 11, color: '#bbb', marginLeft: 8 }}>{game.comp === 'Liga Portugal' ? 'PORTUGAL' : 'PORTUGAL'}</span>
+                    </div>
+                  )}
+                  {/* Game row */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '6px 8px', background: '#181818', color: '#fff', fontSize: 16 }}>
+                    <span style={{ minWidth: 54, color: '#bbb', fontSize: 14 }}>{game.date}</span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, flex: 1, justifyContent: 'flex-end' }}>
+                      <Image src={game.home.logo} alt={game.home.name} width={22} height={22} style={{ objectFit: 'contain' }} />
+                      <span style={{ fontWeight: 600, color: game.home.name === 'Benfica' ? '#fff' : '#bbb' }}>{game.home.name}</span>
+                      <span style={{ fontWeight: 700, fontSize: 15, margin: '0 2px', color: '#fff' }}>{game.score.split(' ')[0]}</span>
+                      <span style={{ fontWeight: 700, fontSize: 15, margin: '0 2px', color: '#fff' }}>-</span>
+                      <span style={{ fontWeight: 700, fontSize: 15, margin: '0 2px', color: '#fff' }}>{game.score.split(' ')[1]}</span>
+                      <span style={{ fontWeight: 600, color: game.away.name === 'Benfica' ? '#fff' : '#bbb' }}>{game.away.name}</span>
+                      <Image src={game.away.logo} alt={game.away.name} width={22} height={22} style={{ objectFit: 'contain' }} />
+                    </div>
+                    <span style={{ minWidth: 28, marginLeft: 8, fontWeight: 700, color: game.result === 'W' ? '#2ecc40' : game.result === 'D' ? '#f5b800' : '#e74c3c', background: '#222', borderRadius: 6, padding: '2px 8px', fontSize: 15, display: 'inline-block', textAlign: 'center' }}>{game.result}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+      {/* Staff and Team Table */}
+      {selectedTab === 'staff' && (
+        <div style={{ width: '100%', maxWidth: 500, marginTop: 18, background: 'white', borderRadius: 8, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
+          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>COACHING STAFF</div>
+          <div style={{ maxHeight: 320, overflowY: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
+              <thead>
+                <tr style={{ background: '#eee', color: '#888', fontWeight: 600, fontSize: 16 }}>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Name</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Job</th>
+                  <th style={{ padding: 8, textAlign: 'center' }}>Age</th>
+                  <th style={{ padding: 8, textAlign: 'center' }}>Appointed</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Last Club</th>
+                </tr>
+              </thead>
               <tbody>
-                {leagueTable.map(row => (
-                  <tr key={row.pos} style={{ color: row.name === 'Benfica' ? '#fff' : '#eee', fontWeight: row.name === 'Benfica' ? 700 : 400, background: row.name === 'Benfica' ? '#444' : 'transparent' }}>
-                    <td style={{ padding: 6 }}>{row.pos}.</td>
-                    <td style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 6 }}>
-                      <Image src={row.logo} alt={row.name} width={24} height={24} style={{ objectFit: 'contain', filter: row.name === 'Benfica' ? 'none' : 'grayscale(1)' }} />
-                      {row.name}
-                    </td>
-                    <td>{row.mp}</td>
-                    <td>{row.w}</td>
-                    <td>{row.d}</td>
-                    <td>{row.l}</td>
-                    <td>{row.g}</td>
-                    <td style={{ fontWeight: 700 }}>{row.pts}</td>
+                {staff.map((s, idx) => (
+                  <tr key={idx} style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
+                    <td style={{ padding: 8 }}>{s.name}</td>
+                    <td style={{ padding: 8 }}>{s.job}</td>
+                    <td style={{ padding: 8, textAlign: 'center' }}>{s.age}</td>
+                    <td style={{ padding: 8, textAlign: 'center' }}>{s.appointed}</td>
+                    <td style={{ padding: 8 }}>{s.lastClub}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+          {/* Players Table Placeholder */}
+          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4, marginTop: 24 }}>PLAYERS</div>
+          <div style={{ color: '#888', fontSize: 16, padding: 16, textAlign: 'center' }}>[Players table will go here]</div>
         </div>
       )}
-      {/* Games List */}
-      <div style={{ width: '100%', maxWidth: 500, marginTop: 18 }}>
-        <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>Last Games</div>
-        <div style={{ background: '#181818', maxHeight: 340, overflowY: 'auto', borderRadius: 0, padding: 0 }}>
-          {lastGames.map((game, idx) => (
-            <div key={idx} style={{ display: 'flex', flexDirection: 'column', borderBottom: '1px solid #222', padding: 0 }}>
-              {/* Competition header */}
-              {(idx === 0 || lastGames[idx-1].comp !== game.comp) && (
-                <div style={{ display: 'flex', alignItems: 'center', background: '#101820', color: '#fff', fontWeight: 600, fontSize: 15, padding: '8px 0 0 8px', gap: 8 }}>
-                  <Image src={game.compFlag} alt={game.comp} width={18} height={18} style={{ marginRight: 4 }} />
-                  <span>{game.comp}</span>
-                  <span style={{ fontSize: 11, color: '#bbb', marginLeft: 8 }}>{game.comp === 'Liga Portugal' ? 'PORTUGAL' : 'PORTUGAL'}</span>
-                </div>
-              )}
-              {/* Game row */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '6px 8px', background: '#181818', color: '#fff', fontSize: 16 }}>
-                <span style={{ minWidth: 54, color: '#bbb', fontSize: 14 }}>{game.date}</span>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, flex: 1, justifyContent: 'flex-end' }}>
-                  <Image src={game.home.logo} alt={game.home.name} width={22} height={22} style={{ objectFit: 'contain' }} />
-                  <span style={{ fontWeight: 600, color: game.home.name === 'Benfica' ? '#fff' : '#bbb' }}>{game.home.name}</span>
-                  <span style={{ fontWeight: 700, fontSize: 15, margin: '0 2px', color: '#fff' }}>{game.score.split(' ')[0]}</span>
-                  <span style={{ fontWeight: 700, fontSize: 15, margin: '0 2px', color: '#fff' }}>-</span>
-                  <span style={{ fontWeight: 700, fontSize: 15, margin: '0 2px', color: '#fff' }}>{game.score.split(' ')[1]}</span>
-                  <span style={{ fontWeight: 600, color: game.away.name === 'Benfica' ? '#fff' : '#bbb' }}>{game.away.name}</span>
-                  <Image src={game.away.logo} alt={game.away.name} width={22} height={22} style={{ objectFit: 'contain' }} />
-                </div>
-                <span style={{ minWidth: 28, marginLeft: 8, fontWeight: 700, color: game.result === 'W' ? '#2ecc40' : game.result === 'D' ? '#f5b800' : '#e74c3c', background: '#222', borderRadius: 6, padding: '2px 8px', fontSize: 15, display: 'inline-block', textAlign: 'center' }}>{game.result}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
       {/* Bottom Navigation Bar */}
       <BottomNav active='search' />
     </div>
