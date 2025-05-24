@@ -68,20 +68,33 @@ function TeamPageContent() {
   ];
 
   const players = [
-    { num: 1, name: 'Anatoliy Trubin', position: 'Guarda-Redes', photo: '/players/trubin.png', birth: '01/08/2001', age: 23, nat: '/flags/ua.png' },
-    { num: 24, name: 'Samuel Soares', position: 'Guarda-Redes', photo: '/players/samuelsoares.png', birth: '15/06/2002', age: 22, nat: '/flags/pt.png' },
-    { num: 4, name: 'António Silva', position: 'Defesa Central', photo: '/players/antoniosilva.png', birth: '30/10/2003', age: 21, nat: '/flags/pt.png' },
-    { num: 44, name: 'Tomás Araújo', position: 'Defesa Central', photo: '/players/tomasaraujo.png', birth: '16/05/2002', age: 23, nat: '/flags/pt.png' },
-    { num: 81, name: 'Adrian Bajrami', position: 'Defesa Central', photo: '/players/bajrami.png', birth: '05/04/2002', age: 23, nat: '/flags/al.png' },
-    { num: 30, name: 'Nicolás Otamendi', position: 'Defesa Central', photo: '/players/otamendi.png', birth: '12/02/1988', age: 37, nat: '/flags/ar.png' },
-    { num: 3, name: 'Álvaro Carreras', position: 'Lateral Esquerdo', photo: '/players/carreras.png', birth: '23/03/2003', age: 22, nat: '/flags/es.png' },
-    { num: 26, name: 'Samuel Dahl', position: 'Lateral Esquerdo', photo: '/players/dahl.png', birth: '04/03/2003', age: 22, nat: '/flags/se.png' },
-    { num: 6, name: 'Alexander Bah', position: 'Lateral Direito', photo: '/players/bah.png', birth: '09/12/1997', age: 27, nat: '/flags/dk.png' },
-    { num: 71, name: 'Leandro Santos', position: 'Lateral Direito', photo: '/players/leandrosantos.png', birth: '28/09/2005', age: 19, nat: '/flags/pt.png' },
-    { num: 61, name: 'Florentino', position: 'Médio Defensivo', photo: '/players/florentino.png', birth: '19/08/1999', age: 25, nat: '/flags/ao.png' },
-    { num: 16, name: 'Manu Silva', position: 'Médio Defensivo', photo: '/players/manusilva.png', birth: '12/06/2001', age: 23, nat: '/flags/pt.png' },
-    { num: 10, name: 'Orkun Kökçü', position: 'Médio Centro', photo: '/players/kokcu.png', birth: '29/12/2000', age: 24, nat: '/flags/tr.png' },
-    { num: 8, name: 'Fredrik Aursnes', position: 'Médio Centro', photo: '/players/aursnes.png', birth: '10/12/1995', age: 29, nat: '/flags/no.png' },
+    { num: 1, name: 'Anatoliy Trubin', position: 'Goalkeeper', birth: '01/08/2001', age: 23, nat: '🇺🇦' },
+    { num: 24, name: 'Samuel Soares', position: 'Goalkeeper', birth: '15/06/2002', age: 22, nat: '🇵🇹' },
+    { num: 4, name: 'António Silva', position: 'Centre Back', birth: '30/10/2003', age: 21, nat: '🇵🇹' },
+    { num: 44, name: 'Tomás Araújo', position: 'Centre Back', birth: '16/05/2002', age: 23, nat: '🇵🇹' },
+    { num: 81, name: 'Adrian Bajrami', position: 'Centre Back', birth: '05/04/2002', age: 23, nat: '🇦🇱🇨🇭' },
+    { num: 30, name: 'Nicolás Otamendi', position: 'Centre Back', birth: '12/02/1988', age: 37, nat: '🇦🇷' },
+    { num: 3, name: 'Álvaro Carreras', position: 'Left Back', birth: '23/03/2003', age: 22, nat: '🇪🇸' },
+    { num: 26, name: 'Samuel Dahl', position: 'Left Back', birth: '04/03/2003', age: 22, nat: '🇸🇪' },
+    { num: 6, name: 'Alexander Bah', position: 'Right Back', birth: '09/12/1997', age: 27, nat: '🇩🇰🇬🇲' },
+    { num: 71, name: 'Leandro Santos', position: 'Right Back', birth: '28/09/2005', age: 19, nat: '🇵🇹' },
+    { num: 61, name: 'Florentino', position: 'Defensive Midfielder', birth: '19/08/1999', age: 25, nat: '🇦🇴' },
+    { num: 16, name: 'Manu Silva', position: 'Defensive Midfielder', birth: '12/06/2001', age: 23, nat: '🇵🇹' },
+    { num: 10, name: 'Orkun Kökçü', position: 'Central Midfielder', birth: '29/12/2000', age: 24, nat: '🇹🇷🇳🇱' },
+    { num: 8, name: 'Fredrik Aursnes', position: 'Central Midfielder', birth: '10/12/1995', age: 29, nat: '🇳🇴🇨🇭' },
+    { num: 18, name: 'Leandro Barreiro', position: 'Central Midfielder', birth: '03/01/2000', age: 25, nat: '🇱🇺🇵🇹' },
+    { num: 85, name: 'Renato Sanches', position: 'Central Midfielder', birth: '18/08/1997', age: 27, nat: '🇵🇹🇨🇻' },
+    { num: 84, name: 'João Rego', position: 'Attacking Midfielder', birth: '20/06/2005', age: 19, nat: '🇵🇹' },
+    { num: 17, name: 'Kerem Aktürkoğlu', position: 'Left Winger', birth: '21/10/1998', age: 26, nat: '🇹🇷' },
+    { num: 21, name: 'Andreas Schjelderup', position: 'Left Winger', birth: '01/06/2004', age: 20, nat: '🇳🇴' },
+    { num: 27, name: 'Bruma', position: 'Left Winger', birth: '24/10/1994', age: 30, nat: '🇵🇹🇬🇼' },
+    { num: 25, name: 'Gianluca Prestianni', position: 'Right Winger', birth: '31/01/2006', age: 19, nat: '🇦🇷🇮🇹' },
+    { num: 47, name: 'Tiago Gouveia', position: 'Right Winger', birth: '18/06/2001', age: 23, nat: '🇵🇹' },
+    { num: 11, name: 'Ángel Di María', position: 'Right Winger', birth: '14/02/1988', age: 37, nat: '🇦🇷🇮🇹' },
+    { num: 14, name: 'Vangelis Pavlidis', position: 'Striker', birth: '21/11/1998', age: 26, nat: '🇬🇷' },
+    { num: 7, name: 'Zeki Amdouni', position: 'Striker', birth: '04/12/2000', age: 24, nat: '🇨🇭🇹🇷' },
+    { num: 9, name: 'Arthur Cabral', position: 'Striker', birth: '25/04/1998', age: 27, nat: '🇧🇷' },
+    { num: 19, name: 'Andrea Belotti', position: 'Striker', birth: '20/12/1993', age: 31, nat: '🇮🇹' },
     // Empty rows for more players
     {}, {}, {},
   ];
@@ -265,24 +278,21 @@ function TeamPageContent() {
               <thead>
                 <tr style={{ background: '#eee', color: '#888', fontWeight: 600, fontSize: 16 }}>
                   <th style={{ padding: 8, textAlign: 'center' }}>#</th>
-                  <th style={{ padding: 8, textAlign: 'left' }}>Jogadores</th>
-                  <th style={{ padding: 8, textAlign: 'center' }}>Nasc./Idade</th>
-                  <th style={{ padding: 8, textAlign: 'center' }}>Nac.</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Players</th>
+                  <th style={{ padding: 8, textAlign: 'center' }}>Birth/Age</th>
+                  <th style={{ padding: 8, textAlign: 'center' }}>Nat.</th>
                 </tr>
               </thead>
               <tbody>
                 {players.map((p, idx) => p && p.name ? (
                   <tr key={idx} style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
                     <td style={{ padding: 8, textAlign: 'center', fontWeight: 700, background: '#e6f0fa', borderRadius: 12 }}>{p.num}</td>
-                    <td style={{ padding: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <img src={p.photo} alt={p.name} width={32} height={32} style={{ borderRadius: '50%', objectFit: 'cover', border: '1px solid #ddd' }} />
-                      <div>
-                        <div style={{ fontWeight: 700, color: '#0056b3' }}>{p.name}</div>
-                        <div style={{ fontSize: 13, color: '#888' }}>{p.position}</div>
-                      </div>
+                    <td style={{ padding: 8 }}>
+                      <div style={{ fontWeight: 700, color: '#0056b3' }}>{p.name}</div>
+                      <div style={{ fontSize: 13, color: '#888' }}>{p.position}</div>
                     </td>
                     <td style={{ padding: 8, textAlign: 'center' }}>{p.birth} ({p.age})</td>
-                    <td style={{ padding: 8, textAlign: 'center' }}><img src={p.nat} alt="flag" width={24} height={16} style={{ borderRadius: 2, objectFit: 'cover', border: '1px solid #ddd' }} /></td>
+                    <td style={{ padding: 8, textAlign: 'center', fontSize: 22 }}>{p.nat}</td>
                   </tr>
                 ) : (
                   <tr key={idx}><td colSpan={4} style={{ height: 36 }}></td></tr>
