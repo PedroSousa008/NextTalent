@@ -31,12 +31,10 @@ export default function LigaPortugalPage() {
   const [search, setSearch] = useState('');
   const [selectedAge, setSelectedAge] = useState('U-23');
   const [showStarred, setShowStarred] = useState(false);
-  const [benficaFav, setBenficaFav] = useState(false);
   const [teamFavs, setTeamFavs] = useState<{ [team: string]: boolean }>({});
   const router = useRouter();
 
   useEffect(() => {
-    setBenficaFav(localStorage.getItem('benfica_fav') === 'true');
     setTeamFavs(JSON.parse(localStorage.getItem('team_favs') || '{}'));
   }, []);
 
