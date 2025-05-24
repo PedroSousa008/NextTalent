@@ -81,11 +81,12 @@ function TeamPageContent() {
     { num: 71, name: 'Leandro Santos', position: 'Right Back', birth: '28/09/2005', age: 19, nat: '🇵🇹' },
     { num: 61, name: 'Florentino', position: 'Defensive Midfielder', birth: '19/08/1999', age: 25, nat: '🇦🇴' },
     { num: 16, name: 'Manu Silva', position: 'Defensive Midfielder', birth: '12/06/2001', age: 23, nat: '🇵🇹' },
-    { num: 10, name: 'Orkun Kökçü', position: 'Central Midfielder', birth: '29/12/2000', age: 24, nat: '🇹🇷🇳🇱' },
+    { num: 23, name: 'Orkun Kökçü', position: 'Central Midfielder', birth: '29/12/2000', age: 24, nat: '🇹🇷🇳🇱' },
     { num: 8, name: 'Fredrik Aursnes', position: 'Central Midfielder', birth: '10/12/1995', age: 29, nat: '🇳🇴🇨🇭' },
     { num: 18, name: 'Leandro Barreiro', position: 'Central Midfielder', birth: '03/01/2000', age: 25, nat: '🇱🇺🇵🇹' },
     { num: 85, name: 'Renato Sanches', position: 'Central Midfielder', birth: '18/08/1997', age: 27, nat: '🇵🇹🇨🇻' },
     { num: 84, name: 'João Rego', position: 'Attacking Midfielder', birth: '20/06/2005', age: 19, nat: '🇵🇹' },
+    { num: 10, name: 'Pedro Sousa', position: 'Attacking Midfielder', birth: '13/04/2003', age: 22, nat: '🇵🇹' },
     { num: 17, name: 'Kerem Aktürkoğlu', position: 'Left Winger', birth: '21/10/1998', age: 26, nat: '🇹🇷' },
     { num: 21, name: 'Andreas Schjelderup', position: 'Left Winger', birth: '01/06/2004', age: 20, nat: '🇳🇴' },
     { num: 27, name: 'Bruma', position: 'Left Winger', birth: '24/10/1994', age: 30, nat: '🇵🇹🇬🇼' },
@@ -97,7 +98,7 @@ function TeamPageContent() {
     { num: 9, name: 'Arthur Cabral', position: 'Striker', birth: '25/04/1998', age: 27, nat: '🇧🇷' },
     { num: 19, name: 'Andrea Belotti', position: 'Striker', birth: '20/12/1993', age: 31, nat: '🇮🇹' },
     // Empty rows for more players
-    {}, {}, {},
+    {}, {},
   ];
 
   const sortedPlayers = [...players].filter(p => p && p.name).sort((a, b) => {
