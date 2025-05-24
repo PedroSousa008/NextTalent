@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import BottomNav from '../feed/BottomNav';
 import { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 const TEAMS = [
   { name: 'Arouca', logo: '/arouca.png' },
@@ -32,20 +32,27 @@ export default function LigaPortugalPage() {
   const [selectedAge, setSelectedAge] = useState('U-23');
   const [showStarred, setShowStarred] = useState(false);
   const [benficaFav, setBenficaFav] = useState(false);
+  const [teamFavs, setTeamFavs] = useState<{ [team: string]: boolean }>({});
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     setBenficaFav(localStorage.getItem('benfica_fav') === 'true');
-    const urlAge = searchParams.get('age');
-    if (urlAge) setSelectedAge(urlAge);
-  }, [searchParams]);
+    setTeamFavs(JSON.parse(localStorage.getItem('team_favs') || '{}'));
+  }, []);
+
+  function toggleTeamFav(team: string) {
+    setTeamFavs(prev => {
+      const updated = { ...prev, [team]: !prev[team] };
+      localStorage.setItem('team_favs', JSON.stringify(updated));
+      return updated;
+    });
+  }
 
   let filteredTeams = search.trim() === ''
     ? TEAMS
     : TEAMS.filter(team => team.name.toLowerCase().includes(search.trim().toLowerCase()));
   if (showStarred) {
-    filteredTeams = filteredTeams.filter(team => team.name === 'Benfica');
+    filteredTeams = filteredTeams.filter(team => teamFavs[team.name]);
   }
   return (
     <div style={{ minHeight: '100vh', background: '#f5f6fa', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80 }}>
@@ -99,13 +106,14 @@ export default function LigaPortugalPage() {
       <div style={{ width: '100%', maxWidth: 500, flex: 1, overflowY: 'auto', marginTop: 8 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
           {filteredTeams.map(team => (
-            <div key={team.name} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #eee', background: 'white', minHeight: 120, height: 140, position: 'relative', cursor: team.name === 'Benfica' ? 'pointer' : 'default' }}
-              onClick={() => { if (team.name === 'Benfica') router.push(`/TeamPage?age=${selectedAge}`); }}
-            >
+            <div key={team.name} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #eee', background: 'white', minHeight: 120, height: 140, position: 'relative', cursor: 'pointer' }}>
               <Image src={team.logo} alt={team.name} width={90} height={90} style={{ objectFit: 'contain', maxWidth: '70%', maxHeight: '70%' }} />
-              {team.name === 'Benfica' && benficaFav && (
-                <span style={{ position: 'absolute', top: 4, right: 8, color: '#f5b800', fontSize: 20, fontWeight: 700 }}>★</span>
-              )}
+              <span
+                onClick={e => { e.stopPropagation(); toggleTeamFav(team.name); }}
+                style={{ position: 'absolute', top: 4, right: 8, color: '#f5b800', fontSize: 20, fontWeight: 700, cursor: 'pointer', userSelect: 'none', display: teamFavs[team.name] || !showStarred ? 'inline' : 'none' }}
+              >
+                {teamFavs[team.name] ? '★' : '☆'}
+              </span>
             </div>
           ))}
         </div>
