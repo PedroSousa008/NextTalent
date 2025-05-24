@@ -31,12 +31,25 @@ export default function LigaPortugalPage() {
   const [search, setSearch] = useState('');
   const [selectedAge, setSelectedAge] = useState('U-23');
   const [showStarred, setShowStarred] = useState(false);
-  const [benficaFav, setBenficaFav] = useState(false);
+  const [favorites, setFavorites] = useState<{ [team: string]: boolean }>({});
   const router = useRouter();
 
   useEffect(() => {
-    setBenficaFav(localStorage.getItem('benfica_fav') === 'true');
+    // Load favorites from localStorage
+    const favs: { [team: string]: boolean } = {};
+    TEAMS.forEach(team => {
+      favs[team.name] = localStorage.getItem(`fav_${team.name}`) === 'true';
+    });
+    setFavorites(favs);
   }, []);
+
+  function toggleFavorite(teamName: string) {
+    setFavorites(prev => {
+      const updated = { ...prev, [teamName]: !prev[teamName] };
+      localStorage.setItem(`fav_${teamName}`, updated[teamName] ? 'true' : 'false');
+      return updated;
+    });
+  }
 
   let filteredTeams = search.trim() === ''
     ? TEAMS
@@ -100,9 +113,12 @@ export default function LigaPortugalPage() {
               onClick={() => { if (team.name === 'Benfica') router.push(`/TeamPage?age=${selectedAge}`); }}
             >
               <Image src={team.logo} alt={team.name} width={90} height={90} style={{ objectFit: 'contain', maxWidth: '70%', maxHeight: '70%' }} />
-              {team.name === 'Benfica' && benficaFav && (
-                <span style={{ position: 'absolute', top: 4, right: 8, color: '#f5b800', fontSize: 20, fontWeight: 700 }}>★</span>
-              )}
+              <span
+                onClick={e => { e.stopPropagation(); toggleFavorite(team.name); }}
+                style={{ position: 'absolute', top: 4, right: 8, color: '#f5b800', fontSize: 20, fontWeight: 700, cursor: 'pointer', userSelect: 'none' }}
+              >
+                {favorites[team.name] ? '★' : '☆'}
+              </span>
             </div>
           ))}
         </div>
