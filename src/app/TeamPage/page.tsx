@@ -11,6 +11,7 @@ function TeamPageContent() {
   const [isFavourite, setIsFavourite] = useState(false);
   const [showFullTable, setShowFullTable] = useState(false);
   const [selectedTab, setSelectedTab] = useState<'league' | 'staff' | 'contacts'>('league');
+  const [playerSort, setPlayerSort] = useState<{ col: string, asc: boolean }>({ col: '#', asc: true });
 
   useEffect(() => {
     // On mount, check localStorage for favourite state
@@ -98,6 +99,20 @@ function TeamPageContent() {
     // Empty rows for more players
     {}, {}, {},
   ];
+
+  const sortedPlayers = [...players].filter(p => p && p.name).sort((a, b) => {
+    if (!a || !b) return 0;
+    if (playerSort.col === '#') {
+      return playerSort.asc ? (a.num ?? 0) - (b.num ?? 0) : (b.num ?? 0) - (a.num ?? 0);
+    } else if (playerSort.col === 'Players') {
+      return playerSort.asc ? (a.name ?? '').localeCompare(b.name ?? '') : (b.name ?? '').localeCompare(a.name ?? '');
+    } else if (playerSort.col === 'Age') {
+      return playerSort.asc ? (a.age ?? 0) - (b.age ?? 0) : (b.age ?? 0) - (a.age ?? 0);
+    } else if (playerSort.col === 'Natio.') {
+      return playerSort.asc ? (a.nat ?? '').localeCompare(b.nat ?? '') : (b.nat ?? '').localeCompare(a.nat ?? '');
+    }
+    return 0;
+  });
 
   return (
     <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80 }}>
@@ -277,14 +292,22 @@ function TeamPageContent() {
             <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
               <thead>
                 <tr style={{ background: '#eee', color: '#888', fontWeight: 600, fontSize: 16 }}>
-                  <th style={{ padding: 8, textAlign: 'center' }}>#</th>
-                  <th style={{ padding: 8, textAlign: 'left' }}>Players</th>
-                  <th style={{ padding: 8, textAlign: 'center' }}>Birth/Age</th>
-                  <th style={{ padding: 8, textAlign: 'center' }}>Nat.</th>
+                  <th style={{ padding: 8, textAlign: 'center', cursor: 'pointer' }} onClick={() => setPlayerSort(s => ({ col: '#', asc: s.col === '#' ? !s.asc : true }))}>
+                    # {playerSort.col === '#' ? (playerSort.asc ? '↑' : '↓') : ''}
+                  </th>
+                  <th style={{ padding: 8, textAlign: 'left', cursor: 'pointer' }} onClick={() => setPlayerSort(s => ({ col: 'Players', asc: s.col === 'Players' ? !s.asc : true }))}>
+                    Players {playerSort.col === 'Players' ? (playerSort.asc ? '↑' : '↓') : ''}
+                  </th>
+                  <th style={{ padding: 8, textAlign: 'center', cursor: 'pointer' }} onClick={() => setPlayerSort(s => ({ col: 'Age', asc: s.col === 'Age' ? !s.asc : true }))}>
+                    Age {playerSort.col === 'Age' ? (playerSort.asc ? '↑' : '↓') : ''}
+                  </th>
+                  <th style={{ padding: 8, textAlign: 'center', cursor: 'pointer' }} onClick={() => setPlayerSort(s => ({ col: 'Natio.', asc: s.col === 'Natio.' ? !s.asc : true }))}>
+                    Natio. {playerSort.col === 'Natio.' ? (playerSort.asc ? '↑' : '↓') : ''}
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                {players.map((p, idx) => p && p.name ? (
+                {sortedPlayers.map((p, idx) => p && p.name ? (
                   <tr key={idx} style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
                     <td style={{ padding: 8, textAlign: 'center', fontWeight: 700, background: '#e6f0fa', borderRadius: 12 }}>{p.num}</td>
                     <td style={{ padding: 8 }}>
