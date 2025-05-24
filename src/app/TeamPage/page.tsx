@@ -10,6 +10,7 @@ function TeamPageContent() {
   const age = searchParams.get('age') || 'U23';
   const [isFavourite, setIsFavourite] = useState(false);
   const [showFullTable, setShowFullTable] = useState(false);
+  const [selectedTab, setSelectedTab] = useState<'league' | 'staff' | 'contacts'>('league');
 
   useEffect(() => {
     // On mount, check localStorage for favourite state
@@ -76,9 +77,24 @@ function TeamPageContent() {
       </div>
       {/* Tabs */}
       <div style={{ width: '100%', maxWidth: 500, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '18px 0 0 0', borderBottom: '1.5px solid #eee' }}>
-        <div style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: 700, color: 'black', borderBottom: '2px solid black', paddingBottom: 4, cursor: 'pointer' }}>League Table</div>
-        <div style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: 500, color: '#bbb', cursor: 'not-allowed' }}>Staff and Team</div>
-        <div style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: 500, color: '#bbb', cursor: 'not-allowed' }}>Contacts</div>
+        <div
+          style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: selectedTab === 'league' ? 700 : 500, color: selectedTab === 'league' ? 'black' : '#bbb', borderBottom: selectedTab === 'league' ? '2px solid black' : 'none', paddingBottom: 4, cursor: 'pointer', transition: 'color 0.15s, border-bottom 0.15s' }}
+          onClick={() => setSelectedTab('league')}
+        >
+          League Table
+        </div>
+        <div
+          style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: selectedTab === 'staff' ? 700 : 500, color: selectedTab === 'staff' ? 'black' : '#bbb', borderBottom: selectedTab === 'staff' ? '2px solid black' : 'none', paddingBottom: 4, cursor: 'pointer', transition: 'color 0.15s, border-bottom 0.15s' }}
+          onClick={() => setSelectedTab('staff')}
+        >
+          Staff and Team
+        </div>
+        <div
+          style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: selectedTab === 'contacts' ? 700 : 500, color: selectedTab === 'contacts' ? 'black' : '#bbb', borderBottom: selectedTab === 'contacts' ? '2px solid black' : 'none', paddingBottom: 4, cursor: 'pointer', transition: 'color 0.15s, border-bottom 0.15s' }}
+          onClick={() => setSelectedTab('contacts')}
+        >
+          Contacts
+        </div>
       </div>
       {/* League Table */}
       <div style={{ width: '100%', maxWidth: 500, marginTop: 18 }}>
