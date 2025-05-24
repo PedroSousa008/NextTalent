@@ -233,7 +233,7 @@ function TeamPageContent() {
                 <div key={idx} style={{ display: 'flex', flexDirection: 'column', borderBottom: '1px solid #222', padding: 0 }}>
                   {/* Competition header */}
                   {(idx === 0 || lastGames[idx-1].comp !== game.comp) && (
-                    <div style={{ display: 'flex', alignItems: 'center', background: '#101820', color: '#fff', fontWeight: 600, fontSize: 15, padding: '8px 0 0 8px', gap: 8 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', background: '#222', color: '#fff', fontWeight: 600, fontSize: 15, padding: '8px 0 0 8px', gap: 8 }}>
                       <Image src={game.compFlag} alt={game.comp} width={18} height={18} style={{ marginRight: 4 }} />
                       <span>{game.comp}</span>
                       <span style={{ fontSize: 11, color: '#bbb', marginLeft: 8 }}>{game.comp === 'Liga Portugal' ? 'PORTUGAL' : 'PORTUGAL'}</span>
@@ -251,7 +251,7 @@ function TeamPageContent() {
                       <span style={{ fontWeight: 600, color: game.away.name === 'Benfica' ? '#fff' : '#bbb' }}>{game.away.name}</span>
                       <Image src={game.away.logo} alt={game.away.name} width={22} height={22} style={{ objectFit: 'contain' }} />
                     </div>
-                    <span style={{ minWidth: 28, marginLeft: 8, fontWeight: 700, color: game.result === 'W' ? '#2ecc40' : game.result === 'D' ? '#f5b800' : '#e74c3c', background: '#222', borderRadius: 6, padding: '2px 8px', fontSize: 15, display: 'inline-block', textAlign: 'center' }}>{game.result}</span>
+                    <span style={{ minWidth: 28, marginLeft: 8, fontWeight: 700, color: game.result === 'W' ? '#2ecc40' : game.result === 'D' ? '#f5b800' : '#e74c3c', background: '#e0e0e0', borderRadius: 6, padding: '2px 8px', fontSize: 15, display: 'inline-block', textAlign: 'center' }}>{game.result}</span>
                   </div>
                 </div>
               ))}
