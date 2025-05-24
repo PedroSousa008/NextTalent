@@ -262,8 +262,9 @@ function TeamPageContent() {
       {/* Staff and Team Table */}
       {selectedTab === 'staff' && (
         <div style={{ width: '100%', maxWidth: 500, marginTop: 18, background: 'white', borderRadius: 8, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
-          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>COACHING STAFF</div>
-          <div style={{ maxHeight: 320, overflowY: 'auto' }}>
+          {/* MANAGEMENT */}
+          <div style={{ background: '#112344', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4, letterSpacing: 1 }}>MANAGEMENT</div>
+          <div style={{ maxHeight: 320, overflowY: 'auto', borderBottom: '8px solid #f0f0f0' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
               <thead>
                 <tr style={{ background: '#eee', color: '#222', fontWeight: 700, fontSize: 16 }}>
@@ -271,98 +272,132 @@ function TeamPageContent() {
                 </tr>
               </thead>
               <tbody>
-                {/* Bruno Lage */}
                 <tr style={{ borderBottom: '1px solid #eee' }}>
-                  <td style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 10 }}>
-                    <img src="/staff/bruno-lage.jpg" alt="Bruno Lage" style={{ width: 44, height: 44, borderRadius: 4, objectFit: 'cover', background: '#f0f0f0' }} />
-                    <div>
-                      <div style={{ fontWeight: 700, color: '#205081', fontSize: 18 }}>Bruno Lage</div>
-                      <div style={{ color: '#222', fontSize: 15 }}>Manager</div>
-                    </div>
+                  <td style={{ padding: 10 }}>
+                    <div style={{ fontWeight: 700, color: 'black', fontSize: 18 }}>Lourenço de Andrade Pereira Coelho</div>
+                    <div style={{ color: '#222', fontSize: 15 }}>Head of Football Operations</div>
                   </td>
                 </tr>
-                {/* Ricardo Rocha */}
                 <tr style={{ borderBottom: '1px solid #eee' }}>
-                  <td style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 10 }}>
-                    <img src="/staff/placeholder.png" alt="Ricardo Rocha" style={{ width: 44, height: 44, borderRadius: 4, objectFit: 'cover', background: '#f0f0f0' }} />
-                    <div>
-                      <div style={{ fontWeight: 700, color: '#205081', fontSize: 18 }}>Ricardo Rocha</div>
-                      <div style={{ color: '#222', fontSize: 15 }}>Assistant Manager</div>
-                    </div>
+                  <td style={{ padding: 10 }}>
+                    <div style={{ fontWeight: 700, color: 'black', fontSize: 18 }}>Luisão</div>
+                    <div style={{ color: '#222', fontSize: 15 }}>Technical Director</div>
                   </td>
                 </tr>
-                {/* Luís Lage */}
+              </tbody>
+            </table>
+          </div>
+          {/* BOARD OF DIRECTORS */}
+          <div style={{ background: '#112344', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', letterSpacing: 1 }}>BOARD OF DIRECTORS</div>
+          <div style={{ maxHeight: 320, overflowY: 'auto', borderBottom: '8px solid #f0f0f0' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
+              <thead>
+                <tr style={{ background: '#eee', color: '#222', fontWeight: 700, fontSize: 16 }}>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Name/Position</th>
+                </tr>
+              </thead>
+              <tbody>
                 <tr style={{ borderBottom: '1px solid #eee' }}>
-                  <td style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 10 }}>
-                    <img src="/staff/luis-lage.jpg" alt="Luís Lage" style={{ width: 44, height: 44, borderRadius: 4, objectFit: 'cover', background: '#f0f0f0' }} />
-                    <div>
-                      <div style={{ fontWeight: 700, color: '#205081', fontSize: 18 }}>Luís Lage</div>
-                      <div style={{ color: '#222', fontSize: 15 }}>Assistant Manager</div>
-                    </div>
+                  <td style={{ padding: 10 }}>
+                    <div style={{ fontWeight: 700, color: 'black', fontSize: 18 }}>Rui Costa</div>
+                    <div style={{ color: '#222', fontSize: 15 }}>President</div>
                   </td>
                 </tr>
-                {/* Carlos Cachada */}
                 <tr style={{ borderBottom: '1px solid #eee' }}>
-                  <td style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 10 }}>
-                    <img src="/staff/placeholder.png" alt="Carlos Cachada" style={{ width: 44, height: 44, borderRadius: 4, objectFit: 'cover', background: '#f0f0f0' }} />
-                    <div>
-                      <div style={{ fontWeight: 700, color: '#205081', fontSize: 18 }}>Carlos Cachada</div>
-                      <div style={{ color: '#222', fontSize: 15 }}>Assistant Manager</div>
-                    </div>
+                  <td style={{ padding: 10 }}>
+                    <div style={{ fontWeight: 700, color: 'black', fontSize: 18 }}>Nuno Gaioso</div>
+                    <div style={{ color: '#222', fontSize: 15 }}>Vice-Chairman</div>
                   </td>
                 </tr>
-                {/* Gonçalo Simões */}
+              </tbody>
+            </table>
+          </div>
+          {/* MEDICAL DEPARTMENT */}
+          <div style={{ background: '#112344', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', letterSpacing: 1 }}>MEDICAL DEPARTMENT</div>
+          <div style={{ maxHeight: 320, overflowY: 'auto', borderBottom: '8px solid #f0f0f0' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
+              <thead>
+                <tr style={{ background: '#eee', color: '#222', fontWeight: 700, fontSize: 16 }}>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Name/Position</th>
+                </tr>
+              </thead>
+              <tbody>
                 <tr style={{ borderBottom: '1px solid #eee' }}>
-                  <td style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 10 }}>
-                    <img src="/staff/placeholder.png" alt="Gonçalo Simões" style={{ width: 44, height: 44, borderRadius: 4, objectFit: 'cover', background: '#f0f0f0' }} />
-                    <div>
-                      <div style={{ fontWeight: 700, color: '#205081', fontSize: 18 }}>Gonçalo Simões</div>
-                      <div style={{ color: '#222', fontSize: 15 }}>Goalkeeping Coach</div>
-                    </div>
+                  <td style={{ padding: 10 }}>
+                    <div style={{ fontWeight: 700, color: 'black', fontSize: 18 }}>Ricardo Antunes</div>
+                    <div style={{ color: '#222', fontSize: 15 }}>Club Doctor</div>
                   </td>
                 </tr>
-                {/* Nuno Santos */}
                 <tr style={{ borderBottom: '1px solid #eee' }}>
-                  <td style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 10 }}>
-                    <img src="/staff/nuno-santos.jpg" alt="Nuno Santos" style={{ width: 44, height: 44, borderRadius: 4, objectFit: 'cover', background: '#f0f0f0' }} />
-                    <div>
-                      <div style={{ fontWeight: 700, color: '#205081', fontSize: 18 }}>Nuno Santos</div>
-                      <div style={{ color: '#222', fontSize: 15 }}>Goalkeeping Coach</div>
-                    </div>
+                  <td style={{ padding: 10 }}>
+                    <div style={{ fontWeight: 700, color: 'black', fontSize: 18 }}>Paulo Rebelo</div>
+                    <div style={{ color: '#222', fontSize: 15 }}>Physiotherapist</div>
                   </td>
                 </tr>
-                {/* Alexandre Silva */}
                 <tr style={{ borderBottom: '1px solid #eee' }}>
-                  <td style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 10 }}>
-                    <img src="/staff/alexandre-silva.jpg" alt="Alexandre Silva" style={{ width: 44, height: 44, borderRadius: 4, objectFit: 'cover', background: '#f0f0f0' }} />
-                    <div>
-                      <div style={{ fontWeight: 700, color: '#205081', fontSize: 18 }}>Alexandre Silva</div>
-                      <div style={{ color: '#222', fontSize: 15 }}>Conditioning Coach</div>
-                    </div>
+                  <td style={{ padding: 10 }}>
+                    <div style={{ fontWeight: 700, color: 'black', fontSize: 18 }}>Pedro Barreira</div>
+                    <div style={{ color: '#222', fontSize: 15 }}>Physiotherapist</div>
                   </td>
                 </tr>
-                {/* Jhony Conceição */}
+              </tbody>
+            </table>
+          </div>
+          {/* PUBLIC RELATIONS */}
+          <div style={{ background: '#112344', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', letterSpacing: 1 }}>PUBLIC RELATIONS</div>
+          <div style={{ maxHeight: 320, overflowY: 'auto', borderBottom: '8px solid #f0f0f0' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
+              <thead>
+                <tr style={{ background: '#eee', color: '#222', fontWeight: 700, fontSize: 16 }}>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Name/Position</th>
+                </tr>
+              </thead>
+              <tbody>
                 <tr style={{ borderBottom: '1px solid #eee' }}>
-                  <td style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 10 }}>
-                    <img src="/staff/jhony-conceicao.jpg" alt="Jhony Conceição" style={{ width: 44, height: 44, borderRadius: 4, objectFit: 'cover', background: '#f0f0f0' }} />
-                    <div>
-                      <div style={{ fontWeight: 700, color: '#205081', fontSize: 18 }}>Jhony Conceição</div>
-                      <div style={{ color: '#222', fontSize: 15 }}>Match Analyst</div>
-                    </div>
+                  <td style={{ padding: 10 }}>
+                    <div style={{ fontWeight: 700, color: 'black', fontSize: 18 }}>Ricardo Lemos</div>
+                    <div style={{ color: '#222', fontSize: 15 }}>Head of Media and Communications</div>
                   </td>
                 </tr>
-                {/* Diogo Camacho */}
+              </tbody>
+            </table>
+          </div>
+          {/* KIT MANAGER */}
+          <div style={{ background: '#112344', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', letterSpacing: 1 }}>KIT MANAGER</div>
+          <div style={{ maxHeight: 320, overflowY: 'auto', borderBottom: '8px solid #f0f0f0' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
+              <thead>
+                <tr style={{ background: '#eee', color: '#222', fontWeight: 700, fontSize: 16 }}>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Name/Position</th>
+                </tr>
+              </thead>
+              <tbody>
                 <tr style={{ borderBottom: '1px solid #eee' }}>
-                  <td style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 10 }}>
-                    <img src="/staff/placeholder.png" alt="Diogo Camacho" style={{ width: 44, height: 44, borderRadius: 4, objectFit: 'cover', background: '#f0f0f0' }} />
-                    <div>
-                      <div style={{ fontWeight: 700, color: '#205081', fontSize: 18 }}>Diogo Camacho</div>
-                      <div style={{ color: '#222', fontSize: 15 }}>Match Analyst</div>
-                    </div>
+                  <td style={{ padding: 10 }}>
+                    <div style={{ fontWeight: 700, color: 'black', fontSize: 18 }}>Luís Alberto Santos</div>
+                    <div style={{ color: '#222', fontSize: 15 }}>Kit Manager</div>
                   </td>
                 </tr>
-                {/* Empty rows for future coaches/managers */}
-                <tr style={{ borderBottom: '1px solid #eee', height: 64 }}><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+          {/* YOUTH */}
+          <div style={{ background: '#112344', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', letterSpacing: 1 }}>YOUTH</div>
+          <div style={{ maxHeight: 320, overflowY: 'auto', borderBottom: '8px solid #f0f0f0' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
+              <thead>
+                <tr style={{ background: '#eee', color: '#222', fontWeight: 700, fontSize: 16 }}>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Name/Position</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style={{ borderBottom: '1px solid #eee' }}>
+                  <td style={{ padding: 10 }}>
+                    <div style={{ fontWeight: 700, color: 'black', fontSize: 18 }}>Nuno Gaioso</div>
+                    <div style={{ color: '#222', fontSize: 15 }}>Team Organiser</div>
+                  </td>
+                </tr>
+                {/* Empty row for future additions */}
                 <tr style={{ borderBottom: '1px solid #eee', height: 64 }}><td></td></tr>
               </tbody>
             </table>
