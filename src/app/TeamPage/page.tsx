@@ -240,18 +240,18 @@ function TeamPageContent() {
                     </div>
                   )}
                   {/* Game row */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '6px 8px', background: '#181818', color: '#fff', fontSize: 16 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '6px 8px', background: '#e0e0e0', color: '#fff', fontSize: 16 }}>
                     <span style={{ minWidth: 54, color: '#bbb', fontSize: 14 }}>{game.date}</span>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, flex: 1, justifyContent: 'flex-end' }}>
                       <Image src={game.home.logo} alt={game.home.name} width={22} height={22} style={{ objectFit: 'contain' }} />
-                      <span style={{ fontWeight: 600, color: game.home.name === 'Benfica' ? '#fff' : '#bbb' }}>{game.home.name}</span>
-                      <span style={{ fontWeight: 700, fontSize: 15, margin: '0 2px', color: '#fff' }}>{game.score.split(' ')[0]}</span>
-                      <span style={{ fontWeight: 700, fontSize: 15, margin: '0 2px', color: '#fff' }}>-</span>
-                      <span style={{ fontWeight: 700, fontSize: 15, margin: '0 2px', color: '#fff' }}>{game.score.split(' ')[1]}</span>
-                      <span style={{ fontWeight: 600, color: game.away.name === 'Benfica' ? '#fff' : '#bbb' }}>{game.away.name}</span>
+                      <span style={{ fontWeight: 600, color: 'black' }}>{game.home.name}</span>
+                      <span style={{ fontWeight: 700, fontSize: 15, margin: '0 2px', color: 'black' }}>{game.score.split(' ')[0]}</span>
+                      <span style={{ fontWeight: 700, fontSize: 15, margin: '0 2px', color: 'black' }}>-</span>
+                      <span style={{ fontWeight: 700, fontSize: 15, margin: '0 2px', color: 'black' }}>{game.score.split(' ')[1]}</span>
+                      <span style={{ fontWeight: 600, color: 'black' }}>{game.away.name}</span>
                       <Image src={game.away.logo} alt={game.away.name} width={22} height={22} style={{ objectFit: 'contain' }} />
                     </div>
-                    <span style={{ minWidth: 28, marginLeft: 8, fontWeight: 700, color: game.result === 'W' ? '#2ecc40' : game.result === 'D' ? '#f5b800' : '#e74c3c', background: '#e0e0e0', borderRadius: 6, padding: '2px 8px', fontSize: 15, display: 'inline-block', textAlign: 'center' }}>{game.result}</span>
+                    <span style={{ minWidth: 28, marginLeft: 8, fontWeight: 700, color: 'black', background: '#e0e0e0', borderRadius: 6, padding: '2px 8px', fontSize: 15, display: 'inline-block', textAlign: 'center' }}>{game.result}</span>
                   </div>
                 </div>
               ))}
