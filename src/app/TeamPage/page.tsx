@@ -262,8 +262,112 @@ function TeamPageContent() {
       {/* Staff and Team Table */}
       {selectedTab === 'staff' && (
         <div style={{ width: '100%', maxWidth: 500, marginTop: 18, background: 'white', borderRadius: 8, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
-          {/* MANAGEMENT */}
-          <div style={{ background: '#112344', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4, letterSpacing: 1 }}>MANAGEMENT</div>
+          {/* COACHING STAFF TABLE (with contacts columns) */}
+          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>COACHING STAFF</div>
+          <div style={{ overflowX: 'auto', width: '100%' }}>
+            <table style={{ minWidth: 900, width: '100%', borderCollapse: 'collapse', background: 'white' }}>
+              <thead>
+                <tr style={{ background: '#e0e0e0', color: '#bbb', fontWeight: 600, fontSize: 20 }}>
+                  <th style={{ padding: 10, textAlign: 'left' }}>Name</th>
+                  <th style={{ padding: 10, textAlign: 'left' }}>Job</th>
+                  <th style={{ padding: 10, textAlign: 'center' }}>Phone Number</th>
+                  <th style={{ padding: 10, textAlign: 'left' }}>Email</th>
+                  <th style={{ padding: 10, textAlign: 'left' }}>Instagram</th>
+                  <th style={{ padding: 10, textAlign: 'left' }}>Twitter</th>
+                  <th style={{ padding: 10, textAlign: 'left' }}>LinkedIn</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* Example coaching staff, you can update these as needed */}
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 17 }}>
+                  <td style={{ padding: 10, fontWeight: 700, color: 'black' }}>Bruno Lage</td>
+                  <td style={{ padding: 10 }}>Manager</td>
+                  <td style={{ padding: 10, textAlign: 'center' }}>----------</td>
+                  <td style={{ padding: 10 }}>brunolage@fc.com</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 17 }}>
+                  <td style={{ padding: 10, fontWeight: 700, color: 'black' }}>Ricardo Rocha</td>
+                  <td style={{ padding: 10 }}>Assistant Manager</td>
+                  <td style={{ padding: 10, textAlign: 'center' }}>----------</td>
+                  <td style={{ padding: 10 }}>ricardorocha@fc.com</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 17 }}>
+                  <td style={{ padding: 10, fontWeight: 700, color: 'black' }}>Luís Lage</td>
+                  <td style={{ padding: 10 }}>Assistant Manager</td>
+                  <td style={{ padding: 10, textAlign: 'center' }}>----------</td>
+                  <td style={{ padding: 10 }}>luislage@fc.com</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 17 }}>
+                  <td style={{ padding: 10, fontWeight: 700, color: 'black' }}>Carlos Cachada</td>
+                  <td style={{ padding: 10 }}>Assistant Manager</td>
+                  <td style={{ padding: 10, textAlign: 'center' }}>----------</td>
+                  <td style={{ padding: 10 }}>carloscachada@fc.com</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 17 }}>
+                  <td style={{ padding: 10, fontWeight: 700, color: 'black' }}>Gonçalo Simões</td>
+                  <td style={{ padding: 10 }}>Goalkeeping Coach</td>
+                  <td style={{ padding: 10, textAlign: 'center' }}>----------</td>
+                  <td style={{ padding: 10 }}>goncalosimoes@fc.com</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 17 }}>
+                  <td style={{ padding: 10, fontWeight: 700, color: 'black' }}>Nuno Santos</td>
+                  <td style={{ padding: 10 }}>Goalkeeping Coach</td>
+                  <td style={{ padding: 10, textAlign: 'center' }}>----------</td>
+                  <td style={{ padding: 10 }}>nunosantos@fc.com</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 17 }}>
+                  <td style={{ padding: 10, fontWeight: 700, color: 'black' }}>Alexandre Silva</td>
+                  <td style={{ padding: 10 }}>Conditioning Coach</td>
+                  <td style={{ padding: 10, textAlign: 'center' }}>----------</td>
+                  <td style={{ padding: 10 }}>alexandresilva@fc.com</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 17 }}>
+                  <td style={{ padding: 10, fontWeight: 700, color: 'black' }}>Jhony Conceição</td>
+                  <td style={{ padding: 10 }}>Match Analyst</td>
+                  <td style={{ padding: 10, textAlign: 'center' }}>----------</td>
+                  <td style={{ padding: 10 }}>jhonyconceicao@fc.com</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 17 }}>
+                  <td style={{ padding: 10, fontWeight: 700, color: 'black' }}>Diogo Camacho</td>
+                  <td style={{ padding: 10 }}>Match Analyst</td>
+                  <td style={{ padding: 10, textAlign: 'center' }}>----------</td>
+                  <td style={{ padding: 10 }}>diogocamacho@fc.com</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                  <td style={{ padding: 10 }}>----------</td>
+                </tr>
+                {/* Empty rows for future coaches/managers */}
+                <tr style={{ borderBottom: '1px solid #eee', height: 64 }}><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr style={{ borderBottom: '1px solid #eee', height: 64 }}><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+          {/* MANAGEMENT, BOARD OF DIRECTORS, etc. as before */}
+          <div style={{ background: '#112344', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', letterSpacing: 1 }}>MANAGEMENT</div>
           <div style={{ maxHeight: 320, overflowY: 'auto', borderBottom: '8px solid #f0f0f0' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
               <thead>
