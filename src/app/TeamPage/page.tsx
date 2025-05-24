@@ -329,11 +329,11 @@ function TeamPageContent() {
       {/* Contacts Table */}
       {selectedTab === 'contacts' && (
         <div style={{ width: '100%', maxWidth: 500, marginTop: 18, background: 'white', borderRadius: 8, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
-          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 28, padding: '12px 0 12px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4, fontFamily: 'serif', letterSpacing: 1 }}>COACHING STAFF</div>
+          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 28, padding: '12px 0 12px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4, letterSpacing: 1 }}>COACHING STAFF</div>
           <div style={{ overflowX: 'auto', width: '100%' }}>
             <table style={{ minWidth: 900, width: '100%', borderCollapse: 'collapse', background: 'white' }}>
               <thead>
-                <tr style={{ background: '#e0e0e0', color: '#bbb', fontWeight: 600, fontSize: 20, fontFamily: 'serif' }}>
+                <tr style={{ background: '#e0e0e0', color: '#bbb', fontWeight: 600, fontSize: 20 }}>
                   <th style={{ padding: 10, textAlign: 'left' }}>Name</th>
                   <th style={{ padding: 10, textAlign: 'left' }}>Job</th>
                   <th style={{ padding: 10, textAlign: 'center' }}>Phone Number</th>
@@ -345,7 +345,7 @@ function TeamPageContent() {
               </thead>
               <tbody>
                 {staff.map((s, idx) => (
-                  <tr key={idx} style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 17, fontFamily: 'serif' }}>
+                  <tr key={idx} style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 17 }}>
                     <td style={{ padding: 10 }}>{s.name}</td>
                     <td style={{ padding: 10 }}>{s.job}</td>
                     <td style={{ padding: 10, textAlign: 'center' }}>----------</td>
