@@ -67,6 +67,25 @@ function TeamPageContent() {
     { name: 'Carl Magnay', job: 'Scout', age: 33, appointed: '01 September 2019', lastClub: 'Chelsea' },
   ];
 
+  const players = [
+    { num: 1, name: 'Anatoliy Trubin', position: 'Guarda-Redes', photo: '/players/trubin.png', birth: '01/08/2001', age: 23, nat: '/flags/ua.png' },
+    { num: 24, name: 'Samuel Soares', position: 'Guarda-Redes', photo: '/players/samuelsoares.png', birth: '15/06/2002', age: 22, nat: '/flags/pt.png' },
+    { num: 4, name: 'António Silva', position: 'Defesa Central', photo: '/players/antoniosilva.png', birth: '30/10/2003', age: 21, nat: '/flags/pt.png' },
+    { num: 44, name: 'Tomás Araújo', position: 'Defesa Central', photo: '/players/tomasaraujo.png', birth: '16/05/2002', age: 23, nat: '/flags/pt.png' },
+    { num: 81, name: 'Adrian Bajrami', position: 'Defesa Central', photo: '/players/bajrami.png', birth: '05/04/2002', age: 23, nat: '/flags/al.png' },
+    { num: 30, name: 'Nicolás Otamendi', position: 'Defesa Central', photo: '/players/otamendi.png', birth: '12/02/1988', age: 37, nat: '/flags/ar.png' },
+    { num: 3, name: 'Álvaro Carreras', position: 'Lateral Esquerdo', photo: '/players/carreras.png', birth: '23/03/2003', age: 22, nat: '/flags/es.png' },
+    { num: 26, name: 'Samuel Dahl', position: 'Lateral Esquerdo', photo: '/players/dahl.png', birth: '04/03/2003', age: 22, nat: '/flags/se.png' },
+    { num: 6, name: 'Alexander Bah', position: 'Lateral Direito', photo: '/players/bah.png', birth: '09/12/1997', age: 27, nat: '/flags/dk.png' },
+    { num: 71, name: 'Leandro Santos', position: 'Lateral Direito', photo: '/players/leandrosantos.png', birth: '28/09/2005', age: 19, nat: '/flags/pt.png' },
+    { num: 61, name: 'Florentino', position: 'Médio Defensivo', photo: '/players/florentino.png', birth: '19/08/1999', age: 25, nat: '/flags/ao.png' },
+    { num: 16, name: 'Manu Silva', position: 'Médio Defensivo', photo: '/players/manusilva.png', birth: '12/06/2001', age: 23, nat: '/flags/pt.png' },
+    { num: 10, name: 'Orkun Kökçü', position: 'Médio Centro', photo: '/players/kokcu.png', birth: '29/12/2000', age: 24, nat: '/flags/tr.png' },
+    { num: 8, name: 'Fredrik Aursnes', position: 'Médio Centro', photo: '/players/aursnes.png', birth: '10/12/1995', age: 29, nat: '/flags/no.png' },
+    // Empty rows for more players
+    {}, {}, {},
+  ];
+
   return (
     <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80 }}>
       {/* Top bar with back and star */}
@@ -239,9 +258,38 @@ function TeamPageContent() {
               </tbody>
             </table>
           </div>
-          {/* Players Table Placeholder */}
+          {/* Players Table */}
           <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4, marginTop: 24 }}>PLAYERS</div>
-          <div style={{ color: '#888', fontSize: 16, padding: 16, textAlign: 'center' }}>[Players table will go here]</div>
+          <div style={{ maxHeight: 320, overflowY: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
+              <thead>
+                <tr style={{ background: '#eee', color: '#888', fontWeight: 600, fontSize: 16 }}>
+                  <th style={{ padding: 8, textAlign: 'center' }}>#</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Jogadores</th>
+                  <th style={{ padding: 8, textAlign: 'center' }}>Nasc./Idade</th>
+                  <th style={{ padding: 8, textAlign: 'center' }}>Nac.</th>
+                </tr>
+              </thead>
+              <tbody>
+                {players.map((p, idx) => p && p.name ? (
+                  <tr key={idx} style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
+                    <td style={{ padding: 8, textAlign: 'center', fontWeight: 700, background: '#e6f0fa', borderRadius: 12 }}>{p.num}</td>
+                    <td style={{ padding: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <img src={p.photo} alt={p.name} width={32} height={32} style={{ borderRadius: '50%', objectFit: 'cover', border: '1px solid #ddd' }} />
+                      <div>
+                        <div style={{ fontWeight: 700, color: '#0056b3' }}>{p.name}</div>
+                        <div style={{ fontSize: 13, color: '#888' }}>{p.position}</div>
+                      </div>
+                    </td>
+                    <td style={{ padding: 8, textAlign: 'center' }}>{p.birth} ({p.age})</td>
+                    <td style={{ padding: 8, textAlign: 'center' }}><img src={p.nat} alt="flag" width={24} height={16} style={{ borderRadius: 2, objectFit: 'cover', border: '1px solid #ddd' }} /></td>
+                  </tr>
+                ) : (
+                  <tr key={idx}><td colSpan={4} style={{ height: 36 }}></td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
       {/* Bottom Navigation Bar */}
