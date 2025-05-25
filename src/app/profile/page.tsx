@@ -57,10 +57,10 @@ export default function ProfilePage() {
         </div>
       </div>
       {/* Game Highlights Grid */}
-      <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: 18, width: '100%', maxWidth: 500, overflowX: 'auto', padding: '0 16px' }}>
+      <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: 18, width: '100%', maxWidth: 500, overflowX: 'auto', padding: '0 16px', height: '33vh' }}>
         <div style={{ width: 140, height: 160, borderRadius: 8, overflow: 'hidden', background: '#eee', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: 16 }}>
           {/* Static video thumbnail for Pedro Sousa */}
-          <video src="/pedro-clip.mp4" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 8 }} poster="/Thumbnail.png" muted playsInline preload="metadata" />
+          <Image src="/Thumbnail.png" alt="Pedro Sousa Thumbnail" width={140} height={160} style={{ objectFit: 'cover', borderRadius: 8 }} />
           <span style={{ position: 'absolute', bottom: 6, right: 10, color: 'white', fontWeight: 700, fontSize: 15, textShadow: '0 1px 4px #000', background: 'rgba(0,0,0,0.4)', borderRadius: 4, padding: '1px 6px' }}>1:35</span>
         </div>
       </div>
