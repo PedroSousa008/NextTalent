@@ -53,21 +53,23 @@ export default function ProfilePage() {
       </div>
       {/* Tabs and Stats Row */}
       <div style={{ width: '100%', maxWidth: 500, marginTop: 32 }}>
-        <div style={{ display: 'flex', borderBottom: '1.5px solid #eee' }}>
+        <div style={{ display: 'flex', position: 'relative', borderBottom: '1.5px solid #eee', height: 36 }}>
+          {/* Black underline absolutely positioned for active tab */}
+          <div style={{ position: 'absolute', bottom: 0, left: 0, width: `${100 / 3}%`, height: 2, background: activeTab === 'highlights' ? 'black' : 'transparent', transition: 'left 0.2s' , transform: activeTab === 'details' ? 'translateX(100%)' : activeTab === 'stats' ? 'translateX(200%)' : 'none', zIndex: 2 }} />
           <div
-            style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: activeTab === 'highlights' ? 700 : 500, color: activeTab === 'highlights' ? 'black' : '#bbb', borderBottom: activeTab === 'highlights' ? '2px solid black' : 'none', paddingBottom: 4, cursor: 'pointer', transition: 'color 0.15s, border-bottom 0.15s' }}
+            style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: activeTab === 'highlights' ? 700 : 500, color: activeTab === 'highlights' ? 'black' : '#bbb', cursor: 'pointer', paddingBottom: 4, transition: 'color 0.15s' }}
             onClick={() => setActiveTab('highlights')}
           >
             Game Highlights
           </div>
           <div
-            style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: activeTab === 'details' ? 700 : 500, color: activeTab === 'details' ? 'black' : '#bbb', borderBottom: activeTab === 'details' ? '2px solid black' : 'none', paddingBottom: 4, cursor: 'pointer', transition: 'color 0.15s, border-bottom 0.15s' }}
+            style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: activeTab === 'details' ? 700 : 500, color: activeTab === 'details' ? 'black' : '#bbb', cursor: 'pointer', paddingBottom: 4, transition: 'color 0.15s' }}
             onClick={() => setActiveTab('details')}
           >
             Details
           </div>
           <div
-            style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: activeTab === 'stats' ? 700 : 500, color: activeTab === 'stats' ? 'black' : '#bbb', borderBottom: activeTab === 'stats' ? '2px solid black' : 'none', paddingBottom: 4, cursor: 'pointer', transition: 'color 0.15s, border-bottom 0.15s' }}
+            style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: activeTab === 'stats' ? 700 : 500, color: activeTab === 'stats' ? 'black' : '#bbb', cursor: 'pointer', paddingBottom: 4, transition: 'color 0.15s' }}
             onClick={() => setActiveTab('stats')}
           >
             Stats
