@@ -85,7 +85,7 @@ export default function ProfilePage() {
         </div>
       )}
       {activeTab === 'details' && (
-        <div style={{ width: '100%', maxWidth: 500, marginTop: 18, padding: '0 16px' }}>
+        <div style={{ width: '100%', maxWidth: 500, marginTop: 18, padding: '0 16px', overflowY: 'auto', maxHeight: '45vh' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'serif' }}>
             <tbody>
               <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Full Name</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Pedro Sousa</td></tr>
@@ -94,13 +94,17 @@ export default function ProfilePage() {
               <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Weight</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>77 kg</td></tr>
               <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Position</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>CAM/CM</td></tr>
               <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Preferred Foot</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Right</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Club</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Dumiense</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Club</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Benfica</td></tr>
               <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Nationality</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Portugal</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Shirt Number</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>8</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Shirt Number</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>10</td></tr>
               <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Strengths</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Playmaking, Dribbling, Shooting</td></tr>
               <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Weaknesses</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Aerial Balls</td></tr>
               <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Injuries</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>None</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Ex-Team</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Lomarense</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Ex-Team</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Real Madrid</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Email</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>pedro.sousa@email.com</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Instagram</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>@pedrosousa</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Twitter</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>@pedrosousa</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>LinkedIn</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>linkedin.com/in/pedrosousa</td></tr>
             </tbody>
           </table>
         </div>
@@ -108,6 +112,11 @@ export default function ProfilePage() {
       {activeTab === 'stats' && (
         <div style={{ width: '100%', maxWidth: 500, marginTop: 18, padding: '0 16px', color: '#bbb', textAlign: 'center', fontSize: 18 }}>
           {/* Stats content can go here */}
+          <div style={{ marginTop: 24, textAlign: 'center' }}>
+            <button style={{ background: 'none', border: '1.5px solid #bbb', color: '#222', fontSize: 18, borderRadius: 8, padding: '8px 24px', cursor: 'pointer', fontFamily: 'serif', fontWeight: 500, transition: 'border 0.2s, color 0.2s' }}>
+              Edit Information
+            </button>
+          </div>
         </div>
       )}
       {/* Bottom Navigation Bar */}
