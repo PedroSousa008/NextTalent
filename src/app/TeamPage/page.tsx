@@ -55,19 +55,6 @@ function TeamPageContent() {
     { comp: 'Liga Portugal', compFlag: '/liga-portugal.png', date: '13.04.', home: { name: 'Benfica', logo: '/benfica.png' }, away: { name: 'Arouca', logo: '/arouca.png' }, score: '2 2', result: 'D' },
   ];
 
-  const staff = [
-    { name: 'Andy Myers', job: 'Manager', age: 48, appointed: '14 July 2019', lastClub: 'Chelsea' },
-    { name: 'Jon Harley', job: 'Assistant Manager', age: 42, appointed: '14 July 2019', lastClub: 'Chelsea' },
-    { name: 'Jack Mesure', job: 'Assistant Manager', age: 45, appointed: '31 July 2021', lastClub: 'Bristol Rovers' },
-    { name: 'Claude Makélélé', job: 'Technical Mentor', age: 49, appointed: '15 August 2019', lastClub: 'Eupen' },
-    { name: 'Neil Bath', job: 'Head of Youth Dept', age: 48, appointed: '07 July 2011', lastClub: 'Chelsea' },
-    { name: 'Elliot Axtell', job: 'Conditioning Coach', age: 42, appointed: '14 July 2019', lastClub: 'Watford' },
-    { name: 'Mark Beeney', job: 'Head of Goalkeeping Dept', age: 40, appointed: '14 July 2021', lastClub: 'Chelsea' },
-    { name: 'Alex Scott', job: 'Performance Analyst', age: 37, appointed: '15 August 2019', lastClub: 'Worthing FC' },
-    { name: 'Anders Jensen', job: 'Scout', age: 24, appointed: '01 October 2018', lastClub: 'Sarpsborg 08' },
-    { name: 'Carl Magnay', job: 'Scout', age: 33, appointed: '01 September 2019', lastClub: 'Chelsea' },
-  ];
-
   const players = [
     { num: 1, name: 'Anatoliy Trubin', position: 'Goalkeeper', birth: '01/08/2001', age: 23, nat: '🇺🇦' },
     { num: 24, name: 'Samuel Soares', position: 'Goalkeeper', birth: '15/06/2002', age: 22, nat: '🇵🇹' },
