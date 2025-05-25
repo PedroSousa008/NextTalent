@@ -12,11 +12,26 @@ export default function ProfilePage() {
       {/* Name */}
       <div style={{ fontWeight: 500, fontSize: 32, color: '#222', fontFamily: 'serif', marginBottom: 4 }}>Pedro Sousa</div>
       {/* Club and position */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 18, color: '#222', fontFamily: 'serif', marginBottom: 8 }}>
-        <Image src="/dumiense.png" alt="Dumiense" width={28} height={28} style={{ objectFit: 'contain', borderRadius: 4 }} />
-        <span>Playing at Dumiense</span>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 18, color: '#222', fontFamily: 'serif', marginBottom: 8, width: '100%', maxWidth: 500, justifyContent: 'flex-start', paddingLeft: 24 }}>
+        <Image src="/benfica.png" alt="Benfica" width={28} height={28} style={{ objectFit: 'contain', borderRadius: 4 }} />
+        <span>Playing for Benfica</span>
       </div>
       <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginBottom: 8 }}>CAM/CM</div>
+      {/* Followers, Following, Posts - now above tabs */}
+      <div style={{ display: 'flex', width: '100%', maxWidth: 500, margin: '18px 0 0 0' }}>
+        <div style={{ flex: 1, textAlign: 'center' }}>
+          <div style={{ color: '#bbb', fontSize: 18, fontFamily: 'serif' }}>Followers</div>
+          <div style={{ fontWeight: 500, fontSize: 28, color: '#222', fontFamily: 'serif' }}>365</div>
+        </div>
+        <div style={{ flex: 1, textAlign: 'center' }}>
+          <div style={{ color: '#bbb', fontSize: 18, fontFamily: 'serif' }}>Following</div>
+          <div style={{ fontWeight: 500, fontSize: 28, color: '#222', fontFamily: 'serif' }}>125</div>
+        </div>
+        <div style={{ flex: 1, textAlign: 'center' }}>
+          <div style={{ color: '#bbb', fontSize: 18, fontFamily: 'serif' }}>Posts</div>
+          <div style={{ fontWeight: 500, fontSize: 28, color: '#222', fontFamily: 'serif' }}>1</div>
+        </div>
+      </div>
       {/* Tabs and Stats Row */}
       <div style={{ width: '100%', maxWidth: 500, marginTop: 32 }}>
         <div style={{ display: 'flex', borderBottom: '1.5px solid #eee' }}>
@@ -28,20 +43,6 @@ export default function ProfilePage() {
           </div>
           <div style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: 500, color: '#bbb', borderBottom: 'none', paddingBottom: 4, cursor: 'pointer', transition: 'color 0.15s, border-bottom 0.15s' }}>
             Stats
-          </div>
-        </div>
-        <div style={{ display: 'flex', width: '100%', marginTop: 0 }}>
-          <div style={{ flex: 1, textAlign: 'center' }}>
-            <div style={{ color: '#bbb', fontSize: 18, fontFamily: 'serif' }}>Followers</div>
-            <div style={{ fontWeight: 500, fontSize: 28, color: '#222', fontFamily: 'serif' }}>365</div>
-          </div>
-          <div style={{ flex: 1, textAlign: 'center' }}>
-            <div style={{ color: '#bbb', fontSize: 18, fontFamily: 'serif' }}>Following</div>
-            <div style={{ fontWeight: 500, fontSize: 28, color: '#222', fontFamily: 'serif' }}>125</div>
-          </div>
-          <div style={{ flex: 1, textAlign: 'center' }}>
-            <div style={{ color: '#bbb', fontSize: 18, fontFamily: 'serif' }}>Posts</div>
-            <div style={{ fontWeight: 500, fontSize: 28, color: '#222', fontFamily: 'serif' }}>1</div>
           </div>
         </div>
       </div>
