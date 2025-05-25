@@ -315,7 +315,11 @@ export default function FeedPage() {
           <div key={player.id || player.name} style={{ margin: '32px 0 0 0', padding: '0 0 32px 0', borderBottom: '1px solid #eee' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px' }}>
               <span style={{ fontSize: 16, color: 'black' }}>Position: {player.positionLabel}</span>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', cursor: 'pointer' }} onClick={() => {
+                if (["Pedro Sousa", "Alphonso Davies", "Lionel Messi", "Cristiano Ronaldo"].includes(player.name)) {
+                  router.push('/profile');
+                }
+              }}>
                 <Image src={player.avatar} alt={player.displayName} width={56} height={56} style={{ borderRadius: '50%' }} />
                 <span style={{ fontWeight: 500, fontSize: 18, marginTop: 4, color: 'black' }}>{player.displayName}</span>
               </div>
