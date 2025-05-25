@@ -7,14 +7,24 @@ export default function ProfilePage() {
     <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80 }}>
       {/* Profile image */}
       <div style={{ marginTop: 18, marginBottom: 8 }}>
-        <Image src="/pedro.jpg" alt="Pedro Sousa" width={200} height={200} style={{ objectFit: 'cover', borderRadius: '50%' }} />
+        <Image src="/pedro.jpg" alt="Pedro Sousa" width={200} height={200} style={{ objectFit: 'cover', borderRadius: '50%', aspectRatio: '1 / 1' }} />
       </div>
       {/* Name */}
       <div style={{ fontWeight: 500, fontSize: 32, color: '#222', fontFamily: 'serif', marginBottom: 4 }}>Pedro Sousa</div>
-      {/* Club and position */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 18, color: '#222', fontFamily: 'serif', marginBottom: 8, width: '100%', maxWidth: 500, justifyContent: 'flex-start', paddingLeft: 24 }}>
-        <Image src="/benfica.png" alt="Benfica" width={28} height={28} style={{ objectFit: 'contain', borderRadius: 4 }} />
-        <span>Playing for Benfica</span>
+      {/* Club and position row with logo, text, and DM icon */}
+      <div style={{ display: 'flex', alignItems: 'center', width: '100%', maxWidth: 500, marginBottom: 8, marginTop: 0, height: 40, position: 'relative' }}>
+        {/* Benfica logo aligned with Followers */}
+        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'flex-start', height: '100%', paddingLeft: 24 }}>
+          <Image src="/benfica.png" alt="Benfica" width={28} height={28} style={{ objectFit: 'contain', borderRadius: 4 }} />
+        </div>
+        {/* Centered club text */}
+        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+          <span style={{ fontSize: 18, color: '#222', fontFamily: 'serif', textAlign: 'center' }}>Playing for Benfica</span>
+        </div>
+        {/* DM icon aligned with Posts */}
+        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'flex-end', height: '100%', paddingRight: 24 }}>
+          <Image src="/dm.png" alt="DM" width={28} height={28} style={{ objectFit: 'contain', borderRadius: 4 }} />
+        </div>
       </div>
       <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginBottom: 8 }}>CAM/CM</div>
       {/* Followers, Following, Posts - now above tabs */}
