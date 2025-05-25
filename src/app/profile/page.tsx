@@ -184,6 +184,46 @@ export default function ProfilePage() {
           <div style={{ marginBottom: 16, color: '#222', fontSize: 16, fontFamily: 'serif' }}>
             All the stats have been confirmed by the corresponding federation and some have videos provided by the player.
           </div>
+          {/* 2024/25 */}
+          <div style={{ textAlign: 'left', fontWeight: 700, fontSize: 20, margin: '18px 0 8px 0', fontFamily: 'serif' }}>2024/25</div>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'serif', marginBottom: 18 }}>
+            <tbody>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Games</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>29</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Started</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>27</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Goals</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>17</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Goals per game</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>0.59</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Assists</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>11</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Assists per game</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>0.38</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Yellows</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>2</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Reds</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>1</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Free Kicks</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>3</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Penalty&apos;s</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>2</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Right Foot Goals</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>10</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Left Foot Goals</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>5</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Headed Goals</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>2</td><td></td><td></td></tr>
+            </tbody>
+          </table>
+          {/* 2023/24 */}
+          <div style={{ textAlign: 'left', fontWeight: 700, fontSize: 20, margin: '18px 0 8px 0', fontFamily: 'serif' }}>2023/24</div>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'serif', marginBottom: 18 }}>
+            <tbody>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Games</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>34</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Started</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>32</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Goals</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>19</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Goals per game</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>0.56</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Assists</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>15</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Assists per game</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>0.44</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Yellows</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>3</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Reds</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>0</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Free Kicks</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>2</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Penalty&apos;s</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>1</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Right Foot Goals</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>12</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Left Foot Goals</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>4</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Headed Goals</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>3</td><td></td><td></td></tr>
+            </tbody>
+          </table>
+          {/* 2022/23 */}
+          <div style={{ textAlign: 'left', fontWeight: 700, fontSize: 20, margin: '18px 0 8px 0', fontFamily: 'serif' }}>2022/23</div>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'serif', marginBottom: 18 }}>
+            <tbody>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Games</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>30</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Started</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>28</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Goals</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>14</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Goals per game</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>0.47</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Assists</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>10</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Assists per game</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>0.33</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Yellows</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>2</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Reds</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>1</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Free Kicks</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>2</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Penalty&apos;s</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>1</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Right Foot Goals</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>8</td><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Left Foot Goals</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>4</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Headed Goals</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>2</td><td></td><td></td></tr>
+            </tbody>
+          </table>
+          {/* 2021/22 */}
           <div style={{ textAlign: 'left', fontWeight: 700, fontSize: 20, margin: '18px 0 8px 0', fontFamily: 'serif' }}>2021/22</div>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'serif', marginBottom: 18 }}>
             <tbody>
@@ -226,52 +266,6 @@ export default function ProfilePage() {
               <tr>
                 <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Headed Goals</td>
                 <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>2</td>
-                <td></td><td></td>
-              </tr>
-            </tbody>
-          </table>
-          <div style={{ textAlign: 'left', fontWeight: 700, fontSize: 20, margin: '18px 0 8px 0', fontFamily: 'serif' }}>2020/21</div>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'serif', marginBottom: 18 }}>
-            <tbody>
-              <tr>
-                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Games</td>
-                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>27</td>
-                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Started</td>
-                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>24</td>
-              </tr>
-              <tr>
-                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Goals</td>
-                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>12</td>
-                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Goals per game</td>
-                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>0.44</td>
-              </tr>
-              <tr>
-                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Assists</td>
-                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>9</td>
-                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Assists per game</td>
-                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>0.33</td>
-              </tr>
-              <tr>
-                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Yellows</td>
-                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>2</td>
-                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Reds</td>
-                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>1</td>
-              </tr>
-              <tr>
-                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Free Kicks</td>
-                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>1</td>
-                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Penalty&apos;s</td>
-                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>1</td>
-              </tr>
-              <tr>
-                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Right Foot Goals</td>
-                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>7</td>
-                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Left Foot Goals</td>
-                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>2</td>
-              </tr>
-              <tr>
-                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Headed Goals</td>
-                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>3</td>
                 <td></td><td></td>
               </tr>
             </tbody>
