@@ -239,6 +239,41 @@ export default function ProfilePage() {
                 <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Started</td>
                 <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>24</td>
               </tr>
+              <tr>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Goals</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>12</td>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Goals per game</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>0.44</td>
+              </tr>
+              <tr>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Assists</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>9</td>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Assists per game</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>0.33</td>
+              </tr>
+              <tr>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Yellows</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>2</td>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Reds</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>1</td>
+              </tr>
+              <tr>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Free Kicks</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>1</td>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Penalty&apos;s</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>1</td>
+              </tr>
+              <tr>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Right Foot Goals</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>7</td>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Left Foot Goals</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>2</td>
+              </tr>
+              <tr>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Headed Goals</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>3</td>
+                <td></td><td></td>
+              </tr>
             </tbody>
           </table>
         </div>
