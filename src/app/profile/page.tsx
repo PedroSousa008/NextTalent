@@ -17,31 +17,32 @@ export default function ProfilePage() {
         <span>Playing at Dumiense</span>
       </div>
       <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginBottom: 8 }}>CAM/CM</div>
-      {/* Followers, Following, Posts */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 48, margin: '18px 0 0 0', width: '100%' }}>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ color: '#bbb', fontSize: 18, fontFamily: 'serif' }}>Followers</div>
-          <div style={{ fontWeight: 500, fontSize: 28, color: '#222', fontFamily: 'serif' }}>365</div>
+      {/* Tabs and Stats Row */}
+      <div style={{ width: '100%', maxWidth: 500, marginTop: 32 }}>
+        <div style={{ display: 'flex', borderBottom: '1.5px solid #eee' }}>
+          <div style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: 700, color: 'black', borderBottom: '2px solid black', paddingBottom: 4, cursor: 'pointer', transition: 'color 0.15s, border-bottom 0.15s' }}>
+            Game Highlights
+          </div>
+          <div style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: 500, color: '#bbb', borderBottom: 'none', paddingBottom: 4, cursor: 'pointer', transition: 'color 0.15s, border-bottom 0.15s' }}>
+            Details
+          </div>
+          <div style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: 500, color: '#bbb', borderBottom: 'none', paddingBottom: 4, cursor: 'pointer', transition: 'color 0.15s, border-bottom 0.15s' }}>
+            Stats
+          </div>
         </div>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ color: '#bbb', fontSize: 18, fontFamily: 'serif' }}>Following</div>
-          <div style={{ fontWeight: 500, fontSize: 28, color: '#222', fontFamily: 'serif' }}>125</div>
-        </div>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ color: '#bbb', fontSize: 18, fontFamily: 'serif' }}>Posts</div>
-          <div style={{ fontWeight: 500, fontSize: 28, color: '#222', fontFamily: 'serif' }}>3</div>
-        </div>
-      </div>
-      {/* Tabs */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '32px 0 0 0', borderBottom: '1.5px solid #eee', width: '100%', maxWidth: 500 }}>
-        <div style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: 700, color: 'black', borderBottom: '2px solid black', paddingBottom: 4, cursor: 'pointer', transition: 'color 0.15s, border-bottom 0.15s' }}>
-          Game Highlights
-        </div>
-        <div style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: 500, color: '#bbb', borderBottom: 'none', paddingBottom: 4, cursor: 'pointer', transition: 'color 0.15s, border-bottom 0.15s' }}>
-          Details
-        </div>
-        <div style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: 500, color: '#bbb', borderBottom: 'none', paddingBottom: 4, cursor: 'pointer', transition: 'color 0.15s, border-bottom 0.15s' }}>
-          Stats
+        <div style={{ display: 'flex', width: '100%', marginTop: 0 }}>
+          <div style={{ flex: 1, textAlign: 'center' }}>
+            <div style={{ color: '#bbb', fontSize: 18, fontFamily: 'serif' }}>Followers</div>
+            <div style={{ fontWeight: 500, fontSize: 28, color: '#222', fontFamily: 'serif' }}>365</div>
+          </div>
+          <div style={{ flex: 1, textAlign: 'center' }}>
+            <div style={{ color: '#bbb', fontSize: 18, fontFamily: 'serif' }}>Following</div>
+            <div style={{ fontWeight: 500, fontSize: 28, color: '#222', fontFamily: 'serif' }}>125</div>
+          </div>
+          <div style={{ flex: 1, textAlign: 'center' }}>
+            <div style={{ color: '#bbb', fontSize: 18, fontFamily: 'serif' }}>Posts</div>
+            <div style={{ fontWeight: 500, fontSize: 28, color: '#222', fontFamily: 'serif' }}>1</div>
+          </div>
         </div>
       </div>
       {/* Game Highlights Grid */}
