@@ -514,30 +514,30 @@ function TeamPageContent() {
       {/* Contacts Table */}
       {selectedTab === 'contacts' && (
         <div style={{ width: '100%', maxWidth: 500, marginTop: 18, background: 'white', borderRadius: 8, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
-          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 28, padding: '12px 0 12px 16px', borderTopLeftRadius: 8, borderTopRightRadius: 8 }}>COACHING STAFF</div>
+          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 8, borderTopRightRadius: 8 }}>COACHING STAFF</div>
           <div style={{ overflowX: 'auto', width: '100%', maxHeight: 320, overflowY: 'auto' }}>
             <table style={{ minWidth: 900, width: '100%', borderCollapse: 'collapse', background: 'white' }}>
               <thead>
-                <tr style={{ background: '#e0e0e0', color: '#bbb', fontWeight: 600, fontSize: 20 }}>
-                  <th style={{ padding: 10, textAlign: 'left' }}>Name</th>
-                  <th style={{ padding: 10, textAlign: 'left' }}>Job</th>
-                  <th style={{ padding: 10, textAlign: 'center' }}>Phone Number</th>
-                  <th style={{ padding: 10, textAlign: 'left' }}>Email</th>
-                  <th style={{ padding: 10, textAlign: 'left' }}>Instagram</th>
-                  <th style={{ padding: 10, textAlign: 'left' }}>Twitter</th>
-                  <th style={{ padding: 10, textAlign: 'left' }}>LinkedIn</th>
+                <tr style={{ background: '#e0e0e0', color: '#bbb', fontWeight: 600, fontSize: 16 }}>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Name</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Job</th>
+                  <th style={{ padding: 8, textAlign: 'center' }}>Phone Number</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Email</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Instagram</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Twitter</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>LinkedIn</th>
                 </tr>
               </thead>
               <tbody>
                 {staff.map((s, idx) => (
-                  <tr key={idx} style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 17 }}>
-                    <td style={{ padding: 10 }}>{s.name}</td>
-                    <td style={{ padding: 10 }}>{s.job}</td>
-                    <td style={{ padding: 10, textAlign: 'center' }}>----------</td>
-                    <td style={{ padding: 10 }}>{s.name ? s.name.toLowerCase().replace(/ /g, '') + '@fc.com' : '----------'}</td>
-                    <td style={{ padding: 10 }}>{s.name === 'Jon Harley' ? '@harley_jon' : s.name === 'Claude Makélélé' ? '@makeleleofficial' : '----------'}</td>
-                    <td style={{ padding: 10 }}>{s.name === 'Jon Harley' ? '@harley_jon_tw' : s.name === 'Claude Makélélé' ? '@makelele_tw' : '----------'}</td>
-                    <td style={{ padding: 10 }}>{s.name === 'Jon Harley' ? 'linkedin.com/in/harleyjon' : s.name === 'Claude Makélélé' ? 'linkedin.com/in/makelele' : '----------'}</td>
+                  <tr key={idx} style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
+                    <td style={{ padding: 8, fontWeight: 700, color: 'black' }}>{s.name}</td>
+                    <td style={{ padding: 8 }}>{s.job}</td>
+                    <td style={{ padding: 8, textAlign: 'center' }}>----------</td>
+                    <td style={{ padding: 8 }}>{s.name ? s.name.toLowerCase().replace(/ /g, '') + '@fc.com' : '----------'}</td>
+                    <td style={{ padding: 8 }}>{s.name === 'Jon Harley' ? '@harley_jon' : s.name === 'Claude Makélélé' ? '@makeleleofficial' : '----------'}</td>
+                    <td style={{ padding: 8 }}>{s.name === 'Jon Harley' ? '@harley_jon_tw' : s.name === 'Claude Makélélé' ? '@makelele_tw' : '----------'}</td>
+                    <td style={{ padding: 8 }}>{s.name === 'Jon Harley' ? 'linkedin.com/in/harleyjon' : s.name === 'Claude Makélélé' ? 'linkedin.com/in/makelele' : '----------'}</td>
                   </tr>
                 ))}
               </tbody>
