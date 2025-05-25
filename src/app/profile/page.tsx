@@ -214,7 +214,7 @@ export default function ProfilePage() {
               <tr>
                 <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Free Kicks</td>
                 <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>2</td>
-                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Penalty's</td>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Penalty&apos;s</td>
                 <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>0</td>
               </tr>
               <tr>
