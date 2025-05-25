@@ -180,13 +180,67 @@ export default function ProfilePage() {
         </div>
       )}
       {activeTab === 'stats' && (
-        <div style={{ width: '100%', maxWidth: 500, marginTop: 18, padding: '0 16px', color: '#bbb', textAlign: 'center', fontSize: 18 }}>
-          {/* Stats content can go here */}
-          <div style={{ marginTop: 24, textAlign: 'center' }}>
-            <button style={{ background: 'none', border: '1.5px solid #bbb', color: '#222', fontSize: 18, borderRadius: 8, padding: '8px 24px', cursor: 'pointer', fontFamily: 'serif', fontWeight: 500, transition: 'border 0.2s, color 0.2s' }}>
-              Edit Information
-            </button>
+        <div style={{ width: '100%', maxWidth: 500, marginTop: 18, padding: '0 16px', color: '#222', textAlign: 'center', fontSize: 18, overflowY: 'auto', maxHeight: '45vh' }}>
+          <div style={{ marginBottom: 16, color: '#222', fontSize: 16, fontFamily: 'serif' }}>
+            All the stats have been confirmed by the corresponding federation and some have videos provided by the player.
           </div>
+          <div style={{ textAlign: 'left', fontWeight: 700, fontSize: 20, margin: '18px 0 8px 0', fontFamily: 'serif' }}>2021/22</div>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'serif', marginBottom: 18 }}>
+            <tbody>
+              <tr>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Games</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>32</td>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Started</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>30</td>
+              </tr>
+              <tr>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Goals</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>21</td>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Goals per game</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>0.66</td>
+              </tr>
+              <tr>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Assists</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>13</td>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Assists per game</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>0.41</td>
+              </tr>
+              <tr>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Yellows</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>1</td>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Reds</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>0</td>
+              </tr>
+              <tr>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Free Kicks</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>2</td>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Penalty's</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>0</td>
+              </tr>
+              <tr>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Right Foot Goals</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>16</td>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Left Foot Goals</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>3</td>
+              </tr>
+              <tr>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Headed Goals</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>2</td>
+                <td></td><td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div style={{ textAlign: 'left', fontWeight: 700, fontSize: 20, margin: '18px 0 8px 0', fontFamily: 'serif' }}>2020/21</div>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'serif', marginBottom: 18 }}>
+            <tbody>
+              <tr>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Games</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>27</td>
+                <td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Started</td>
+                <td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>24</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       )}
       {/* Bottom Navigation Bar */}
