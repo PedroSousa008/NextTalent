@@ -41,7 +41,7 @@ export default function SearchPage() {
 
   // Pedro Sousa card data
   const pedroSousa = {
-    img: '/pedro-sousa.png', // Make sure this image exists in public folder
+    img: '/pedro.jpg', // Use the same image as the profile page
     first: 'Pedro',
     last: 'Sousa',
     clubLogo: '/benfica.png',
@@ -93,7 +93,10 @@ export default function SearchPage() {
       </div>
       {/* Pedro Sousa Card or Leagues grid */}
       {showPedro ? (
-        <div style={{ width: '100%', maxWidth: 500, background: 'white', borderRadius: 8, boxShadow: '0 2px 12px rgba(0,0,0,0.04)', margin: '12px 0', padding: '18px 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div
+          style={{ width: '100%', maxWidth: 500, background: 'white', borderRadius: 8, boxShadow: '0 2px 12px rgba(0,0,0,0.04)', margin: '12px 0', padding: '18px 0', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+          onClick={() => router.push('/profile')}
+        >
           <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
             <div style={{ flex: '0 0 120px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Image src={pedroSousa.img} alt="Pedro Sousa" width={110} height={110} style={{ borderRadius: '50%', objectFit: 'cover', border: '2px solid #eee' }} />
@@ -101,7 +104,7 @@ export default function SearchPage() {
             <div style={{ flex: 1, paddingLeft: 12, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: 28, fontWeight: 400, color: '#222', lineHeight: 1 }}>{pedroSousa.first}</div>
               <div style={{ fontSize: 32, fontWeight: 700, color: 'black', lineHeight: 1 }}>{pedroSousa.last}</div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '8px 0' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, margin: '8px 0' }}>
                 <Image src={pedroSousa.clubLogo} alt={pedroSousa.club} width={38} height={38} style={{ objectFit: 'contain' }} />
                 <Image src={pedroSousa.nationLogo} alt={pedroSousa.nation} width={38} height={38} style={{ objectFit: 'contain' }} />
               </div>
