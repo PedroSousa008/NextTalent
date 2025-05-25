@@ -597,9 +597,99 @@ function TeamPageContent() {
                   <td style={{ padding: 8 }}></td>
                   <td style={{ padding: 8 }}></td>
                 </tr>
-                {/* Empty rows for future coaches/managers */}
-                <tr style={{ borderBottom: '1px solid #eee', height: 36 }}><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr style={{ borderBottom: '1px solid #eee', height: 36 }}><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+          {/* MANAGEMENT TABLE */}
+          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 8, borderTopRightRadius: 8, marginTop: 18 }}>MANAGEMENT</div>
+          <div style={{ overflowX: 'auto', width: '100%', maxHeight: 320, overflowY: 'auto', borderRadius: 8, marginBottom: 18 }}>
+            <table style={{ minWidth: 900, width: '100%', borderCollapse: 'collapse', background: 'white' }}>
+              <thead>
+                <tr style={{ background: '#e0e0e0', color: '#bbb', fontWeight: 600, fontSize: 16 }}>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Name</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Job</th>
+                  <th style={{ padding: 8, textAlign: 'center' }}>Phone Number</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Email</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Instagram</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Twitter</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>LinkedIn</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
+                  <td style={{ padding: 8, fontWeight: 700, color: 'black' }}>Lourenço de Andrade Pereira Coelho</td>
+                  <td style={{ padding: 8 }}>Head of Football Operations</td>
+                  <td style={{ padding: 8, textAlign: 'center' }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
+                  <td style={{ padding: 8, fontWeight: 700, color: 'black' }}>Luisão</td>
+                  <td style={{ padding: 8 }}>Technical Director</td>
+                  <td style={{ padding: 8, textAlign: 'center' }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          {/* PUBLIC RELATIONS TABLE */}
+          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 8, borderTopRightRadius: 8, marginTop: 18 }}>PUBLIC RELATIONS</div>
+          <div style={{ overflowX: 'auto', width: '100%', maxHeight: 320, overflowY: 'auto', borderRadius: 8, marginBottom: 18 }}>
+            <table style={{ minWidth: 900, width: '100%', borderCollapse: 'collapse', background: 'white' }}>
+              <thead>
+                <tr style={{ background: '#e0e0e0', color: '#bbb', fontWeight: 600, fontSize: 16 }}>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Name</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Job</th>
+                  <th style={{ padding: 8, textAlign: 'center' }}>Phone Number</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Email</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Instagram</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Twitter</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>LinkedIn</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
+                  <td style={{ padding: 8, fontWeight: 700, color: 'black' }}>Ricardo Lemos</td>
+                  <td style={{ padding: 8 }}>Head of Media and Communications</td>
+                  <td style={{ padding: 8, textAlign: 'center' }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          {/* YOUTH TABLE */}
+          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 8, borderTopRightRadius: 8, marginTop: 18 }}>YOUTH</div>
+          <div style={{ overflowX: 'auto', width: '100%', maxHeight: 320, overflowY: 'auto', borderRadius: 8, marginBottom: 18 }}>
+            <table style={{ minWidth: 900, width: '100%', borderCollapse: 'collapse', background: 'white' }}>
+              <thead>
+                <tr style={{ background: '#e0e0e0', color: '#bbb', fontWeight: 600, fontSize: 16 }}>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Name</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Job</th>
+                  <th style={{ padding: 8, textAlign: 'center' }}>Phone Number</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Email</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Instagram</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Twitter</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>LinkedIn</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
+                  <td style={{ padding: 8, fontWeight: 700, color: 'black' }}>Nuno Gaioso</td>
+                  <td style={{ padding: 8 }}>Team Organiser</td>
+                  <td style={{ padding: 8, textAlign: 'center' }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                </tr>
               </tbody>
             </table>
           </div>
