@@ -333,7 +333,7 @@ function TeamPageContent() {
             </table>
           </div>
           {/* MANAGEMENT, BOARD OF DIRECTORS, etc. as before */}
-          <div style={{ background: '#112344', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', letterSpacing: 1 }}>MANAGEMENT</div>
+          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4, marginTop: 18 }}>MANAGEMENT</div>
           <div style={{ maxHeight: 320, overflowY: 'auto', borderBottom: '8px solid #f0f0f0' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
               <thead>
@@ -358,7 +358,7 @@ function TeamPageContent() {
             </table>
           </div>
           {/* BOARD OF DIRECTORS */}
-          <div style={{ background: '#112344', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', letterSpacing: 1 }}>BOARD OF DIRECTORS</div>
+          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4, marginTop: 18 }}>BOARD OF DIRECTORS</div>
           <div style={{ maxHeight: 320, overflowY: 'auto', borderBottom: '8px solid #f0f0f0' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
               <thead>
@@ -383,7 +383,7 @@ function TeamPageContent() {
             </table>
           </div>
           {/* MEDICAL DEPARTMENT */}
-          <div style={{ background: '#112344', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', letterSpacing: 1 }}>MEDICAL DEPARTMENT</div>
+          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4, marginTop: 18 }}>MEDICAL DEPARTMENT</div>
           <div style={{ maxHeight: 320, overflowY: 'auto', borderBottom: '8px solid #f0f0f0' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
               <thead>
@@ -414,7 +414,7 @@ function TeamPageContent() {
             </table>
           </div>
           {/* PUBLIC RELATIONS */}
-          <div style={{ background: '#112344', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', letterSpacing: 1 }}>PUBLIC RELATIONS</div>
+          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4, marginTop: 18 }}>PUBLIC RELATIONS</div>
           <div style={{ maxHeight: 320, overflowY: 'auto', borderBottom: '8px solid #f0f0f0' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
               <thead>
@@ -433,7 +433,7 @@ function TeamPageContent() {
             </table>
           </div>
           {/* KIT MANAGER */}
-          <div style={{ background: '#112344', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', letterSpacing: 1 }}>KIT MANAGER</div>
+          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4, marginTop: 18 }}>KIT MANAGER</div>
           <div style={{ maxHeight: 320, overflowY: 'auto', borderBottom: '8px solid #f0f0f0' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
               <thead>
@@ -452,7 +452,7 @@ function TeamPageContent() {
             </table>
           </div>
           {/* YOUTH */}
-          <div style={{ background: '#112344', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', letterSpacing: 1 }}>YOUTH</div>
+          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4, marginTop: 18 }}>YOUTH</div>
           <div style={{ maxHeight: 320, overflowY: 'auto', borderBottom: '8px solid #f0f0f0' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
               <thead>
