@@ -4,7 +4,14 @@ import BottomNav from '../feed/BottomNav';
 
 export default function ProfilePage() {
   return (
-    <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80 }}>
+    <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80, position: 'relative' }}>
+      {/* Top left and right icons */}
+      <div style={{ position: 'absolute', top: 18, left: 18, zIndex: 10 }}>
+        <Image src="/settings.png" alt="Settings" width={32} height={32} />
+      </div>
+      <div style={{ position: 'absolute', top: 18, right: 18, zIndex: 10 }}>
+        <Image src="/challanges.png" alt="Challanges" width={32} height={32} />
+      </div>
       {/* Profile image */}
       <div style={{ marginTop: 18, marginBottom: 8 }}>
         <Image src="/pedro.jpg" alt="Pedro Sousa" width={200} height={200} style={{ objectFit: 'cover', borderRadius: '50%', aspectRatio: '1 / 1' }} />
