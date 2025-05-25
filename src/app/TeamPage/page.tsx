@@ -529,17 +529,90 @@ function TeamPageContent() {
                 </tr>
               </thead>
               <tbody>
-                {staff.map((s, idx) => (
-                  <tr key={idx} style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
-                    <td style={{ padding: 8, fontWeight: 700, color: 'black' }}>{s.name}</td>
-                    <td style={{ padding: 8 }}>{s.job}</td>
-                    <td style={{ padding: 8, textAlign: 'center' }}>----------</td>
-                    <td style={{ padding: 8 }}>{s.name ? s.name.toLowerCase().replace(/ /g, '') + '@fc.com' : '----------'}</td>
-                    <td style={{ padding: 8 }}>{s.name === 'Jon Harley' ? '@harley_jon' : s.name === 'Claude Makélélé' ? '@makeleleofficial' : '----------'}</td>
-                    <td style={{ padding: 8 }}>{s.name === 'Jon Harley' ? '@harley_jon_tw' : s.name === 'Claude Makélélé' ? '@makelele_tw' : '----------'}</td>
-                    <td style={{ padding: 8 }}>{s.name === 'Jon Harley' ? 'linkedin.com/in/harleyjon' : s.name === 'Claude Makélélé' ? 'linkedin.com/in/makelele' : '----------'}</td>
-                  </tr>
-                ))}
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
+                  <td style={{ padding: 8, fontWeight: 700, color: 'black' }}>Bruno Lage</td>
+                  <td style={{ padding: 8 }}>Manager</td>
+                  <td style={{ padding: 8, textAlign: 'center' }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
+                  <td style={{ padding: 8, fontWeight: 700, color: 'black' }}>Ricardo Rocha</td>
+                  <td style={{ padding: 8 }}>Assistant Manager</td>
+                  <td style={{ padding: 8, textAlign: 'center' }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
+                  <td style={{ padding: 8, fontWeight: 700, color: 'black' }}>Luís Lage</td>
+                  <td style={{ padding: 8 }}>Assistant Manager</td>
+                  <td style={{ padding: 8, textAlign: 'center' }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
+                  <td style={{ padding: 8, fontWeight: 700, color: 'black' }}>Carlos Cachada</td>
+                  <td style={{ padding: 8 }}>Assistant Manager</td>
+                  <td style={{ padding: 8, textAlign: 'center' }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
+                  <td style={{ padding: 8, fontWeight: 700, color: 'black' }}>Gonçalo Simões</td>
+                  <td style={{ padding: 8 }}>Goalkeeping Coach</td>
+                  <td style={{ padding: 8, textAlign: 'center' }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
+                  <td style={{ padding: 8, fontWeight: 700, color: 'black' }}>Nuno Santos</td>
+                  <td style={{ padding: 8 }}>Goalkeeping Coach</td>
+                  <td style={{ padding: 8, textAlign: 'center' }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
+                  <td style={{ padding: 8, fontWeight: 700, color: 'black' }}>Alexandre Silva</td>
+                  <td style={{ padding: 8 }}>Conditioning Coach</td>
+                  <td style={{ padding: 8, textAlign: 'center' }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
+                  <td style={{ padding: 8, fontWeight: 700, color: 'black' }}>Jhony Conceição</td>
+                  <td style={{ padding: 8 }}>Match Analyst</td>
+                  <td style={{ padding: 8, textAlign: 'center' }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
+                  <td style={{ padding: 8, fontWeight: 700, color: 'black' }}>Diogo Camacho</td>
+                  <td style={{ padding: 8 }}>Match Analyst</td>
+                  <td style={{ padding: 8, textAlign: 'center' }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}></td>
+                </tr>
+                {/* Empty rows for future coaches/managers */}
+                <tr style={{ borderBottom: '1px solid #eee', height: 36 }}><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr style={{ borderBottom: '1px solid #eee', height: 36 }}><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
               </tbody>
             </table>
           </div>
