@@ -64,10 +64,6 @@ export default function ProfilePage() {
           <span style={{ position: 'absolute', bottom: 6, right: 10, color: 'white', fontWeight: 700, fontSize: 15, textShadow: '0 1px 4px #000', background: 'rgba(0,0,0,0.4)', borderRadius: 4, padding: '1px 6px' }}>1:35</span>
         </div>
       </div>
-      {/* Thumbnail image at the bottom of Game Highlights / Details / Stats */}
-      <div style={{ marginTop: 18, width: '100%', maxWidth: 500, display: 'flex', justifyContent: 'center' }}>
-        <Image src="/Thumbnail.png" alt="Thumbnail" width={140} height={160} style={{ objectFit: 'cover', borderRadius: 8 }} />
-      </div>
       {/* Bottom Navigation Bar */}
       <BottomNav active='profile' />
     </div>
