@@ -484,7 +484,16 @@ function TeamPageContent() {
                   <tr key={idx} style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
                     <td style={{ padding: 8, textAlign: 'center', fontWeight: 700, background: '#e0e0e0', borderRadius: 12 }}>{p.num}</td>
                     <td style={{ padding: 8 }}>
-                      <div style={{ fontWeight: 700, color: 'black' }}>{p.name}</div>
+                      {p.name === 'Pedro Sousa' ? (
+                        <div
+                          style={{ fontWeight: 700, color: 'black', cursor: 'pointer' }}
+                          onClick={() => router.push('/profile')}
+                        >
+                          {p.name}
+                        </div>
+                      ) : (
+                        <div style={{ fontWeight: 700, color: 'black' }}>{p.name}</div>
+                      )}
                       <div style={{ fontSize: 13, color: '#888' }}>{p.position}</div>
                     </td>
                     <td style={{ padding: 8, textAlign: 'center' }}>{p.birth} ({p.age})</td>
