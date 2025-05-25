@@ -515,7 +515,7 @@ function TeamPageContent() {
       {selectedTab === 'contacts' && (
         <div style={{ width: '100%', maxWidth: 500, marginTop: 18, background: 'white', borderRadius: 8, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
           <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 28, padding: '12px 0 12px 16px', borderTopLeftRadius: 8, borderTopRightRadius: 8 }}>COACHING STAFF</div>
-          <div style={{ overflowX: 'auto', width: '100%' }}>
+          <div style={{ overflowX: 'auto', width: '100%', maxHeight: 320, overflowY: 'auto' }}>
             <table style={{ minWidth: 900, width: '100%', borderCollapse: 'collapse', background: 'white' }}>
               <thead>
                 <tr style={{ background: '#e0e0e0', color: '#bbb', fontWeight: 600, fontSize: 20 }}>
