@@ -5,6 +5,40 @@ import React, { useState } from 'react';
 
 export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState<'highlights' | 'details' | 'stats'>('highlights');
+  const [editing, setEditing] = useState(false);
+  const [details, setDetails] = useState({
+    fullName: 'Pedro Sousa',
+    age: '22',
+    height: '1.81 m',
+    weight: '77 kg',
+    position: 'CAM/CM',
+    foot: 'Right',
+    club: 'Benfica',
+    nationality: 'Portugal',
+    shirtNumber: '10',
+    strengths: 'Playmaking, Dribbling, Shooting',
+    weaknesses: 'Aerial Balls',
+    injuries: 'None',
+    exTeam: 'Real Madrid',
+    email: 'sousa.2003pedro@gmail.com',
+    instagram: '@pedrompcsousa',
+    twitter: '@Sousa10Pedro',
+    linkedin: 'linkedin.com/in/pedrosousa',
+  });
+  const [editBuffer, setEditBuffer] = useState(details);
+
+  const handleEditChange = (field: string, value: string) => {
+    setEditBuffer(prev => ({ ...prev, [field]: value }));
+  };
+  const handleSave = () => {
+    setDetails(editBuffer);
+    setEditing(false);
+  };
+  const handleCancel = () => {
+    setEditBuffer(details);
+    setEditing(false);
+  };
+
   return (
     <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80, position: 'relative' }}>
       {/* Top left and right icons */}
@@ -88,29 +122,60 @@ export default function ProfilePage() {
         <div style={{ width: '100%', maxWidth: 500, marginTop: 18, padding: '0 16px', overflowY: 'auto', maxHeight: '45vh' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'serif' }}>
             <tbody>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Full Name</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Pedro Sousa</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Age</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>22</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Height</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>1.81 m</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Weight</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>77 kg</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Position</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>CAM/CM</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Preferred Foot</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Right</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Club</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Benfica</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Nationality</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Portugal</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Shirt Number</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>10</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Strengths</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Playmaking, Dribbling, Shooting</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Weaknesses</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Aerial Balls</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Injuries</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>None</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Ex-Team</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Real Madrid</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Email</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>sousa.2003pedro@gmail.com</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Instagram</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>pedrompcsousa</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Twitter</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Sousa10Pedro</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>LinkedIn</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>linkedin.com/in/pedrosousa</td></tr>
+              {editing ? (
+                <>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Full Name</td><td><input value={editBuffer.fullName} onChange={e => handleEditChange('fullName', e.target.value)} style={{ fontSize: 18, fontFamily: 'serif', width: '100%' }} /></td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Age</td><td><input value={editBuffer.age} onChange={e => handleEditChange('age', e.target.value)} style={{ fontSize: 18, fontFamily: 'serif', width: '100%' }} /></td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Height</td><td><input value={editBuffer.height} onChange={e => handleEditChange('height', e.target.value)} style={{ fontSize: 18, fontFamily: 'serif', width: '100%' }} /></td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Weight</td><td><input value={editBuffer.weight} onChange={e => handleEditChange('weight', e.target.value)} style={{ fontSize: 18, fontFamily: 'serif', width: '100%' }} /></td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Position</td><td><input value={editBuffer.position} onChange={e => handleEditChange('position', e.target.value)} style={{ fontSize: 18, fontFamily: 'serif', width: '100%' }} /></td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Preferred Foot</td><td><input value={editBuffer.foot} onChange={e => handleEditChange('foot', e.target.value)} style={{ fontSize: 18, fontFamily: 'serif', width: '100%' }} /></td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Club</td><td><input value={editBuffer.club} onChange={e => handleEditChange('club', e.target.value)} style={{ fontSize: 18, fontFamily: 'serif', width: '100%' }} /></td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Nationality</td><td><input value={editBuffer.nationality} onChange={e => handleEditChange('nationality', e.target.value)} style={{ fontSize: 18, fontFamily: 'serif', width: '100%' }} /></td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Shirt Number</td><td><input value={editBuffer.shirtNumber} onChange={e => handleEditChange('shirtNumber', e.target.value)} style={{ fontSize: 18, fontFamily: 'serif', width: '100%' }} /></td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Strengths</td><td><input value={editBuffer.strengths} onChange={e => handleEditChange('strengths', e.target.value)} style={{ fontSize: 18, fontFamily: 'serif', width: '100%' }} /></td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Weaknesses</td><td><input value={editBuffer.weaknesses} onChange={e => handleEditChange('weaknesses', e.target.value)} style={{ fontSize: 18, fontFamily: 'serif', width: '100%' }} /></td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Injuries</td><td><input value={editBuffer.injuries} onChange={e => handleEditChange('injuries', e.target.value)} style={{ fontSize: 18, fontFamily: 'serif', width: '100%' }} /></td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Ex-Team</td><td><input value={editBuffer.exTeam} onChange={e => handleEditChange('exTeam', e.target.value)} style={{ fontSize: 18, fontFamily: 'serif', width: '100%' }} /></td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Email</td><td><input value={editBuffer.email} onChange={e => handleEditChange('email', e.target.value)} style={{ fontSize: 18, fontFamily: 'serif', width: '100%' }} /></td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Instagram</td><td><input value={editBuffer.instagram} onChange={e => handleEditChange('instagram', e.target.value)} style={{ fontSize: 18, fontFamily: 'serif', width: '100%' }} /></td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Twitter</td><td><input value={editBuffer.twitter} onChange={e => handleEditChange('twitter', e.target.value)} style={{ fontSize: 18, fontFamily: 'serif', width: '100%' }} /></td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>LinkedIn</td><td><input value={editBuffer.linkedin} onChange={e => handleEditChange('linkedin', e.target.value)} style={{ fontSize: 18, fontFamily: 'serif', width: '100%' }} /></td></tr>
+                </>
+              ) : (
+                <>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Full Name</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>{details.fullName}</td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Age</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>{details.age}</td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Height</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>{details.height}</td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Weight</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>{details.weight}</td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Position</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>{details.position}</td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Preferred Foot</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>{details.foot}</td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Club</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>{details.club}</td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Nationality</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>{details.nationality}</td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Shirt Number</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>{details.shirtNumber}</td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Strengths</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>{details.strengths}</td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Weaknesses</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>{details.weaknesses}</td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Injuries</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>{details.injuries}</td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Ex-Team</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>{details.exTeam}</td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Email</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>{details.email}</td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Instagram</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>{details.instagram}</td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Twitter</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>{details.twitter}</td></tr>
+                  <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>LinkedIn</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>{details.linkedin}</td></tr>
+                </>
+              )}
             </tbody>
           </table>
           <div style={{ marginTop: 24, textAlign: 'center' }}>
-            <button style={{ background: 'none', border: '1.5px solid #bbb', color: '#222', fontSize: 18, borderRadius: 8, padding: '8px 24px', cursor: 'pointer', fontFamily: 'serif', fontWeight: 500, transition: 'border 0.2s, color 0.2s' }}>
-              Edit Information
-            </button>
+            {editing ? (
+              <>
+                <button onClick={handleSave} style={{ background: '#222', border: 'none', color: 'white', fontSize: 18, borderRadius: 8, padding: '8px 24px', cursor: 'pointer', fontFamily: 'serif', fontWeight: 500, marginRight: 12 }}>Save</button>
+                <button onClick={handleCancel} style={{ background: 'none', border: '1.5px solid #bbb', color: '#222', fontSize: 18, borderRadius: 8, padding: '8px 24px', cursor: 'pointer', fontFamily: 'serif', fontWeight: 500 }}>Cancel</button>
+              </>
+            ) : (
+              <button onClick={() => setEditing(true)} style={{ background: 'none', border: '1.5px solid #bbb', color: '#222', fontSize: 18, borderRadius: 8, padding: '8px 24px', cursor: 'pointer', fontFamily: 'serif', fontWeight: 500, transition: 'border 0.2s, color 0.2s' }}>
+                Edit Information
+              </button>
+            )}
           </div>
         </div>
       )}
