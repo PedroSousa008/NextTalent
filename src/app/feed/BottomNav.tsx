@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from 'next/navigation';
 
-export default function BottomNav({ active }: { active: 'feed' | 'search' }) {
+export default function BottomNav({ active }: { active: 'feed' | 'search' | 'profile' }) {
   const router = useRouter();
 
   return (
@@ -39,9 +39,12 @@ export default function BottomNav({ active }: { active: 'feed' | 'search' }) {
         <span style={{ fontSize: 14, opacity: 0.6 }}>Notifications</span>
       </div>
       {/* Profile */}
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#bbb', opacity: 0.6 }}>
-        <span role="img" aria-label="profile" style={{ fontSize: 28, opacity: 0.6 }}>👤</span>
-        <span style={{ fontSize: 14, opacity: 0.6 }}>Profile</span>
+      <div
+        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: active === 'profile' ? 'black' : '#bbb', opacity: active === 'profile' ? 1 : 0.6, cursor: 'pointer' }}
+        onClick={() => { if (active !== 'profile') router.push('/profile'); }}
+      >
+        <span role="img" aria-label="profile" style={{ fontSize: 28, opacity: active === 'profile' ? 1 : 0.6 }}>👤</span>
+        <span style={{ fontSize: 14, opacity: active === 'profile' ? 1 : 0.6 }}>Profile</span>
       </div>
     </div>
   );
