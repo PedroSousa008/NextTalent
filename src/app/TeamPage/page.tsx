@@ -521,9 +521,9 @@ function TeamPageContent() {
                   <td style={{ padding: 8 }}>Manager</td>
                   <td style={{ padding: 8, textAlign: 'center' }}></td>
                   <td style={{ padding: 8 }}></td>
-                  <td style={{ padding: 8 }}></td>
-                  <td style={{ padding: 8 }}></td>
-                  <td style={{ padding: 8 }}></td>
+                  <td style={{ padding: 8 }}>_bruno_lage_</td>
+                  <td style={{ padding: 8 }}>-</td>
+                  <td style={{ padding: 8 }}>-</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
                   <td style={{ padding: 8, fontWeight: 700, color: 'black' }}>Ricardo Rocha</td>
