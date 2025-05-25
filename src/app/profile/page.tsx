@@ -89,7 +89,7 @@ export default function ProfilePage() {
           <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'serif' }}>
             <tbody>
               <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Full Name</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Pedro Sousa</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Age</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>21</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Age</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>22</td></tr>
               <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Height</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>1.81 m</td></tr>
               <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Weight</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>77 kg</td></tr>
               <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Position</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>CAM/CM</td></tr>
@@ -101,12 +101,17 @@ export default function ProfilePage() {
               <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Weaknesses</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Aerial Balls</td></tr>
               <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Injuries</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>None</td></tr>
               <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Ex-Team</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Real Madrid</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Email</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>pedro.sousa@email.com</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Instagram</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>@pedrosousa</td></tr>
-              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Twitter</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>@pedrosousa</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Email</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>sousa.2003pedro@gmail.com</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Instagram</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>pedrompcsousa</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Twitter</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Sousa10Pedro</td></tr>
               <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>LinkedIn</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>linkedin.com/in/pedrosousa</td></tr>
             </tbody>
           </table>
+          <div style={{ marginTop: 24, textAlign: 'center' }}>
+            <button style={{ background: 'none', border: '1.5px solid #bbb', color: '#222', fontSize: 18, borderRadius: 8, padding: '8px 24px', cursor: 'pointer', fontFamily: 'serif', fontWeight: 500, transition: 'border 0.2s, color 0.2s' }}>
+              Edit Information
+            </button>
+          </div>
         </div>
       )}
       {activeTab === 'stats' && (
