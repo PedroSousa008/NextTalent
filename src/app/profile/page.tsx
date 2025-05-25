@@ -13,16 +13,16 @@ export default function ProfilePage() {
       <div style={{ fontWeight: 500, fontSize: 32, color: '#222', fontFamily: 'serif', marginBottom: 4 }}>Pedro Sousa</div>
       {/* Club and position row with logo, text, and DM icon */}
       <div style={{ display: 'flex', alignItems: 'center', width: '100%', maxWidth: 500, marginBottom: 8, marginTop: 0, height: 40, position: 'relative' }}>
-        {/* Benfica logo aligned with Followers */}
-        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, display: 'flex', alignItems: 'center', height: '100%', paddingLeft: 24 }}>
+        {/* Benfica logo aligned with the center of Followers */}
+        <div style={{ position: 'absolute', left: '16.67%', top: 0, bottom: 0, display: 'flex', alignItems: 'center', height: '100%' }}>
           <Image src="/benfica.png" alt="Benfica" width={28} height={28} style={{ objectFit: 'contain', borderRadius: 4 }} />
         </div>
         {/* Centered club text */}
         <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
           <span style={{ fontSize: 18, color: '#222', fontFamily: 'serif', textAlign: 'center' }}>Playing for Benfica</span>
         </div>
-        {/* DM icon aligned with Posts */}
-        <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, display: 'flex', alignItems: 'center', height: '100%', paddingRight: 24 }}>
+        {/* DM icon aligned with the center of Posts */}
+        <div style={{ position: 'absolute', right: '16.67%', top: 0, bottom: 0, display: 'flex', alignItems: 'center', height: '100%' }}>
           <Image src="/dm.png" alt="DM" width={28} height={28} style={{ objectFit: 'contain', borderRadius: 4 }} />
         </div>
       </div>
@@ -57,10 +57,10 @@ export default function ProfilePage() {
         </div>
       </div>
       {/* Game Highlights Grid */}
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: 18, width: '100%', maxWidth: 500 }}>
-        <div style={{ width: 120, height: 160, borderRadius: 8, overflow: 'hidden', background: '#eee', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: 18, width: '100%', maxWidth: 500, overflowX: 'auto', padding: '0 16px' }}>
+        <div style={{ width: 140, height: 160, borderRadius: 8, overflow: 'hidden', background: '#eee', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: 16 }}>
           {/* Static video thumbnail for Pedro Sousa */}
-          <video src="/pedro-clip.mp4" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 8 }} poster="/pedro.jpg" muted playsInline preload="metadata" />
+          <video src="/pedro-clip.mp4" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 8 }} poster="/Thumbnail.png" muted playsInline preload="metadata" />
           <span style={{ position: 'absolute', bottom: 6, right: 10, color: 'white', fontWeight: 700, fontSize: 15, textShadow: '0 1px 4px #000', background: 'rgba(0,0,0,0.4)', borderRadius: 4, padding: '1px 6px' }}>1:35</span>
         </div>
       </div>
