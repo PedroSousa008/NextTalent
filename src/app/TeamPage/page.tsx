@@ -485,8 +485,8 @@ function TeamPageContent() {
                     <td style={{ padding: 8, textAlign: 'center', fontWeight: 700, background: '#e0e0e0', borderRadius: 12 }}>{p.num}</td>
                     <td style={{ padding: 8 }}>
                       <div
-                        style={{ fontWeight: 700, color: p.name === 'Pedro Sousa' ? '#1976d2' : 'black', fontSize: 18, cursor: p.name === 'Pedro Sousa' ? 'pointer' : 'default', textDecoration: p.name === 'Pedro Sousa' ? 'underline' : 'none' }}
-                        onClick={() => { if (p.name === 'Pedro Sousa') router.push('/profile'); }}
+                        style={{ fontWeight: 700, color: '#1976d2', fontSize: 18, cursor: 'pointer', textDecoration: 'underline' }}
+                        onClick={() => router.push(p.name === 'Pedro Sousa' ? '/profile' : '/blank')}
                       >
                         {p.name}
                       </div>
