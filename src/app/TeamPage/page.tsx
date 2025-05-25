@@ -263,7 +263,7 @@ function TeamPageContent() {
       {selectedTab === 'staff' && (
         <div style={{ width: '100%', maxWidth: 500, marginTop: 18, background: 'white', borderRadius: 8, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
           {/* COACHING STAFF (simple style) */}
-          <div style={{ background: '#112344', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4, letterSpacing: 1 }}>COACHING STAFF</div>
+          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>COACHING STAFF</div>
           <div style={{ maxHeight: 320, overflowY: 'auto', borderBottom: '8px solid #f0f0f0' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
               <thead>
