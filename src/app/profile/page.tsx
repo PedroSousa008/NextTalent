@@ -53,37 +53,63 @@ export default function ProfilePage() {
       </div>
       {/* Tabs and Stats Row */}
       <div style={{ width: '100%', maxWidth: 500, marginTop: 32 }}>
-        <div style={{ display: 'flex', position: 'relative', borderBottom: '1.5px solid #eee', height: 36 }}>
-          {/* Black underline absolutely positioned for active tab */}
-          <div style={{ position: 'absolute', bottom: 0, left: 0, width: `${100 / 3}%`, height: 2, background: activeTab === 'highlights' ? 'black' : 'transparent', transition: 'left 0.2s' , transform: activeTab === 'details' ? 'translateX(100%)' : activeTab === 'stats' ? 'translateX(200%)' : 'none', zIndex: 2 }} />
+        <div style={{ display: 'flex', borderBottom: '1.5px solid #eee' }}>
           <div
-            style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: activeTab === 'highlights' ? 700 : 500, color: activeTab === 'highlights' ? 'black' : '#bbb', cursor: 'pointer', paddingBottom: 4, transition: 'color 0.15s' }}
+            style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: activeTab === 'highlights' ? 700 : 500, color: activeTab === 'highlights' ? 'black' : '#bbb', borderBottom: activeTab === 'highlights' ? '2px solid black' : 'none', paddingBottom: 4, cursor: 'pointer', transition: 'color 0.15s, border-bottom 0.15s' }}
             onClick={() => setActiveTab('highlights')}
           >
             Game Highlights
           </div>
           <div
-            style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: activeTab === 'details' ? 700 : 500, color: activeTab === 'details' ? 'black' : '#bbb', cursor: 'pointer', paddingBottom: 4, transition: 'color 0.15s' }}
+            style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: activeTab === 'details' ? 700 : 500, color: activeTab === 'details' ? 'black' : '#bbb', borderBottom: activeTab === 'details' ? '2px solid black' : 'none', paddingBottom: 4, cursor: 'pointer', transition: 'color 0.15s, border-bottom 0.15s' }}
             onClick={() => setActiveTab('details')}
           >
             Details
           </div>
           <div
-            style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: activeTab === 'stats' ? 700 : 500, color: activeTab === 'stats' ? 'black' : '#bbb', cursor: 'pointer', paddingBottom: 4, transition: 'color 0.15s' }}
+            style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: activeTab === 'stats' ? 700 : 500, color: activeTab === 'stats' ? 'black' : '#bbb', borderBottom: activeTab === 'stats' ? '2px solid black' : 'none', paddingBottom: 4, cursor: 'pointer', transition: 'color 0.15s, border-bottom 0.15s' }}
             onClick={() => setActiveTab('stats')}
           >
             Stats
           </div>
         </div>
       </div>
-      {/* Game Highlights Grid */}
-      <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: 18, width: '100%', maxWidth: 500, overflowX: 'auto', padding: '0 0 0 8px', height: '33vh' }}>
-        <div style={{ width: 180, height: 160, borderRadius: 8, overflow: 'hidden', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', marginRight: 16, background: 'none' }}>
-          {/* Static video thumbnail for Pedro Sousa */}
-          <Image src="/Thumbnail.png" alt="Pedro Sousa Thumbnail" fill style={{ objectFit: 'cover', borderRadius: 8 }} />
-          <span style={{ position: 'absolute', bottom: 6, right: 10, color: 'white', fontWeight: 700, fontSize: 15, textShadow: '0 1px 4px #000', background: 'rgba(0,0,0,0.4)', borderRadius: 4, padding: '1px 6px' }}>1:35</span>
+      {/* Game Highlights Grid or Details Table */}
+      {activeTab === 'highlights' && (
+        <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: 18, width: '100%', maxWidth: 500, overflowX: 'auto', padding: '0 0 0 8px', height: '33vh' }}>
+          <div style={{ width: 180, height: 160, borderRadius: 8, overflow: 'hidden', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', marginRight: 16, background: 'none' }}>
+            {/* Static video thumbnail for Pedro Sousa */}
+            <Image src="/Thumbnail.png" alt="Pedro Sousa Thumbnail" fill style={{ objectFit: 'cover', borderRadius: 8 }} />
+            <span style={{ position: 'absolute', bottom: 6, right: 10, color: 'white', fontWeight: 700, fontSize: 15, textShadow: '0 1px 4px #000', background: 'rgba(0,0,0,0.4)', borderRadius: 4, padding: '1px 6px' }}>1:35</span>
+          </div>
         </div>
-      </div>
+      )}
+      {activeTab === 'details' && (
+        <div style={{ width: '100%', maxWidth: 500, marginTop: 18, padding: '0 16px' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'serif' }}>
+            <tbody>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Full Name</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Pedro Sousa</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Age</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>21</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Height</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>1.81 m</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Weight</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>77 kg</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Position</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>CAM/CM</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Preferred Foot</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Right</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Club</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Dumiense</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Nationality</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Portugal</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Shirt Number</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>8</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Strengths</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Playmaking, Dribbling, Shooting</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Weaknesses</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Aerial Balls</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Injuries</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>None</td></tr>
+              <tr><td style={{ color: '#ccc', fontSize: 18, padding: '4px 0' }}>Ex-Team</td><td style={{ color: '#222', fontSize: 18, fontWeight: 500, padding: '4px 0' }}>Lomarense</td></tr>
+            </tbody>
+          </table>
+        </div>
+      )}
+      {activeTab === 'stats' && (
+        <div style={{ width: '100%', maxWidth: 500, marginTop: 18, padding: '0 16px', color: '#bbb', textAlign: 'center', fontSize: 18 }}>
+          {/* Stats content can go here */}
+        </div>
+      )}
       {/* Bottom Navigation Bar */}
       <BottomNav active='profile' />
     </div>
