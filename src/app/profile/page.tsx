@@ -7,10 +7,10 @@ export default function ProfilePage() {
     <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 80, position: 'relative' }}>
       {/* Top left and right icons */}
       <div style={{ position: 'absolute', top: 18, left: 38, zIndex: 10 }}>
-        <Image src="/settings.png" alt="Settings" width={32} height={32} />
+        <Image src="/settings.png" alt="Settings" width={48} height={48} />
       </div>
       <div style={{ position: 'absolute', top: 18, right: 38, zIndex: 10 }}>
-        <Image src="/challanges.png" alt="Challanges" width={32} height={32} />
+        <Image src="/challanges.png" alt="Challanges" width={48} height={48} />
       </div>
       {/* Profile image */}
       <div style={{ marginTop: 18, marginBottom: 8 }}>
@@ -65,9 +65,9 @@ export default function ProfilePage() {
       </div>
       {/* Game Highlights Grid */}
       <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: 18, width: '100%', maxWidth: 500, overflowX: 'auto', padding: '0 16px', height: '33vh' }}>
-        <div style={{ width: 140, height: 160, borderRadius: 8, overflow: 'hidden', background: '#eee', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: 16 }}>
+        <div style={{ width: 140, height: 160, borderRadius: 8, overflow: 'hidden', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: 16, background: 'none' }}>
           {/* Static video thumbnail for Pedro Sousa */}
-          <Image src="/Thumbnail.png" alt="Pedro Sousa Thumbnail" width={140} height={160} style={{ objectFit: 'cover', borderRadius: 8 }} />
+          <Image src="/Thumbnail.png" alt="Pedro Sousa Thumbnail" fill style={{ objectFit: 'cover', borderRadius: 8 }} />
           <span style={{ position: 'absolute', bottom: 6, right: 10, color: 'white', fontWeight: 700, fontSize: 15, textShadow: '0 1px 4px #000', background: 'rgba(0,0,0,0.4)', borderRadius: 4, padding: '1px 6px' }}>1:35</span>
         </div>
       </div>
