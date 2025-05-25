@@ -111,7 +111,7 @@ export default function SearchPage() {
               <div style={{ fontSize: 32, fontWeight: 700, color: 'black', lineHeight: 1 }}>{pedroSousa.last}</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, margin: '8px 0' }}>
                 <Image src={pedroSousa.clubLogo} alt={pedroSousa.club} width={38} height={38} style={{ objectFit: 'contain' }} />
-                <Image src={pedroSousa.nationLogo} alt={pedroSousa.nation} width={38} height={38} style={{ objectFit: 'contain' }} />
+                <Image src={pedroSousa.nationLogo} alt={pedroSousa.nation} width={32} height={32} style={{ objectFit: 'contain' }} />
               </div>
             </div>
             <div style={{ flex: 1.2, textAlign: 'right', color: '#888', fontSize: 20, fontWeight: 400, paddingRight: 12 }}>
