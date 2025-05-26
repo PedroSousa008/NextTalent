@@ -21,60 +21,125 @@ export default function ChallangesPage() {
       <div style={{ fontWeight: 500, fontSize: 36, color: '#222', fontFamily: 'serif', marginBottom: 12, textAlign: 'center' }}>Challanges</div>
       {/* Tabs */}
       <div style={{ width: '100%', maxWidth: 500, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 0, borderBottom: '1.5px solid #eee' }}>
-        <div style={{ flex: 1, textAlign: 'center', fontSize: 18, fontWeight: 600, color: 'black', borderBottom: '2px solid black', paddingBottom: 4, cursor: 'pointer', fontFamily: 'serif' }}>
+        <div onClick={() => setActiveTab('endurance')} style={{ flex: 1, textAlign: 'center', fontSize: 18, fontWeight: activeTab === 'endurance' ? 600 : 500, color: activeTab === 'endurance' ? 'black' : '#bbb', borderBottom: activeTab === 'endurance' ? '2px solid black' : 'none', paddingBottom: 4, cursor: 'pointer', fontFamily: 'serif' }}>
           Endurance & Agility Assessments
         </div>
-        <div onClick={() => setActiveTab('mobility')} style={{ flex: 1, textAlign: 'center', fontSize: 18, fontWeight: activeTab === 'mobility' ? 600 : 500, color: activeTab === 'mobility' ? 'black' : '#bbb', paddingBottom: 4, cursor: 'pointer', fontFamily: 'serif', borderBottom: activeTab === 'mobility' ? '2px solid black' : 'none' }}>
+        <div onClick={() => setActiveTab('mobility')} style={{ flex: 1, textAlign: 'center', fontSize: 18, fontWeight: activeTab === 'mobility' ? 600 : 500, color: activeTab === 'mobility' ? 'black' : '#bbb', borderBottom: activeTab === 'mobility' ? '2px solid black' : 'none', paddingBottom: 4, cursor: 'pointer', fontFamily: 'serif' }}>
           Mobility & Explosive Power
         </div>
-        <div onClick={() => setActiveTab('strength')} style={{ flex: 1, textAlign: 'center', fontSize: 18, fontWeight: activeTab === 'strength' ? 600 : 500, color: activeTab === 'strength' ? 'black' : '#bbb', paddingBottom: 4, cursor: 'pointer', fontFamily: 'serif', borderBottom: activeTab === 'strength' ? '2px solid black' : 'none' }}>
+        <div onClick={() => setActiveTab('strength')} style={{ flex: 1, textAlign: 'center', fontSize: 18, fontWeight: activeTab === 'strength' ? 600 : 500, color: activeTab === 'strength' ? 'black' : '#bbb', borderBottom: activeTab === 'strength' ? '2px solid black' : 'none', paddingBottom: 4, cursor: 'pointer', fontFamily: 'serif' }}>
           Strength & Stability
         </div>
-        <div onClick={() => setActiveTab('anaerobic')} style={{ flex: 1, textAlign: 'center', fontSize: 18, fontWeight: activeTab === 'anaerobic' ? 600 : 500, color: activeTab === 'anaerobic' ? 'black' : '#bbb', paddingBottom: 4, cursor: 'pointer', fontFamily: 'serif', borderBottom: activeTab === 'anaerobic' ? '2px solid black' : 'none' }}>
+        <div onClick={() => setActiveTab('anaerobic')} style={{ flex: 1, textAlign: 'center', fontSize: 18, fontWeight: activeTab === 'anaerobic' ? 600 : 500, color: activeTab === 'anaerobic' ? 'black' : '#bbb', borderBottom: activeTab === 'anaerobic' ? '2px solid black' : 'none', paddingBottom: 4, cursor: 'pointer', fontFamily: 'serif' }}>
           Anaerobic & Injury Prevention
         </div>
       </div>
       {/* Cards */}
       <div style={{ width: '100%', maxWidth: 500, marginTop: 24, display: 'flex', flexDirection: 'column', gap: 24, overflowY: 'auto', maxHeight: '70vh', paddingRight: 4, paddingBottom: 20 }}>
-        {/* Beep Test */}
-        <div style={{ background: '#c8e6c9', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
-          <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Image src="/player1.png" alt="Beep Test" width={54} height={54} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
-          </div>
-          <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>Beep Test</div>
-            <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>Very Good</div>
-          </div>
-        </div>
-        {/* 50 Meter Sprint */}
-        <div style={{ background: '#b2ebf2', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
-          <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Image src="/player2.png" alt="50 Meter Sprint" width={54} height={54} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
-          </div>
-          <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>50 Meter Sprint</div>
-            <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>Elite</div>
-          </div>
-        </div>
-        {/* 2km Time Trial */}
-        <div style={{ background: '#eeeeee', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
-          <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Image src="/player3.png" alt="2km Time Trial" width={54} height={54} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
-          </div>
-          <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <div style={{ fontSize: 32, fontWeight: 400, color: '#222', fontFamily: 'serif' }}>2km Time Trial</div>
-          </div>
-        </div>
-        {/* T-Drill Test */}
-        <div style={{ background: '#b2ebf2', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
-          <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Image src="/player4.png" alt="T-Drill Test" width={54} height={54} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
-          </div>
-          <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>T-Drill Test</div>
-            <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>Elite</div>
-          </div>
-        </div>
+        {/* Endurance & Agility Assessments */}
+        {activeTab === 'endurance' && (
+          <>
+            {/* Beep Test */}
+            <div style={{ background: '#c8e6c9', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+              <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Image src="/player1.png" alt="Beep Test" width={54} height={54} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
+              </div>
+              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>Beep Test</div>
+                <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>Very Good</div>
+              </div>
+            </div>
+            {/* 50 Meter Sprint */}
+            <div style={{ background: '#b2ebf2', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+              <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Image src="/player2.png" alt="50 Meter Sprint" width={54} height={54} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
+              </div>
+              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>50 Meter Sprint</div>
+                <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>Elite</div>
+              </div>
+            </div>
+            {/* 2km Time Trial */}
+            <div style={{ background: '#eeeeee', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+              <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Image src="/player3.png" alt="2km Time Trial" width={54} height={54} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
+              </div>
+              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: 32, fontWeight: 400, color: '#222', fontFamily: 'serif' }}>2km Time Trial</div>
+              </div>
+            </div>
+            {/* T-Drill Test */}
+            <div style={{ background: '#b2ebf2', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+              <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Image src="/player4.png" alt="T-Drill Test" width={54} height={54} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
+              </div>
+              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>T-Drill Test</div>
+                <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>Elite</div>
+              </div>
+            </div>
+          </>
+        )}
+        {/* Mobility & Explosive Power */}
+        {activeTab === 'mobility' && (
+          <>
+            <div style={{ background: '#aeeaf7', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+              <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Image src="/placeholder.png" alt="Vertical Jump" width={54} height={54} style={{ objectFit: 'contain' }} />
+              </div>
+              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>Vertical Jump</div>
+                <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>Elite</div>
+              </div>
+            </div>
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
+              Medicine Ball Throws
+            </div>
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
+              Plyometric Box Jumps
+            </div>
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
+              Sit & Reach
+            </div>
+          </>
+        )}
+        {/* Strength & Stability */}
+        {activeTab === 'strength' && (
+          <>
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
+              1 Rep Max Squats
+            </div>
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
+              1 Rep Max Deadlifts
+            </div>
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
+              1 Rep Max Bench Press
+            </div>
+            <div style={{ background: '#ffd89c', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end' }}>
+                <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>Plank</div>
+                <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>Average</div>
+              </div>
+            </div>
+          </>
+        )}
+        {/* Anaerobic & Injury Prevention */}
+        {activeTab === 'anaerobic' && (
+          <>
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
+              Lactate Threshold Runs
+            </div>
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
+              Maximal Sprint Repeats
+            </div>
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
+              Nordic Hamstring Test
+            </div>
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
+              Jump Landing Assessments
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
