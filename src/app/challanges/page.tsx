@@ -85,7 +85,7 @@ export default function ChallangesPage() {
           <>
             <div style={{ background: '#aeeaf7', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image src="/player5.png" alt="Vertical Jump" width={54} height={54} style={{ objectFit: 'contain' }} />
+                <Image src="/player5.png" alt="Vertical Jump" width={64} height={64} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>Vertical Jump</div>
@@ -110,7 +110,7 @@ export default function ChallangesPage() {
             </div>
             <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image src="/player8.png" alt="Sit & Reach" width={54} height={54} style={{ objectFit: 'contain' }} />
+                <Image src="/player8.png" alt="Sit & Reach" width={64} height={64} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>Sit & Reach</div>
@@ -123,7 +123,7 @@ export default function ChallangesPage() {
           <>
             <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image src="/player9.png" alt="1 Rep Max Squats" width={54} height={54} style={{ objectFit: 'contain' }} />
+                <Image src="/player9.png" alt="1 Rep Max Squats" width={44} height={44} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>1 Rep Max Squats</div>
@@ -131,7 +131,7 @@ export default function ChallangesPage() {
             </div>
             <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image src="/player10.png" alt="1 Rep Max Deadlifts" width={54} height={54} style={{ objectFit: 'contain' }} />
+                <Image src="/player10.png" alt="1 Rep Max Deadlifts" width={44} height={44} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>1 Rep Max Deadlifts</div>
@@ -139,7 +139,7 @@ export default function ChallangesPage() {
             </div>
             <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image src="/player11.png" alt="1 Rep Max Bench Press" width={54} height={54} style={{ objectFit: 'contain' }} />
+                <Image src="/player11.png" alt="1 Rep Max Bench Press" width={64} height={64} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>1 Rep Max Bench Press</div>
@@ -169,7 +169,7 @@ export default function ChallangesPage() {
             </div>
             <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image src="/player14.png" alt="Maximal Sprint Repeats" width={54} height={54} style={{ objectFit: 'contain' }} />
+                <Image src="/player14.png" alt="Maximal Sprint Repeats" width={44} height={44} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>Maximal Sprint Repeats</div>
@@ -185,7 +185,7 @@ export default function ChallangesPage() {
             </div>
             <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image src="/player16.png" alt="Jump Landing Assessments" width={54} height={54} style={{ objectFit: 'contain' }} />
+                <Image src="/player16.png" alt="Jump Landing Assessments" width={44} height={44} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>Jump Landing Assessments</div>
