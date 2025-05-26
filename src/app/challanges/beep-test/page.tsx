@@ -66,8 +66,8 @@ export default function BeepTestPage() {
     }
   }, []);
 
-  // Find best reps for each age group
-  const bestReps: Record<string, number> = {};
+  // Find latest reps for each age group
+  const latestReps: Record<string, number> = {};
   uploads.forEach(u => {
     const match = u.label.match(/(\d+)/g);
     if (match) {
@@ -81,7 +81,7 @@ export default function BeepTestPage() {
       else if (age >= 26 && age <= 30) group = '26 - 30';
       else if (age >= 31 && age <= 35) group = '31 - 35';
       else if (age >= 36) group = '36+';
-      if (!bestReps[group] || u.reps > bestReps[group]) bestReps[group] = u.reps;
+      latestReps[group] = u.reps;
     }
   });
 
@@ -119,7 +119,7 @@ export default function BeepTestPage() {
           </thead>
           <tbody>
             {table.map(row => {
-              const reps = bestReps[row.age] ?? null;
+              const reps = latestReps[row.age] ?? null;
               return (
                 <tr key={row.age}>
                   <td style={{ border: '1px solid #222', padding: 8, fontWeight: 600 }}>{row.age}</td>
