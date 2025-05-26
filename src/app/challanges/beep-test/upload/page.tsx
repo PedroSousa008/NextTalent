@@ -1,19 +1,31 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function BeepTestUploadPage() {
   const router = useRouter();
   // Local state for uploads
-  const [uploads, setUploads] = useState([
-    { label: 'Beep Test at 18', reps: 12, video: '/fake-beep-18.mp4' },
-    { label: 'Beep Test at 22', reps: 13, video: '/fake-beep-22.mp4' },
-  ]);
+  const [uploads, setUploads] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('beepTestUploads');
+      if (saved) return JSON.parse(saved);
+    }
+    return [
+      { label: 'Beep Test at 18', reps: 12, video: '/fake-beep-18.mp4' },
+      { label: 'Beep Test at 22', reps: 13, video: '/fake-beep-22.mp4' },
+    ];
+  });
   const [showForm, setShowForm] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [reps, setReps] = useState<number | null>(null);
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [editReps, setEditReps] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('beepTestUploads', JSON.stringify(uploads));
+    }
+  }, [uploads]);
 
   function handleAdd(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -29,7 +41,7 @@ export default function BeepTestUploadPage() {
   }
 
   function handleDelete(idx: number) {
-    setUploads(uploads.filter((_, i) => i !== idx));
+    setUploads(uploads.filter((_: typeof uploads[0], i: number) => i !== idx));
   }
 
   function handleEdit(idx: number) {
@@ -39,7 +51,7 @@ export default function BeepTestUploadPage() {
 
   function handleEditSave(idx: number) {
     if (editReps !== null) {
-      setUploads(uploads.map((u, i) => i === idx ? { ...u, reps: editReps } : u));
+      setUploads(uploads.map((u: typeof uploads[0], i: number) => i === idx ? { ...u, reps: editReps } : u));
       setEditIndex(null);
       setEditReps(null);
     }
@@ -72,14 +84,14 @@ export default function BeepTestUploadPage() {
         </form>
       )}
       <div style={{ width: '100%', maxWidth: 400, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 32 }}>
-        {uploads.map((u, i) => (
+        {uploads.map((u: typeof uploads[0], i: number) => (
           <div key={i} style={{ width: '100%', background: '#f5f6fa', borderRadius: 16, padding: 18, display: 'flex', alignItems: 'center', gap: 18 }}>
             <video src={u.video} controls style={{ width: 120, borderRadius: 8, background: '#eee' }} />
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
               <div style={{ fontSize: 18, fontFamily: 'serif', color: '#222', fontWeight: 500 }}>{u.label}</div>
               {editIndex === i ? (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <input type="number" min={0} step={1} value={editReps ?? ''} onChange={e => setEditReps(Number(e.target.value))} style={{ width: 60, fontSize: 16, padding: 4, borderRadius: 6, border: '1px solid #bbb' }} />
+                  <input type="number" min={0} step={1} value={editReps ?? ''} onChange={e => setEditReps(Number(e.target.value))} style={{ width: 60, fontSize: 16, padding: 4, borderRadius: 6, border: '1px solid #bbb', color: 'black' }} />
                   <button onClick={() => handleEditSave(i)} style={{ background: 'black', color: 'white', fontSize: 14, border: 'none', borderRadius: 6, padding: '6px 14px', cursor: 'pointer' }}>Save</button>
                   <button onClick={() => setEditIndex(null)} style={{ background: '#bbb', color: 'white', fontSize: 14, border: 'none', borderRadius: 6, padding: '6px 14px', cursor: 'pointer' }}>Cancel</button>
                 </div>
