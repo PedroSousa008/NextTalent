@@ -53,7 +53,7 @@ export default function ChallangesPage() {
         <Image src="/challanges.png" alt="Challanges" width={120} height={120} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
       </div>
       {/* Title */}
-      <div style={{ fontWeight: 500, fontSize: 36, color: '#222', fontFamily: 'serif', marginBottom: 12, textAlign: 'center' }}>Challanges</div>
+      <div style={{ fontWeight: 500, fontSize: 36, color: '#222', fontFamily: 'serif', marginBottom: 12, textAlign: 'center' }}>Challenges</div>
       {/* Tabs */}
       <div style={{ width: '100%', maxWidth: 500, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 0, borderBottom: '1.5px solid #eee' }}>
         <div onClick={() => setActiveTab('endurance')} style={{ flex: 1, textAlign: 'center', fontSize: 18, fontWeight: activeTab === 'endurance' ? 600 : 500, color: activeTab === 'endurance' ? 'black' : '#bbb', borderBottom: activeTab === 'endurance' ? '2px solid black' : 'none', paddingBottom: 4, cursor: 'pointer', fontFamily: 'serif' }}>
