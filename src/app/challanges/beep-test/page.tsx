@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 export default function BeepTestPage() {
   const router = useRouter();
   return (
-    <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 0, overflowY: 'auto', maxHeight: '100vh' }}>
+    <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 0, height: '100vh', overflowY: 'auto' }}>
       {/* Back button */}
       <button onClick={() => router.back()} style={{ position: 'absolute', top: 24, left: 18, background: 'none', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10, cursor: 'pointer' }}>
         <span style={{ color: 'grey', fontSize: 24, fontWeight: 500 }}>&larr;</span>
@@ -60,7 +60,7 @@ export default function BeepTestPage() {
             </tr>
             <tr>
               <td style={{ border: '1px solid #222', padding: 8, fontWeight: 600 }}>18 - 20</td>
-              <td style={{ border: '1px solid #222', padding: 8 }}>&lt; 12.0</td>
+              <td style={{ border: '1px solid #222', padding: 8, background: '#ffe0b2' }}>&lt; 12.0</td>
               <td style={{ border: '1px solid #222', padding: 8 }}>12.5 - 13.5</td>
               <td style={{ border: '1px solid #222', padding: 8 }}>13.5 - 15.0</td>
               <td style={{ border: '1px solid #222', padding: 8 }}>&gt; 15.0</td>
@@ -68,7 +68,7 @@ export default function BeepTestPage() {
             <tr>
               <td style={{ border: '1px solid #222', padding: 8, fontWeight: 600 }}>21 - 25</td>
               <td style={{ border: '1px solid #222', padding: 8 }}>&lt; 12.5</td>
-              <td style={{ border: '1px solid #222', padding: 8 }}>13.0 - 14.0</td>
+              <td style={{ border: '1px solid #222', padding: 8, background: '#c8e6c9' }}>13.0 - 14.0</td>
               <td style={{ border: '1px solid #222', padding: 8 }}>14.0 - 15.5</td>
               <td style={{ border: '1px solid #222', padding: 8 }}>&gt; 15.5</td>
             </tr>
