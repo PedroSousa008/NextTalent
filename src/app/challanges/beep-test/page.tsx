@@ -92,7 +92,7 @@ export default function BeepTestPage() {
         <span style={{ color: 'grey', fontSize: 24, fontWeight: 500 }}>&larr;</span>
       </button>
       {/* Info icon */}
-      <div style={{ position: 'absolute', top: 24, right: 18, zIndex: 10 }}>
+      <div style={{ position: 'absolute', top: 24, right: 18, zIndex: 10, cursor: 'pointer' }} onClick={() => router.push('/challanges/beep-test/info')}>
         <span style={{ color: 'black', fontSize: 32, fontWeight: 700 }}>ⓘ</span>
       </div>
       {/* Top image */}
