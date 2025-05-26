@@ -7,8 +7,8 @@ export default function ChallangesPage() {
   return (
     <div style={{ minHeight: '100vh', background: '#f5f6fa', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       {/* Back button */}
-      <button onClick={() => router.back()} style={{ position: 'absolute', top: 24, left: 18, background: 'grey', border: 'none', borderRadius: '50%', width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10, cursor: 'pointer' }}>
-        <span style={{ color: 'white', fontSize: 20, fontWeight: 500 }}>&larr;</span>
+      <button onClick={() => router.back()} style={{ position: 'absolute', top: 24, left: 18, background: 'none', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10, cursor: 'pointer' }}>
+        <span style={{ color: 'grey', fontSize: 24, fontWeight: 500 }}>&larr;</span>
       </button>
       {/* Top image */}
       <div style={{ marginTop: 32, marginBottom: 8 }}>
