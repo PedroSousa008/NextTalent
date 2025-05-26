@@ -42,7 +42,7 @@ export default function ChallangesPage() {
             {/* Beep Test */}
             <div style={{ background: '#c8e6c9', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image src="/player1.png" alt="Beep Test" width={54} height={54} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
+                <Image src="/player1.png" alt="Beep Test" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>Beep Test</div>
@@ -52,7 +52,7 @@ export default function ChallangesPage() {
             {/* 50 Meter Sprint */}
             <div style={{ background: '#b2ebf2', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image src="/player2.png" alt="50 Meter Sprint" width={54} height={54} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
+                <Image src="/player2.png" alt="50 Meter Sprint" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>50 Meter Sprint</div>
@@ -62,7 +62,7 @@ export default function ChallangesPage() {
             {/* 2km Time Trial */}
             <div style={{ background: '#eeeeee', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image src="/player3.png" alt="2km Time Trial" width={54} height={54} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
+                <Image src="/player3.png" alt="2km Time Trial" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: 32, fontWeight: 400, color: '#222', fontFamily: 'serif' }}>2km Time Trial</div>
@@ -71,7 +71,7 @@ export default function ChallangesPage() {
             {/* T-Drill Test */}
             <div style={{ background: '#b2ebf2', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image src="/player4.png" alt="T-Drill Test" width={54} height={54} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
+                <Image src="/player4.png" alt="T-Drill Test" width={54} height={54} style={{ objectFit: 'contain', width: 54, height: 54 }} />
               </div>
               <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>T-Drill Test</div>
