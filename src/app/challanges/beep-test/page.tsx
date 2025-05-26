@@ -123,7 +123,7 @@ export default function BeepTestPage() {
               return (
                 <tr key={row.age}>
                   <td style={{ border: '1px solid #222', padding: 8, fontWeight: 600 }}>{row.age}</td>
-                  {row.ranges.map((r, idx) => {
+                  {row.ranges.map((r) => {
                     let bg = 'white';
                     if (reps !== null && reps >= r.min && reps <= r.max) {
                       if (r.color === 'yellow') bg = '#ffe0b2';
