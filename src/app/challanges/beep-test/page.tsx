@@ -92,9 +92,25 @@ export default function BeepTestPage() {
         <span style={{ color: 'grey', fontSize: 24, fontWeight: 500 }}>&larr;</span>
       </button>
       {/* Info icon */}
-      <div style={{ position: 'absolute', top: 24, right: 18, zIndex: 10, cursor: 'pointer' }} onClick={() => router.push('/challanges/beep-test/info')}>
+      <button
+        onClick={() => router.push('/challanges/beep-test/info')}
+        style={{
+          position: 'absolute',
+          top: 24,
+          right: 18,
+          zIndex: 10,
+          cursor: 'pointer',
+          background: 'none',
+          border: 'none',
+          padding: 0,
+          outline: 'none',
+        }}
+        tabIndex={0}
+        aria-label="Info about Beep Test"
+        onMouseDown={e => e.preventDefault()}
+      >
         <span style={{ color: 'black', fontSize: 32, fontWeight: 700 }}>ⓘ</span>
-      </div>
+      </button>
       {/* Top image */}
       <div style={{ marginTop: 48, marginBottom: 8 }}>
         <Image src="/player1.png" alt="Beep Test" width={120} height={160} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
