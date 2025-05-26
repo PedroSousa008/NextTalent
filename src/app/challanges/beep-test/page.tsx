@@ -103,6 +103,7 @@ export default function BeepTestPage() {
           </tbody>
         </table>
       </div>
+      <div style={{ height: 32 }} />
     </div>
   );
 } 
