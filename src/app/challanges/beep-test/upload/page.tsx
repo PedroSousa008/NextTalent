@@ -1,27 +1,13 @@
 "use client";
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function BeepTestUploadPage() {
   const router = useRouter();
-  // Placeholder: use state to simulate uploaded video and reps
-  const [video, setVideo] = useState<string | null>(null);
-  const [reps, setReps] = useState<number | null>(null);
-  const [file, setFile] = useState<File | null>(null);
-
   // Fake uploaded videos
   const uploads = [
     { label: 'Beep Test at 18', reps: 12, video: '/fake-beep-18.mp4' },
     { label: 'Beep Test at 22', reps: 13, video: '/fake-beep-22.mp4' },
   ];
-
-  function handleUpload(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (file) {
-      setVideo(URL.createObjectURL(file));
-      // Simulate saving reps
-    }
-  }
 
   return (
     <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', padding: 24 }}>
