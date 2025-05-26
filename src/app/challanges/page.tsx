@@ -85,37 +85,70 @@ export default function ChallangesPage() {
           <>
             <div style={{ background: '#aeeaf7', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Image src="/placeholder.png" alt="Vertical Jump" width={54} height={54} style={{ objectFit: 'contain' }} />
+                <Image src="/player5.png" alt="Vertical Jump" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>Vertical Jump</div>
                 <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>Elite</div>
               </div>
             </div>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
-              Medicine Ball Throws
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+              <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Image src="/player6.png" alt="Medicine Ball Throws" width={54} height={54} style={{ objectFit: 'contain' }} />
+              </div>
+              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>Medicine Ball Throws</div>
+              </div>
             </div>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
-              Plyometric Box Jumps
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+              <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Image src="/player7.png" alt="Plyometric Box Jumps" width={54} height={54} style={{ objectFit: 'contain' }} />
+              </div>
+              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>Plyometric Box Jumps</div>
+              </div>
             </div>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
-              Sit & Reach
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+              <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Image src="/player8.png" alt="Sit & Reach" width={54} height={54} style={{ objectFit: 'contain' }} />
+              </div>
+              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>Sit & Reach</div>
+              </div>
             </div>
           </>
         )}
         {/* Strength & Stability */}
         {activeTab === 'strength' && (
           <>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
-              1 Rep Max Squats
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+              <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Image src="/player9.png" alt="1 Rep Max Squats" width={54} height={54} style={{ objectFit: 'contain' }} />
+              </div>
+              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>1 Rep Max Squats</div>
+              </div>
             </div>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
-              1 Rep Max Deadlifts
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+              <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Image src="/player10.png" alt="1 Rep Max Deadlifts" width={54} height={54} style={{ objectFit: 'contain' }} />
+              </div>
+              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>1 Rep Max Deadlifts</div>
+              </div>
             </div>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
-              1 Rep Max Bench Press
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+              <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Image src="/player11.png" alt="1 Rep Max Bench Press" width={54} height={54} style={{ objectFit: 'contain' }} />
+              </div>
+              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>1 Rep Max Bench Press</div>
+              </div>
             </div>
             <div style={{ background: '#ffd89c', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+              <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Image src="/player12.png" alt="Plank" width={54} height={54} style={{ objectFit: 'contain' }} />
+              </div>
               <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end' }}>
                 <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>Plank</div>
                 <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>Average</div>
@@ -126,17 +159,37 @@ export default function ChallangesPage() {
         {/* Anaerobic & Injury Prevention */}
         {activeTab === 'anaerobic' && (
           <>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
-              Lactate Threshold Runs
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+              <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Image src="/player13.png" alt="Lactate Threshold Runs" width={54} height={54} style={{ objectFit: 'contain' }} />
+              </div>
+              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>Lactate Threshold Runs</div>
+              </div>
             </div>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
-              Maximal Sprint Repeats
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+              <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Image src="/player14.png" alt="Maximal Sprint Repeats" width={54} height={54} style={{ objectFit: 'contain' }} />
+              </div>
+              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>Maximal Sprint Repeats</div>
+              </div>
             </div>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
-              Nordic Hamstring Test
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+              <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Image src="/player15.png" alt="Nordic Hamstring Test" width={54} height={54} style={{ objectFit: 'contain' }} />
+              </div>
+              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>Nordic Hamstring Test</div>
+              </div>
             </div>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, color: '#444', fontFamily: 'serif', fontSize: 32, fontWeight: 400, justifyContent: 'center' }}>
-              Jump Landing Assessments
+            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+              <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Image src="/player16.png" alt="Jump Landing Assessments" width={54} height={54} style={{ objectFit: 'contain' }} />
+              </div>
+              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>Jump Landing Assessments</div>
+              </div>
             </div>
           </>
         )}
