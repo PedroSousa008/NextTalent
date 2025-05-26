@@ -14,21 +14,21 @@ export default function ChallangesPage() {
       if (saved) {
         const uploads = JSON.parse(saved) as { age?: number, reps: number }[];
         if (uploads.length > 0) {
-          const oldest = uploads.reduce((a, b) => (a.age ?? 0) < (b.age ?? 0) ? a : b);
+          const latest = uploads.reduce((a, b) => (a.age ?? 0) > (b.age ?? 0) ? a : b);
           let color = '#c8e6c9';
-          if (oldest.age !== undefined && oldest.reps !== undefined) {
+          if (latest.age !== undefined && latest.reps !== undefined) {
             let ranges = null;
-            if (oldest.age >= 10 && oldest.age <= 12) ranges = [ { min: 0, max: 6, color: 'yellow' }, { min: 6.5, max: 7.5, color: 'green' }, { min: 7.5, max: 9, color: 'green' }, { min: 9.1, max: Infinity, color: 'blue' } ];
-            else if (oldest.age >= 13 && oldest.age <= 14) ranges = [ { min: 0, max: 7.5, color: 'yellow' }, { min: 8, max: 9.5, color: 'green' }, { min: 9.5, max: 11, color: 'green' }, { min: 11.1, max: Infinity, color: 'blue' } ];
-            else if (oldest.age >= 15 && oldest.age <= 17) ranges = [ { min: 0, max: 9.5, color: 'yellow' }, { min: 10, max: 11.5, color: 'green' }, { min: 11.5, max: 13, color: 'green' }, { min: 13.1, max: Infinity, color: 'blue' } ];
-            else if (oldest.age >= 18 && oldest.age <= 20) ranges = [ { min: 0, max: 12, color: 'yellow' }, { min: 12.5, max: 13.5, color: 'green' }, { min: 13.5, max: 15, color: 'green' }, { min: 15.1, max: Infinity, color: 'blue' } ];
-            else if (oldest.age >= 21 && oldest.age <= 25) ranges = [ { min: 0, max: 12.5, color: 'yellow' }, { min: 13, max: 14, color: 'green' }, { min: 14, max: 15.5, color: 'green' }, { min: 15.6, max: Infinity, color: 'blue' } ];
-            else if (oldest.age >= 26 && oldest.age <= 30) ranges = [ { min: 0, max: 12, color: 'yellow' }, { min: 12.5, max: 13, color: 'green' }, { min: 13.5, max: 15, color: 'green' }, { min: 15.1, max: Infinity, color: 'blue' } ];
-            else if (oldest.age >= 31 && oldest.age <= 35) ranges = [ { min: 0, max: 11.5, color: 'yellow' }, { min: 12, max: 13, color: 'green' }, { min: 13, max: 14.5, color: 'green' }, { min: 14.6, max: Infinity, color: 'blue' } ];
-            else if (oldest.age >= 36) ranges = [ { min: 0, max: 10.5, color: 'yellow' }, { min: 11, max: 12.5, color: 'green' }, { min: 12.5, max: 14, color: 'green' }, { min: 14.1, max: Infinity, color: 'blue' } ];
+            if (latest.age >= 10 && latest.age <= 12) ranges = [ { min: 0, max: 6, color: 'yellow' }, { min: 6.5, max: 7.5, color: 'green' }, { min: 7.5, max: 9, color: 'green' }, { min: 9.1, max: Infinity, color: 'blue' } ];
+            else if (latest.age >= 13 && latest.age <= 14) ranges = [ { min: 0, max: 7.5, color: 'yellow' }, { min: 8, max: 9.5, color: 'green' }, { min: 9.5, max: 11, color: 'green' }, { min: 11.1, max: Infinity, color: 'blue' } ];
+            else if (latest.age >= 15 && latest.age <= 17) ranges = [ { min: 0, max: 9.5, color: 'yellow' }, { min: 10, max: 11.5, color: 'green' }, { min: 11.5, max: 13, color: 'green' }, { min: 13.1, max: Infinity, color: 'blue' } ];
+            else if (latest.age >= 18 && latest.age <= 20) ranges = [ { min: 0, max: 12, color: 'yellow' }, { min: 12.5, max: 13.5, color: 'green' }, { min: 13.5, max: 15, color: 'green' }, { min: 15.1, max: Infinity, color: 'blue' } ];
+            else if (latest.age >= 21 && latest.age <= 25) ranges = [ { min: 0, max: 12.5, color: 'yellow' }, { min: 13, max: 14, color: 'green' }, { min: 14, max: 15.5, color: 'green' }, { min: 15.6, max: Infinity, color: 'blue' } ];
+            else if (latest.age >= 26 && latest.age <= 30) ranges = [ { min: 0, max: 12, color: 'yellow' }, { min: 12.5, max: 13, color: 'green' }, { min: 13.5, max: 15, color: 'green' }, { min: 15.1, max: Infinity, color: 'blue' } ];
+            else if (latest.age >= 31 && latest.age <= 35) ranges = [ { min: 0, max: 11.5, color: 'yellow' }, { min: 12, max: 13, color: 'green' }, { min: 13, max: 14.5, color: 'green' }, { min: 14.6, max: Infinity, color: 'blue' } ];
+            else if (latest.age >= 36) ranges = [ { min: 0, max: 10.5, color: 'yellow' }, { min: 11, max: 12.5, color: 'green' }, { min: 12.5, max: 14, color: 'green' }, { min: 14.1, max: Infinity, color: 'blue' } ];
             if (ranges) {
               for (const r of ranges) {
-                if (oldest.reps >= r.min && oldest.reps <= r.max) {
+                if (latest.reps >= r.min && latest.reps <= r.max) {
                   if (r.color === 'yellow') color = '#ffe0b2';
                   else if (r.color === 'green') color = '#c8e6c9';
                   else if (r.color === 'blue') color = '#b2ebf2';
@@ -85,7 +85,7 @@ export default function ChallangesPage() {
               </div>
             </div>
             {/* 50 Meter Sprint */}
-            <div style={{ background: '#b2ebf2', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+            <div onClick={() => router.push('/challanges/50-meter-sprint')} style={{ background: '#b2ebf2', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, cursor: 'pointer' }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player2.png" alt="50 Meter Sprint" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
@@ -95,7 +95,7 @@ export default function ChallangesPage() {
               </div>
             </div>
             {/* 2km Time Trial */}
-            <div style={{ background: '#eeeeee', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+            <div onClick={() => router.push('/challanges/2km-time-trial')} style={{ background: '#eeeeee', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, cursor: 'pointer' }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player3.png" alt="2km Time Trial" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
@@ -104,7 +104,7 @@ export default function ChallangesPage() {
               </div>
             </div>
             {/* T-Drill Test */}
-            <div style={{ background: '#b2ebf2', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+            <div onClick={() => router.push('/challanges/t-drill-test')} style={{ background: '#b2ebf2', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, cursor: 'pointer' }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player4.png" alt="T-Drill Test" width={54} height={54} style={{ objectFit: 'contain', width: 54, height: 54 }} />
               </div>
