@@ -2,8 +2,10 @@
 import Image from 'next/image';
 import BottomNav from '../feed/BottomNav';
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function ProfilePage() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<'highlights' | 'details' | 'stats'>('highlights');
   const [editing, setEditing] = useState(false);
   const [details, setDetails] = useState({
@@ -46,7 +48,7 @@ export default function ProfilePage() {
         <Image src="/settings.png" alt="Settings" width={48} height={48} />
       </div>
       <div style={{ position: 'absolute', top: 18, right: 38, zIndex: 10 }}>
-        <Image src="/challanges.png" alt="Challanges" width={48} height={48} />
+        <Image src="/challanges.png" alt="Challanges" width={48} height={48} style={{ cursor: 'pointer' }} onClick={() => router.push('/challanges')} />
       </div>
       {/* Profile image */}
       <div style={{ marginTop: 18, marginBottom: 8 }}>
