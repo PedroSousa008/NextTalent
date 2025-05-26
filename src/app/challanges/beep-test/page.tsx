@@ -16,7 +16,7 @@ export default function BeepTestPage() {
       </div>
       {/* Top image */}
       <div style={{ marginTop: 48, marginBottom: 8 }}>
-        <Image src="/player1.png" alt="Beep Test" width={90} height={120} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
+        <Image src="/player1.png" alt="Beep Test" width={120} height={160} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
       </div>
       {/* Title */}
       <div style={{ fontWeight: 500, fontSize: 36, color: '#222', fontFamily: 'serif', marginBottom: 8, textAlign: 'center' }}>Beep Test</div>
@@ -25,7 +25,7 @@ export default function BeepTestPage() {
         <span style={{ fontSize: 32 }}>🎬</span>
       </div>
       {/* Table */}
-      <div style={{ width: '95%', maxWidth: 420, margin: '0 auto', background: 'white', border: '1.5px solid #222', borderRadius: 0, overflow: 'hidden' }}>
+      <div style={{ width: '99%', maxWidth: 520, margin: '0 auto', background: 'white', border: '1.5px solid #222', borderRadius: 0, overflow: 'auto' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'serif', fontSize: 20, color: '#222' }}>
           <thead>
             <tr>
