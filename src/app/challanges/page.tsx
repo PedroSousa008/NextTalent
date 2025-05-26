@@ -1,9 +1,12 @@
 "use client";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function ChallangesPage() {
   const router = useRouter();
+  const [activeTab, setActiveTab] = useState('endurance');
+
   return (
     <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       {/* Back button */}
@@ -21,13 +24,13 @@ export default function ChallangesPage() {
         <div style={{ flex: 1, textAlign: 'center', fontSize: 18, fontWeight: 600, color: 'black', borderBottom: '2px solid black', paddingBottom: 4, cursor: 'pointer', fontFamily: 'serif' }}>
           Endurance & Agility Assessments
         </div>
-        <div style={{ flex: 1, textAlign: 'center', fontSize: 18, fontWeight: 500, color: '#bbb', paddingBottom: 4, cursor: 'not-allowed', fontFamily: 'serif' }}>
+        <div onClick={() => setActiveTab('mobility')} style={{ flex: 1, textAlign: 'center', fontSize: 18, fontWeight: activeTab === 'mobility' ? 600 : 500, color: activeTab === 'mobility' ? 'black' : '#bbb', paddingBottom: 4, cursor: 'pointer', fontFamily: 'serif', borderBottom: activeTab === 'mobility' ? '2px solid black' : 'none' }}>
           Mobility & Explosive Power
         </div>
-        <div style={{ flex: 1, textAlign: 'center', fontSize: 18, fontWeight: 500, color: '#bbb', paddingBottom: 4, cursor: 'not-allowed', fontFamily: 'serif' }}>
+        <div onClick={() => setActiveTab('strength')} style={{ flex: 1, textAlign: 'center', fontSize: 18, fontWeight: activeTab === 'strength' ? 600 : 500, color: activeTab === 'strength' ? 'black' : '#bbb', paddingBottom: 4, cursor: 'pointer', fontFamily: 'serif', borderBottom: activeTab === 'strength' ? '2px solid black' : 'none' }}>
           Strength & Stability
         </div>
-        <div style={{ flex: 1, textAlign: 'center', fontSize: 18, fontWeight: 500, color: '#bbb', paddingBottom: 4, cursor: 'not-allowed', fontFamily: 'serif' }}>
+        <div onClick={() => setActiveTab('anaerobic')} style={{ flex: 1, textAlign: 'center', fontSize: 18, fontWeight: activeTab === 'anaerobic' ? 600 : 500, color: activeTab === 'anaerobic' ? 'black' : '#bbb', paddingBottom: 4, cursor: 'pointer', fontFamily: 'serif', borderBottom: activeTab === 'anaerobic' ? '2px solid black' : 'none' }}>
           Anaerobic & Injury Prevention
         </div>
       </div>
