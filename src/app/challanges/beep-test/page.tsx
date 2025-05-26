@@ -21,7 +21,7 @@ export default function BeepTestPage() {
       {/* Title */}
       <div style={{ fontWeight: 500, fontSize: 36, color: '#222', fontFamily: 'serif', marginBottom: 8, textAlign: 'center' }}>Beep Test</div>
       {/* Video icon */}
-      <div style={{ marginBottom: 16 }}>
+      <div style={{ marginBottom: 16, cursor: 'pointer' }} onClick={() => router.push('/challanges/beep-test/upload')}>
         <span style={{ fontSize: 32 }}>🎬</span>
       </div>
       {/* Table */}
