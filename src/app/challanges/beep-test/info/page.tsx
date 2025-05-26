@@ -1,8 +1,14 @@
 "use client";
+import { useRouter } from 'next/navigation';
 
 export default function BeepTestInfoPage() {
+  const router = useRouter();
   return (
-    <div style={{ minHeight: '100vh', background: 'white', fontFamily: 'serif', color: '#222', padding: '0 0 32px 0' }}>
+    <div style={{ minHeight: '100vh', background: 'white', fontFamily: 'serif', color: '#222', padding: '0 0 32px 0', position: 'relative' }}>
+      {/* Back button (Information button) */}
+      <button onClick={() => router.back()} style={{ position: 'absolute', top: 24, left: 18, background: 'none', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10, cursor: 'pointer' }}>
+        <span style={{ color: 'grey', fontSize: 24, fontWeight: 500 }}>&larr;</span>
+      </button>
       <div style={{ textAlign: 'center', marginTop: 32, marginBottom: 16 }}>
         <span style={{ fontSize: 64, color: '#bbb' }}>ⓘ</span>
       </div>
