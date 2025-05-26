@@ -149,7 +149,7 @@ export default function ChallangesPage() {
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player12.png" alt="Plank" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
-              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end' }}>
+              <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>Plank</div>
                 <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>Average</div>
               </div>
