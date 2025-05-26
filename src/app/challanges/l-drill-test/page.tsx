@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-export default function BeepTestPage() {
+export default function LDrillTestPage() {
   const router = useRouter();
   // Table data
   const table = [
@@ -61,7 +61,7 @@ export default function BeepTestPage() {
   const [uploads, setUploads] = useState<{label: string, reps: number, video: string}[]>([]);
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('beepTestUploads');
+      const saved = localStorage.getItem('lDrillTestUploads');
       if (saved) setUploads(JSON.parse(saved));
     }
   }, []);
@@ -92,17 +92,17 @@ export default function BeepTestPage() {
         <span style={{ color: 'grey', fontSize: 24, fontWeight: 500 }}>&larr;</span>
       </button>
       {/* Info icon */}
-      <div style={{ position: 'absolute', top: 24, right: 18, zIndex: 10, cursor: 'pointer' }} onClick={() => router.push('/challanges/beep-test/info')}>
+      <div style={{ position: 'absolute', top: 24, right: 18, zIndex: 10, cursor: 'pointer' }} onClick={() => router.push('/challanges/l-drill-test/info')}>
         <span style={{ color: 'black', fontSize: 32, fontWeight: 700 }}>ⓘ</span>
       </div>
       {/* Top image */}
       <div style={{ marginTop: 48, marginBottom: 8 }}>
-        <Image src="/player1.png" alt="Beep Test" width={120} height={160} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
+        <Image src="/player5.png" alt="L-Drill Test" width={120} height={160} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
       </div>
       {/* Title */}
-      <div style={{ fontWeight: 500, fontSize: 36, color: '#222', fontFamily: 'serif', marginBottom: 8, textAlign: 'center' }}>Beep Test</div>
+      <div style={{ fontWeight: 500, fontSize: 36, color: '#222', fontFamily: 'serif', marginBottom: 8, textAlign: 'center' }}>L-Drill Test</div>
       {/* Video icon */}
-      <div style={{ marginBottom: 16, cursor: 'pointer' }} onClick={() => router.push('/challanges/beep-test/upload')}>
+      <div style={{ marginBottom: 16, cursor: 'pointer' }} onClick={() => router.push('/challanges/l-drill-test/upload')}>
         <span style={{ fontSize: 32 }}>🎬</span>
       </div>
       {/* Table */}

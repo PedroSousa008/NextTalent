@@ -3,57 +3,57 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-export default function BeepTestPage() {
+export default function VerticalJumpTestPage() {
   const router = useRouter();
   // Table data
   const table = [
     { age: '10 - 12', ranges: [
-      { label: 'Average', min: 0, max: 6, color: 'yellow' },
-      { label: 'Very Good', min: 6.5, max: 7.5, color: 'green' },
-      { label: 'Excellent', min: 7.5, max: 9, color: 'green' },
-      { label: 'Elite', min: 9.1, max: Infinity, color: 'blue' },
+      { label: 'Average', min: 0, max: 12.0, color: 'yellow' },
+      { label: 'Very Good', min: 11.9, max: 11.0, color: 'green' },
+      { label: 'Excellent', min: 10.9, max: 10.0, color: 'green' },
+      { label: 'Elite', min: 9.9, max: 0, color: 'blue' },
     ] },
     { age: '13 - 14', ranges: [
-      { label: 'Average', min: 0, max: 7.5, color: 'yellow' },
-      { label: 'Very Good', min: 8, max: 9.5, color: 'green' },
-      { label: 'Excellent', min: 9.5, max: 11, color: 'green' },
-      { label: 'Elite', min: 11.1, max: Infinity, color: 'blue' },
+      { label: 'Average', min: 0, max: 11.0, color: 'yellow' },
+      { label: 'Very Good', min: 10.9, max: 10.0, color: 'green' },
+      { label: 'Excellent', min: 9.9, max: 9.0, color: 'green' },
+      { label: 'Elite', min: 8.9, max: 0, color: 'blue' },
     ] },
     { age: '15 - 17', ranges: [
-      { label: 'Average', min: 0, max: 9.5, color: 'yellow' },
-      { label: 'Very Good', min: 10, max: 11.5, color: 'green' },
-      { label: 'Excellent', min: 11.5, max: 13, color: 'green' },
-      { label: 'Elite', min: 13.1, max: Infinity, color: 'blue' },
+      { label: 'Average', min: 0, max: 10.0, color: 'yellow' },
+      { label: 'Very Good', min: 9.9, max: 9.0, color: 'green' },
+      { label: 'Excellent', min: 8.9, max: 8.0, color: 'green' },
+      { label: 'Elite', min: 7.9, max: 0, color: 'blue' },
     ] },
     { age: '18 - 20', ranges: [
-      { label: 'Average', min: 0, max: 12, color: 'yellow' },
-      { label: 'Very Good', min: 12.5, max: 13.5, color: 'green' },
-      { label: 'Excellent', min: 13.5, max: 15, color: 'green' },
-      { label: 'Elite', min: 15.1, max: Infinity, color: 'blue' },
+      { label: 'Average', min: 0, max: 9.0, color: 'yellow' },
+      { label: 'Very Good', min: 8.9, max: 8.0, color: 'green' },
+      { label: 'Excellent', min: 7.9, max: 7.0, color: 'green' },
+      { label: 'Elite', min: 6.9, max: 0, color: 'blue' },
     ] },
     { age: '21 - 25', ranges: [
-      { label: 'Average', min: 0, max: 12.5, color: 'yellow' },
-      { label: 'Very Good', min: 13, max: 14, color: 'green' },
-      { label: 'Excellent', min: 14, max: 15.5, color: 'green' },
-      { label: 'Elite', min: 15.6, max: Infinity, color: 'blue' },
+      { label: 'Average', min: 0, max: 8.0, color: 'yellow' },
+      { label: 'Very Good', min: 7.9, max: 7.0, color: 'green' },
+      { label: 'Excellent', min: 6.9, max: 6.0, color: 'green' },
+      { label: 'Elite', min: 5.9, max: 0, color: 'blue' },
     ] },
     { age: '26 - 30', ranges: [
-      { label: 'Average', min: 0, max: 12, color: 'yellow' },
-      { label: 'Very Good', min: 12.5, max: 13, color: 'green' },
-      { label: 'Excellent', min: 13.5, max: 15, color: 'green' },
-      { label: 'Elite', min: 15.1, max: Infinity, color: 'blue' },
+      { label: 'Average', min: 0, max: 9.0, color: 'yellow' },
+      { label: 'Very Good', min: 8.9, max: 8.0, color: 'green' },
+      { label: 'Excellent', min: 7.9, max: 7.0, color: 'green' },
+      { label: 'Elite', min: 6.9, max: 0, color: 'blue' },
     ] },
     { age: '31 - 35', ranges: [
-      { label: 'Average', min: 0, max: 11.5, color: 'yellow' },
-      { label: 'Very Good', min: 12, max: 13, color: 'green' },
-      { label: 'Excellent', min: 13, max: 14.5, color: 'green' },
-      { label: 'Elite', min: 14.6, max: Infinity, color: 'blue' },
+      { label: 'Average', min: 0, max: 10.0, color: 'yellow' },
+      { label: 'Very Good', min: 9.9, max: 9.0, color: 'green' },
+      { label: 'Excellent', min: 8.9, max: 8.0, color: 'green' },
+      { label: 'Elite', min: 7.9, max: 0, color: 'blue' },
     ] },
     { age: '36+', ranges: [
-      { label: 'Average', min: 0, max: 10.5, color: 'yellow' },
-      { label: 'Very Good', min: 11, max: 12.5, color: 'green' },
-      { label: 'Excellent', min: 12.5, max: 14, color: 'green' },
-      { label: 'Elite', min: 14.1, max: Infinity, color: 'blue' },
+      { label: 'Average', min: 0, max: 11.0, color: 'yellow' },
+      { label: 'Very Good', min: 10.9, max: 10.0, color: 'green' },
+      { label: 'Excellent', min: 9.9, max: 9.0, color: 'green' },
+      { label: 'Elite', min: 8.9, max: 0, color: 'blue' },
     ] },
   ];
 
@@ -61,7 +61,7 @@ export default function BeepTestPage() {
   const [uploads, setUploads] = useState<{label: string, reps: number, video: string}[]>([]);
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('beepTestUploads');
+      const saved = localStorage.getItem('verticalJumpTestUploads');
       if (saved) setUploads(JSON.parse(saved));
     }
   }, []);
@@ -92,17 +92,17 @@ export default function BeepTestPage() {
         <span style={{ color: 'grey', fontSize: 24, fontWeight: 500 }}>&larr;</span>
       </button>
       {/* Info icon */}
-      <div style={{ position: 'absolute', top: 24, right: 18, zIndex: 10, cursor: 'pointer' }} onClick={() => router.push('/challanges/beep-test/info')}>
+      <div style={{ position: 'absolute', top: 24, right: 18, zIndex: 10, cursor: 'pointer' }} onClick={() => router.push('/challanges/vertical-jump-test/info')}>
         <span style={{ color: 'black', fontSize: 32, fontWeight: 700 }}>ⓘ</span>
       </div>
       {/* Top image */}
       <div style={{ marginTop: 48, marginBottom: 8 }}>
-        <Image src="/player1.png" alt="Beep Test" width={120} height={160} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
+        <Image src="/player5.png" alt="Vertical Jump Test" width={120} height={160} style={{ objectFit: 'contain', filter: 'grayscale(1)' }} />
       </div>
       {/* Title */}
-      <div style={{ fontWeight: 500, fontSize: 36, color: '#222', fontFamily: 'serif', marginBottom: 8, textAlign: 'center' }}>Beep Test</div>
+      <div style={{ fontWeight: 500, fontSize: 36, color: '#222', fontFamily: 'serif', marginBottom: 8, textAlign: 'center' }}>Vertical Jump Test</div>
       {/* Video icon */}
-      <div style={{ marginBottom: 16, cursor: 'pointer' }} onClick={() => router.push('/challanges/beep-test/upload')}>
+      <div style={{ marginBottom: 16, cursor: 'pointer' }} onClick={() => router.push('/challanges/vertical-jump-test/upload')}>
         <span style={{ fontSize: 32 }}>🎬</span>
       </div>
       {/* Table */}
@@ -131,7 +131,7 @@ export default function BeepTestPage() {
                       else if (r.color === 'blue') bg = '#b2ebf2';
                     }
                     return (
-                      <td key={r.label} style={{ border: '1px solid #222', padding: 8, background: bg }}>{r.label === 'Average' ? `< ${r.max}` : r.label === 'Very Good' ? `${r.min} - ${r.max}` : r.label === 'Excellent' ? `${r.min} - ${r.max}` : `> ${row.ranges[row.ranges.length-2].max}`}</td>
+                      <td key={r.label} style={{ border: '1px solid #222', padding: 8, background: bg }}>{r.label === 'Average' ? `> ${r.max}` : r.label === 'Very Good' ? `${r.min} - ${r.max}` : r.label === 'Excellent' ? `${r.min} - ${r.max}` : `< ${row.ranges[row.ranges.length-2].max}`}</td>
                     );
                   })}
                 </tr>
