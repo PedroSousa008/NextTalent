@@ -40,7 +40,7 @@ export default function ChallangesPage() {
         {activeTab === 'endurance' && (
           <>
             {/* Beep Test */}
-            <div style={{ background: '#c8e6c9', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+            <div onClick={() => router.push('/challanges/beep-test')} style={{ background: '#c8e6c9', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, cursor: 'pointer' }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player1.png" alt="Beep Test" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
