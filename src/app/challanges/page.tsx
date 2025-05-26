@@ -14,21 +14,21 @@ export default function ChallangesPage() {
       if (saved) {
         const uploads = JSON.parse(saved) as { age?: number, reps: number }[];
         if (uploads.length > 0) {
-          const latest = uploads.reduce((a, b) => (a.age ?? 0) > (b.age ?? 0) ? a : b);
+          const oldest = uploads.reduce((a, b) => (a.age ?? 0) < (b.age ?? 0) ? a : b);
           let color = '#c8e6c9';
-          if (latest.age !== undefined && latest.reps !== undefined) {
+          if (oldest.age !== undefined && oldest.reps !== undefined) {
             let ranges = null;
-            if (latest.age >= 10 && latest.age <= 12) ranges = [ { min: 0, max: 6, color: 'yellow' }, { min: 6.5, max: 7.5, color: 'green' }, { min: 7.5, max: 9, color: 'green' }, { min: 9.1, max: Infinity, color: 'blue' } ];
-            else if (latest.age >= 13 && latest.age <= 14) ranges = [ { min: 0, max: 7.5, color: 'yellow' }, { min: 8, max: 9.5, color: 'green' }, { min: 9.5, max: 11, color: 'green' }, { min: 11.1, max: Infinity, color: 'blue' } ];
-            else if (latest.age >= 15 && latest.age <= 17) ranges = [ { min: 0, max: 9.5, color: 'yellow' }, { min: 10, max: 11.5, color: 'green' }, { min: 11.5, max: 13, color: 'green' }, { min: 13.1, max: Infinity, color: 'blue' } ];
-            else if (latest.age >= 18 && latest.age <= 20) ranges = [ { min: 0, max: 12, color: 'yellow' }, { min: 12.5, max: 13.5, color: 'green' }, { min: 13.5, max: 15, color: 'green' }, { min: 15.1, max: Infinity, color: 'blue' } ];
-            else if (latest.age >= 21 && latest.age <= 25) ranges = [ { min: 0, max: 12.5, color: 'yellow' }, { min: 13, max: 14, color: 'green' }, { min: 14, max: 15.5, color: 'green' }, { min: 15.6, max: Infinity, color: 'blue' } ];
-            else if (latest.age >= 26 && latest.age <= 30) ranges = [ { min: 0, max: 12, color: 'yellow' }, { min: 12.5, max: 13, color: 'green' }, { min: 13.5, max: 15, color: 'green' }, { min: 15.1, max: Infinity, color: 'blue' } ];
-            else if (latest.age >= 31 && latest.age <= 35) ranges = [ { min: 0, max: 11.5, color: 'yellow' }, { min: 12, max: 13, color: 'green' }, { min: 13, max: 14.5, color: 'green' }, { min: 14.6, max: Infinity, color: 'blue' } ];
-            else if (latest.age >= 36) ranges = [ { min: 0, max: 10.5, color: 'yellow' }, { min: 11, max: 12.5, color: 'green' }, { min: 12.5, max: 14, color: 'green' }, { min: 14.1, max: Infinity, color: 'blue' } ];
+            if (oldest.age >= 10 && oldest.age <= 12) ranges = [ { min: 0, max: 6, color: 'yellow' }, { min: 6.5, max: 7.5, color: 'green' }, { min: 7.5, max: 9, color: 'green' }, { min: 9.1, max: Infinity, color: 'blue' } ];
+            else if (oldest.age >= 13 && oldest.age <= 14) ranges = [ { min: 0, max: 7.5, color: 'yellow' }, { min: 8, max: 9.5, color: 'green' }, { min: 9.5, max: 11, color: 'green' }, { min: 11.1, max: Infinity, color: 'blue' } ];
+            else if (oldest.age >= 15 && oldest.age <= 17) ranges = [ { min: 0, max: 9.5, color: 'yellow' }, { min: 10, max: 11.5, color: 'green' }, { min: 11.5, max: 13, color: 'green' }, { min: 13.1, max: Infinity, color: 'blue' } ];
+            else if (oldest.age >= 18 && oldest.age <= 20) ranges = [ { min: 0, max: 12, color: 'yellow' }, { min: 12.5, max: 13.5, color: 'green' }, { min: 13.5, max: 15, color: 'green' }, { min: 15.1, max: Infinity, color: 'blue' } ];
+            else if (oldest.age >= 21 && oldest.age <= 25) ranges = [ { min: 0, max: 12.5, color: 'yellow' }, { min: 13, max: 14, color: 'green' }, { min: 14, max: 15.5, color: 'green' }, { min: 15.6, max: Infinity, color: 'blue' } ];
+            else if (oldest.age >= 26 && oldest.age <= 30) ranges = [ { min: 0, max: 12, color: 'yellow' }, { min: 12.5, max: 13, color: 'green' }, { min: 13.5, max: 15, color: 'green' }, { min: 15.1, max: Infinity, color: 'blue' } ];
+            else if (oldest.age >= 31 && oldest.age <= 35) ranges = [ { min: 0, max: 11.5, color: 'yellow' }, { min: 12, max: 13, color: 'green' }, { min: 13, max: 14.5, color: 'green' }, { min: 14.6, max: Infinity, color: 'blue' } ];
+            else if (oldest.age >= 36) ranges = [ { min: 0, max: 10.5, color: 'yellow' }, { min: 11, max: 12.5, color: 'green' }, { min: 12.5, max: 14, color: 'green' }, { min: 14.1, max: Infinity, color: 'blue' } ];
             if (ranges) {
               for (const r of ranges) {
-                if (latest.reps >= r.min && latest.reps <= r.max) {
+                if (oldest.reps >= r.min && oldest.reps <= r.max) {
                   if (r.color === 'yellow') color = '#ffe0b2';
                   else if (r.color === 'green') color = '#c8e6c9';
                   else if (r.color === 'blue') color = '#b2ebf2';
