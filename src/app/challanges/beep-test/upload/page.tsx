@@ -18,6 +18,7 @@ export default function BeepTestUploadPage() {
   const [showForm, setShowForm] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [reps, setReps] = useState<number | null>(null);
+  const [age, setAge] = useState<number | null>(null);
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [editReps, setEditReps] = useState<number | null>(null);
 
@@ -29,14 +30,15 @@ export default function BeepTestUploadPage() {
 
   function handleAdd(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (file && reps !== null) {
+    if (file && reps !== null && age !== null) {
       setUploads([
         ...uploads,
-        { label: `Beep Test at ${18 + uploads.length * 2}`, reps, video: URL.createObjectURL(file) },
+        { label: `Beep Test at ${age}`, reps, video: URL.createObjectURL(file), age },
       ]);
       setShowForm(false);
       setFile(null);
       setReps(null);
+      setAge(null);
     }
   }
 
@@ -76,6 +78,10 @@ export default function BeepTestUploadPage() {
           <label style={{ fontSize: 18, fontFamily: 'serif', color: '#222' }}>
             Number of Reps
             <input type="number" min={0} step={1} value={reps ?? ''} onChange={e => setReps(Number(e.target.value))} style={{ display: 'block', marginTop: 8, width: 80, fontSize: 18, padding: 4, borderRadius: 6, border: '1px solid #bbb' }} />
+          </label>
+          <label style={{ fontSize: 18, fontFamily: 'serif', color: '#222' }}>
+            Age
+            <input type="number" min={10} max={99} value={age ?? ''} onChange={e => setAge(Number(e.target.value))} style={{ display: 'block', marginTop: 8, width: 80, fontSize: 18, padding: 4, borderRadius: 6, border: '1px solid #bbb' }} />
           </label>
           <div style={{ display: 'flex', gap: 12 }}>
             <button type="submit" style={{ background: 'black', color: 'white', fontSize: 18, border: 'none', borderRadius: 8, padding: '10px 24px', cursor: 'pointer', marginTop: 12 }}>Save</button>
