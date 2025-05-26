@@ -32,7 +32,7 @@ export default function ChallangesPage() {
         </div>
       </div>
       {/* Cards */}
-      <div style={{ width: '100%', maxWidth: 500, marginTop: 24, display: 'flex', flexDirection: 'column', gap: 24, overflowY: 'auto', maxHeight: '60vh', paddingRight: 4 }}>
+      <div style={{ width: '100%', maxWidth: 500, marginTop: 24, display: 'flex', flexDirection: 'column', gap: 24, overflowY: 'auto', maxHeight: '70vh', paddingRight: 4, paddingBottom: 20 }}>
         {/* Beep Test */}
         <div style={{ background: '#c8e6c9', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
           <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
