@@ -25,7 +25,7 @@ export default function BeepTestPage() {
         <span style={{ fontSize: 32 }}>🎬</span>
       </div>
       {/* Table */}
-      <div style={{ width: '99%', maxWidth: 520, margin: '0 auto', background: 'white', border: '1.5px solid #222', borderRadius: 0, overflow: 'auto' }}>
+      <div style={{ width: '99%', maxWidth: 520, margin: '0 auto', background: 'white', border: '1.5px solid #222', borderRadius: 0 }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'serif', fontSize: 20, color: '#222' }}>
           <thead>
             <tr>
