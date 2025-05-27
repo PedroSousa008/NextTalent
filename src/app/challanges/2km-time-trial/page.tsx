@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 export default function TwoKmTimeTrialPage() {
   const router = useRouter();
-  // Table data (updated to match the provided image)
+  // Table data (copy the structure from 50 Meter Sprint, but you may want to adjust the ranges for 2km Time Trial if needed)
   const table = [
     { age: '10 - 12', ranges: [
       { label: 'Average', threshold: '10:00', color: 'yellow' },
@@ -47,7 +47,7 @@ export default function TwoKmTimeTrialPage() {
       { label: 'Average', threshold: '09:00', color: 'yellow' },
       { label: 'Very Good', min: '08:30', max: '09:00', color: 'green' },
       { label: 'Excellent', min: '08:00', max: '08:30', color: 'green' },
-      { label: 'Elite', threshold: '08:00', color: 'blue' },
+      { label: 'Elite', threshold: '08:30', color: 'blue' },
     ] },
     { age: '36+', ranges: [
       { label: 'Average', threshold: '09:30', color: 'yellow' },
@@ -84,8 +84,8 @@ export default function TwoKmTimeTrialPage() {
 
   // Helper to convert mm:ss to seconds
   function timeToSeconds(t: string) {
-    const [min, sec] = t.split(':').map(Number);
-    return min * 60 + sec;
+    const [m, s] = t.split(':').map(Number);
+    return m * 60 + s;
   }
 
   return (
@@ -131,9 +131,9 @@ export default function TwoKmTimeTrialPage() {
                     if (time !== null) {
                       if (r.label === 'Average' && typeof r.threshold === 'string' && time > timeToSeconds(r.threshold)) {
                         bg = '#ffe0b2';
-                      } else if (r.label === 'Very Good' && typeof r.min === 'string' && typeof r.max === 'string' && time > timeToSeconds(r.min) && time <= timeToSeconds(r.max)) {
+                      } else if (r.label === 'Very Good' && typeof r.min === 'string' && typeof r.max === 'string' && timeToSeconds(r.min) < time && time <= timeToSeconds(r.max)) {
                         bg = '#c8e6c9';
-                      } else if (r.label === 'Excellent' && typeof r.min === 'string' && typeof r.max === 'string' && time > timeToSeconds(r.min) && time <= timeToSeconds(r.max)) {
+                      } else if (r.label === 'Excellent' && typeof r.min === 'string' && typeof r.max === 'string' && timeToSeconds(r.min) < time && time <= timeToSeconds(r.max)) {
                         bg = '#c8e6c9';
                       } else if (r.label === 'Elite' && typeof r.threshold === 'string' && time <= timeToSeconds(r.threshold)) {
                         bg = '#b2ebf2';
