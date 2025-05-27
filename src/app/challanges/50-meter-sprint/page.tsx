@@ -8,52 +8,52 @@ export default function FiftyMeterSprintPage() {
   // Table data
   const table = [
     { age: '10 - 12', ranges: [
-      { label: 'Average', min: 8.0, max: 9.0, color: 'yellow' },
+      { label: 'Average', threshold: 8, color: 'yellow' },
       { label: 'Very Good', min: 7.5, max: 8.0, color: 'green' },
       { label: 'Excellent', min: 7.0, max: 7.5, color: 'green' },
-      { label: 'Elite', min: 6.5, max: 7.0, color: 'blue' },
+      { label: 'Elite', threshold: 7, color: 'blue' },
     ] },
     { age: '13 - 14', ranges: [
-      { label: 'Average', min: 7.0, max: 8.0, color: 'yellow' },
+      { label: 'Average', threshold: 7, color: 'yellow' },
       { label: 'Very Good', min: 6.5, max: 7.0, color: 'green' },
       { label: 'Excellent', min: 6.0, max: 6.5, color: 'green' },
-      { label: 'Elite', min: 5.5, max: 6.0, color: 'blue' },
+      { label: 'Elite', threshold: 6, color: 'blue' },
     ] },
     { age: '15 - 17', ranges: [
-      { label: 'Average', min: 6.5, max: 7.5, color: 'yellow' },
+      { label: 'Average', threshold: 6.5, color: 'yellow' },
       { label: 'Very Good', min: 6.0, max: 6.5, color: 'green' },
       { label: 'Excellent', min: 5.5, max: 6.0, color: 'green' },
-      { label: 'Elite', min: 5.0, max: 5.5, color: 'blue' },
+      { label: 'Elite', threshold: 5.5, color: 'blue' },
     ] },
     { age: '18 - 20', ranges: [
-      { label: 'Average', min: 6.0, max: 7.0, color: 'yellow' },
+      { label: 'Average', threshold: 6, color: 'yellow' },
       { label: 'Very Good', min: 5.5, max: 6.0, color: 'green' },
       { label: 'Excellent', min: 5.0, max: 5.5, color: 'green' },
-      { label: 'Elite', min: 4.5, max: 5.0, color: 'blue' },
+      { label: 'Elite', threshold: 5, color: 'blue' },
     ] },
     { age: '21 - 25', ranges: [
-      { label: 'Average', min: 6.0, max: 7.0, color: 'yellow' },
+      { label: 'Average', threshold: 6, color: 'yellow' },
       { label: 'Very Good', min: 5.5, max: 6.0, color: 'green' },
       { label: 'Excellent', min: 5.0, max: 5.5, color: 'green' },
-      { label: 'Elite', min: 4.5, max: 5.0, color: 'blue' },
+      { label: 'Elite', threshold: 5, color: 'blue' },
     ] },
     { age: '26 - 30', ranges: [
-      { label: 'Average', min: 6.5, max: 7.5, color: 'yellow' },
+      { label: 'Average', threshold: 6.5, color: 'yellow' },
       { label: 'Very Good', min: 6.0, max: 6.5, color: 'green' },
       { label: 'Excellent', min: 5.5, max: 6.0, color: 'green' },
-      { label: 'Elite', min: 5.0, max: 5.5, color: 'blue' },
+      { label: 'Elite', threshold: 5.5, color: 'blue' },
     ] },
     { age: '31 - 35', ranges: [
-      { label: 'Average', min: 7.0, max: 8.0, color: 'yellow' },
+      { label: 'Average', threshold: 7, color: 'yellow' },
       { label: 'Very Good', min: 6.5, max: 7.0, color: 'green' },
       { label: 'Excellent', min: 6.0, max: 6.5, color: 'green' },
-      { label: 'Elite', min: 5.5, max: 6.0, color: 'blue' },
+      { label: 'Elite', threshold: 6, color: 'blue' },
     ] },
     { age: '36+', ranges: [
-      { label: 'Average', min: 8.0, max: 9.0, color: 'yellow' },
+      { label: 'Average', threshold: 8, color: 'yellow' },
       { label: 'Very Good', min: 7.5, max: 8.0, color: 'green' },
       { label: 'Excellent', min: 7.0, max: 7.5, color: 'green' },
-      { label: 'Elite', min: 6.5, max: 7.0, color: 'blue' },
+      { label: 'Elite', threshold: 7, color: 'blue' },
     ] },
   ];
 
@@ -128,20 +128,20 @@ export default function FiftyMeterSprintPage() {
                   {row.ranges.map((r, idx) => {
                     let bg = 'white';
                     if (time !== null) {
-                      if (idx === 0 && time > r.max) {
-                        // Average: time is slower than max
+                      if (r.label === 'Average' && typeof r.threshold === 'number' && time > r.threshold) {
                         if (r.color === 'yellow') bg = '#ffe0b2';
-                      } else if (idx === row.ranges.length - 1 && time < r.min) {
-                        // Elite: time is faster than min
+                      } else if (r.label === 'Elite' && typeof r.threshold === 'number' && time < r.threshold) {
                         if (r.color === 'blue') bg = '#b2ebf2';
-                      } else if (idx !== 0 && idx !== row.ranges.length - 1 && time >= r.min && time <= r.max) {
-                        // Very Good / Excellent
+                      } else if (r.label === 'Very Good' && typeof r.min === 'number' && typeof r.max === 'number' && time >= r.min && time <= r.max) {
+                        if (r.color === 'green') bg = '#c8e6c9';
+                      } else if (r.label === 'Excellent' && typeof r.min === 'number' && typeof r.max === 'number' && time >= r.min && time <= r.max) {
                         if (r.color === 'green') bg = '#c8e6c9';
                       }
                     }
-                    let label = `${r.min} - ${r.max}`;
-                    if (idx === 0) label = `> ${r.max}`; // Average
-                    if (idx === row.ranges.length - 1) label = `< ${r.min}`; // Elite
+                    let label = '';
+                    if (r.label === 'Average' && typeof r.threshold === 'number') label = `> ${r.threshold}`;
+                    else if (r.label === 'Elite' && typeof r.threshold === 'number') label = `< ${r.threshold}`;
+                    else if (typeof r.min === 'number' && typeof r.max === 'number') label = `${r.min} - ${r.max}`;
                     return (
                       <td key={r.label} style={{ border: '1px solid #222', padding: 8, background: bg }}>{label}</td>
                     );
