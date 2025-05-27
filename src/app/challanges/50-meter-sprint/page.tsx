@@ -125,7 +125,7 @@ export default function FiftyMeterSprintPage() {
               return (
                 <tr key={row.age}>
                   <td style={{ border: '1px solid #222', padding: 8, fontWeight: 600 }}>{row.age}</td>
-                  {row.ranges.map((r, idx) => {
+                  {row.ranges.map((r) => {
                     let bg = 'white';
                     if (time !== null) {
                       if (r.label === 'Average' && typeof r.threshold === 'number' && time > r.threshold) {
