@@ -30,7 +30,7 @@ export default function FiftyMeterSprintUploadPage() {
     if (file && time && age !== null) {
       setUploads([
         ...uploads,
-        { label: `50 Meter Sprint at ${age}`, time, video: URL.createObjectURL(file), age },
+        { label: `50 Meter Sprint at ${age}`, time: parseFloat(time), video: URL.createObjectURL(file), age },
       ]);
       setShowForm(false);
       setFile(null);
@@ -45,12 +45,12 @@ export default function FiftyMeterSprintUploadPage() {
 
   function handleEdit(idx: number) {
     setEditIndex(idx);
-    setEditTime(uploads[idx].time);
+    setEditTime(uploads[idx].time.toString());
   }
 
   function handleEditSave(idx: number) {
     if (editTime) {
-      setUploads(uploads.map((u: typeof uploads[0], i: number) => i === idx ? { ...u, time: editTime } : u));
+      setUploads(uploads.map((u: typeof uploads[0], i: number) => i === idx ? { ...u, time: parseFloat(editTime) } : u));
       setEditIndex(null);
       setEditTime('');
     }
@@ -99,7 +99,7 @@ export default function FiftyMeterSprintUploadPage() {
                   <button onClick={() => setEditIndex(null)} style={{ background: '#bbb', color: 'white', fontSize: 14, border: 'none', borderRadius: 6, padding: '6px 14px', cursor: 'pointer' }}>Cancel</button>
                 </div>
               ) : (
-                <div style={{ fontSize: 18, fontFamily: 'serif', color: '#222' }}>Time: <b>{u.time}</b> s</div>
+                <div style={{ fontSize: 18, fontFamily: 'serif', color: '#222' }}>Time: <b>{u.time.toFixed(2)}</b> s</div>
               )}
               <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
                 <button onClick={() => handleEdit(i)} style={{ background: '#222', color: 'white', fontSize: 13, border: 'none', borderRadius: 6, padding: '4px 12px', cursor: 'pointer' }}>Edit</button>

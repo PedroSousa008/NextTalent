@@ -58,7 +58,7 @@ export default function FiftyMeterSprintPage() {
   ];
 
   // Get uploads from localStorage
-  const [uploads, setUploads] = useState<{label: string, reps: number, video: string}[]>([]);
+  const [uploads, setUploads] = useState<{label: string, time: number, video: string}[]>([]);
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('fiftyMeterSprintUploads');
@@ -66,8 +66,8 @@ export default function FiftyMeterSprintPage() {
     }
   }, []);
 
-  // Find latest reps for each age group
-  const latestReps: Record<string, number> = {};
+  // Find best (lowest) time for each age group
+  const bestTimes: Record<string, number> = {};
   uploads.forEach(u => {
     const match = u.label.match(/(\d+)/g);
     if (match) {
@@ -81,7 +81,9 @@ export default function FiftyMeterSprintPage() {
       else if (age >= 26 && age <= 30) group = '26 - 30';
       else if (age >= 31 && age <= 35) group = '31 - 35';
       else if (age >= 36) group = '36+';
-      latestReps[group] = u.reps;
+      if (!bestTimes[group] || u.time < bestTimes[group]) {
+        bestTimes[group] = u.time;
+      }
     }
   });
 
@@ -119,19 +121,19 @@ export default function FiftyMeterSprintPage() {
           </thead>
           <tbody>
             {table.map(row => {
-              const reps = latestReps[row.age] ?? null;
+              const time = bestTimes[row.age] ?? null;
               return (
                 <tr key={row.age}>
                   <td style={{ border: '1px solid #222', padding: 8, fontWeight: 600 }}>{row.age}</td>
                   {row.ranges.map((r) => {
                     let bg = 'white';
-                    if (reps !== null && reps >= r.min && reps <= r.max) {
+                    if (time !== null && time >= r.min && time <= r.max) {
                       if (r.color === 'yellow') bg = '#ffe0b2';
                       else if (r.color === 'green') bg = '#c8e6c9';
                       else if (r.color === 'blue') bg = '#b2ebf2';
                     }
                     return (
-                      <td key={r.label} style={{ border: '1px solid #222', padding: 8, background: bg }}>{r.label === 'Average' ? `< ${r.max}` : r.label === 'Very Good' ? `${r.min} - ${r.max}` : r.label === 'Excellent' ? `${r.min} - ${r.max}` : `> ${row.ranges[row.ranges.length-2].max}`}</td>
+                      <td key={r.label} style={{ border: '1px solid #222', padding: 8, background: bg }}>{r.label === 'Average' ? `${r.min} - ${r.max}` : r.label === 'Very Good' ? `${r.min} - ${r.max}` : r.label === 'Excellent' ? `${r.min} - ${r.max}` : `${r.min} - ${r.max}`}</td>
                     );
                   })}
                 </tr>
