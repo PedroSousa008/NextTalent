@@ -67,5 +67,3 @@ enum UserType {
   COACH
   AGENT
 } 
- 
- 

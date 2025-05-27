@@ -29,7 +29,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <FilterProvider>
-        {children}
+          {children}
         </FilterProvider>
       </body>
     </html>

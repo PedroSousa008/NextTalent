@@ -151,5 +151,3 @@ export default function SquatTestPage() {
     </div>
   );
 } 
- 
- 

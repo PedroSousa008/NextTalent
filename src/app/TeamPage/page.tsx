@@ -717,5 +717,3 @@ export default function TeamPage() {
     </Suspense>
   );
 } 
- 
- 

@@ -5,60 +5,60 @@ import { useEffect, useState } from 'react';
 
 export default function TwoKmTimeTrialPage() {
   const router = useRouter();
-  // Table data (copy the structure from 50 Meter Sprint, but you may want to adjust the ranges for 2km Time Trial if needed)
+  // Table data
   const table = [
     { age: '10 - 12', ranges: [
-      { label: 'Average', threshold: '10:00', color: 'yellow' },
-      { label: 'Very Good', min: '09:30', max: '10:00', color: 'green' },
-      { label: 'Excellent', min: '09:00', max: '09:30', color: 'green' },
-      { label: 'Elite', threshold: '09:00', color: 'blue' },
+      { label: 'Average', min: 600, max: Infinity, display: '> 10:00' },
+      { label: 'Very Good', min: 570, max: 600, display: '09:30 - 10:00' },
+      { label: 'Excellent', min: 540, max: 570, display: '09:00 - 09:30' },
+      { label: 'Elite', min: 0, max: 540, display: '< 09:00' },
     ] },
     { age: '13 - 14', ranges: [
-      { label: 'Average', threshold: '09:00', color: 'yellow' },
-      { label: 'Very Good', min: '08:30', max: '09:00', color: 'green' },
-      { label: 'Excellent', min: '08:00', max: '08:30', color: 'green' },
-      { label: 'Elite', threshold: '08:00', color: 'blue' },
+      { label: 'Average', min: 540, max: Infinity, display: '> 09:00' },
+      { label: 'Very Good', min: 510, max: 540, display: '08:30 - 09:00' },
+      { label: 'Excellent', min: 480, max: 510, display: '08:00 - 08:30' },
+      { label: 'Elite', min: 0, max: 480, display: '< 08:00' },
     ] },
     { age: '15 - 17', ranges: [
-      { label: 'Average', threshold: '08:30', color: 'yellow' },
-      { label: 'Very Good', min: '08:00', max: '08:30', color: 'green' },
-      { label: 'Excellent', min: '07:30', max: '08:00', color: 'green' },
-      { label: 'Elite', threshold: '07:30', color: 'blue' },
+      { label: 'Average', min: 510, max: Infinity, display: '> 08:30' },
+      { label: 'Very Good', min: 480, max: 510, display: '08:00 - 08:30' },
+      { label: 'Excellent', min: 450, max: 480, display: '07:30 - 08:00' },
+      { label: 'Elite', min: 0, max: 450, display: '< 07:30' },
     ] },
     { age: '18 - 20', ranges: [
-      { label: 'Average', threshold: '08:00', color: 'yellow' },
-      { label: 'Very Good', min: '07:30', max: '08:00', color: 'green' },
-      { label: 'Excellent', min: '07:00', max: '07:30', color: 'green' },
-      { label: 'Elite', threshold: '07:00', color: 'blue' },
+      { label: 'Average', min: 480, max: Infinity, display: '> 08:00' },
+      { label: 'Very Good', min: 450, max: 480, display: '07:30 - 08:00' },
+      { label: 'Excellent', min: 420, max: 450, display: '07:00 - 07:30' },
+      { label: 'Elite', min: 0, max: 420, display: '< 07:00' },
     ] },
     { age: '21 - 25', ranges: [
-      { label: 'Average', threshold: '08:00', color: 'yellow' },
-      { label: 'Very Good', min: '07:30', max: '08:00', color: 'green' },
-      { label: 'Excellent', min: '07:00', max: '07:30', color: 'green' },
-      { label: 'Elite', threshold: '07:00', color: 'blue' },
+      { label: 'Average', min: 480, max: Infinity, display: '> 08:00' },
+      { label: 'Very Good', min: 450, max: 480, display: '07:30 - 08:00' },
+      { label: 'Excellent', min: 420, max: 450, display: '07:00 - 07:30' },
+      { label: 'Elite', min: 0, max: 420, display: '< 07:00' },
     ] },
     { age: '26 - 30', ranges: [
-      { label: 'Average', threshold: '08:30', color: 'yellow' },
-      { label: 'Very Good', min: '08:00', max: '08:30', color: 'green' },
-      { label: 'Excellent', min: '07:30', max: '08:00', color: 'green' },
-      { label: 'Elite', threshold: '07:30', color: 'blue' },
+      { label: 'Average', min: 510, max: Infinity, display: '> 08:30' },
+      { label: 'Very Good', min: 480, max: 510, display: '08:00 - 08:30' },
+      { label: 'Excellent', min: 450, max: 480, display: '07:30 - 08:00' },
+      { label: 'Elite', min: 0, max: 450, display: '< 07:30' },
     ] },
     { age: '31 - 35', ranges: [
-      { label: 'Average', threshold: '09:00', color: 'yellow' },
-      { label: 'Very Good', min: '08:30', max: '09:00', color: 'green' },
-      { label: 'Excellent', min: '08:00', max: '08:30', color: 'green' },
-      { label: 'Elite', threshold: '08:30', color: 'blue' },
+      { label: 'Average', min: 540, max: Infinity, display: '> 09:00' },
+      { label: 'Very Good', min: 510, max: 540, display: '08:30 - 09:00' },
+      { label: 'Excellent', min: 480, max: 510, display: '08:00 - 08:30' },
+      { label: 'Elite', min: 0, max: 480, display: '< 08:30' },
     ] },
     { age: '36+', ranges: [
-      { label: 'Average', threshold: '09:30', color: 'yellow' },
-      { label: 'Very Good', min: '09:30', max: '10:00', color: 'green' },
-      { label: 'Excellent', min: '09:00', max: '09:30', color: 'green' },
-      { label: 'Elite', threshold: '09:30', color: 'blue' },
+      { label: 'Average', min: 570, max: Infinity, display: '> 09:30' },
+      { label: 'Very Good', min: 540, max: 570, display: '09:30 - 10:00' },
+      { label: 'Excellent', min: 540, max: 570, display: '09:00 - 09:30' },
+      { label: 'Elite', min: 0, max: 540, display: '< 09:30' },
     ] },
   ];
 
   // Get uploads from localStorage
-  const [uploads, setUploads] = useState<{label: string, time: number, video: string, age: number}[]>([]);
+  const [uploads, setUploads] = useState<{label: string, reps: number, video: string}[]>([]);
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('twoKmTimeTrialUploads');
@@ -66,27 +66,24 @@ export default function TwoKmTimeTrialPage() {
     }
   }, []);
 
-  // Find latest upload for each age group
-  const latestTimes: Record<string, number> = {};
+  // Find latest reps for each age group
+  const latestReps: Record<string, number> = {};
   uploads.forEach(u => {
-    const age = u.age;
-    let group = '';
-    if (age >= 10 && age <= 12) group = '10 - 12';
-    else if (age >= 13 && age <= 14) group = '13 - 14';
-    else if (age >= 15 && age <= 17) group = '15 - 17';
-    else if (age >= 18 && age <= 20) group = '18 - 20';
-    else if (age >= 21 && age <= 25) group = '21 - 25';
-    else if (age >= 26 && age <= 30) group = '26 - 30';
-    else if (age >= 31 && age <= 35) group = '31 - 35';
-    else if (age >= 36) group = '36+';
-    latestTimes[group] = u.time;
+    const match = u.label.match(/(\d+)/g);
+    if (match) {
+      const age = parseInt(match[0], 10);
+      let group = '';
+      if (age >= 10 && age <= 12) group = '10 - 12';
+      else if (age >= 13 && age <= 14) group = '13 - 14';
+      else if (age >= 15 && age <= 17) group = '15 - 17';
+      else if (age >= 18 && age <= 20) group = '18 - 20';
+      else if (age >= 21 && age <= 25) group = '21 - 25';
+      else if (age >= 26 && age <= 30) group = '26 - 30';
+      else if (age >= 31 && age <= 35) group = '31 - 35';
+      else if (age >= 36) group = '36+';
+      latestReps[group] = u.reps;
+    }
   });
-
-  // Helper to convert mm:ss to seconds
-  function timeToSeconds(t: string) {
-    const [m, s] = t.split(':').map(Number);
-    return m * 60 + s;
-  }
 
   return (
     <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 0, height: '100vh', overflowY: 'auto' }}>
@@ -122,29 +119,19 @@ export default function TwoKmTimeTrialPage() {
           </thead>
           <tbody>
             {table.map(row => {
-              const time = latestTimes[row.age] ?? null;
+              const seconds = latestReps[row.age] ?? null;
               return (
                 <tr key={row.age}>
                   <td style={{ border: '1px solid #222', padding: 8, fontWeight: 600 }}>{row.age}</td>
                   {row.ranges.map((r) => {
                     let bg = 'white';
-                    if (time !== null) {
-                      if (r.label === 'Average' && typeof r.threshold === 'string' && time > timeToSeconds(r.threshold)) {
-                        bg = '#ffe0b2';
-                      } else if (r.label === 'Very Good' && typeof r.min === 'string' && typeof r.max === 'string' && timeToSeconds(r.min) < time && time <= timeToSeconds(r.max)) {
-                        bg = '#c8e6c9';
-                      } else if (r.label === 'Excellent' && typeof r.min === 'string' && typeof r.max === 'string' && timeToSeconds(r.min) < time && time <= timeToSeconds(r.max)) {
-                        bg = '#c8e6c9';
-                      } else if (r.label === 'Elite' && typeof r.threshold === 'string' && time <= timeToSeconds(r.threshold)) {
-                        bg = '#b2ebf2';
-                      }
+                    if (seconds !== null && seconds >= r.min && seconds < r.max) {
+                      if (r.label === 'Average') bg = '#ffe0b2';
+                      else if (r.label === 'Very Good' || r.label === 'Excellent') bg = '#c8e6c9';
+                      else if (r.label === 'Elite') bg = '#b2ebf2';
                     }
-                    let label = '';
-                    if (r.label === 'Average' && typeof r.threshold === 'string') label = `> ${r.threshold}`;
-                    else if (r.label === 'Elite' && typeof r.threshold === 'string') label = `< ${r.threshold}`;
-                    else if (typeof r.min === 'string' && typeof r.max === 'string') label = `${r.min} - ${r.max}`;
                     return (
-                      <td key={r.label} style={{ border: '1px solid #222', padding: 8, background: bg }}>{label}</td>
+                      <td key={r.label} style={{ border: '1px solid #222', padding: 8, background: bg }}>{r.display}</td>
                     );
                   })}
                 </tr>
@@ -164,4 +151,3 @@ export default function TwoKmTimeTrialPage() {
     </div>
   );
 } 
- 

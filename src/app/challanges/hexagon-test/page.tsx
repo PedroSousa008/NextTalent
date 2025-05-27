@@ -151,5 +151,3 @@ export default function HexagonTestPage() {
     </div>
   );
 } 
- 
- 
