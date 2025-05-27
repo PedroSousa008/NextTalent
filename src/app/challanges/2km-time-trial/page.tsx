@@ -8,52 +8,52 @@ export default function TwoKmTimeTrialPage() {
   // Table data (copy the structure from 50 Meter Sprint, but you may want to adjust the ranges for 2km Time Trial if needed)
   const table = [
     { age: '10 - 12', ranges: [
-      { label: 'Average', threshold: 10, color: 'yellow' },
-      { label: 'Very Good', min: 9, max: 10, color: 'green' },
-      { label: 'Excellent', min: 8, max: 9, color: 'green' },
-      { label: 'Elite', threshold: 8, color: 'blue' },
+      { label: 'Average', threshold: 10 * 60, color: 'yellow' },
+      { label: 'Very Good', min: 9 * 60 + 30, max: 10 * 60, color: 'green' },
+      { label: 'Excellent', min: 9 * 60, max: 9 * 60 + 30, color: 'green' },
+      { label: 'Elite', threshold: 9 * 60, color: 'blue' },
     ] },
     { age: '13 - 14', ranges: [
-      { label: 'Average', threshold: 9.5, color: 'yellow' },
-      { label: 'Very Good', min: 8.5, max: 9.5, color: 'green' },
-      { label: 'Excellent', min: 7.5, max: 8.5, color: 'green' },
-      { label: 'Elite', threshold: 7.5, color: 'blue' },
+      { label: 'Average', threshold: 9 * 60, color: 'yellow' },
+      { label: 'Very Good', min: 8 * 60 + 30, max: 9 * 60, color: 'green' },
+      { label: 'Excellent', min: 8 * 60, max: 8 * 60 + 30, color: 'green' },
+      { label: 'Elite', threshold: 8 * 60, color: 'blue' },
     ] },
     { age: '15 - 17', ranges: [
-      { label: 'Average', threshold: 9, color: 'yellow' },
-      { label: 'Very Good', min: 8, max: 9, color: 'green' },
-      { label: 'Excellent', min: 7, max: 8, color: 'green' },
-      { label: 'Elite', threshold: 7, color: 'blue' },
+      { label: 'Average', threshold: 8 * 60 + 30, color: 'yellow' },
+      { label: 'Very Good', min: 8 * 60, max: 8 * 60 + 30, color: 'green' },
+      { label: 'Excellent', min: 7 * 60 + 30, max: 8 * 60, color: 'green' },
+      { label: 'Elite', threshold: 7 * 60 + 30, color: 'blue' },
     ] },
     { age: '18 - 20', ranges: [
-      { label: 'Average', threshold: 8.5, color: 'yellow' },
-      { label: 'Very Good', min: 7.5, max: 8.5, color: 'green' },
-      { label: 'Excellent', min: 6.5, max: 7.5, color: 'green' },
-      { label: 'Elite', threshold: 6.5, color: 'blue' },
+      { label: 'Average', threshold: 8 * 60, color: 'yellow' },
+      { label: 'Very Good', min: 7 * 60 + 30, max: 8 * 60, color: 'green' },
+      { label: 'Excellent', min: 7 * 60, max: 7 * 60 + 30, color: 'green' },
+      { label: 'Elite', threshold: 7 * 60, color: 'blue' },
     ] },
     { age: '21 - 25', ranges: [
-      { label: 'Average', threshold: 8.5, color: 'yellow' },
-      { label: 'Very Good', min: 7.5, max: 8.5, color: 'green' },
-      { label: 'Excellent', min: 6.5, max: 7.5, color: 'green' },
-      { label: 'Elite', threshold: 6.5, color: 'blue' },
+      { label: 'Average', threshold: 8 * 60, color: 'yellow' },
+      { label: 'Very Good', min: 7 * 60 + 30, max: 8 * 60, color: 'green' },
+      { label: 'Excellent', min: 7 * 60, max: 7 * 60 + 30, color: 'green' },
+      { label: 'Elite', threshold: 7 * 60, color: 'blue' },
     ] },
     { age: '26 - 30', ranges: [
-      { label: 'Average', threshold: 9, color: 'yellow' },
-      { label: 'Very Good', min: 8, max: 9, color: 'green' },
-      { label: 'Excellent', min: 7, max: 8, color: 'green' },
-      { label: 'Elite', threshold: 7, color: 'blue' },
+      { label: 'Average', threshold: 8 * 60 + 30, color: 'yellow' },
+      { label: 'Very Good', min: 8 * 60, max: 8 * 60 + 30, color: 'green' },
+      { label: 'Excellent', min: 7 * 60 + 30, max: 8 * 60, color: 'green' },
+      { label: 'Elite', threshold: 7 * 60 + 30, color: 'blue' },
     ] },
     { age: '31 - 35', ranges: [
-      { label: 'Average', threshold: 9.5, color: 'yellow' },
-      { label: 'Very Good', min: 8.5, max: 9.5, color: 'green' },
-      { label: 'Excellent', min: 7.5, max: 8.5, color: 'green' },
-      { label: 'Elite', threshold: 7.5, color: 'blue' },
+      { label: 'Average', threshold: 9 * 60, color: 'yellow' },
+      { label: 'Very Good', min: 8 * 60 + 30, max: 9 * 60, color: 'green' },
+      { label: 'Excellent', min: 8 * 60, max: 8 * 60 + 30, color: 'green' },
+      { label: 'Elite', threshold: 8 * 60, color: 'blue' },
     ] },
     { age: '36+', ranges: [
-      { label: 'Average', threshold: 10.5, color: 'yellow' },
-      { label: 'Very Good', min: 9.5, max: 10.5, color: 'green' },
-      { label: 'Excellent', min: 8.5, max: 9.5, color: 'green' },
-      { label: 'Elite', threshold: 8.5, color: 'blue' },
+      { label: 'Average', threshold: 9 * 60 + 30, color: 'yellow' },
+      { label: 'Very Good', min: 9 * 60, max: 9 * 60 + 30, color: 'green' },
+      { label: 'Excellent', min: 8 * 60 + 30, max: 9 * 60, color: 'green' },
+      { label: 'Elite', threshold: 8 * 60 + 30, color: 'blue' },
     ] },
   ];
 
@@ -134,9 +134,9 @@ export default function TwoKmTimeTrialPage() {
                       }
                     }
                     let label = '';
-                    if (r.label === 'Average' && typeof r.threshold === 'number') label = `> ${r.threshold}`;
-                    else if (r.label === 'Elite' && typeof r.threshold === 'number') label = `< ${r.threshold}`;
-                    else if (typeof r.min === 'number' && typeof r.max === 'number') label = `${r.min} - ${r.max}`;
+                    if (r.label === 'Average' && typeof r.threshold === 'number') label = `> ${formatTime(r.threshold)}`;
+                    else if (r.label === 'Elite' && typeof r.threshold === 'number') label = `< ${formatTime(r.threshold)}`;
+                    else if (typeof r.min === 'number' && typeof r.max === 'number') label = `${formatTime(r.min)} - ${formatTime(r.max)}`;
                     return (
                       <td key={r.label} style={{ border: '1px solid #222', padding: 8, background: bg }}>{label}</td>
                     );
@@ -157,4 +157,10 @@ export default function TwoKmTimeTrialPage() {
       <div style={{ height: 48 }} />
     </div>
   );
+}
+
+function formatTime(seconds: number) {
+  const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+  const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+  return `${m}:${s}`;
 } 
