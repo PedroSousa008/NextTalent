@@ -125,15 +125,18 @@ export default function FiftyMeterSprintPage() {
               return (
                 <tr key={row.age}>
                   <td style={{ border: '1px solid #222', padding: 8, fontWeight: 600 }}>{row.age}</td>
-                  {row.ranges.map((r) => {
+                  {row.ranges.map((r, idx) => {
                     let bg = 'white';
                     if (time !== null && time >= r.min && time <= r.max) {
                       if (r.color === 'yellow') bg = '#ffe0b2';
                       else if (r.color === 'green') bg = '#c8e6c9';
                       else if (r.color === 'blue') bg = '#b2ebf2';
                     }
+                    let label = `${r.min} - ${r.max}`;
+                    if (idx === 0) label = `> ${r.max}`; // Average
+                    if (idx === row.ranges.length - 1) label = `< ${r.min}`; // Elite
                     return (
-                      <td key={r.label} style={{ border: '1px solid #222', padding: 8, background: bg }}>{r.label === 'Average' ? `${r.min} - ${r.max}` : r.label === 'Very Good' ? `${r.min} - ${r.max}` : r.label === 'Excellent' ? `${r.min} - ${r.max}` : `${r.min} - ${r.max}`}</td>
+                      <td key={r.label} style={{ border: '1px solid #222', padding: 8, background: bg }}>{label}</td>
                     );
                   })}
                 </tr>
