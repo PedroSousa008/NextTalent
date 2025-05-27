@@ -127,10 +127,17 @@ export default function FiftyMeterSprintPage() {
                   <td style={{ border: '1px solid #222', padding: 8, fontWeight: 600 }}>{row.age}</td>
                   {row.ranges.map((r, idx) => {
                     let bg = 'white';
-                    if (time !== null && time >= r.min && time <= r.max) {
-                      if (r.color === 'yellow') bg = '#ffe0b2';
-                      else if (r.color === 'green') bg = '#c8e6c9';
-                      else if (r.color === 'blue') bg = '#b2ebf2';
+                    if (time !== null) {
+                      if (idx === 0 && time > r.max) {
+                        // Average: time is slower than max
+                        if (r.color === 'yellow') bg = '#ffe0b2';
+                      } else if (idx === row.ranges.length - 1 && time < r.min) {
+                        // Elite: time is faster than min
+                        if (r.color === 'blue') bg = '#b2ebf2';
+                      } else if (idx !== 0 && idx !== row.ranges.length - 1 && time >= r.min && time <= r.max) {
+                        // Very Good / Excellent
+                        if (r.color === 'green') bg = '#c8e6c9';
+                      }
                     }
                     let label = `${r.min} - ${r.max}`;
                     if (idx === 0) label = `> ${r.max}`; // Average
