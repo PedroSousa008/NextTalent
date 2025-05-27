@@ -7,6 +7,8 @@ export default function ChallangesPage() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState('endurance');
   const [beepTestColor, setBeepTestColor] = useState<string>('#c8e6c9');
+  const [fiftyMeterSprintColor, setFiftyMeterSprintColor] = useState<string>('#b2ebf2');
+  const [fiftyMeterSprintLevel, setFiftyMeterSprintLevel] = useState<string>('Elite');
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -37,6 +39,48 @@ export default function ChallangesPage() {
             }
           }
           setBeepTestColor(color);
+        }
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('fiftyMeterSprintUploads');
+      if (saved) {
+        const uploads = JSON.parse(saved) as { age: number, time: number }[];
+        if (uploads.length > 0) {
+          const latest = uploads.reduce((a, b) => (a.age ?? 0) > (b.age ?? 0) ? a : b);
+          let color = '#b2ebf2';
+          let level = 'Elite';
+          let ranges = null;
+          if (latest.age >= 10 && latest.age <= 12) ranges = [ { label: 'Average', threshold: 8, color: 'yellow' }, { label: 'Very Good', min: 7.5, max: 8.0, color: 'green' }, { label: 'Excellent', min: 7.0, max: 7.5, color: 'green' }, { label: 'Elite', threshold: 7, color: 'blue' } ];
+          else if (latest.age >= 13 && latest.age <= 14) ranges = [ { label: 'Average', threshold: 7, color: 'yellow' }, { label: 'Very Good', min: 6.5, max: 7.0, color: 'green' }, { label: 'Excellent', min: 6.0, max: 6.5, color: 'green' }, { label: 'Elite', threshold: 6, color: 'blue' } ];
+          else if (latest.age >= 15 && latest.age <= 17) ranges = [ { label: 'Average', threshold: 6.5, color: 'yellow' }, { label: 'Very Good', min: 6.0, max: 6.5, color: 'green' }, { label: 'Excellent', min: 5.5, max: 6.0, color: 'green' }, { label: 'Elite', threshold: 5.5, color: 'blue' } ];
+          else if (latest.age >= 18 && latest.age <= 20) ranges = [ { label: 'Average', threshold: 6, color: 'yellow' }, { label: 'Very Good', min: 5.5, max: 6.0, color: 'green' }, { label: 'Excellent', min: 5.0, max: 5.5, color: 'green' }, { label: 'Elite', threshold: 5, color: 'blue' } ];
+          else if (latest.age >= 21 && latest.age <= 25) ranges = [ { label: 'Average', threshold: 6, color: 'yellow' }, { label: 'Very Good', min: 5.5, max: 6.0, color: 'green' }, { label: 'Excellent', min: 5.0, max: 5.5, color: 'green' }, { label: 'Elite', threshold: 5, color: 'blue' } ];
+          else if (latest.age >= 26 && latest.age <= 30) ranges = [ { label: 'Average', threshold: 6.5, color: 'yellow' }, { label: 'Very Good', min: 6.0, max: 6.5, color: 'green' }, { label: 'Excellent', min: 5.5, max: 6.0, color: 'green' }, { label: 'Elite', threshold: 5.5, color: 'blue' } ];
+          else if (latest.age >= 31 && latest.age <= 35) ranges = [ { label: 'Average', threshold: 7, color: 'yellow' }, { label: 'Very Good', min: 6.5, max: 7.0, color: 'green' }, { label: 'Excellent', min: 6.0, max: 6.5, color: 'green' }, { label: 'Elite', threshold: 6, color: 'blue' } ];
+          else if (latest.age >= 36) ranges = [ { label: 'Average', threshold: 8, color: 'yellow' }, { label: 'Very Good', min: 7.5, max: 8.0, color: 'green' }, { label: 'Excellent', min: 7.0, max: 7.5, color: 'green' }, { label: 'Elite', threshold: 7, color: 'blue' } ];
+          if (ranges) {
+            for (const r of ranges) {
+              if (r.label === 'Average' && typeof r.threshold === 'number' && latest.time > r.threshold) {
+                color = '#ffe0b2';
+                level = 'Average';
+              } else if (r.label === 'Very Good' && typeof r.min === 'number' && typeof r.max === 'number' && latest.time > r.min && latest.time <= r.max) {
+                color = '#c8e6c9';
+                level = 'Very Good';
+              } else if (r.label === 'Excellent' && typeof r.min === 'number' && typeof r.max === 'number' && latest.time > r.min && latest.time <= r.max) {
+                color = '#c8e6c9';
+                level = 'Excellent';
+              } else if (r.label === 'Elite' && typeof r.threshold === 'number' && latest.time <= r.threshold) {
+                color = '#b2ebf2';
+                level = 'Elite';
+              }
+            }
+          }
+          setFiftyMeterSprintColor(color);
+          setFiftyMeterSprintLevel(level);
         }
       }
     }
@@ -85,13 +129,13 @@ export default function ChallangesPage() {
               </div>
             </div>
             {/* 50 Meter Sprint */}
-            <div onClick={() => router.push('/challanges/50-meter-sprint')} style={{ background: '#b2ebf2', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, cursor: 'pointer' }}>
+            <div onClick={() => router.push('/challanges/50-meter-sprint')} style={{ background: fiftyMeterSprintColor, borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, cursor: 'pointer' }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player2.png" alt="50 Meter Sprint" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>50 Meter Sprint</div>
-                <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>Elite</div>
+                <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>{fiftyMeterSprintLevel}</div>
               </div>
             </div>
             {/* 2km Time Trial */}
