@@ -9,6 +9,8 @@ export default function ChallangesPage() {
   const [beepTestColor, setBeepTestColor] = useState<string>('#c8e6c9');
   const [fiftyMeterSprintColor, setFiftyMeterSprintColor] = useState<string>('#b2ebf2');
   const [fiftyMeterSprintLevel, setFiftyMeterSprintLevel] = useState<string>('Elite');
+  const [twoKmTimeTrialColor, setTwoKmTimeTrialColor] = useState<string>('#eeeeee');
+  const [twoKmTimeTrialLevel, setTwoKmTimeTrialLevel] = useState<string>('');
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -92,6 +94,51 @@ export default function ChallangesPage() {
     }
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('twoKmTimeTrialUploads');
+      if (saved) {
+        const uploads = JSON.parse(saved) as { age: number, time: number }[];
+        if (uploads.length > 0) {
+          const latest = uploads.reduce((a, b) => (a.age ?? 0) > (b.age ?? 0) ? a : b);
+          let color = '#b2ebf2';
+          let level = 'Elite';
+          let ranges = null;
+          if (latest.age >= 10 && latest.age <= 12) ranges = [ { label: 'Average', min: 600, max: Infinity }, { label: 'Very Good', min: 570, max: 600 }, { label: 'Excellent', min: 540, max: 570 }, { label: 'Elite', min: 0, max: 540 } ];
+          else if (latest.age >= 13 && latest.age <= 14) ranges = [ { label: 'Average', min: 540, max: Infinity }, { label: 'Very Good', min: 510, max: 540 }, { label: 'Excellent', min: 480, max: 510 }, { label: 'Elite', min: 0, max: 480 } ];
+          else if (latest.age >= 15 && latest.age <= 17) ranges = [ { label: 'Average', min: 510, max: Infinity }, { label: 'Very Good', min: 480, max: 510 }, { label: 'Excellent', min: 450, max: 480 }, { label: 'Elite', min: 0, max: 450 } ];
+          else if (latest.age >= 18 && latest.age <= 20) ranges = [ { label: 'Average', min: 480, max: Infinity }, { label: 'Very Good', min: 450, max: 480 }, { label: 'Excellent', min: 420, max: 450 }, { label: 'Elite', min: 0, max: 420 } ];
+          else if (latest.age >= 21 && latest.age <= 25) ranges = [ { label: 'Average', min: 480, max: Infinity }, { label: 'Very Good', min: 450, max: 480 }, { label: 'Excellent', min: 420, max: 450 }, { label: 'Elite', min: 0, max: 420 } ];
+          else if (latest.age >= 26 && latest.age <= 30) ranges = [ { label: 'Average', min: 510, max: Infinity }, { label: 'Very Good', min: 480, max: 510 }, { label: 'Excellent', min: 450, max: 480 }, { label: 'Elite', min: 0, max: 450 } ];
+          else if (latest.age >= 31 && latest.age <= 35) ranges = [ { label: 'Average', min: 540, max: Infinity }, { label: 'Very Good', min: 510, max: 540 }, { label: 'Excellent', min: 480, max: 510 }, { label: 'Elite', min: 0, max: 480 } ];
+          else if (latest.age >= 36) ranges = [ { label: 'Average', min: 570, max: Infinity }, { label: 'Very Good', min: 540, max: 570 }, { label: 'Excellent', min: 540, max: 570 }, { label: 'Elite', min: 0, max: 540 } ];
+          if (ranges) {
+            for (const r of ranges) {
+              if (r.label === 'Average' && latest.time >= r.min && latest.time < r.max) {
+                color = '#ffe0b2';
+                level = 'Average';
+              } else if ((r.label === 'Very Good' || r.label === 'Excellent') && latest.time >= r.min && latest.time < r.max) {
+                color = '#c8e6c9';
+                level = r.label;
+              } else if (r.label === 'Elite' && latest.time >= r.min && latest.time < r.max) {
+                color = '#b2ebf2';
+                level = 'Elite';
+              }
+            }
+          }
+          setTwoKmTimeTrialColor(color);
+          setTwoKmTimeTrialLevel(level);
+        } else {
+          setTwoKmTimeTrialColor('#eeeeee');
+          setTwoKmTimeTrialLevel('');
+        }
+      } else {
+        setTwoKmTimeTrialColor('#eeeeee');
+        setTwoKmTimeTrialLevel('');
+      }
+    }
+  }, []);
+
   return (
     <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       {/* Back button */}
@@ -147,12 +194,15 @@ export default function ChallangesPage() {
               </div>
             </div>
             {/* 2km Time Trial */}
-            <div onClick={() => router.push('/challanges/2km-time-trial')} style={{ background: '#eeeeee', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, cursor: 'pointer' }}>
+            <div onClick={() => router.push('/challanges/2km-time-trial')} style={{ background: twoKmTimeTrialColor, borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, cursor: 'pointer' }}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player3.png" alt="2km Time Trial" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <div style={{ fontSize: 32, fontWeight: 400, color: '#222', fontFamily: 'serif' }}>2km Time Trial</div>
+                <div style={{ fontSize: 32, fontWeight: 400, color: twoKmTimeTrialLevel ? 'white' : '#222', fontFamily: 'serif' }}>2km Time Trial</div>
+                {twoKmTimeTrialLevel && (
+                  <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>{twoKmTimeTrialLevel}</div>
+                )}
               </div>
             </div>
             {/* T-Drill Test */}
