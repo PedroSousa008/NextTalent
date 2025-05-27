@@ -129,13 +129,13 @@ export default function FiftyMeterSprintPage() {
                     let bg = 'white';
                     if (time !== null) {
                       if (r.label === 'Average' && typeof r.threshold === 'number' && time > r.threshold) {
-                        if (r.color === 'yellow') bg = '#ffe0b2';
-                      } else if (r.label === 'Elite' && typeof r.threshold === 'number' && time < r.threshold) {
-                        if (r.color === 'blue') bg = '#b2ebf2';
-                      } else if (r.label === 'Very Good' && typeof r.min === 'number' && typeof r.max === 'number' && time >= r.min && time <= r.max) {
-                        if (r.color === 'green') bg = '#c8e6c9';
-                      } else if (r.label === 'Excellent' && typeof r.min === 'number' && typeof r.max === 'number' && time >= r.min && time <= r.max) {
-                        if (r.color === 'green') bg = '#c8e6c9';
+                        bg = '#ffe0b2';
+                      } else if (r.label === 'Very Good' && typeof r.min === 'number' && typeof r.max === 'number' && time > r.min && time <= r.max) {
+                        bg = '#c8e6c9';
+                      } else if (r.label === 'Excellent' && typeof r.min === 'number' && typeof r.max === 'number' && time > r.min && time <= r.max) {
+                        bg = '#c8e6c9';
+                      } else if (r.label === 'Elite' && typeof r.threshold === 'number' && time <= r.threshold) {
+                        bg = '#b2ebf2';
                       }
                     }
                     let label = '';
