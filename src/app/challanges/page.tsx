@@ -139,6 +139,18 @@ export default function ChallangesPage() {
     }
   }, []);
 
+  const cardStyle = (background: string) => ({
+    background,
+    borderRadius: 24,
+    padding: '24px 0 24px 0',
+    display: 'flex',
+    alignItems: 'center',
+    margin: '0 8px',
+    minHeight: 100,
+    height: 100,
+    cursor: 'pointer',
+  });
+
   return (
     <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       {/* Back button */}
@@ -172,7 +184,7 @@ export default function ChallangesPage() {
         {activeTab === 'endurance' && (
           <>
             {/* Beep Test */}
-            <div onClick={() => router.push('/challanges/beep-test')} style={{ background: beepTestColor, borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, cursor: 'pointer' }}>
+            <div onClick={() => router.push('/challanges/beep-test')} style={cardStyle(beepTestColor)}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player1.png" alt="Beep Test" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
@@ -182,7 +194,7 @@ export default function ChallangesPage() {
               </div>
             </div>
             {/* 50 Meter Sprint */}
-            <div onClick={() => router.push('/challanges/50-meter-sprint')} style={{ background: fiftyMeterSprintColor, borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, cursor: 'pointer' }}>
+            <div onClick={() => router.push('/challanges/50-meter-sprint')} style={cardStyle(fiftyMeterSprintColor)}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player2.png" alt="50 Meter Sprint" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
@@ -194,7 +206,7 @@ export default function ChallangesPage() {
               </div>
             </div>
             {/* 2km Time Trial */}
-            <div onClick={() => router.push('/challanges/2km-time-trial')} style={{ background: twoKmTimeTrialColor, borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, cursor: 'pointer' }}>
+            <div onClick={() => router.push('/challanges/2km-time-trial')} style={cardStyle(twoKmTimeTrialColor)}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player3.png" alt="2km Time Trial" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
@@ -206,7 +218,7 @@ export default function ChallangesPage() {
               </div>
             </div>
             {/* T-Drill Test */}
-            <div onClick={() => router.push('/challanges/t-drill-test')} style={{ background: '#b2ebf2', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100, cursor: 'pointer' }}>
+            <div onClick={() => router.push('/challanges/t-drill-test')} style={cardStyle('#b2ebf2')}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player4.png" alt="T-Drill Test" width={54} height={54} style={{ objectFit: 'contain', width: 54, height: 54 }} />
               </div>
@@ -220,7 +232,7 @@ export default function ChallangesPage() {
         {/* Mobility & Explosive Power */}
         {activeTab === 'mobility' && (
           <>
-            <div style={{ background: '#aeeaf7', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+            <div style={cardStyle('#aeeaf7')}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player5.png" alt="Vertical Jump" width={64} height={64} style={{ objectFit: 'contain' }} />
               </div>
@@ -229,7 +241,7 @@ export default function ChallangesPage() {
                 <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>Elite</div>
               </div>
             </div>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+            <div style={cardStyle('#ddd')}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player6.png" alt="Medicine Ball Throws" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
@@ -237,7 +249,7 @@ export default function ChallangesPage() {
                 <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>Medicine Ball Throws</div>
               </div>
             </div>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+            <div style={cardStyle('#ddd')}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player7.png" alt="Plyometric Box Jumps" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
@@ -245,7 +257,7 @@ export default function ChallangesPage() {
                 <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>Plyometric Box Jumps</div>
               </div>
             </div>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+            <div style={cardStyle('#ddd')}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player8.png" alt="Sit & Reach" width={64} height={64} style={{ objectFit: 'contain' }} />
               </div>
@@ -258,7 +270,7 @@ export default function ChallangesPage() {
         {/* Strength & Stability */}
         {activeTab === 'strength' && (
           <>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+            <div style={cardStyle('#ddd')}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player9.png" alt="1 Rep Max Squats" width={44} height={44} style={{ objectFit: 'contain' }} />
               </div>
@@ -266,7 +278,7 @@ export default function ChallangesPage() {
                 <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>1 Rep Max Squats</div>
               </div>
             </div>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+            <div style={cardStyle('#ddd')}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player10.png" alt="1 Rep Max Deadlifts" width={44} height={44} style={{ objectFit: 'contain' }} />
               </div>
@@ -274,7 +286,7 @@ export default function ChallangesPage() {
                 <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>1 Rep Max Deadlifts</div>
               </div>
             </div>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+            <div style={cardStyle('#ddd')}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player11.png" alt="1 Rep Max Bench Press" width={64} height={64} style={{ objectFit: 'contain' }} />
               </div>
@@ -282,7 +294,7 @@ export default function ChallangesPage() {
                 <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>1 Rep Max Bench Press</div>
               </div>
             </div>
-            <div style={{ background: '#ffd89c', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+            <div style={cardStyle('#ffd89c')}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player12.png" alt="Plank" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
@@ -296,7 +308,7 @@ export default function ChallangesPage() {
         {/* Anaerobic & Injury Prevention */}
         {activeTab === 'anaerobic' && (
           <>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+            <div style={cardStyle('#ddd')}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player13.png" alt="Lactate Threshold Runs" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
@@ -304,7 +316,7 @@ export default function ChallangesPage() {
                 <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>Lactate Threshold Runs</div>
               </div>
             </div>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+            <div style={cardStyle('#ddd')}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player14.png" alt="Maximal Sprint Repeats" width={44} height={44} style={{ objectFit: 'contain' }} />
               </div>
@@ -312,7 +324,7 @@ export default function ChallangesPage() {
                 <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>Maximal Sprint Repeats</div>
               </div>
             </div>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+            <div style={cardStyle('#ddd')}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player15.png" alt="Nordic Hamstring Test" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
@@ -320,7 +332,7 @@ export default function ChallangesPage() {
                 <div style={{ fontSize: 32, fontWeight: 400, color: '#444', fontFamily: 'serif' }}>Nordic Hamstring Test</div>
               </div>
             </div>
-            <div style={{ background: '#ddd', borderRadius: 24, padding: '24px 0 24px 0', display: 'flex', alignItems: 'center', margin: '0 8px', minHeight: 100 }}>
+            <div style={cardStyle('#ddd')}>
               <div style={{ flex: '0 0 80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Image src="/player16.png" alt="Jump Landing Assessments" width={44} height={44} style={{ objectFit: 'contain' }} />
               </div>
