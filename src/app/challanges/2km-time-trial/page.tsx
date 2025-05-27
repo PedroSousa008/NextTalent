@@ -5,55 +5,55 @@ import { useEffect, useState } from 'react';
 
 export default function TwoKmTimeTrialPage() {
   const router = useRouter();
-  // Table data (copy the structure from 50 Meter Sprint, but you may want to adjust the ranges for 2km Time Trial if needed)
+  // Table data (updated to match the provided image)
   const table = [
     { age: '10 - 12', ranges: [
-      { label: 'Average', threshold: 10 * 60, color: 'yellow' },
-      { label: 'Very Good', min: 9 * 60 + 30, max: 10 * 60, color: 'green' },
-      { label: 'Excellent', min: 9 * 60, max: 9 * 60 + 30, color: 'green' },
-      { label: 'Elite', threshold: 9 * 60, color: 'blue' },
+      { label: 'Average', threshold: '10:00', color: 'yellow' },
+      { label: 'Very Good', min: '09:30', max: '10:00', color: 'green' },
+      { label: 'Excellent', min: '09:00', max: '09:30', color: 'green' },
+      { label: 'Elite', threshold: '09:00', color: 'blue' },
     ] },
     { age: '13 - 14', ranges: [
-      { label: 'Average', threshold: 9 * 60, color: 'yellow' },
-      { label: 'Very Good', min: 8 * 60 + 30, max: 9 * 60, color: 'green' },
-      { label: 'Excellent', min: 8 * 60, max: 8 * 60 + 30, color: 'green' },
-      { label: 'Elite', threshold: 8 * 60, color: 'blue' },
+      { label: 'Average', threshold: '09:00', color: 'yellow' },
+      { label: 'Very Good', min: '08:30', max: '09:00', color: 'green' },
+      { label: 'Excellent', min: '08:00', max: '08:30', color: 'green' },
+      { label: 'Elite', threshold: '08:00', color: 'blue' },
     ] },
     { age: '15 - 17', ranges: [
-      { label: 'Average', threshold: 8 * 60 + 30, color: 'yellow' },
-      { label: 'Very Good', min: 8 * 60, max: 8 * 60 + 30, color: 'green' },
-      { label: 'Excellent', min: 7 * 60 + 30, max: 8 * 60, color: 'green' },
-      { label: 'Elite', threshold: 7 * 60 + 30, color: 'blue' },
+      { label: 'Average', threshold: '08:30', color: 'yellow' },
+      { label: 'Very Good', min: '08:00', max: '08:30', color: 'green' },
+      { label: 'Excellent', min: '07:30', max: '08:00', color: 'green' },
+      { label: 'Elite', threshold: '07:30', color: 'blue' },
     ] },
     { age: '18 - 20', ranges: [
-      { label: 'Average', threshold: 8 * 60, color: 'yellow' },
-      { label: 'Very Good', min: 7 * 60 + 30, max: 8 * 60, color: 'green' },
-      { label: 'Excellent', min: 7 * 60, max: 7 * 60 + 30, color: 'green' },
-      { label: 'Elite', threshold: 7 * 60, color: 'blue' },
+      { label: 'Average', threshold: '08:00', color: 'yellow' },
+      { label: 'Very Good', min: '07:30', max: '08:00', color: 'green' },
+      { label: 'Excellent', min: '07:00', max: '07:30', color: 'green' },
+      { label: 'Elite', threshold: '07:00', color: 'blue' },
     ] },
     { age: '21 - 25', ranges: [
-      { label: 'Average', threshold: 8 * 60, color: 'yellow' },
-      { label: 'Very Good', min: 7 * 60 + 30, max: 8 * 60, color: 'green' },
-      { label: 'Excellent', min: 7 * 60, max: 7 * 60 + 30, color: 'green' },
-      { label: 'Elite', threshold: 7 * 60, color: 'blue' },
+      { label: 'Average', threshold: '08:00', color: 'yellow' },
+      { label: 'Very Good', min: '07:30', max: '08:00', color: 'green' },
+      { label: 'Excellent', min: '07:00', max: '07:30', color: 'green' },
+      { label: 'Elite', threshold: '07:00', color: 'blue' },
     ] },
     { age: '26 - 30', ranges: [
-      { label: 'Average', threshold: 8 * 60 + 30, color: 'yellow' },
-      { label: 'Very Good', min: 8 * 60, max: 8 * 60 + 30, color: 'green' },
-      { label: 'Excellent', min: 7 * 60 + 30, max: 8 * 60, color: 'green' },
-      { label: 'Elite', threshold: 7 * 60 + 30, color: 'blue' },
+      { label: 'Average', threshold: '08:30', color: 'yellow' },
+      { label: 'Very Good', min: '08:00', max: '08:30', color: 'green' },
+      { label: 'Excellent', min: '07:30', max: '08:00', color: 'green' },
+      { label: 'Elite', threshold: '07:30', color: 'blue' },
     ] },
     { age: '31 - 35', ranges: [
-      { label: 'Average', threshold: 9 * 60, color: 'yellow' },
-      { label: 'Very Good', min: 8 * 60 + 30, max: 9 * 60, color: 'green' },
-      { label: 'Excellent', min: 8 * 60, max: 8 * 60 + 30, color: 'green' },
-      { label: 'Elite', threshold: 8 * 60, color: 'blue' },
+      { label: 'Average', threshold: '09:00', color: 'yellow' },
+      { label: 'Very Good', min: '08:30', max: '09:00', color: 'green' },
+      { label: 'Excellent', min: '08:00', max: '08:30', color: 'green' },
+      { label: 'Elite', threshold: '08:00', color: 'blue' },
     ] },
     { age: '36+', ranges: [
-      { label: 'Average', threshold: 9 * 60 + 30, color: 'yellow' },
-      { label: 'Very Good', min: 9 * 60, max: 9 * 60 + 30, color: 'green' },
-      { label: 'Excellent', min: 8 * 60 + 30, max: 9 * 60, color: 'green' },
-      { label: 'Elite', threshold: 8 * 60 + 30, color: 'blue' },
+      { label: 'Average', threshold: '09:30', color: 'yellow' },
+      { label: 'Very Good', min: '09:30', max: '10:00', color: 'green' },
+      { label: 'Excellent', min: '09:00', max: '09:30', color: 'green' },
+      { label: 'Elite', threshold: '09:30', color: 'blue' },
     ] },
   ];
 
@@ -81,6 +81,12 @@ export default function TwoKmTimeTrialPage() {
     else if (age >= 36) group = '36+';
     latestTimes[group] = u.time;
   });
+
+  // Helper to convert mm:ss to seconds
+  function timeToSeconds(t: string) {
+    const [min, sec] = t.split(':').map(Number);
+    return min * 60 + sec;
+  }
 
   return (
     <div style={{ minHeight: '100vh', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 0, height: '100vh', overflowY: 'auto' }}>
@@ -123,20 +129,20 @@ export default function TwoKmTimeTrialPage() {
                   {row.ranges.map((r) => {
                     let bg = 'white';
                     if (time !== null) {
-                      if (r.label === 'Average' && typeof r.threshold === 'number' && time > r.threshold) {
+                      if (r.label === 'Average' && typeof r.threshold === 'string' && time > timeToSeconds(r.threshold)) {
                         bg = '#ffe0b2';
-                      } else if (r.label === 'Very Good' && typeof r.min === 'number' && typeof r.max === 'number' && time > r.min && time <= r.max) {
+                      } else if (r.label === 'Very Good' && typeof r.min === 'string' && typeof r.max === 'string' && time > timeToSeconds(r.min) && time <= timeToSeconds(r.max)) {
                         bg = '#c8e6c9';
-                      } else if (r.label === 'Excellent' && typeof r.min === 'number' && typeof r.max === 'number' && time > r.min && time <= r.max) {
+                      } else if (r.label === 'Excellent' && typeof r.min === 'string' && typeof r.max === 'string' && time > timeToSeconds(r.min) && time <= timeToSeconds(r.max)) {
                         bg = '#c8e6c9';
-                      } else if (r.label === 'Elite' && typeof r.threshold === 'number' && time <= r.threshold) {
+                      } else if (r.label === 'Elite' && typeof r.threshold === 'string' && time <= timeToSeconds(r.threshold)) {
                         bg = '#b2ebf2';
                       }
                     }
                     let label = '';
-                    if (r.label === 'Average' && typeof r.threshold === 'number') label = `> ${formatTime(r.threshold)}`;
-                    else if (r.label === 'Elite' && typeof r.threshold === 'number') label = `< ${formatTime(r.threshold)}`;
-                    else if (typeof r.min === 'number' && typeof r.max === 'number') label = `${formatTime(r.min)} - ${formatTime(r.max)}`;
+                    if (r.label === 'Average' && typeof r.threshold === 'string') label = `> ${r.threshold}`;
+                    else if (r.label === 'Elite' && typeof r.threshold === 'string') label = `< ${r.threshold}`;
+                    else if (typeof r.min === 'string' && typeof r.max === 'string') label = `${r.min} - ${r.max}`;
                     return (
                       <td key={r.label} style={{ border: '1px solid #222', padding: 8, background: bg }}>{label}</td>
                     );
@@ -157,10 +163,5 @@ export default function TwoKmTimeTrialPage() {
       <div style={{ height: 48 }} />
     </div>
   );
-}
-
-function formatTime(seconds: number) {
-  const m = Math.floor(seconds / 60).toString().padStart(2, '0');
-  const s = Math.floor(seconds % 60).toString().padStart(2, '0');
-  return `${m}:${s}`;
 } 
+ 
