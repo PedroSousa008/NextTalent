@@ -58,7 +58,7 @@ export default function TwoKmTimeTrialPage() {
   ];
 
   // Get uploads from localStorage
-  const [uploads, setUploads] = useState<{label: string, reps: number, video: string}[]>([]);
+  const [uploads, setUploads] = useState<{label: string, time: number, video: string, age: number}[]>([]);
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('twoKmTimeTrialUploads');
@@ -66,23 +66,20 @@ export default function TwoKmTimeTrialPage() {
     }
   }, []);
 
-  // Find latest reps for each age group
-  const latestReps: Record<string, number> = {};
+  // Find latest upload for each age group
+  const latestTimes: Record<string, number> = {};
   uploads.forEach(u => {
-    const match = u.label.match(/(\d+)/g);
-    if (match) {
-      const age = parseInt(match[0], 10);
-      let group = '';
-      if (age >= 10 && age <= 12) group = '10 - 12';
-      else if (age >= 13 && age <= 14) group = '13 - 14';
-      else if (age >= 15 && age <= 17) group = '15 - 17';
-      else if (age >= 18 && age <= 20) group = '18 - 20';
-      else if (age >= 21 && age <= 25) group = '21 - 25';
-      else if (age >= 26 && age <= 30) group = '26 - 30';
-      else if (age >= 31 && age <= 35) group = '31 - 35';
-      else if (age >= 36) group = '36+';
-      latestReps[group] = u.reps;
-    }
+    const age = u.age;
+    let group = '';
+    if (age >= 10 && age <= 12) group = '10 - 12';
+    else if (age >= 13 && age <= 14) group = '13 - 14';
+    else if (age >= 15 && age <= 17) group = '15 - 17';
+    else if (age >= 18 && age <= 20) group = '18 - 20';
+    else if (age >= 21 && age <= 25) group = '21 - 25';
+    else if (age >= 26 && age <= 30) group = '26 - 30';
+    else if (age >= 31 && age <= 35) group = '31 - 35';
+    else if (age >= 36) group = '36+';
+    latestTimes[group] = u.time;
   });
 
   return (
@@ -119,16 +116,20 @@ export default function TwoKmTimeTrialPage() {
           </thead>
           <tbody>
             {table.map(row => {
-              const seconds = latestReps[row.age] ?? null;
+              const seconds = latestTimes[row.age] ?? null;
               return (
                 <tr key={row.age}>
                   <td style={{ border: '1px solid #222', padding: 8, fontWeight: 600 }}>{row.age}</td>
                   {row.ranges.map((r) => {
                     let bg = 'white';
-                    if (seconds !== null && seconds >= r.min && seconds < r.max) {
-                      if (r.label === 'Average') bg = '#ffe0b2';
-                      else if (r.label === 'Very Good' || r.label === 'Excellent') bg = '#c8e6c9';
-                      else if (r.label === 'Elite') bg = '#b2ebf2';
+                    if (seconds !== null) {
+                      if (r.label === 'Average' && seconds >= r.min && seconds < r.max) {
+                        bg = '#ffe0b2';
+                      } else if ((r.label === 'Very Good' || r.label === 'Excellent') && seconds >= r.min && seconds < r.max) {
+                        bg = '#c8e6c9';
+                      } else if (r.label === 'Elite' && seconds >= r.min && seconds < r.max) {
+                        bg = '#b2ebf2';
+                      }
                     }
                     return (
                       <td key={r.label} style={{ border: '1px solid #222', padding: 8, background: bg }}>{r.display}</td>
