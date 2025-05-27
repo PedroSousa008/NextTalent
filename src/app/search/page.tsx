@@ -154,3 +154,32 @@ export default function SearchPage() {
     </div>
   );
 } 
+      {/* Tabs */}
+      <div style={{ width: '100%', maxWidth: 500, display: 'flex', alignItems: 'center', marginTop: 18, marginBottom: 0, padding: '0 16px' }}>
+        <div style={{ flex: 1, textAlign: 'left', fontSize: 20, fontWeight: 600 }}>
+          <span style={{ color: 'black', borderBottom: '2px solid black', paddingBottom: 4, cursor: 'pointer' }}>Pro Teams</span>
+        </div>
+        <div style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: 600 }}>
+          <span style={{ color: '#bbb', fontWeight: 500, cursor: 'not-allowed' }}>College Teams</span>
+        </div>
+        <div style={{ flex: 1, textAlign: 'right', fontSize: 20, fontWeight: 600 }}>
+          <span style={{ color: '#bbb', fontWeight: 500, cursor: 'not-allowed' }}>Agents</span>
+        </div>
+      </div>
+      {/* Description */}
+      <div style={{ width: '100%', maxWidth: 500, textAlign: 'center', color: 'black', fontSize: 16, margin: '18px 0 12px 0', fontWeight: 400, lineHeight: 1.3 }}>
+        Increase your exposure and chances of being selected by sending direct emails to academy´s, semi pro and pro teams all over the world.
+      </div>
+      {/* Leagues grid */}
+      <div style={{ width: '100%', maxWidth: 500, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, background: 'white', borderRadius: 8, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
+        {filtered.map(lg => (
+          <div key={lg.name} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #eee', background: 'white', minHeight: 120, height: 140 }}>
+            {lg.logo && <Image src={lg.logo} alt={lg.name} width={100} height={100} style={{ objectFit: 'contain', maxWidth: '70%', maxHeight: '70%' }} />}
+          </div>
+        ))}
+      </div>
+      {/* Bottom Navigation Bar */}
+      <BottomNav active='search' />
+    </div>
+  );
+} 

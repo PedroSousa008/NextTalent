@@ -38,3 +38,4 @@ export function FilterProvider({ children }: { children: ReactNode }) {
     </FilterContext.Provider>
   );
 } 
+ 
