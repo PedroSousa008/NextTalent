@@ -17,7 +17,7 @@ export default function FiftyMeterSprintInfoPage() {
       <div style={{ maxWidth: 520, margin: '0 auto', padding: '0 16px' }}>
         <div style={{ fontSize: 24, margin: '32px 0 8px 0', fontWeight: 600 }}><span role="img" aria-label="pin">📌</span> What Is Is?</div>
         <div style={{ fontSize: 18, marginBottom: 24, lineHeight: 1.6 }}>
-          The 50 Meter Sprint is a short-distance speed test that measures a player's acceleration, explosive power, and top speed. It's widely used in football to evaluate how fast a player can reach full pace — crucial for breakaways, defensive recovery, and short bursts of play.
+          The 50 Meter Sprint is a short-distance speed test that measures a player&apos;s acceleration, explosive power, and top speed. It&apos;s widely used in football to evaluate how fast a player can reach full pace — crucial for breakaways, defensive recovery, and short bursts of play.
         </div>
         <div style={{ fontSize: 24, margin: '32px 0 8px 0', fontWeight: 600 }}><span role="img" aria-label="gear">⚙️</span> How to Do It</div>
         <ul style={{ fontSize: 18, marginBottom: 24, lineHeight: 1.6, paddingLeft: 24 }}>
