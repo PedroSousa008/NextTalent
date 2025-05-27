@@ -58,7 +58,7 @@ export default function FiftyMeterSprintPage() {
   ];
 
   // Get uploads from localStorage
-  const [uploads, setUploads] = useState<{label: string, time: number, video: string}[]>([]);
+  const [uploads, setUploads] = useState<{label: string, time: number, video: string, age: number}[]>([]);
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('fiftyMeterSprintUploads');
@@ -66,25 +66,20 @@ export default function FiftyMeterSprintPage() {
     }
   }, []);
 
-  // Find best (lowest) time for each age group
-  const bestTimes: Record<string, number> = {};
+  // Find latest upload for each age group
+  const latestTimes: Record<string, number> = {};
   uploads.forEach(u => {
-    const match = u.label.match(/(\d+)/g);
-    if (match) {
-      const age = parseInt(match[0], 10);
-      let group = '';
-      if (age >= 10 && age <= 12) group = '10 - 12';
-      else if (age >= 13 && age <= 14) group = '13 - 14';
-      else if (age >= 15 && age <= 17) group = '15 - 17';
-      else if (age >= 18 && age <= 20) group = '18 - 20';
-      else if (age >= 21 && age <= 25) group = '21 - 25';
-      else if (age >= 26 && age <= 30) group = '26 - 30';
-      else if (age >= 31 && age <= 35) group = '31 - 35';
-      else if (age >= 36) group = '36+';
-      if (!bestTimes[group] || u.time < bestTimes[group]) {
-        bestTimes[group] = u.time;
-      }
-    }
+    const age = u.age;
+    let group = '';
+    if (age >= 10 && age <= 12) group = '10 - 12';
+    else if (age >= 13 && age <= 14) group = '13 - 14';
+    else if (age >= 15 && age <= 17) group = '15 - 17';
+    else if (age >= 18 && age <= 20) group = '18 - 20';
+    else if (age >= 21 && age <= 25) group = '21 - 25';
+    else if (age >= 26 && age <= 30) group = '26 - 30';
+    else if (age >= 31 && age <= 35) group = '31 - 35';
+    else if (age >= 36) group = '36+';
+    latestTimes[group] = u.time;
   });
 
   return (
@@ -121,7 +116,7 @@ export default function FiftyMeterSprintPage() {
           </thead>
           <tbody>
             {table.map(row => {
-              const time = bestTimes[row.age] ?? null;
+              const time = latestTimes[row.age] ?? null;
               return (
                 <tr key={row.age}>
                   <td style={{ border: '1px solid #222', padding: 8, fontWeight: 600 }}>{row.age}</td>
