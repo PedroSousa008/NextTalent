@@ -140,7 +140,7 @@ export default function ChallangesPage() {
                 <Image src="/player2.png" alt="50 Meter Sprint" width={54} height={54} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>50 Meter Sprint</div>
+                <div style={{ fontSize: 32, fontWeight: 400, color: fiftyMeterSprintLevel ? 'white' : '#222', fontFamily: 'serif' }}>50 Meter Sprint</div>
                 {fiftyMeterSprintLevel && (
                   <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>{fiftyMeterSprintLevel}</div>
                 )}
