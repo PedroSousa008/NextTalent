@@ -81,7 +81,13 @@ export default function ChallangesPage() {
           }
           setFiftyMeterSprintColor(color);
           setFiftyMeterSprintLevel(level);
+        } else {
+          setFiftyMeterSprintColor('#eeeeee');
+          setFiftyMeterSprintLevel('');
         }
+      } else {
+        setFiftyMeterSprintColor('#eeeeee');
+        setFiftyMeterSprintLevel('');
       }
     }
   }, []);
@@ -135,7 +141,9 @@ export default function ChallangesPage() {
               </div>
               <div style={{ flex: 1, paddingLeft: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: 32, fontWeight: 400, color: 'white', fontFamily: 'serif' }}>50 Meter Sprint</div>
-                <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>{fiftyMeterSprintLevel}</div>
+                {fiftyMeterSprintLevel && (
+                  <div style={{ fontSize: 18, color: '#222', fontFamily: 'serif', marginTop: 4 }}>{fiftyMeterSprintLevel}</div>
+                )}
               </div>
             </div>
             {/* 2km Time Trial */}
