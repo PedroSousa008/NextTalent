@@ -8,11 +8,21 @@ export default function BenficaProfileTeamPage() {
     <div style={{ minHeight: '100vh', background: 'white', fontFamily: 'serif', color: '#222', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
       {/* Back button */}
       <button onClick={() => router.back()} style={{ position: 'absolute', top: 24, left: 18, background: 'none', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10, cursor: 'pointer' }}>
-        <span style={{ color: 'black', fontSize: 32, fontWeight: 500 }}>&larr;</span>
+        <span style={{ color: 'grey', fontSize: 24, fontWeight: 500 }}>&larr;</span>
       </button>
-      {/* Team logo */}
-      <div style={{ marginTop: 32, marginBottom: 8 }}>
+      {/* Team logo with emojis */}
+      <div style={{ marginTop: 32, marginBottom: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 48 }}>
+        {/* Team emoji */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: 8 }}>
+          <span style={{ fontSize: 32 }}>🛡️</span>
+          <span style={{ fontSize: 14, color: '#222', marginTop: 2 }}>Team</span>
+        </div>
         <Image src="/benfica.png" alt="Benfica" width={160} height={160} style={{ objectFit: 'contain' }} />
+        {/* Coach emoji */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: 8 }}>
+          <span style={{ fontSize: 32 }}>🧑‍💼</span>
+          <span style={{ fontSize: 14, color: '#222', marginTop: 2 }}>Coach</span>
+        </div>
       </div>
       {/* Team name and age group */}
       <div style={{ fontWeight: 500, fontSize: 36, color: '#222', fontFamily: 'serif', marginBottom: 0, textAlign: 'center' }}>Benfica</div>
