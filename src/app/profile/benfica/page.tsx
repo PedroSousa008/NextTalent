@@ -10,17 +10,17 @@ export default function BenficaProfileTeamPage() {
       <button onClick={() => router.back()} style={{ position: 'absolute', top: 24, left: 18, background: 'none', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10, cursor: 'pointer' }}>
         <span style={{ color: 'grey', fontSize: 24, fontWeight: 500 }}>&larr;</span>
       </button>
-      {/* Team logo with emojis */}
+      {/* Team logo with DM icons */}
       <div style={{ marginTop: 32, marginBottom: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 48 }}>
-        {/* Team emoji */}
+        {/* Team DM icon */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: 8 }}>
-          <span style={{ fontSize: 32 }}>🛡️</span>
+          <Image src="/dm.png" alt="Team DM" width={40} height={40} style={{ objectFit: 'contain' }} />
           <span style={{ fontSize: 14, color: '#222', marginTop: 2 }}>Team</span>
         </div>
         <Image src="/benfica.png" alt="Benfica" width={160} height={160} style={{ objectFit: 'contain' }} />
-        {/* Coach emoji */}
+        {/* Coach DM icon */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: 8 }}>
-          <span style={{ fontSize: 32 }}>🧑‍💼</span>
+          <Image src="/dm.png" alt="Coach DM" width={40} height={40} style={{ objectFit: 'contain' }} />
           <span style={{ fontSize: 14, color: '#222', marginTop: 2 }}>Coach</span>
         </div>
       </div>
