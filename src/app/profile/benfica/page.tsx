@@ -1,9 +1,11 @@
 "use client";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function BenficaProfileTeamPage() {
   const router = useRouter();
+  const [activeTab, setActiveTab] = useState<'calendar' | 'documents' | 'squad'>('calendar');
   return (
     <div style={{ minHeight: '100vh', background: 'white', fontFamily: 'serif', color: '#222', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
       {/* Back button */}
@@ -29,13 +31,55 @@ export default function BenficaProfileTeamPage() {
       <div style={{ fontWeight: 400, fontSize: 28, color: '#222', fontFamily: 'serif', marginBottom: 16, textAlign: 'center' }}>Senior</div>
       {/* Tabs */}
       <div style={{ width: '100%', maxWidth: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1.5px solid #eee', marginBottom: 0 }}>
-        <div style={{ flex: 1, textAlign: 'center', fontSize: 22, fontWeight: 600, color: 'black', borderBottom: '2px solid black', paddingBottom: 4, cursor: 'pointer', fontFamily: 'serif' }}>
+        <div
+          onClick={() => setActiveTab('calendar')}
+          style={{
+            flex: 1,
+            textAlign: 'center',
+            fontSize: 22,
+            fontWeight: activeTab === 'calendar' ? 600 : 500,
+            color: activeTab === 'calendar' ? 'black' : '#bbb',
+            borderBottom: activeTab === 'calendar' ? '2px solid black' : 'none',
+            paddingBottom: 4,
+            cursor: 'pointer',
+            fontFamily: 'serif',
+            transition: 'color 0.15s, border-bottom 0.15s',
+          }}
+        >
           Calendar
         </div>
-        <div style={{ flex: 1, textAlign: 'center', fontSize: 22, fontWeight: 500, color: '#bbb', borderBottom: 'none', paddingBottom: 4, cursor: 'not-allowed', fontFamily: 'serif' }}>
+        <div
+          onClick={() => setActiveTab('documents')}
+          style={{
+            flex: 1,
+            textAlign: 'center',
+            fontSize: 22,
+            fontWeight: activeTab === 'documents' ? 600 : 500,
+            color: activeTab === 'documents' ? 'black' : '#bbb',
+            borderBottom: activeTab === 'documents' ? '2px solid black' : 'none',
+            paddingBottom: 4,
+            cursor: 'pointer',
+            fontFamily: 'serif',
+            transition: 'color 0.15s, border-bottom 0.15s',
+          }}
+        >
           Documents
         </div>
-        <div style={{ flex: 1, textAlign: 'center', fontSize: 22, fontWeight: 500, color: '#bbb', borderBottom: 'none', paddingBottom: 4, cursor: 'not-allowed', fontFamily: 'serif' }}>
+        <div
+          onClick={() => setActiveTab('squad')}
+          style={{
+            flex: 1,
+            textAlign: 'center',
+            fontSize: 22,
+            fontWeight: activeTab === 'squad' ? 600 : 500,
+            color: activeTab === 'squad' ? 'black' : '#bbb',
+            borderBottom: activeTab === 'squad' ? '2px solid black' : 'none',
+            paddingBottom: 4,
+            cursor: 'pointer',
+            fontFamily: 'serif',
+            transition: 'color 0.15s, border-bottom 0.15s',
+          }}
+        >
           Squad
         </div>
       </div>
