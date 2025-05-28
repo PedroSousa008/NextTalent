@@ -60,7 +60,7 @@ export default function ProfilePage() {
       <div style={{ display: 'flex', alignItems: 'center', width: '100%', maxWidth: 500, marginBottom: 8, marginTop: 0, height: 40, position: 'relative' }}>
         {/* Benfica logo aligned with the center of Followers */}
         <div style={{ position: 'absolute', left: '16.67%', top: 0, bottom: 0, display: 'flex', alignItems: 'center', height: '100%' }}>
-          <Image src="/benfica.png" alt="Benfica" width={28} height={28} style={{ objectFit: 'contain', borderRadius: 4 }} />
+          <Image src="/benfica.png" alt="Benfica" width={28} height={28} style={{ objectFit: 'contain', borderRadius: 4, cursor: 'pointer' }} onClick={() => router.push('/team/benfica-senior')} />
         </div>
         {/* Centered club text */}
         <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
