@@ -1,10 +1,11 @@
 'use client';
 import Image from 'next/image';
 import BottomNav from '../feed/BottomNav';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-const LEAGUES = [
+// Top 8 leagues (keep as is)
+const TOP8 = [
   { name: 'Premier League', logo: '/premier-league.png' },
   { name: 'LaLiga', logo: '/laliga.png' },
   { name: 'SERIE A', logo: '/seriea.png' },
@@ -13,18 +14,58 @@ const LEAGUES = [
   { name: 'LIGA PORTUGAL', logo: '/liga-portugal.png' },
   { name: 'eredivisie', logo: '/eredivisie.png' },
   { name: 'MLS', logo: '/mls.png' },
-  { name: 'Sky Bet Championship', logo: '/skybet.png' },
-  { name: 'Brasileirão', logo: '/brasileirao.png' },
 ];
+// Example: more leagues (alphabetically, 1st–5th divisions, no repeats)
+const MORE_LEAGUES = [
+  { name: 'A-League (Australia) 1st', logo: '' },
+  { name: 'Allsvenskan (Sweden) 1st', logo: '' },
+  { name: 'Belgian Pro League 1st', logo: '' },
+  { name: 'Brazil Serie B 2nd', logo: '' },
+  { name: 'Chinese Super League 1st', logo: '' },
+  { name: 'Danish Superliga 1st', logo: '' },
+  { name: 'Ekstraklasa (Poland) 1st', logo: '' },
+  { name: 'Eliteserien (Norway) 1st', logo: '' },
+  { name: 'Greek Super League 1st', logo: '' },
+  { name: 'J1 League (Japan) 1st', logo: '' },
+  { name: 'K League 1 (South Korea) 1st', logo: '' },
+  { name: 'Liga MX (Mexico) 1st', logo: '' },
+  { name: 'Major League Soccer 2nd', logo: '' },
+  { name: 'Primeira Liga (Brazil) 1st', logo: '' },
+  { name: 'Russian Premier League 1st', logo: '' },
+  { name: 'Saudi Pro League 1st', logo: '' },
+  { name: 'Scottish Premiership 1st', logo: '' },
+  { name: 'Segunda División (Spain) 2nd', logo: '' },
+  { name: 'Serie B (Italy) 2nd', logo: '' },
+  { name: 'Super Lig (Turkey) 1st', logo: '' },
+  { name: 'Swiss Super League 1st', logo: '' },
+  { name: 'Ukrainian Premier League 1st', logo: '' },
+  { name: 'USL Championship (USA) 2nd', logo: '' },
+  { name: 'Veikkausliiga (Finland) 1st', logo: '' },
+  // ...add more as needed, alphabetically, 1st–5th divisions, no repeats
+];
+const ALL_LEAGUES = [...TOP8, ...MORE_LEAGUES.sort((a, b) => a.name.localeCompare(b.name))];
 
 export default function SearchPage() {
   const [search, setSearch] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(16);
+  const gridRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const filtered = search.trim() === '' ? LEAGUES : LEAGUES.map(lg => {
-    if (lg.name.toLowerCase().includes(search.trim().toLowerCase())) return lg;
-    return { ...lg, logo: null };
-  });
+  const filtered = search.trim() === '' ? ALL_LEAGUES : ALL_LEAGUES.filter(lg => lg.name.toLowerCase().includes(search.trim().toLowerCase()));
+  const leaguesToShow = filtered.slice(0, visibleCount);
+
+  // Infinite scroll logic
+  useEffect(() => {
+    function onScroll() {
+      if (!gridRef.current) return;
+      const { bottom } = gridRef.current.getBoundingClientRect();
+      if (bottom < window.innerHeight + 100) {
+        setVisibleCount(c => Math.min(filtered.length, c + 16));
+      }
+    }
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [filtered.length]);
 
   // Handler for Enter key
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -37,6 +78,7 @@ export default function SearchPage() {
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearch(e.target.value);
     setSubmitted(false);
+    setVisibleCount(16);
   }
 
   // Pedro Sousa card data
@@ -124,8 +166,8 @@ export default function SearchPage() {
           </div>
         </div>
       ) : (
-        <div style={{ width: '100%', maxWidth: 500, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, background: 'white', borderRadius: 8, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
-          {filtered.map(lg => (
+        <div ref={gridRef} style={{ width: '100%', maxWidth: 500, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, background: 'white', borderRadius: 8, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
+          {leaguesToShow.map(lg => (
             <div key={lg.name} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #eee', background: 'white', minHeight: 120, height: 140, cursor: lg.logo ? 'pointer' : 'default' }}
               onClick={() => {
                 if (!lg.logo) return;
@@ -144,7 +186,11 @@ export default function SearchPage() {
                 if (route) router.push(route);
               }}
             >
-              {lg.logo && <Image src={lg.logo} alt={lg.name} width={100} height={100} style={{ objectFit: 'contain', maxWidth: '70%', maxHeight: '70%' }} />}
+              {lg.logo ? (
+                <Image src={lg.logo} alt={lg.name} width={100} height={100} style={{ objectFit: 'contain', maxWidth: '70%', maxHeight: '70%' }} />
+              ) : (
+                <span style={{ fontSize: 18, color: '#bbb', textAlign: 'center', fontFamily: 'serif' }}>{lg.name}</span>
+              )}
             </div>
           ))}
         </div>
