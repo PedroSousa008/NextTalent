@@ -376,7 +376,9 @@ export default function FeedPage() {
                 }} />
                 <span style={{ fontSize: 24, verticalAlign: 'middle', cursor: 'pointer' }} onClick={() => player.setShowComments && player.setShowComments(true)}>💬</span>
                 <span style={{ fontSize: 24, verticalAlign: 'middle' }}>🔗</span>
-                <span style={{ fontSize: 24, verticalAlign: 'middle', cursor: 'pointer' }} onClick={() => alert('Ranking feature coming soon!')}>⭐️</span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', cursor: 'pointer' }} onClick={() => alert('Ranking feature coming soon!')}>
+                  <Image src="/rank.png" alt="Rank" width={24} height={24} style={{ objectFit: 'contain' }} />
+                </span>
               </div>
             </div>
             <div style={{ padding: '0 16px', marginTop: 8 }}>
