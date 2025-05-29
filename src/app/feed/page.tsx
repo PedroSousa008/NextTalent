@@ -127,11 +127,15 @@ function getRealPlayer(idx: number): Player {
     avatar: p.avatar,
     positionLabel: p.positions.join('/'),
     ageLabel: `${p.age} year old`,
-    likes: 100 + Math.floor(Math.random() * 1000),
+    likes: 1000000 + Math.floor(Math.random() * 1000000), // Updated to millions
     liked: false,
     setLiked: () => {},
     setLikes: () => {},
-    comments: [],
+    comments: [
+      { user: 'Fan1', avatar: '/placeholder-avatar.png', text: 'Amazing performance!' },
+      { user: 'Fan2', avatar: '/placeholder-avatar.png', text: 'Keep it up!' },
+      { user: 'Fan3', avatar: '/placeholder-avatar.png', text: 'Incredible skills!' },
+    ],
     setComments: () => {},
     showComments: false,
     setShowComments: () => {},
@@ -144,8 +148,8 @@ export default function FeedPage() {
   const [activeTab, setActiveTab] = useState<'following' | 'discover'>('following');
   const [liked1, setLiked1] = useState(false);
   const [liked2, setLiked2] = useState(false);
-  const [likes1, setLikes1] = useState(1245);
-  const [likes2, setLikes2] = useState(1245);
+  const [likes1, setLikes1] = useState(1245000); // Updated to millions
+  const [likes2, setLikes2] = useState(1245000); // Updated to millions
   const [comments1, setComments1] = useState<{ user: string; avatar: string; text: string }[]>([]);
   const [comments2, setComments2] = useState<{ user: string; avatar: string; text: string }[]>([]);
   const [showComments1, setShowComments1] = useState(false);
@@ -198,11 +202,11 @@ export default function FeedPage() {
       name: 'Pedro Sousa',
       positions: ['CM', 'CAM', 'CF', 'CDM', 'Senior'],
       age: 'Senior',
-      video: '/pedro-clip.mp4',
+      video: '/jude-bellingham.mp4', // Placeholder for Jude Bellingham video
       avatar: '/pedro.jpg',
-      positionLabel: 'CM/CAM',
-      ageLabel: '21 year old',
-      likes: likes1,
+      positionLabel: 'CM/CAM/CF/CDM',
+      ageLabel: 'Senior',
+      likes: 1245000, // Updated to millions
       liked: liked1,
       setLiked: setLiked1,
       setLikes: setLikes1,
@@ -211,17 +215,17 @@ export default function FeedPage() {
       showComments: showComments1,
       setShowComments: setShowComments1,
       displayName: 'Pedro Sousa',
-      id: 'real-pedro',
+      id: 'pedro-sousa',
     },
     {
       name: 'Alphonso Davies',
-      positions: ['LB', 'Senior'],
-      age: 'Senior',
-      video: '/alphonso-clip.mp4',
+      positions: ['LB'],
+      age: 'U22-U24',
+      video: '/alphonso.mp4', // Placeholder for Alphonso Davies video
       avatar: '/alphonso.jpg',
       positionLabel: 'LB',
-      ageLabel: '23 year old',
-      likes: likes2,
+      ageLabel: 'U22-U24',
+      likes: 1245000, // Updated to millions
       liked: liked2,
       setLiked: setLiked2,
       setLikes: setLikes2,
@@ -230,15 +234,9 @@ export default function FeedPage() {
       showComments: showComments2,
       setShowComments: setShowComments2,
       displayName: 'Alphonso Davies',
-      id: 'real-alphonso',
+      id: 'alphonso-davies',
     },
-    ...realListPlayers.map(p => ({
-      ...p,
-      setLiked: (fn: (liked: boolean) => boolean) => updateRealPlayer(p.id, prev => ({ ...prev, liked: fn(prev.liked) })),
-      setLikes: (fn: (likes: number) => number) => updateRealPlayer(p.id, prev => ({ ...prev, likes: fn(prev.likes) })),
-      setComments: (fn: (comments: { user: string; avatar: string; text: string }[]) => { user: string; avatar: string; text: string }[]) => updateRealPlayer(p.id, prev => ({ ...prev, comments: fn(prev.comments) })),
-      setShowComments: (show: boolean) => updateRealPlayer(p.id, prev => ({ ...prev, showComments: show })),
-    })),
+    ...realListPlayers,
   ];
 
   // Filtering logic (same as before, but use allPlayers)
