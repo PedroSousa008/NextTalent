@@ -89,25 +89,25 @@ export default function BenficaProfileTeamPage() {
           <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'serif' }}>
             <tbody>
               <tr style={{ background: '#ddd', color: '#222', fontWeight: 500, fontSize: 18 }}>
-                <td style={{ padding: '8px 8px' }}>16/06/2025</td>
-                <td>Boca Juniors</td>
-                <td>-</td>
-                <td>Benfica</td>
-                <td><Image src="/fifa.png" alt="FIFA" width={32} height={32} style={{ objectFit: 'contain' }} /></td>
+                <td style={{ padding: '8px 8px', width: 120 }}>16/06/2025</td>
+                <td style={{ textAlign: 'right', width: '30%' }}>Boca Juniors</td>
+                <td style={{ textAlign: 'center', width: 60, fontWeight: 700, fontSize: 22 }}>-</td>
+                <td style={{ textAlign: 'left', width: '30%' }}>Benfica</td>
+                <td style={{ textAlign: 'center', width: 60 }}><Image src="/fifa.png" alt="FIFA" width={32} height={32} style={{ objectFit: 'contain' }} /></td>
               </tr>
               <tr style={{ background: '#eee', color: '#222', fontWeight: 500, fontSize: 18 }}>
-                <td style={{ padding: '8px 8px' }}>20/06/2025</td>
-                <td>Benfica</td>
-                <td>-</td>
-                <td>Auckland City</td>
-                <td><Image src="/fifa.png" alt="FIFA" width={32} height={32} style={{ objectFit: 'contain' }} /></td>
+                <td style={{ padding: '8px 8px', width: 120 }}>20/06/2025</td>
+                <td style={{ textAlign: 'right', width: '30%' }}>Benfica</td>
+                <td style={{ textAlign: 'center', width: 60, fontWeight: 700, fontSize: 22 }}>-</td>
+                <td style={{ textAlign: 'left', width: '30%' }}>Auckland City</td>
+                <td style={{ textAlign: 'center', width: 60 }}><Image src="/fifa.png" alt="FIFA" width={32} height={32} style={{ objectFit: 'contain' }} /></td>
               </tr>
               <tr style={{ background: '#ddd', color: '#222', fontWeight: 500, fontSize: 18 }}>
-                <td style={{ padding: '8px 8px' }}>24/06/2025</td>
-                <td>Benfica</td>
-                <td>-</td>
-                <td>Bayern Munich</td>
-                <td><Image src="/fifa.png" alt="FIFA" width={32} height={32} style={{ objectFit: 'contain' }} /></td>
+                <td style={{ padding: '8px 8px', width: 120 }}>24/06/2025</td>
+                <td style={{ textAlign: 'right', width: '30%' }}>Benfica</td>
+                <td style={{ textAlign: 'center', width: 60, fontWeight: 700, fontSize: 22 }}>-</td>
+                <td style={{ textAlign: 'left', width: '30%' }}>Bayern Munich</td>
+                <td style={{ textAlign: 'center', width: 60 }}><Image src="/fifa.png" alt="FIFA" width={32} height={32} style={{ objectFit: 'contain' }} /></td>
               </tr>
             </tbody>
           </table>
