@@ -155,11 +155,13 @@ export default function FeedPage() {
   const [commentsJude, setCommentsJude] = useState<{ user: string; avatar: string; text: string }[]>(() => {
     // Initialize with 2,345 comments
     const comments = [];
+    const names = ['Alex', 'Jordan', 'Sam', 'Taylor', 'Casey', 'Riley', 'Morgan', 'Jamie', 'Drew', 'Blake', 'Avery', 'Quinn', 'Riley', 'Dakota', 'Parker', 'Jordan', 'Taylor', 'Morgan', 'Casey', 'Riley', 'Jamie', 'Drew', 'Blake', 'Avery', 'Quinn', 'Riley', 'Dakota', 'Parker', 'Jordan', 'Taylor', 'Morgan', 'Casey', 'Riley', 'Jamie', 'Drew', 'Blake', 'Avery', 'Quinn', 'Riley', 'Dakota', 'Parker'];
+    const compliments = ['Rocket!', 'GOAT!', 'Amazing!', 'Incredible!', 'Unbelievable!', 'Outstanding!', 'Brilliant!', 'Fantastic!', 'Superb!', 'Exceptional!', 'Phenomenal!', 'Magnificent!', 'Splendid!', 'Marvelous!', 'Wonderful!', 'Excellent!', 'Terrific!', 'Fabulous!', 'Stellar!', 'Outstanding!', 'Brilliant!', 'Fantastic!', 'Superb!', 'Exceptional!', 'Phenomenal!', 'Magnificent!', 'Splendid!', 'Marvelous!', 'Wonderful!', 'Excellent!', 'Terrific!', 'Fabulous!', 'Stellar!', 'Outstanding!', 'Brilliant!', 'Fantastic!', 'Superb!', 'Exceptional!', 'Phenomenal!', 'Magnificent!', 'Splendid!', 'Marvelous!', 'Wonderful!', 'Excellent!', 'Terrific!', 'Fabulous!', 'Stellar!'];
     for (let i = 0; i < 2345; i++) {
       comments.push({
-        user: `User ${i + 1}`,
+        user: names[Math.floor(Math.random() * names.length)],
         avatar: '/placeholder-avatar.png',
-        text: `Comment ${i + 1} for Jude Bellingham`
+        text: compliments[Math.floor(Math.random() * compliments.length)]
       });
     }
     return comments;
