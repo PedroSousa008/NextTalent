@@ -79,7 +79,7 @@ const REAL_PLAYERS = [
   { name: 'Neymar Jr.', age: 32, positions: ['LW', 'CAM'], avatar: '/placeholder-avatar.png' },
   { name: 'Virgil van Dijk', age: 32, positions: ['CB'], avatar: '/placeholder-avatar.png' },
   { name: 'Luka Modrić', age: 38, positions: ['CM'], avatar: '/placeholder-avatar.png' },
-  { name: 'Jude Bellingham', age: 20, positions: ['CM', 'CAM'], avatar: '/placeholder-avatar.png' },
+  { name: 'Jude Bellingham', age: 22, positions: ['CM', 'CAM'], avatar: '/placeholder-avatar.png' },
   { name: 'Pedri', age: 21, positions: ['CM', 'CAM'], avatar: '/placeholder-avatar.png' },
   { name: 'Vinícius Júnior', age: 23, positions: ['LW'], avatar: '/placeholder-avatar.png' },
   { name: 'Bukayo Saka', age: 22, positions: ['RW'], avatar: '/placeholder-avatar.png' },
@@ -150,6 +150,10 @@ export default function FeedPage() {
   const [comments2, setComments2] = useState<{ user: string; avatar: string; text: string }[]>([]);
   const [showComments1, setShowComments1] = useState(false);
   const [showComments2, setShowComments2] = useState(false);
+  const [likedJude, setLikedJude] = useState(false);
+  const [likesJude, setLikesJude] = useState(80000);
+  const [commentsJude, setCommentsJude] = useState<{ user: string; avatar: string; text: string }[]>([]);
+  const [showCommentsJude, setShowCommentsJude] = useState(false);
   const router = useRouter();
   const { filters, removeFilter } = useFilterContext();
   const iconTop = 62; // px, adjust as needed for perfect alignment
@@ -216,19 +220,19 @@ export default function FeedPage() {
     {
       name: 'Jude Bellingham',
       positions: ['CM', 'CAM', 'Senior'],
-      age: 'U18-U21',
-      video: '', // Placeholder, to be replaced with real video
-      avatar: '/placeholder-avatar.png',
+      age: 'U22-U24',
+      video: '/jude-clip.mp4',
+      avatar: '/jude.jpg',
       positionLabel: 'CM/CAM',
-      ageLabel: '20 year old',
-      likes: 0,
-      liked: false,
-      setLiked: () => {},
-      setLikes: () => {},
-      comments: [],
-      setComments: () => {},
-      showComments: false,
-      setShowComments: () => {},
+      ageLabel: '22 year old',
+      likes: likesJude,
+      liked: likedJude,
+      setLiked: setLikedJude,
+      setLikes: setLikesJude,
+      comments: commentsJude,
+      setComments: setCommentsJude,
+      showComments: showCommentsJude,
+      setShowComments: setShowCommentsJude,
       displayName: 'Jude Bellingham',
       id: 'real-jude',
     },
