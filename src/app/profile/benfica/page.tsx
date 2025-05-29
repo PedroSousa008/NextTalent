@@ -113,6 +113,25 @@ export default function BenficaProfileTeamPage() {
           </table>
         </div>
       )}
+      {/* Documents List */}
+      {activeTab === 'documents' && (
+        <div style={{ width: '100%', maxWidth: 700, background: '#eee', margin: '0 auto', fontFamily: 'serif', fontSize: 18, borderRadius: 0, marginTop: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', background: '#ccc', padding: '12px 18px', borderBottom: '1px solid #ddd' }}>
+              <Image src="/doc.png" alt="doc" width={24} height={24} style={{ marginRight: 12 }} />
+              <a href="#" style={{ color: '#1a4fa3', fontSize: 18, textDecoration: 'underline', fontFamily: 'serif' }}>Free Kick 1.docx</a>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', background: '#ccc', padding: '12px 18px', borderBottom: '1px solid #ddd' }}>
+              <Image src="/doc.png" alt="doc" width={24} height={24} style={{ marginRight: 12 }} />
+              <a href="#" style={{ color: '#1a4fa3', fontSize: 18, textDecoration: 'underline', fontFamily: 'serif' }}>Free Kick 2.docx</a>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', background: '#ccc', padding: '12px 18px' }}>
+              <Image src="/doc.png" alt="doc" width={24} height={24} style={{ marginRight: 12 }} />
+              <a href="#" style={{ color: '#1a4fa3', fontSize: 18, textDecoration: 'underline', fontFamily: 'serif' }}>Left Defensive Corner 1.docx</a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 } 
