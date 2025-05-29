@@ -152,7 +152,18 @@ export default function FeedPage() {
   const [showComments2, setShowComments2] = useState(false);
   const [likedJude, setLikedJude] = useState(false);
   const [likesJude, setLikesJude] = useState(80000);
-  const [commentsJude, setCommentsJude] = useState<{ user: string; avatar: string; text: string }[]>([]);
+  const [commentsJude, setCommentsJude] = useState<{ user: string; avatar: string; text: string }[]>(() => {
+    // Initialize with 2,345 comments
+    const comments = [];
+    for (let i = 0; i < 2345; i++) {
+      comments.push({
+        user: `User ${i + 1}`,
+        avatar: '/placeholder-avatar.png',
+        text: `Comment ${i + 1} for Jude Bellingham`
+      });
+    }
+    return comments;
+  });
   const [showCommentsJude, setShowCommentsJude] = useState(false);
   const router = useRouter();
   const { filters, removeFilter } = useFilterContext();
