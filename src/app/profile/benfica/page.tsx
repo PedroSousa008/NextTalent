@@ -84,34 +84,35 @@ export default function BenficaProfileTeamPage() {
         </div>
       </div>
       {/* Calendar Table */}
-      <div style={{ width: '100%', maxWidth: 700, background: '#eee', margin: '0 auto', fontFamily: 'serif', fontSize: 18, borderRadius: 0, marginTop: 0 }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'serif' }}>
-          <tbody>
-            <tr style={{ background: '#ddd', color: '#222', fontWeight: 500, fontSize: 18 }}>
-              <td style={{ padding: '8px 8px' }}>09/10/2021</td>
-              <td>Benfica</td>
-              <td><span style={{ background: '#e57373', color: 'white', borderRadius: 6, padding: '4px 18px', fontWeight: 600, fontSize: 18 }}>2 - 4</span></td>
-              <td>Porto</td>
-              <td><Image src="/porto.png" alt="Porto" width={32} height={32} style={{ objectFit: 'contain' }} /></td>
-            </tr>
-            <tr style={{ background: '#eee', color: '#222', fontWeight: 500, fontSize: 18 }}>
-              <td style={{ padding: '8px 8px' }}>16/10/2021</td>
-              <td>Sporting</td>
-              <td><span style={{ background: '#ffd54f', color: '#222', borderRadius: 6, padding: '4px 18px', fontWeight: 600, fontSize: 18 }}>1 - 1</span></td>
-              <td>Benfica</td>
-              <td><Image src="/sporting.png" alt="Sporting" width={32} height={32} style={{ objectFit: 'contain' }} /></td>
-            </tr>
-            <tr style={{ background: '#ddd', color: '#222', fontWeight: 500, fontSize: 18 }}>
-              <td style={{ padding: '8px 8px' }}>23/10/2021</td>
-              <td>Benfica</td>
-              <td><span style={{ background: '#a5d6a7', color: '#222', borderRadius: 6, padding: '4px 18px', fontWeight: 600, fontSize: 18 }}>3 - 0</span></td>
-              <td>Braga</td>
-              <td><Image src="/braga.png" alt="Braga" width={32} height={32} style={{ objectFit: 'contain' }} /></td>
-            </tr>
-            {/* Add more rows as needed */}
-          </tbody>
-        </table>
-      </div>
+      {activeTab === 'calendar' && (
+        <div style={{ width: '100%', maxWidth: 700, background: '#eee', margin: '0 auto', fontFamily: 'serif', fontSize: 18, borderRadius: 0, marginTop: 0 }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'serif' }}>
+            <tbody>
+              <tr style={{ background: '#ddd', color: '#222', fontWeight: 500, fontSize: 18 }}>
+                <td style={{ padding: '8px 8px' }}>16/06/2025</td>
+                <td>Boca Juniors</td>
+                <td>-</td>
+                <td>Benfica</td>
+                <td><Image src="/fifa.png" alt="FIFA" width={32} height={32} style={{ objectFit: 'contain' }} /></td>
+              </tr>
+              <tr style={{ background: '#eee', color: '#222', fontWeight: 500, fontSize: 18 }}>
+                <td style={{ padding: '8px 8px' }}>20/06/2025</td>
+                <td>Benfica</td>
+                <td>-</td>
+                <td>Auckland City</td>
+                <td><Image src="/fifa.png" alt="FIFA" width={32} height={32} style={{ objectFit: 'contain' }} /></td>
+              </tr>
+              <tr style={{ background: '#ddd', color: '#222', fontWeight: 500, fontSize: 18 }}>
+                <td style={{ padding: '8px 8px' }}>24/06/2025</td>
+                <td>Benfica</td>
+                <td>-</td>
+                <td>Bayern Munich</td>
+                <td><Image src="/fifa.png" alt="FIFA" width={32} height={32} style={{ objectFit: 'contain' }} /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 } 
