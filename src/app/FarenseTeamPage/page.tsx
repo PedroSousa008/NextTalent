@@ -1,1 +1,0 @@
-export default function FarenseTeamPage() { return <div />; } 

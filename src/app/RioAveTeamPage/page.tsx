@@ -1,1 +1,0 @@
-export default function RioAveTeamPage() { return <div />; } 
