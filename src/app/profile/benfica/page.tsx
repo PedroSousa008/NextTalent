@@ -134,9 +134,9 @@ export default function BenficaProfileTeamPage() {
       )}
       {/* Squad Table */}
       {activeTab === 'squad' && (
-        <div style={{ width: '100%', maxWidth: 700, background: 'white', borderRadius: 8, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)', marginTop: 0 }}>
+        <div style={{ width: '100%', maxWidth: 700, background: 'white', borderRadius: 8, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)', marginTop: 0, maxHeight: '70vh', overflowY: 'auto' }}>
           <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>PLAYERS</div>
-          <div style={{ maxHeight: 340, overflowY: 'auto' }}>
+          <div style={{ minHeight: 200 }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
               <thead>
                 <tr style={{ background: '#eee', color: '#888', fontWeight: 600, fontSize: 16 }}>
@@ -150,11 +150,33 @@ export default function BenficaProfileTeamPage() {
                 {/* Player rows */}
                 {[
                   { num: 1, name: 'Anatoliy Trubin', position: 'Goalkeeper', birth: '01/08/2001', age: 23, nat: '🇺🇦' },
-                  { num: 3, name: 'Álvaro Carreras', position: 'Left Back', birth: '23/03/2003', age: 22, nat: '🇪🇸' },
+                  { num: 24, name: 'Samuel Soares', position: 'Goalkeeper', birth: '15/06/2002', age: 22, nat: '🇵🇹' },
                   { num: 4, name: 'António Silva', position: 'Centre Back', birth: '30/10/2003', age: 21, nat: '🇵🇹' },
+                  { num: 44, name: 'Tomás Araújo', position: 'Centre Back', birth: '16/05/2002', age: 23, nat: '🇵🇹' },
+                  { num: 81, name: 'Adrian Bajrami', position: 'Centre Back', birth: '05/04/2002', age: 23, nat: '🇦🇱🇨🇭' },
+                  { num: 30, name: 'Nicolás Otamendi', position: 'Centre Back', birth: '12/02/1988', age: 37, nat: '🇦🇷' },
+                  { num: 3, name: 'Álvaro Carreras', position: 'Left Back', birth: '23/03/2003', age: 22, nat: '🇪🇸' },
+                  { num: 26, name: 'Samuel Dahl', position: 'Left Back', birth: '04/03/2003', age: 22, nat: '🇸🇪' },
                   { num: 6, name: 'Alexander Bah', position: 'Right Back', birth: '09/12/1997', age: 27, nat: '🇩🇰🇬🇲' },
+                  { num: 71, name: 'Leandro Santos', position: 'Right Back', birth: '28/09/2005', age: 19, nat: '🇵🇹' },
+                  { num: 61, name: 'Florentino', position: 'Defensive Midfielder', birth: '19/08/1999', age: 25, nat: '🇦🇴' },
+                  { num: 16, name: 'Manu Silva', position: 'Defensive Midfielder', birth: '12/06/2001', age: 23, nat: '🇵🇹' },
+                  { num: 23, name: 'Orkun Kökçü', position: 'Central Midfielder', birth: '29/12/2000', age: 24, nat: '🇹🇷🇳🇱' },
+                  { num: 8, name: 'Fredrik Aursnes', position: 'Central Midfielder', birth: '10/12/1995', age: 29, nat: '🇳🇴🇨🇭' },
+                  { num: 18, name: 'Leandro Barreiro', position: 'Central Midfielder', birth: '03/01/2000', age: 25, nat: '🇱🇺🇵🇹' },
+                  { num: 85, name: 'Renato Sanches', position: 'Central Midfielder', birth: '18/08/1997', age: 27, nat: '🇵🇹🇨🇻' },
+                  { num: 84, name: 'João Rego', position: 'Attacking Midfielder', birth: '20/06/2005', age: 19, nat: '🇵🇹' },
+                  { num: 10, name: 'Pedro Sousa', position: 'Attacking Midfielder', birth: '13/04/2003', age: 22, nat: '🇵🇹' },
+                  { num: 17, name: 'Kerem Aktürkoğlu', position: 'Left Winger', birth: '21/10/1998', age: 26, nat: '🇹🇷' },
+                  { num: 21, name: 'Andreas Schjelderup', position: 'Left Winger', birth: '01/06/2004', age: 20, nat: '🇳🇴' },
+                  { num: 27, name: 'Bruma', position: 'Left Winger', birth: '24/10/1994', age: 30, nat: '🇵🇹🇬🇼' },
+                  { num: 25, name: 'Gianluca Prestianni', position: 'Right Winger', birth: '31/01/2006', age: 19, nat: '🇦🇷🇮🇹' },
+                  { num: 47, name: 'Tiago Gouveia', position: 'Right Winger', birth: '18/06/2001', age: 23, nat: '🇵🇹' },
+                  { num: 11, name: 'Ángel Di María', position: 'Right Winger', birth: '14/02/1988', age: 37, nat: '🇦🇷🇮🇹' },
+                  { num: 14, name: 'Vangelis Pavlidis', position: 'Striker', birth: '21/11/1998', age: 26, nat: '🇬🇷' },
                   { num: 7, name: 'Zeki Amdouni', position: 'Striker', birth: '04/12/2000', age: 24, nat: '🇨🇭🇹🇷' },
-                  // ... add more players as needed ...
+                  { num: 9, name: 'Arthur Cabral', position: 'Striker', birth: '25/04/1998', age: 27, nat: '🇧🇷' },
+                  { num: 19, name: 'Andrea Belotti', position: 'Striker', birth: '20/12/1993', age: 31, nat: '🇮🇹' },
                 ].map((p, idx) => (
                   <tr key={idx} style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
                     <td style={{ padding: 8, textAlign: 'center', fontWeight: 700, background: '#e0e0e0', borderRadius: 12 }}>{p.num}</td>
