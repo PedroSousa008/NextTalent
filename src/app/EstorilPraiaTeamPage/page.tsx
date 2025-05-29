@@ -1,0 +1,1 @@
+export default function EstorilPraiaTeamPage() { return <div />; } 

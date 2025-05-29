@@ -1,0 +1,1 @@
+export default function BenficaTeamPage() { return <div />; } 

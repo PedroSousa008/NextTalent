@@ -1,0 +1,1 @@
+export default function NacionalTeamPage() { return <div />; } 

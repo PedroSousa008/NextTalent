@@ -1,0 +1,1 @@
+export default function VitóriadeGuimarãesTeamPage() { return <div />; } 

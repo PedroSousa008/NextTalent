@@ -1,0 +1,1 @@
+export default function SantaClaraTeamPage() { return <div />; } 

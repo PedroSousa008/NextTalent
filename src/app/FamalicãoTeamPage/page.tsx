@@ -1,0 +1,1 @@
+export default function FamalicãoTeamPage() { return <div />; } 

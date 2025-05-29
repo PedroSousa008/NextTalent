@@ -1,0 +1,1 @@
+export default function CasaPiaTeamPage() { return <div />; } 

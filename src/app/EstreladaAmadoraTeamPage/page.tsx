@@ -1,0 +1,1 @@
+export default function EstreladaAmadoraTeamPage() { return <div />; } 

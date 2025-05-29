@@ -50,3 +50,4 @@ export default function BottomNav({ active }: { active: 'feed' | 'search' | 'pro
   );
 } 
  
+ 
