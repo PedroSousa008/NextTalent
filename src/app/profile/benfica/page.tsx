@@ -132,6 +132,45 @@ export default function BenficaProfileTeamPage() {
           </div>
         </div>
       )}
+      {/* Squad Table */}
+      {activeTab === 'squad' && (
+        <div style={{ width: '100%', maxWidth: 700, background: 'white', borderRadius: 8, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)', marginTop: 0 }}>
+          <div style={{ background: '#222', color: 'white', fontWeight: 700, fontSize: 22, padding: '8px 0 8px 16px', borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>PLAYERS</div>
+          <div style={{ maxHeight: 340, overflowY: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', background: 'white' }}>
+              <thead>
+                <tr style={{ background: '#eee', color: '#888', fontWeight: 600, fontSize: 16 }}>
+                  <th style={{ padding: 8, textAlign: 'center' }}>#</th>
+                  <th style={{ padding: 8, textAlign: 'left' }}>Players</th>
+                  <th style={{ padding: 8, textAlign: 'center' }}>Age</th>
+                  <th style={{ padding: 8, textAlign: 'center' }}>Natio.</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* Player rows */}
+                {[
+                  { num: 1, name: 'Anatoliy Trubin', position: 'Goalkeeper', birth: '01/08/2001', age: 23, nat: '🇺🇦' },
+                  { num: 3, name: 'Álvaro Carreras', position: 'Left Back', birth: '23/03/2003', age: 22, nat: '🇪🇸' },
+                  { num: 4, name: 'António Silva', position: 'Centre Back', birth: '30/10/2003', age: 21, nat: '🇵🇹' },
+                  { num: 6, name: 'Alexander Bah', position: 'Right Back', birth: '09/12/1997', age: 27, nat: '🇩🇰🇬🇲' },
+                  { num: 7, name: 'Zeki Amdouni', position: 'Striker', birth: '04/12/2000', age: 24, nat: '🇨🇭🇹🇷' },
+                  // ... add more players as needed ...
+                ].map((p, idx) => (
+                  <tr key={idx} style={{ borderBottom: '1px solid #eee', color: '#222', fontSize: 15 }}>
+                    <td style={{ padding: 8, textAlign: 'center', fontWeight: 700, background: '#e0e0e0', borderRadius: 12 }}>{p.num}</td>
+                    <td style={{ padding: 8 }}>
+                      <div style={{ fontWeight: 700, color: 'black' }}>{p.name}</div>
+                      <div style={{ fontSize: 13, color: '#888' }}>{p.position}</div>
+                    </td>
+                    <td style={{ padding: 8, textAlign: 'center' }}>{p.birth} ({p.age})</td>
+                    <td style={{ padding: 8, textAlign: 'center', fontSize: 22 }}>{p.nat}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
     </div>
   );
 } 
