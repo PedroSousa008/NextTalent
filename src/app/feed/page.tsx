@@ -351,8 +351,8 @@ export default function FeedPage() {
           <div key={player.id || player.name} style={{ margin: '32px 0 0 0', padding: '0 0 32px 0', borderBottom: '1px solid #eee' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px' }}>
               <span style={{ fontSize: 16, color: 'black' }}>Position: {player.positionLabel}</span>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', cursor: player.name === 'Pedro Sousa' ? 'pointer' : 'default' }}
-                onClick={player.name === 'Pedro Sousa' ? () => router.push('/profile') : undefined}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', cursor: player.name === 'Pedro Sousa' ? 'pointer' : player.name === 'Jude Bellingham' ? 'pointer' : 'default' }}
+                onClick={player.name === 'Pedro Sousa' ? () => router.push('/profile') : player.name === 'Jude Bellingham' ? () => router.push('/jude') : undefined}
               >
                 <Image src={player.avatar} alt={player.displayName} width={56} height={56} style={{ borderRadius: '50%' }} />
                 <span style={{ fontWeight: 500, fontSize: 18, marginTop: 4, color: 'black' }}>{player.displayName}</span>
